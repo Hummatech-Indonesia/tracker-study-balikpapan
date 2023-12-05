@@ -17,10 +17,10 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 Route::get('dashboard', function () {
     return view('dashboard.index');
-});
+})->name('dashboard');
 
 Auth::routes();
 
