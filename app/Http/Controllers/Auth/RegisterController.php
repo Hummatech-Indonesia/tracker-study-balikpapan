@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Mail\RegistrationMail;
+use App\Helpers\ResponseHelper;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\RegisterRequest;
+use App\Services\Auth\RegisterService;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Contracts\Interfaces\RegisterInterface;
 
 class RegisterController extends Controller
 {
@@ -31,43 +37,22 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private RegisterService $registerService;
+    private RegisterInterface $register;
+
+    public function __construct(RegisterService $registerService,RegisterInterface $register)
     {
-        $this->middleware('guest');
+        $this->registerService = $registerService;
+        $this->register = $register;
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * Store a newly created resource in storage.
      */
-    protected function validator(array $data)
+    public function register(RegisterRequest $request)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $this->registerService->handleRegistration($request,$this->register);
+        Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email,'user' => $request->name]));
+        return ResponseHelper::success(null, 'Berhasil Daftar');
     }
 }
