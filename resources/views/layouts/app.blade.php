@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title data-setting="app_name" x-text="setting.app_name + ' | Responsive Tailwind Admin Dashboard Template'">Qompac
-        UI | Responsive Tailwind Admin Dashboard Template</title>
+    <title data-setting="app_name" x-text="setting.app_name + ' | Responsive Tailwind Admin Dashboard Template'">Tracker Study</title>
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">

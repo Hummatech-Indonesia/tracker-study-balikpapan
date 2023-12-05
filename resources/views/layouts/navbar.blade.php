@@ -5,7 +5,7 @@
         <div class="w-full px-7 py-2">
             <div class="relative">
                 <!-- Mobile menu button-->
-                <div class="absolute flex items-center px-2 py-1 text-xl border border-secondary-500 rounded lg:hidden"
+                <div class=" px-2 text-xl  rounded lg:hidden"
                     :class="setting.theme_scheme_direction == 'ltr' ? 'right-0' : 'left-0'">
                     <button type="button" @click="selected == 1 ? selected = null : selected = 1"
                         class="inline-flex items-center justify-center text-xl text-secondary-500 rounded"
@@ -424,7 +424,7 @@
                 <li x-data="{ open: false }" id="itemdropdown1">
                     <a class="py-0 flex items-center p-1 hover:text-primary-500" href="#" id="profile-setting"
                         @click="open = !open" aria-expanded="false">
-                        <img src="../assets/images/avatars/01.png" alt="User-Profile"
+                        <img src="{{ asset('assets-admin/images/avatars/01.png') }}" alt="User-Profile"
                             class="h-12 w-12 rounded-full truncate" loading="lazy">
 
                     </a>
@@ -453,25 +453,6 @@
     <div class="w-full px-7 py-2">
         <div class="relative">
             <!-- Mobile menu button-->
-            <div class="absolute flex items-center px-2 py-1 text-xl border border-secondary-500 rounded lg:hidden right-0"
-                :class="setting.theme_scheme_direction == 'ltr' ? 'right-0' : 'left-0'">
-                <button type="button" @click="selected == 1 ? selected = null : selected = 1"
-                    class="inline-flex items-center justify-center text-xl text-secondary-500 rounded"
-                    onclick="toggleNavbar('cancel', 'mobileicon')">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="block w-8 h-8" id="mobileicon" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                    <svg class="hidden w-6 h-6" id="cancel" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16" fill="gray">
-                        <path
-                            d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z">
-                        </path>
-                    </svg>
-                </button>
-            </div>
             <!-- Mobile menu button END-->
             <div class="flex">
                 <div class="flex items-center xl:hidden gap-2 display-none">
