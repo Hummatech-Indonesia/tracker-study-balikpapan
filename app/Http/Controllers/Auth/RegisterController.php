@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
-use App\Mail\RegistrationMail;
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
 use App\Services\Auth\RegisterService;
 use App\Providers\RouteServiceProvider;
@@ -52,7 +50,6 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         $this->registerService->handleRegistration($request,$this->register);
-        Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email,'user' => $request->name]));
         return ResponseHelper::success(null, 'Berhasil Daftar');
     }
 }

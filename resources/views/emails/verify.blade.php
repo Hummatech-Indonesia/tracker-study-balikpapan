@@ -91,7 +91,7 @@
 
                             <div class="order-contain">
                                 <h3 class="theme-color">Berhasil Daftar</h3>
-                                <h5 class="text-content">Terikasih {{$data['user']}} telah daftar di Tracer Sudy SMKN 2 Penajam</h5>
+                                <h5 class="text-content">Terimakasih {{$data['user']}} telah daftar di Tracer Sudy SMKN 2 Penajam</h5>
                                 <h5 class="text-content">Sebelum akun anda dapat digunakan,
                                     silakan tunggu sampai admin menvalidasi data registrasi anda dan mengaktifkan akun anda</h5>
                             </div>

@@ -19,6 +19,9 @@ class RegisterRequest extends FormRequest
             'password' => 'required|min:8|same:password_confirmation',
             'password_confirmation' => 'required',
             'address' => 'required',
+            // 'student_id_number' => 'required|max:11',
+            // 'study_program' => 'required',
+            // 'graduate_date' => 'required',
             'phone_number' => 'required',
         ];
     }
@@ -28,7 +31,7 @@ class RegisterRequest extends FormRequest
      *
      * @return array
      */
-    public function message(): array
+    public function messages(): array
     {
         return [
             'name.required' => 'Kolom nama harus diisi.',
@@ -48,6 +51,14 @@ class RegisterRequest extends FormRequest
             'address.required' => 'Kolom alamat harus diisi.',
 
             'phone_number.required' => 'Kolom nomor telepon harus diisi.',
+
+            // 'student_id_number.required' => 'Kolom nomor induk mahasiswa harus diisi.',
+            // 'student_id_number.max' => 'Nomor induk mahasiswa tidak boleh lebih dari 11 karakter.',
+
+            // 'study_program.required' => 'Kolom Program Study tidak boleh kosong.',
+
+            // 'graduate_date.required' => 'Kolom Tanggal Lulus tidak boleh kosong.',
         ];
     }
+
 }
