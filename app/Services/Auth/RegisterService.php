@@ -4,6 +4,7 @@ namespace App\Services\Auth;
 
 use App\Enums\RoleEnum;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Auth\Events\Registered;
 use App\Contracts\Interfaces\RegisterInterface;
 
 class RegisterService
@@ -19,14 +20,9 @@ class RegisterService
     public function handleRegistration(RegisterRequest $request, RegisterInterface $register): void
     {
         $data = $request->validated();
-        $password = bcrypt($data['password']);
 
-        $user = $register->storeRegister([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => $password,
-            'address' => $data['address'],
-            'phone_number' => $data['phone_number'],
-        ]);
+        $user = $register->store($data);
+        event(new Registered($user));
+        $user->assignRole(RoleEnum::ALUMNI->value);
     }
 }

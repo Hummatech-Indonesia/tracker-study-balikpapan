@@ -2,13 +2,9 @@
 
 namespace App\Contracts\Interfaces;
 
-interface RegisterInterface
+use App\Contracts\Interfaces\Eloquent\StoreInterface;
+
+interface RegisterInterface extends StoreInterface
 {
-    /**
-     * store
-     *
-     * @param  mixed $data
-     * @return mixed
-     */
-    public function storeRegister(array $data): void;
+
 }

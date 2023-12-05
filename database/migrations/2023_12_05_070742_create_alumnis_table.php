@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('alumnis', function (Blueprint $table) {
             $table->uuid()->primary();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('student_id_number')->unique();
-            $table->string('study_program');
-            $table->date('graduate_date');
+            $table->string('student_id_number')->unique()->nullable();
+            $table->string('study_program')->nullable();
+            $table->date('graduate_date')->nullable();
             $table->timestamps();
         });
     }

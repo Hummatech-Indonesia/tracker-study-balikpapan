@@ -20,9 +20,10 @@ class RegisterRepository extends BaseRepository implements RegisterInterface
      * @param  mixed $data
      * @return mixed
      */
-    public function storeRegister(array $data): void
+    public function store(array $data): mixed
     {
-        $this->model->query()
+        $user = $this->model->query()
             ->create($data);
+        return $user;
     }
 }
