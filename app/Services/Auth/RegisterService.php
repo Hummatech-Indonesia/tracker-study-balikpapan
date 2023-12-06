@@ -24,10 +24,10 @@ class RegisterService
         Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email,'user' => $request->name]));
 
         $data = $request->validated();
-        
         $user = $register->store($data);
 
         event(new Registered($user));
+        
         $user->assignRole(RoleEnum::ALUMNI->value);
     }
 }

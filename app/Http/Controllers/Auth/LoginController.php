@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\JsonResponse;
+use App\Http\Requests\LoginRequest;
 use App\Services\Auth\LoginService;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -33,11 +35,10 @@ class LoginController extends Controller
      * This function is responsible for handling user login requests.
      *
      * @param \App\Http\Requests\Auth\LoginRequest $request The incoming login request.
-     * @return \Illuminate\Http\JsonResponse Returns a JSON response.
      */
-    public function login(LoginRequest $request) : JsonResponse
+    public function login(LoginRequest $request)
     {
-        return $this->loginService->handleLogin($request);
+        $this->loginService->handleLogin($request);
     }
 
     /**
