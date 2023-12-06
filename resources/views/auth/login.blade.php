@@ -3,20 +3,28 @@
     <div class="section-authentication-cover">
         <div class="">
             <div class="row g-0">
-
                 <div
-                    class="col-12 col-xl-7 col-xxl-8 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
-
+                    class="col-12 col-xl-7 col-xxl-7 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
                     <div class="card shadow-none bg-transparent shadow-none rounded-0 mb-0">
                         <div class="card-body">
-                            <img src="{{ asset('assets-admin/images/login-images/login-cover.svg') }}"
-                                class="img-fluid auth-img-cover-login" width="650" alt="" />
+                            <div class="d-flex justify-content-center mt-4">
+                                <div class="">
+                                    <h2 class="text-white " style="font-weight: 800">
+                                        Selamat Datang
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="mt-1 mb-4">
+                                <h5 class="text-white text-center" style="font-weight: 00">
+                                    TRACER STUDY SMKN 2 PENAJAM
+                                </h5>
+                            </div>
+                            <img src="{{ asset('school.png') }}"
+                                class="mt-5" width="680" alt="" style="object-fit: cover"/>
                         </div>
                     </div>
-
                 </div>
-
-                <div class="col-12 col-xl-5 col-xxl-4 auth-cover-right align-items-center justify-content-center">
+                <div class="col-12 col-xl-5 col-xxl-5 auth-cover-right align-items-center justify-content-center">
                     <div class="card rounded-0 m-3 shadow-none bg-transparent mb-0">
                         <div class="card-body p-sm-5">
                             <div class="">
@@ -56,7 +64,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary">Sign in</button>
+                                                <button type="submit" class="text-white btn " style="background-color: #1D9375">Sign in</button>
                                             </div>
                                         </div>
                                         <div class="col-12">
