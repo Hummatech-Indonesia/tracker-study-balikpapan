@@ -5,18 +5,24 @@
             <div class="row g-0">
 
                 <div
-                    class="col-12 col-xl-7 col-xxl-8 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
+                    class="col-12 col-xl-7 col-xxl-7 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
 
                     <div class="card shadow-none bg-transparent shadow-none rounded-0 mb-0">
                         <div class="card-body">
-                            <img src="{{ asset('assets-admin/images/login-images/register-cover.svg') }}" class="img-fluid auth-img-cover-login"
-                                width="550" alt="" />
+                            <h2 class="text-center text-white" style="font-weight: 700">
+                                Daftar Untuk Masuk
+                            </h2>
+                            <h5 class="text-center text-white mb-5 mt-2" style="font-weight: 00">
+                                TRACER STUDY SMKN 2 PENAJAM
+                            </h5>
+                            <img src="{{ asset('High School-amico 1.png') }}" class="mt-4" width="550"
+                                alt="" />
                         </div>
                     </div>
 
                 </div>
 
-                <div class="col-12 col-xl-5 col-xxl-4 auth-cover-right align-items-center justify-content-center">
+                <div class="col-12 col-xl-5 col-xxl-5 auth-cover-right align-items-center justify-content-center">
                     <div class="card rounded-0 m-3 shadow-none bg-transparent mb-0">
                         <div class="card-body p-sm-5">
                             <div class="">
@@ -50,53 +56,34 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label for="inputSelectCountry" class="form-label">Country</label>
-                                            <select class="form-select" id="inputSelectCountry"
-                                                aria-label="Default select example">
-                                                <option selected>India</option>
-                                                <option value="1">United Kingdom</option>
-                                                <option value="2">America</option>
-                                                <option value="3">Dubai</option>
-                                            </select>
+                                            <label for="inputChoosePassword" class="form-label">No Telephone</label>
+                                            <input type="password" class="form-control border-end-0"
+                                                placeholder="Enter No telephone">
                                         </div>
                                         <div class="col-12">
-                                            <div class="form-check form-switch">
+                                            <label for="inputSelectCountry" class="form-label">Alamat</label>
+                                            <textarea name="" id="" class="form-control"></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-                                                <label class="form-check-label" for="flexSwitchCheckChecked">I read and
-                                                    agree to Terms & Conditions</label>
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Kebijakan Privasi</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary">Sign up</button>
+                                                <button type="submit" class="btn text-white"
+                                                    style="background-color: #1D9375">Daftar</button>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="text-center ">
-                                                <p class="mb-0">Already have an account? <a
-                                                        href="authentication-signin.html">Sign in here</a></p>
+                                                <p class="mb-0">Sudah Mempunyai akun? <a
+                                                        href="authentication-signin.html">Masuk</a></p>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="login-separater text-center mb-5"> <span>OR SIGN UP WITH EMAIL</span>
-                                    <hr />
-                                </div>
-                                <div class="list-inline contacts-social text-center">
-                                    <a href="javascript:;"
-                                        class="list-inline-item bg-facebook text-white border-0 rounded-3"><i
-                                            class="bx bxl-facebook"></i></a>
-                                    <a href="javascript:;"
-                                        class="list-inline-item bg-twitter text-white border-0 rounded-3"><i
-                                            class="bx bxl-twitter"></i></a>
-                                    <a href="javascript:;"
-                                        class="list-inline-item bg-google text-white border-0 rounded-3"><i
-                                            class="bx bxl-google"></i></a>
-                                    <a href="javascript:;"
-                                        class="list-inline-item bg-linkedin text-white border-0 rounded-3"><i
-                                            class="bx bxl-linkedin"></i></a>
-                                </div>
-
                             </div>
                         </div>
                     </div>

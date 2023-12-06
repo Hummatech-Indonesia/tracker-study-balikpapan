@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button type="submit" class="text-white btn " style="background-color: #1D9375">Sign in</button>
+                                                <button type="submit" class="text-white btn " style="background-color: #1D9375">Login</button>
                                             </div>
                                         </div>
                                         <div class="col-12">
