@@ -17,7 +17,11 @@ class User extends Authenticatable implements HasAlumni
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
 
-
+    public $incrementing = false;
+    public $keyType = 'char';
+    protected $table = 'users';
+    protected $primaryKey = 'id';
+    
     /**
      * The attributes that are mass assignable.
      *
