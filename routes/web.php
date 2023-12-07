@@ -21,6 +21,12 @@ Route::get('/', function () {
 Route::get('dashboard', function () {
     return view('dashboard.index');
 })->name('dashboard');
+Route::get('job-vacancy', function () {
+    return view('job-vacancy.index');
+})->name('job-vacancy');
+Route::get('detail-job-vacancy', function () {
+    return view('job-vacancy.detail');
+})->name('detail-job-vacancy');
 
 Auth::routes();
 

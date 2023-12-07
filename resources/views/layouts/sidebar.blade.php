@@ -135,7 +135,7 @@
             </a>
         </li>
         <li class="active">
-            <a href="#" class="active">
+            <a href="{{ route('job-vacancy') }}" class="active">
                 <div class="parent-icon">
                     <div class="parent-icon"><i class="icon" data-tp-toggle="tooltip" data-tp-placement="left" data-tp-title="Crypto">
                         <svg width="26" class="icon-20" viewBox="0 0 24 24" fill="none"

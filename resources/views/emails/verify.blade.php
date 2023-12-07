@@ -1,115 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="{{ $title ?? config('app.name') }}">
-    <meta name="description" content="{{ $description ?? config('app.name') }}">
-    <meta name="keywords" content="{{ $keywords ?? config('app.name') }}">
-    <meta name="author" content="{{ $author ?? config('app.name') }}">
-    <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
-    <title>Berhasil Daftar</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+        #outlook a {
+            padding: 0;
+        }
+
+        .ReadMsgBody {
+            width: 100%;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        .ExternalClass * {
+            line-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table,
+        td {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        p {
+            display: block;
+            margin: 13px 0;
+        }
+    </style>
+    <!--[if !mso]><!-->
+    <style type="text/css">
+        @media only screen and (max-width: 480px) {
+            @-ms-viewport {
+                width: 320px;
+            }
+
+            @viewport {
+                width: 320px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
+    </style>
+    <!--<![endif]-->
+    <style type="text/css">
+        @media only screen and (min-width: 480px) {
+
+            .mj-column-per-100,
+            * [aria-labelledby="mj-column-per-100"] {
+                width: 100% !important;
+            }
+        }
+    </style>
 </head>
 
-<body class="theme-color-3 dark">
-<!-- Loader Start -->
-<div class="fullpage-loader">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
-<!-- Loader End -->
+<body style="background: #f9f9f9">
+    <div style="background-color: #f9f9f9">
+        <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width:640px;">
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+        <style type="text/css">
+            html,
+            body,
+            * {
+                -webkit-text-size-adjust: none;
+                text-size-adjust: none;
+            }
 
-<!-- Header Start -->
-<header class="pb-md-4 pb-0 header-2">
+            a {
+                color: #1eb0f4;
+                text-decoration: none;
+            }
 
-</header>
-<!-- Header End -->
-<footer class="section-t-space mt-5">
-    <section class="breadscrumb-section pt-0">
-        <div class="container-fluid-lg">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadscrumb-contain breadscrumb-order">
-                        <div class="order-box">
-                            <div class="order-image">
-                                <div class="checkmark">
-                                    <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
-                                        </path>
-                                    </svg>
-                                    <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
-                                        </path>
-                                    </svg>
-                                    <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
-                                        </path>
-                                    </svg>
-                                    <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
-                                        </path>
-                                    </svg>
-                                    <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
-                                        </path>
-                                    </svg>
-                                    <svg class="star" height="19" viewBox="0 0 19 19" width="19"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.296.747c.532-.972 1.393-.973 1.925 0l2.665 4.872 4.876 2.66c.974.532.975 1.393 0 1.926l-4.875 2.666-2.664 4.876c-.53.972-1.39.973-1.924 0l-2.664-4.876L.76 10.206c-.972-.532-.973-1.393 0-1.925l4.872-2.66L8.296.746z">
-                                        </path>
-                                    </svg>
-                                    <svg class="checkmark__check" height="36" viewBox="0 0 48 36" width="48"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M47.248 3.9L43.906.667a2.428 2.428 0 0 0-3.344 0l-23.63 23.09-9.554-9.338a2.432 2.432 0 0 0-3.345 0L.692 17.654a2.236 2.236 0 0 0 .002 3.233l14.567 14.175c.926.894 2.42.894 3.342.01L47.248 7.128c.922-.89.922-2.34 0-3.23">
-                                        </path>
-                                    </svg>
-                                    <svg class="checkmark__background" height="115" viewBox="0 0 120 115" width="120"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M107.332 72.938c-1.798 5.557 4.564 15.334 1.21 19.96-3.387 4.674-14.646 1.605-19.298 5.003-4.61 3.368-5.163 15.074-10.695 16.878-5.344 1.743-12.628-7.35-18.545-7.35-5.922 0-13.206 9.088-18.543 7.345-5.538-1.804-6.09-13.515-10.696-16.877-4.657-3.398-15.91-.334-19.297-5.002-3.356-4.627 3.006-14.404 1.208-19.962C10.93 67.576 0 63.442 0 57.5c0-5.943 10.93-10.076 12.668-15.438 1.798-5.557-4.564-15.334-1.21-19.96 3.387-4.674 14.646-1.605 19.298-5.003C35.366 13.73 35.92 2.025 41.45.22c5.344-1.743 12.628 7.35 18.545 7.35 5.922 0 13.206-9.088 18.543-7.345 5.538 1.804 6.09 13.515 10.696 16.877 4.657 3.398 15.91.334 19.297 5.002 3.356 4.627-3.006 14.404-1.208 19.962C109.07 47.424 120 51.562 120 57.5c0 5.943-10.93 10.076-12.668 15.438z">
-                                        </path>
-                                    </svg>
-                                </div>
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
+        <div style="margin: 0px auto; max-width: 640px; background: transparent">
+            <table role="presentation" cellpadding="0" cellspacing="0"
+                style="font-size: 0px; width: 100%; background: transparent" align="center" border="0">
+                <tbody>
+                    <tr>
+                        <td
+                            style="
+                  text-align: center;
+                  vertical-align: top;
+                  direction: ltr;
+                  font-size: 0px;
+                  padding: 40px 0px;
+                ">
+                            <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:top;width:640px;">
+        <![endif]-->
+                            <div aria-labelledby="mj-column-per-100" class="mj-column-per-100 outlook-group-fix"
+                                style="
+                    vertical-align: top;
+                    display: inline-block;
+                    direction: ltr;
+                    font-size: 13px;
+                    text-align: left;
+                    width: 100%;
+                  ">
+                                <table role="presentation" cellpadding="0" cellspacing="0" width="100%"
+                                    border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td style="
+                            word-break: break-word;
+                            font-size: 0px;
+                            padding: 0px;
+                          "
+                                                align="center">
+                                                <table role="presentation" cellpadding="0" cellspacing="0"
+                                                    style="
+                              border-collapse: collapse;
+                              border-spacing: 0px;
+                            "
+                                                    align="center" border="0">
+                                                    <tbody>
+                                                        <tr></tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-
-                            <div class="order-contain">
-                                <h3 class="theme-color">Berhasil Daftar</h3>
-                                <h5 class="text-content">Terimakasih {{$data['user']}} telah daftar di Tracer Sudy SMKN 2 Penajam</h5>
-                                <h5 class="text-content">Sebelum akun anda dapat digunakan,
-                                    silakan tunggu sampai admin menvalidasi data registrasi anda dan mengaktifkan akun anda</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </section>
-</footer>
+        <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+        <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width:640px;">
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+        <div
+            style="
+          max-width: 640px;
+          margin: 0 auto;
+          box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          overflow: hidden;
+        ">
+            <div style="margin: 0px auto; max-width: 640px">
+                <!--[if mso | IE]>
+        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:640px;">
+          <v:fill origin="0.5, 0" position="0.5,0" type="tile" src="https://cdn.discordapp.com/email_assets/f0a4cc6d7aaa7bdf2a3c15a193c6d224.png" />
+          <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
+        <![endif]-->
+                <table role="presentation" cellpadding="0" cellspacing="0" style="font-size: 0px; width: 100%"
+                    align="center" border="0">
+                    <tbody>
+                        <tr>
+                            <td
+                                style="
+                    text-align: center;
+                    vertical-align: top;
+                    direction: ltr;
+                    font-size: 0px;
+                    padding: 57px;
+                  ">
+                                <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:undefined;width:640px;">
+        <![endif]-->
+                                <div
+                                    style="
+                      cursor: auto;
+                      color: white;
+                      font-family: Whitney, Helvetica Neue, Helvetica, Arial,
+                        Lucida Grande, sans-serif;
+                      font-size: 36px;
+                      font-weight: 600;
+                      line-height: 36px;
+                      text-align: center;
+                    ">
+                                    <img src="smk.png" style="width: 300px;" alt="" />
+                                </div>
+                                <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--[if mso | IE]>
+          </v:textbox>
+        </v:rect>
+        <![endif]-->
+            </div>
+            <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+            <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width:640px;">
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+            <div style="margin: 0px auto; max-width: 640px; background: #ffffff">
+                <table role="presentation" cellpadding="0" cellspacing="0"
+                    style="font-size: 0px; width: 100%; background: #ffffff" align="center" border="0">
+                    <tbody>
+                        <tr>
+                            <td
+                                style="
+                    text-align: center;
+                    vertical-align: top;
+                    direction: ltr;
+                    font-size: 0px;
+                    padding: 40px 70px;
+                  ">
+                                <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:top;width:640px;">
+        <![endif]-->
+                                <div aria-labelledby="mj-column-per-100" class="mj-column-per-100 outlook-group-fix"
+                                    style="
+                      vertical-align: top;
+                      display: inline-block;
+                      direction: ltr;
+                      font-size: 13px;
+                      text-align: left;
+                      width: 100%;
+                    ">
+                                    <table role="presentation" cellpadding="0" cellspacing="0" width="100%"
+                                        border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="
+                              word-break: break-word;
+                              font-size: 0px;
+                              padding: 0px 0px 20px;
+                            "
+                                                    align="left">
+                                                    <div
+                                                        style="
+                                cursor: auto;
+                                color: #737f8d;
+                                font-family: Whitney, Helvetica Neue, Helvetica,
+                                  Arial, Lucida Grande, sans-serif;
+                                font-size: 16px;
+                                line-height: 24px;
+                                text-align: left;
+                              ">
+                                                        <p></p>
 
-<!-- log in section end -->
+                                                        <h2
+                                                            style="
+                                  font-family: Whitney, Helvetica Neue,
+                                    Helvetica, Arial, Lucida Grande, sans-serif;
+                                  font-weight: 500;
+                                  font-size: 20px;
+                                  color: #000000;
+                                  letter-spacing: 0.27px;
+                                ">
+                                                            Tautan ini aktif selama 4 jam
+                                                        </h2>
+                                                        <h4 style="font-weight: 700 ;color: #000000;">
+                                                            Aktivasi Akun Anda
+                                                        </h4>
+                                                        <p>
+                                                            Terimakasih {{ $data['user'] }} telah mendaftar di <span
+                                                                style="color: #000000;">
+                                                                Tracer Study SMKN
+                                                                2 PENAJAM,
+                                                            </span> Mohon masukan kode verifikasi di
+                                                            bawah ini untuk melanjutkan aktivasi akun anda.
+                                                        </p>
+                                                        <h1 align="center" style="color: #000000;">32131</h1>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="
+                              word-break: break-word;
+                              font-size: 0px;
+                              padding: 10px 25px;
+                            "
+                                                    align="center">
+                                                    <table role="presentation" cellpadding="0" cellspacing="0"
+                                                        style="border-collapse: separate" align="center"
+                                                        border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="
+                                      border: none;
+                                      border-radius: 3px;
+                                      color: white;
+                                      cursor: auto;
+                                      padding: 15px 19px;
+                                    "
+                                                                    align="center" valign="middle" bgcolor="#1D9375">
+                                                                    <a href="#"
+                                                                        style="
+                                        text-decoration: none;
+                                        line-height: 100%;
+                                        background: ##1D9375;
+                                        color: white;
+                                        font-family: Ubuntu, Helvetica, Arial,
+                                          sans-serif;
+                                        font-size: 15px;
+                                        font-weight: normal;
+                                        text-transform: none;
+                                        margin: 0px;
+                                      "
+                                                                        target="_blank">
+                                                                        Verifikasi
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+            <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width:640px;">
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+        </div>
+        <div style="margin: 0px auto; max-width: 640px; background: transparent">
+            <table role="presentation" cellpadding="0" cellspacing="0"
+                style="font-size: 0px; width: 100%; background: transparent" align="center" border="0">
+                <tbody>
+                    <tr>
+                        <td
+                            style="
+                  text-align: center;
+                  vertical-align: top;
+                  direction: ltr;
+                  font-size: 0px;
+                  padding: 0px;
+                ">
+                            <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:top;width:640px;">
+        <![endif]-->
+                            <div aria-labelledby="mj-column-per-100" class="mj-column-per-100 outlook-group-fix"
+                                style="
+                    vertical-align: top;
+                    display: inline-block;
+                    direction: ltr;
+                    font-size: 13px;
+                    text-align: left;
+                    width: 100%;
+                  ">
+                                <table role="presentation" cellpadding="0" cellspacing="0" width="100%"
+                                    border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td style="word-break: break-word; font-size: 0px">
+                                                <div style="font-size: 1px; line-height: 12px">
+                                                    &nbsp;
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+        <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width:640px;">
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+        <div
+            style="
+          margin: 0 auto;
+          max-width: 640px;
+          background: #ffffff;
+          box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          overflow: hidden;
+        ">
+            <table cellpadding="0" cellspacing="0" style="font-size: 0px; width: 100%; background: #ffffff"
+                align="center" border="0">
+                <tbody>
+                    <tr>
+                        <td
+                            style="
+                  text-align: center;
+                  vertical-align: top;
+                  font-size: 0px;
+                  padding: 0px;
+                ">
+                            <!--[if mso | IE]>
+        <table border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:top;width:640px;">
+        <![endif]-->
 
-<!-- Bg overlay Start -->
-<div class="bg-overlay"></div>
-<!-- Bg overlay End -->
+                            <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+        <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width:640px;">
+          <tr>
+            <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+        <![endif]-->
+        <div style="margin: 0px auto; max-width: 640px; background: transparent">
+            <table role="presentation" cellpadding="0" cellspacing="0"
+                style="font-size: 0px; width: 100%; background: transparent" align="center" border="0">
+                <tbody>
+                    <tr>
+                        <td
+                            style="
+                  text-align: center;
+                  vertical-align: top;
+                  direction: ltr;
+                  font-size: 0px;
+                  padding: 20px 0px;
+                ">
+                            <!--[if mso | IE]>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td style="vertical-align:top;width:640px;">
+        <![endif]-->
 
+                            <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--[if mso | IE]>
+        </td></tr></table>
+        <![endif]-->
+    </div>
 </body>
 
 </html>
-
