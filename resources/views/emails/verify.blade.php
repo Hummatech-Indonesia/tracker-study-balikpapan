@@ -211,7 +211,7 @@
                       line-height: 36px;
                       text-align: center;
                     ">
-                                    <img src="smk.png" style="width: 300px;" alt="" />
+                                    <img src="https://i.postimg.cc/QCtQsQXG/smk.png" style="width: 300px;" alt="" />
                                 </div>
                                 <!--[if mso | IE]>
         </td></tr></table>
