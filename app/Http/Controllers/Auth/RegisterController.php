@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
+use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\Providers\RouteServiceProvider;
+use App\Models\User;
+use App\Services\Auth\RegisterService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
 use App\Services\Auth\RegisterService;
@@ -35,21 +42,44 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    private RegisterService $registerService;
+    private RegisterService $service;
     private RegisterInterface $register;
-
-    public function __construct(RegisterService $registerService,RegisterInterface $register)
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(RegisterService $service, RegisterInterface $register)
     {
-        $this->registerService = $registerService;
+        $this->service = $service;
         $this->register = $register;
+        $this->middleware('guest');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the application registration form.
+     *
+     * @return View
      */
-    public function register(RegisterRequest $request)
+    public function showRegistrationForm(): View
     {
-        $this->registerService->handleRegistration($request,$this->register);
-        return ResponseHelper::success(null, 'Berhasil Daftar');
+        $title = trans('title.register');
+        return view('auth.register', compact('title'));
+    }
+
+
+    /**
+     * Handle school registration form
+     *
+     * @param RegisterRequest $request
+     *
+     * @return RedirectResponse
+     */
+
+    public function register(RegisterRequest $request): JsonResponse
+    {
+        $this->service->handleRegistration($request, $this->register);
+
+        return ResponseHelper::success();
     }
 }
