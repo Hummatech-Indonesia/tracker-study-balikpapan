@@ -59,3 +59,6 @@ Route::get('alumni-gallery', function (){
 Route::get('teacher-gallery', function (){
     return view('teacher-gallery');
 })->name('teacher.gallery');
+Route::get('upload-news', function (){
+    return view('upload-news');
+})->name('upload.news');

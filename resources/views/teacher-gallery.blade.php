@@ -35,33 +35,36 @@
     <h4>
         Gambar Dengan Judul
     </h4>
-    <div class="items" data-index="0">
-        <div class="card">
-            <div class="card-body">
-                <!-- Repeater Content -->
-                <div class="item-content">
-                    <div class="mb-3">
+    <div class="repeater">
+        <div class="items" data-index="0">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Repeater Content -->
+                    <div class="item-content">
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Upload Gambar</label>
-                            <input name="test[0][name]" class="form-control" id="test_0_name" type="file" id="formFile">
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Upload Gambar</label>
+                                <input name="test[0][name]" class="form-control" id="test_0_name" type="file"
+                                    id="formFile">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="email" class="form-label">Judul</label>
+                                <input type="text" class="form-control" id="email" placeholder="Masukkan Judul"
+                                    data-skip-name="true" data-name="email" name="email" value="">
+                            </div>
+                            <div class="col">
+                                <label for="email" class="form-label">Tangal</label>
+                                <input type="date" class="form-control" id="date" placeholder="Email"
+                                    data-skip-name="true" data-name="date" name="date" value="">
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="email" class="form-label">Judul</label>
-                            <input type="text" class="form-control" id="email" placeholder="Masukkan Judul"
-                                data-skip-name="true" data-name="email" name="email" value="">
-                        </div>
-                        <div class="col">
-                            <label for="email" class="form-label">Tangal</label>
-                            <input type="date" class="form-control" id="date" placeholder="Email"
-                                data-skip-name="true" data-name="date" name="date" value="">
-                        </div>
+                    <!-- Repeater Remove Btn -->
+                    <div class="repeater-remove-btn mt-2 d-flex justify-content-end">
+                        <button class="btn btn-success repeater-add-btn px-4 btn-md">Tambah</button>
                     </div>
-                </div>
-                <!-- Repeater Remove Btn -->
-                <div class="repeater-remove-btn mt-2 d-flex justify-content-end">
-                    <button class="btn btn-success repeater-add-btn px-4 btn-md">Tambah</button>
                 </div>
             </div>
         </div>
@@ -72,8 +75,13 @@
 <script src="{{ asset('assets-admin/plugins/fancy-file-uploader/jquery.iframe-transport.js') }}"></script>
 <script src="{{ asset('assets-admin/plugins/fancy-file-uploader/jquery.fancy-fileupload.js') }}"></script>
 <script src="{{ asset('assets-admin/plugins/Drag-And-Drop/dist/imageuploadify.min.js') }}"></script>
+<script src="{{ asset('assets-admin/plugins/form-repeater/repeater.js') }}"></script>
 <script>
     $(document).ready(function() {
         $('#image-uploadify').imageuploadify();
     })
+
+    $("#repeater").createRepeater({
+        showFirstItemToDefault: true,
+    });
 </script>
