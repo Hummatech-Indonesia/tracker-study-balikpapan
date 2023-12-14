@@ -6,7 +6,7 @@
 :: Version: 1.0.0
 :: Created: 31 January 2020
 :: Updated: 14 October 2020
-************************************************************ 
+************************************************************
 *
 *
 ******* :: INDEX OF CSS :: *******
@@ -649,7 +649,7 @@ img {
   width: 100%;
   top: 0;
   left: 0;
-  background: var(--primary-bg-color-2);
+  background: #5D87FF;
   opacity: 0.94;
   z-index: -1;
 }
@@ -731,7 +731,7 @@ img {
 
 /*BACKGROUND IMAGES*/
 .welcome-area {
-  background: rgba(0, 0, 0, 0) url("../img/bg/welcome-bg.jpg") no-repeat scroll center center/cover;
+  background: rgba(0, 0, 0, 0);
 }
 
 .homepage-3 .welcome-area {
@@ -780,7 +780,7 @@ img {
 }
 
 .inner-area {
-  background: rgba(0, 0, 0, 0) url("../img/bg/welcome-bg.jpg") no-repeat scroll center center/cover;
+  background: rgba(0, 0, 0, 0);
 }
 
 .download-page .welcome-area {
@@ -1647,11 +1647,8 @@ img {
 }
 
 .counter-area .single-counter span {
-  font-size: 3em;
-  background-image: var(--primary-bg-color-2);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+    color: #5D87FF;
+    font-size: 3em;
 }
 
 @media (max-width: 991px) {

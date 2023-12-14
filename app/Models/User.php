@@ -2,25 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Alumni;
 use Laravel\Sanctum\HasApiTokens;
-use App\Base\Interfaces\HasAlumni;
-use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements HasAlumni
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    use HasRole;
-
-    public $incrementing = false;
-    public $keyType = 'char';
-    protected $table = 'users';
-    protected $primaryKey = 'id';
+    use HasRoles;
 
     public $incrementing = false;
     public $keyType = 'char';
@@ -60,13 +51,13 @@ class User extends Authenticatable implements HasAlumni
         'password' => 'hashed',
     ];
 
-    /**
-     * Get the alumni that owns the Alumni
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function alumni(): BelongsTo
-    {
-        return $this->belongsTo(Alumni::class);
-    }
+    // /**
+    //  * Get the alumni that owns the Alumni
+    //  *
+    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    //  */
+    // public function alumni(): BelongsTo
+    // {
+    //     return $this->belongsTo(Alumni::class);
+    // }
 }
