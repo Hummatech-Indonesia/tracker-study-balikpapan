@@ -53,3 +53,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('alumni-gallery', function (){
+    return view('alumni-gallery');
+})->name('alumni.gallery');
+Route::get('teacher-gallery', function (){
+    return view('teacher-gallery');
+})->name('teacher.gallery');
