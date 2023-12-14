@@ -30,6 +30,11 @@
     <link rel="stylesheet" href="{{ asset('assets-admin/css/header-colors.css') }}" />
     <link href="{{ asset('assets-admin/plugins/highcharts/css/highcharts.css') }}" rel="stylesheet" />
     <title>Tracker Study</title>
+    <style>
+        .user-circle {
+  border-radius: 50%;
+}
+    </style>
 </head>
 
 <body>
