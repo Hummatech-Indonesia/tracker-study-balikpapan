@@ -41,7 +41,11 @@ Route::get('job-vacancy', function () {
 })->name('job.vacancy');
 Route::get('detail-job-vacancy', function () {
     return view('job-vacancy.detail');
-})->name('detail-job-vacancy');
+})->name('detail.job.vacancy');
+Route::get('verify-company', function () {
+    return view('verify-company');
+})->name('verify.company');
+
 Route::get('/verify-account', function (){
     return view('auth.verify');
 });
