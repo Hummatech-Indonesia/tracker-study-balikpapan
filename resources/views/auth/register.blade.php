@@ -72,8 +72,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button type="submit" class="btn text-white"
-                                                    style="background-color: #1D9375">Daftar</button>
+                                                <button type="submit" class="btn btn-default">Daftar</button>
                                             </div>
                                         </div>
                                         <div class="col-12">

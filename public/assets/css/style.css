@@ -649,7 +649,7 @@ img {
   width: 100%;
   top: 0;
   left: 0;
-  background: var(--primary-bg-color-2);
+  background: #5D87FF;
   opacity: 0.94;
   z-index: -1;
 }
