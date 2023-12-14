@@ -27,7 +27,7 @@ class RegisterService
         $user = $register->store($data);
 
         event(new Registered($user));
-        
+
         $user->assignRole(RoleEnum::ALUMNI->value);
     }
 }

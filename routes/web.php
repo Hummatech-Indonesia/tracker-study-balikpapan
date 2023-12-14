@@ -41,11 +41,10 @@ Route::get('job-vacancy', function () {
 })->name('job.vacancy');
 Route::get('detail-job-vacancy', function () {
     return view('job-vacancy.detail');
-})->name('detail.job.vacancy');
-Route::get('verify-company', function () {
-    return view('verify-company');
-})->name('verify.company');
-
+})->name('detail-job-vacancy');
+Route::get('/verify-account', function (){
+    return view('auth.verify');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
