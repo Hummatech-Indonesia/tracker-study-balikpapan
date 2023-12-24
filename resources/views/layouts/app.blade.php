@@ -93,6 +93,7 @@
     <!--start switcher-->
     <!--end switcher-->
     <!-- Bootstrap JS -->
+    @yield('script')
     <script>
         // Ambil elemen input pencarian
         var searchInput = document.querySelector('#SearchModal input[type="search"]');

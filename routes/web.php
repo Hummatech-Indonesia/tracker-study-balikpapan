@@ -18,47 +18,47 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', function () {
     return view('index');
 })->name('index');
-Route::get('add-school-year', function () {
-    return view('add-school-year');
-})->name('add.school.year');
-Route::get('add-major', function () {
-    return view('add-major');
-})->name('add.major');
-Route::get('add-class', function () {
-    return view('add-class');
-})->name('add.class');
-Route::get('account-siswa', function () {
-    return view('account-siswa');
-})->name('account.siswa');
-Route::get('dashboard', function () {
-    return view('dashboard.index');
-})->name('dashboard');
-Route::get('alumni-register', function () {
-    return view('alumni-register');
-})->name('alumni.register');
-Route::get('job-vacancy', function () {
-    return view('job-vacancy.index');
-})->name('job.vacancy');
+
+
+
+
+
+
+
 Route::get('detail-job-vacancy', function () {
     return view('job-vacancy.detail');
 })->name('detail.job.vacancy');
-Route::get('verify-company', function () {
-    return view('verify-company');
-})->name('verify.company');
+
 
 Route::get('/verify-account', function (){
     return view('auth.verify');
 });
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('alumni-gallery', function (){
-    return view('alumni-gallery');
-})->name('alumni.gallery');
-Route::get('teacher-gallery', function (){
-    return view('teacher-gallery');
-})->name('teacher.gallery');
-Route::get('upload-news', function (){
-    return view('upload-news');
-})->name('upload.news');
+
+
+
+
+
+
+// Admin 
+Route::get('dashboard', function () {return view('admin.index');})->name('dashboard');
+Route::get('job-vacancy', function () {return view('admin.job-vacancy.index');})->name('job.vacancy');
+Route::get('account-siswa', function () {return view('admin.account-siswa');})->name('account.siswa');
+Route::get('alumni-register', function () {return view('admin.alumni-register');})->name('alumni.register');
+Route::get('add-school-year', function () {return view('admin.add-school-year');})->name('add.school.year');
+Route::get('add-major', function () {return view('admin.add-major');})->name('add.major');
+Route::get('add-class', function () {return view('admin.add-class');})->name('add.class');
+Route::get('teacher-gallery', function (){return view('admin.teacher-gallery');})->name('teacher.gallery');
+Route::get('upload-news', function (){return view('admin.upload-news');})->name('upload.news');
+Route::get('verify-company', function () {return view('admin.verify-company');})->name('verify.company');
+Route::get('alumni-gallery', function (){return view('admin.alumni-gallery');})->name('alumni.gallery');
+
+// company 
+Route::get('company', function (){return view('company.index');});
+Route::get('job-applicant', function (){return view('company.job-applicant');});
+Route::get('vacancy', function (){return view('company.vacancy');});
+Route::get('profile-company', function (){return view('company.profile');});
