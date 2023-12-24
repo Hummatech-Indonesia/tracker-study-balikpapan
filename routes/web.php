@@ -25,9 +25,7 @@ Route::get('/', function () {
 
 
 
-Route::get('detail-job-vacancy', function () {
-    return view('job-vacancy.detail');
-})->name('detail.job.vacancy');
+
 
 
 Route::get('/verify-account', function (){
@@ -56,6 +54,7 @@ Route::get('teacher-gallery', function (){return view('admin.teacher-gallery');}
 Route::get('upload-news', function (){return view('admin.upload-news');})->name('upload.news');
 Route::get('verify-company', function () {return view('admin.verify-company');})->name('verify.company');
 Route::get('alumni-gallery', function (){return view('admin.alumni-gallery');})->name('alumni.gallery');
+Route::get('detail-job-vacancy', function () {return view('admin.job-vacancy.detail');})->name('detail.job.vacancy');
 
 // company 
 Route::get('company', function (){return view('company.index');});
