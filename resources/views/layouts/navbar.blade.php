@@ -15,10 +15,6 @@
                         <a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
                         </a>
                     </li>
-                    <li class="nav-item dark-mode d-none  d-sm-flex">
-                        <a class="nav-link dark-mode-icon" href="javascript:;"><i class='bx bx-moon'></i>
-                        </a>
-                    </li>
                     <li class="nav-item dropdown dropdown-app">
                         <div class="dropdown-menu dropdown-menu-end p-0">
                             <div class="app-container p-2 my-2">
@@ -71,55 +67,7 @@
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown dropdown-large">
-                        
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a href="javascript:;">
-                                <div class="msg-header">
-                                    <p class="msg-header-title">My Cart</p>
-                                    <p class="msg-header-badge">10 Items</p>
-                                </div>
-                            </a>
-                            <div class="header-message-list">
-                                <a class="dropdown-item" href="javascript:;">
-                                
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                   
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    
-                                </a>
-                            </div>
-                            <a href="javascript:;">
-                                <div class="text-center msg-footer">
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <h5 class="mb-0">Total</h5>
-                                        <h5 class="mb-0 ms-auto">$489.00</h5>
-                                    </div>
-                                    <button class="btn btn-primary w-100">Checkout</button>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
             <div class="user-box dropdown px-3">
