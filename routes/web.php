@@ -61,3 +61,7 @@ Route::get('company', function (){return view('company.index');});
 Route::get('job-applicant', function (){return view('company.job-applicant');});
 Route::get('vacancy', function (){return view('company.vacancy');});
 Route::get('profile-company', function (){return view('company.profile');});
+Route::prefix('alumni')->name('alumni.')->group(function(){
+    Route::get('/',function(){return view('alumni.index');})->name('index');
+    Route::get('survei-pekerjaan',function(){return view('alumni.job-survey');})->name('job.survey');
+});
