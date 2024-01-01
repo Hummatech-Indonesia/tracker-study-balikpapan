@@ -26,7 +26,7 @@ Route::resources([
     'majors' => MajorController::class,
     'classrooms' => ClassroomController::class
 ]);
-
+Route::put('school-years/{schoolYear}', [SchoolYearController::class ,'update']);
 
 
 
@@ -58,9 +58,6 @@ Route::get('account-siswa', function () {
 Route::get('alumni-register', function () {
     return view('admin.alumni-register');
 })->name('alumni.register');
-Route::get('add-school-year', function () {
-    return view('admin.add-school-year');
-})->name('add.school.year');
 Route::get('add-major', function () {
     return view('admin.add-major');
 })->name('add.major');

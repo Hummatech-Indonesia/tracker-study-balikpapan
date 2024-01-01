@@ -91,11 +91,11 @@
             <div class="menu-title mt-1">Tambah Ajaran</div>
         </a>
         <ul>
-            <li> <a href="{{ route('add.school.year') }}"><i class='bx bx-radio-circle'></i>Tambah Tahun Ajaran</a>
+            <li> <a href="/school-years"><i class='bx bx-radio-circle'></i>Tambah Tahun Ajaran</a>
             </li>
             <li> <a href="{{ route('add.major') }}"><i class='bx bx-radio-circle'></i>Tambah Jurusan</a>
             </li>
-            <li> <a href="{{ route('add.class') }}"><i class='bx bx-radio-circle'></i>Tambah Kelas</a>
+            <li> <a href="classrooms"><i class='bx bx-radio-circle'></i>Tambah Kelas</a>
             </li>
         </ul>
     </li>

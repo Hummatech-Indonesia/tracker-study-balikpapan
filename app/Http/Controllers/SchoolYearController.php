@@ -22,7 +22,7 @@ class SchoolYearController extends Controller
     public function index(Request $request): View
     {
         $schoolYear = $this->schoolYear->search($request);
-        return view('', ['schoolYear' => $schoolYear]);
+        return view('admin.add-school-year', ['schoolYear' => $schoolYear]);
     }
 
     /**
