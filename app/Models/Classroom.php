@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Classroom extends Model
 {
     use HasFactory;
+    public $incrementing = false;
+    public $keyType = 'char';
+    protected $table = 'classrooms';
+    protected $primaryKey = 'id';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'school_year_id',
+        'major_id',
+        'name'
+    ];
 }
