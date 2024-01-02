@@ -4,7 +4,6 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\MajorInterface;
 use App\Models\Major;
-use App\Models\SchoolYear;
 use Illuminate\Http\Request;
 
 class MajorRepository extends BaseRepository implements MajorInterface
@@ -12,6 +11,17 @@ class MajorRepository extends BaseRepository implements MajorInterface
     public function __construct(Major $major)
     {
         $this->model = $major;
+    }
+
+    /**
+     * get
+     *
+     * @return mixed
+     */
+    public function get(): mixed
+    {
+        return $this->model->query()
+            ->get();
     }
 
     /**
@@ -70,6 +80,9 @@ class MajorRepository extends BaseRepository implements MajorInterface
     public function search(Request $request): mixed
     {
         return $this->model->query()
+            ->when($request->name, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->name . '%');
+            })
             ->get();
     }
 }

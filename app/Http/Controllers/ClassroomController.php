@@ -2,18 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\ClassroomInterface;
-use App\Http\Requests\ClassroomRequest;
 use App\Models\Classroom;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use App\Http\Requests\ClassroomRequest;
+use App\Contracts\Interfaces\MajorInterface;
+use App\Contracts\Interfaces\ClassroomInterface;
+use App\Contracts\Interfaces\SchoolYearInterface;
 
 class ClassroomController extends Controller
 {
     private ClassroomInterface $classroom;
-    public function __construct(ClassroomInterface $classroom)
+    private SchoolYearInterface $schoolYear;
+    private MajorInterface $major;
+
+    public function __construct(ClassroomInterface $classroom, SchoolYearInterface $schoolYear, MajorInterface $major)
     {
         $this->classroom = $classroom;
+        $this->schoolYear = $schoolYear;
+        $this->major = $major;
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +28,9 @@ class ClassroomController extends Controller
     public function index(Request $request): View
     {
         $classrooms = $this->classroom->search($request);
-        return view('admin.add-class', ['classrooms' => $classrooms]);
+        $schoolYears = $this->schoolYear->get();
+        $majors = $this->major->get();
+        return view('admin.add-class', ['classrooms' => $classrooms, 'schoolYears' => $schoolYears, 'majors' => $majors]);
     }
 
     /**

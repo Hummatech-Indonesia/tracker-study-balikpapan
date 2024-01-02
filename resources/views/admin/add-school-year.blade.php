@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('content')
+@if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
     <h4 class="mb-3">
         Tahun Ajaran
     </h4>
@@ -28,12 +37,12 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <label for="">Tahun Ajaran</label>
-                                <input type="text" name="name" class="form-control">
+                                <label for="" class="form-label">Tahun Ajaran</label>
+                                <input type="text" placeholder="Masukkan Tahun Ajaran" name="name" class="form-control">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </form>
@@ -51,7 +60,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <label for="">Tahun Ajaran</label>
+                                <label for="" class="form-label">Tahun Ajaran</label>
                                 <input type="text" name="name" class="form-control">
                             </div>
                             <div class="modal-footer">
@@ -85,11 +94,10 @@
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-header gap-2">
-                                <button class="btn btn-danger w-100 btn-delete" id="btn-edit-{{ $schoolYears->id }}"
-                                    data-id="{{ $schoolYears->id }}" data-name="{{ $schoolYears->name }}">Hapus</button>
-                                <button class="btn btn-info w-100 text-white btn-edit"
-                                    id="btn-edit-{{ $schoolYears->id }}" data-id="{{ $schoolYears->id }}"
-                                    data-name="{{ $schoolYears->name }}">Edit</button>
+                                <button class="btn btn-danger w-100 btn-delete"
+                                    data-id="{{ $schoolYears->id }}" data-bs-toggle="modal" data-bs-target="#modal-delete">Hapus</button>
+                                    <button type="button" id="btn-edit-{{ $schoolYears->id }}" data-id="{{ $schoolYears->id }}"
+                                        data-name="{{ $schoolYears->name }}" class="btn-edit btn btn-primary text-white w-100">Edit</button>
                             </div>
                         </div>
                     </div>
@@ -99,20 +107,23 @@
             Data Kosong
         @endforelse
     </div>
+    <x-delete-modal-component />
 @endsection
 @section('script')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('.btn-edit').click(function() {
-            const formData = $(this).data(); 
-            var actionUrl = `/school-years/${formData['id']}`;
+            const formData = getDataAttributes($(this).attr('id'))
+            var actionUrl = `school-years/${formData['id']}`;
             $('#form-update').attr('action', actionUrl);
-            $('#form-update').data('id', formData['id']);
-            $('#modal-update').modal('show');
+
+            setFormValues('form-update', formData)
+            $('#form-update').data('id', formData['id'])
+            $('#form-update').attr('action', );
+            $('#modal-update').modal('show')
         });
         $('.btn-delete').click(function() {
             id = $(this).data('id')
-            var actionUrl = `qualifications/${id}`;
+            var actionUrl = `school-years/${id}`;
             $('#form-delete').attr('action', actionUrl);
             $('#modal-delete').modal('show')
         })

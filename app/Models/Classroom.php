@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Major;
+use App\Models\SchoolYear;
+use App\Base\Interfaces\HasMajor;
+use App\Base\Interfaces\HasSchoolYear;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Classroom extends Model
+class Classroom extends Model implements HasMajor, HasSchoolYear
 {
     use HasFactory;
     public $incrementing = false;
@@ -23,4 +28,24 @@ class Classroom extends Model
         'major_id',
         'name'
     ];
+
+    /**
+     * major
+     *
+     * @return BelongsTo
+     */
+    public function major(): BelongsTo
+    {
+        return $this->belongsTo(Major::class);
+    }
+
+    /**
+     * schoolYear
+     *
+     * @return BelongsTo
+     */
+    public function schoolYear(): BelongsTo
+    {
+        return $this->belongsTo(SchoolYear::class);
+    }
 }

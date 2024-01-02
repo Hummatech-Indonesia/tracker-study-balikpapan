@@ -14,6 +14,17 @@ class SchoolYearRepository extends BaseRepository implements SchoolYearInterface
     }
 
     /**
+     * get
+     *
+     * @return mixed
+     */
+    public function get(): mixed
+    {
+        return $this->model->query()
+            ->get();
+    }
+
+    /**
      * store
      *
      * @param  mixed $data
@@ -69,6 +80,9 @@ class SchoolYearRepository extends BaseRepository implements SchoolYearInterface
     public function search(Request $request): mixed
     {
         return $this->model->query()
+            ->when($request->name, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->name . '%');
+            })
             ->get();
     }
 }
