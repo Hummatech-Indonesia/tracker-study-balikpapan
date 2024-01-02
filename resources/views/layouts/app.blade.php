@@ -32,8 +32,8 @@
     <title>Tracker Study</title>
     <style>
         .user-circle {
-  border-radius: 50%;
-}
+            border-radius: 50%;
+        }
     </style>
 </head>
 
@@ -177,7 +177,7 @@
                     newItem.addEventListener('click', (function(item) {
                         return function() {
                             window.location.href = item
-                            .route; // Arahkan pengguna ke rute yang sesuai dengan item yang dipilih
+                                .route; // Arahkan pengguna ke rute yang sesuai dengan item yang dipilih
                         };
                     })(item));
 
@@ -443,9 +443,10 @@
         }
 
         function handleFile(data) {
-            const iframeSrc = data['file'];
-            $('#detail-file').attr('src', iframeSrc);
+            const thumbnailUrl = data['thumbnail'];
+            $('#detail-file-thumbnail').attr('src', thumbnailUrl);
         }
+
 
         function showLoading() {
             return `<div class="d-flex justify-content-center" style="margin-top:11rem">

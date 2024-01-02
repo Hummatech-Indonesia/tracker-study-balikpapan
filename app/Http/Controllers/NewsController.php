@@ -16,15 +16,16 @@ class NewsController extends Controller
     private NewsInterface $news;
     private NewsService $service;
 
-    public function __construct(NewsInterface $newsInterface)
+    public function __construct(NewsInterface $newsInterface, NewsService $service)
     {
         $this->news = $newsInterface;
+        $this->service = $service;
     }
 
     public function index(): View
     {
         $data = $this->news->get();
-        return view('', compact('data'));
+        return view('admin.upload-news', compact('data'));
     }
 
     /**

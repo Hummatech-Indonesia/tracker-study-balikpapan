@@ -12,6 +12,9 @@
             <div class="col-lg-4">
                 <select name="" id="" class="form-select py-2">
                     <option value="">Filter Kelas</option>
+                    @foreach ($classrooms as $classroom)
+                        <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -39,9 +42,12 @@
                         <p class="card-text mt-2 mb-2">Tahun Ajaran {{ $classroom->schoolYear->name }}.</p>
                         <hr>
                         <div class="d-flex align-items-center gap-2">
-                            <a class="btn btn-danger btn-delete text-white w-100" data-id="{{ $classroom->id }}" data-bs-toggle="modal" data-bs-target="#modal-delete">Hapus</a>
-                            <a class="btn btn-warning text-white w-100 btn-edit" id="btn-edit-{{ $classroom->id }}" data-id="{{ $classroom->id }}"
-                                data-name="{{ $classroom->name }}" data-major_id="{{ $classroom->major_id }}" data-school_year_id={{ $classroom->school_year_id }}>Edit</a>
+                            <a class="btn btn-danger btn-delete text-white w-100" data-id="{{ $classroom->id }}"
+                                data-bs-toggle="modal" data-bs-target="#modal-delete">Hapus</a>
+                            <a class="btn btn-warning text-white w-100 btn-edit" id="btn-edit-{{ $classroom->id }}"
+                                data-id="{{ $classroom->id }}" data-name="{{ $classroom->name }}"
+                                data-major_id="{{ $classroom->major_id }}"
+                                data-school_year_id={{ $classroom->school_year_id }}>Edit</a>
                         </div>
                     </div>
                 </div>

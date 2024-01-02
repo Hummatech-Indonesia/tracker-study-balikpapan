@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,8 @@ Route::get('/', function () {
 Route::resources([
     'school-years' => SchoolYearController::class,
     'majors' => MajorController::class,
-    'classrooms' => ClassroomController::class
+    'classrooms' => ClassroomController::class,
+    'news' => NewsController::class,
 ]);
 Route::put('school-years/{schoolYear}', [SchoolYearController::class ,'update']);
 
@@ -67,9 +69,6 @@ Route::get('add-class', function () {
 Route::get('teacher-gallery', function () {
     return view('admin.teacher-gallery');
 })->name('teacher.gallery');
-Route::get('upload-news', function () {
-    return view('admin.upload-news');
-})->name('upload.news');
 Route::get('verify-company', function () {
     return view('admin.verify-company');
 })->name('verify.company');
