@@ -55,7 +55,7 @@ class TeacherGalleryController extends Controller
      */
     public function update(TeacherGallery $teacherGallery, TeacherGalleryUpdateRequest $request): RedirectResponse
     {
-        $this->teacherGallery->store($this->service->update($teacherGallery, $request));
+        $this->teacherGallery->update($teacherGallery->id, $this->service->update($teacherGallery, $request));
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
