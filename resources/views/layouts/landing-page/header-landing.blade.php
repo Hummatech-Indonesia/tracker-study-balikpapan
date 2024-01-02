@@ -17,10 +17,27 @@
                 </button>
                 <nav>
                     <ul class="navbar-nav" id="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link scroll fw-5" href="#features">Home</a>
+                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink"
+                            <a class="nav-link dropdown-toggle fw-5" href="javascript:;" id="navbarDropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Home
+                                Galeri
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+                                    <a class="dropdown-item" href="index.html">Galery Guru</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="index-2.html">Galery Guru</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle fw-5" href="javascript:;" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Halaman
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
@@ -32,107 +49,15 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scroll" href="#features">Features</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Pages
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle"
-                                        href="javascript:;">Inner Pages<span
-                                            class="badge badge-pill badge-warning ml-2">New</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="pricing.html">Pricing</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="download.html">Download</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="newsletter.html">Newsletter</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="thank-you.html">Thank you</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="404.html">404</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle"
-                                        href="javascript:;">Blog Pages</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="blog-two-column.html">Blog- 2 Column</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="blog-three-column.html">Blog- 3 Column</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="blog-left-sidebar.html">Blog- Left
-                                                Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="blog-right-sidebar.html">Blog- Right
-                                                Sidebar</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle"
-                                        href="javascript:;">Blog Details</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="blog-details-left-sidebar.html">Blog Details-
-                                                Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="blog-details-right-sidebar.html">Blog
-                                                Details- Right Sidebar</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle"
-                                        href="javascript:;">Accounts<span
-                                            class="badge badge-pill badge-warning ml-2">New</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="login.html">Login</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="signup.html">Signup</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="forgot.html">Reset Password</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="reviews.html">Reviews</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="faq.html">FAQ</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="contact.html">Contact</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item disabled" href="#">More Coming Soon</a>
-                                </li>
-                            </ul>
+                            <a class="nav-link scroll fw-5" href="#screenshots">Berita</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scroll" href="#screenshots">Screenshots</a>
+                            <a class="nav-link scroll fw-5" href="#pricing">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scroll" href="#pricing">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link scroll" href="#contact">Contact</a>
+                            <button class="btn mt-3">
+                                Login
+                            </button>
                         </li>
                     </ul>
                 </nav>
