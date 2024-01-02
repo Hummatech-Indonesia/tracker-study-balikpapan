@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('assets-admin/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets-admin/css/header-colors.css') }}" />
     <link href="{{ asset('assets-admin/plugins/highcharts/css/highcharts.css') }}" rel="stylesheet" />
+    @yield('style')
     <title>Tracker Study</title>
     <style>
         .user-circle {
