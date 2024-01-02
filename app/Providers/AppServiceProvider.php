@@ -8,11 +8,13 @@ use App\Contracts\Interfaces\NewsInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Interfaces\RegisterInterface;
 use App\Contracts\Interfaces\SchoolYearInterface;
+use App\Contracts\Interfaces\TeacherGalleryInterface;
 use App\Contracts\Repositories\ClassroomRepository;
 use App\Contracts\Repositories\MajorRepository;
 use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\RegisterRepository;
 use App\Contracts\Repositories\SchoolYearRepository;
+use App\Contracts\Repositories\TeacherGalleryRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         MajorInterface::class => MajorRepository::class,
         ClassroomInterface::class => ClassroomRepository::class,
         NewsInterface::class => NewsRepository::class,
+        TeacherGalleryInterface::class => TeacherGalleryRepository::class,
     ];
 
     /**

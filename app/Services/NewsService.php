@@ -37,6 +37,7 @@ class NewsService
         $data = $request->validated();
         $oldThumbnail = $news->thumbnail;
         if ($request->hasFile('thumbnail')) {
+            $this->remove($oldThumbnail);
             $oldThumbnail = $this->upload(UploadDiskEnum::THUMBNAIL->value, $request->file('thumbnail'));
         }
         $data['thumbnail'] = $oldThumbnail;
