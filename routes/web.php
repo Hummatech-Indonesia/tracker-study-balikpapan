@@ -23,8 +23,11 @@ use App\Http\Controllers\TeacherGalleryController;
 Route::get('/', function () {
     return view('index');
 })->name('index');
+Route::get('galery-teacher', function () {
+    return view('galery-teacher');
+});
 Route::resources([
-    'school-years' => SchoolYearController::class,
+    '   ' => SchoolYearController::class,
     'majors' => MajorController::class,
     'classrooms' => ClassroomController::class,
     'news' => NewsController::class,
