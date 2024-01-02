@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
+use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\MajorInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use Illuminate\Support\ServiceProvider;
-use App\Contracts\Interfaces\RegisterInterface;
 use App\Contracts\Interfaces\SchoolYearInterface;
 use App\Contracts\Interfaces\TeacherGalleryInterface;
 use App\Contracts\Repositories\ClassroomRepository;
