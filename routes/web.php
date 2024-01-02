@@ -27,7 +27,7 @@ Route::get('galery-alumni', function () {
     return view('galery-alumni');
 });
 Route::resources([
-    '   ' => SchoolYearController::class,
+    'school-years' => SchoolYearController::class,
     'majors' => MajorController::class,
     'classrooms' => ClassroomController::class,
     'news' => NewsController::class,

@@ -15,7 +15,7 @@
                             <h5 class="text-center text-white mb-5 mt-2" style="font-weight: 00">
                                 TRACER STUDY SMKN 2 PENAJAM
                             </h5>
-                            <img src="{{ asset('High School-amico 1.png') }}" class="mt-4" width="550"
+                            <img src="{{ asset('High School-amico.png') }}" class="mt-4" width="500"
                                 alt="" />
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                                 <div class="text-center">
                                     <img src="{{ asset('logo.png') }}" alt="">
                                     <h3 class="text-dark mt-3" style="font-weight: 800">Register</h3>
-                                    <p class="mb-0 text-dark fs-6">Daftarkan Akun Anda</p>
+                                    <p class="mb-0 text-dark fs-6 mb-2">Daftarkan Anda Sebagai Lulusan SMKN 2 PENAJAM</p>
                                 </div>
                                 <div class="form-body">
                                     <form class="row g-3">
@@ -50,7 +50,7 @@
                                             <label for="inputChoosePassword" class="form-label">Password</label>
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" class="form-control border-end-0"
-                                                    id="inputChoosePassword" value="12345678" placeholder="Enter Password">
+                                                    id="inputChoosePassword" placeholder="Enter Password">
                                                 <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                         class='bx bx-hide'></i></a>
                                             </div>
@@ -78,7 +78,7 @@
                                         <div class="col-12">
                                             <div class="text-center ">
                                                 <p class="mb-0">Sudah Mempunyai akun? <a
-                                                        href="authentication-signin.html">Masuk</a></p>
+                                                        href="/login">Masuk</a></p>
                                             </div>
                                         </div>
                                     </form>
