@@ -60,7 +60,7 @@
         <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright © 2022. All right reserved.</p>
+            <p class="mb-0">Copyright © 2023. Team Study Tracker SMKN 2 PENAJAM.</p>
         </footer>
     </div>
     <!--end wrapper-->
@@ -237,6 +237,13 @@
     <script src="{{ asset('assets-admin/js/app.js') }}"></script>
     <script src="{{ asset('assets-admin/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets-admin/plugins/apexcharts-bundle/js/apex-custom.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/form-repeater/repeater.js') }}"></script>
+    <script>
+        /* Create Repeater */
+        $("#repeater").createRepeater({
+            showFirstItemToDefault: true,
+        });
+    </script>
     <script>
         new PerfectScrollbar(".app-container")
     </script>
