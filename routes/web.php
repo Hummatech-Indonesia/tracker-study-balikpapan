@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\MajorController;
+use App\Http\Controllers\SchoolYearController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,47 +21,83 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', function () {
     return view('index');
 })->name('index');
-Route::get('add-school-year', function () {
-    return view('add-school-year');
-})->name('add.school.year');
-Route::get('add-major', function () {
-    return view('add-major');
-})->name('add.major');
-Route::get('add-class', function () {
-    return view('add-class');
-})->name('add.class');
-Route::get('account-siswa', function () {
-    return view('account-siswa');
-})->name('account.siswa');
-Route::get('dashboard', function () {
-    return view('dashboard.index');
-})->name('dashboard');
-Route::get('alumni-register', function () {
-    return view('alumni-register');
-})->name('alumni.register');
-Route::get('job-vacancy', function () {
-    return view('job-vacancy.index');
-})->name('job.vacancy');
-Route::get('detail-job-vacancy', function () {
-    return view('job-vacancy.detail');
-})->name('detail.job.vacancy');
-Route::get('verify-company', function () {
-    return view('verify-company');
-})->name('verify.company');
+Route::resources([
+    'school-years' => SchoolYearController::class,
+    'majors' => MajorController::class,
+    'classrooms' => ClassroomController::class
+]);
+Route::put('school-years/{schoolYear}', [SchoolYearController::class ,'update']);
 
-Route::get('/verify-account', function (){
+
+
+
+Route::get('/verify-account', function () {
     return view('auth.verify');
 });
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('alumni-gallery', function (){
-    return view('alumni-gallery');
-})->name('alumni.gallery');
-Route::get('teacher-gallery', function (){
-    return view('teacher-gallery');
+
+
+
+
+
+
+// Admin
+Route::get('dashboard', function () {
+    return view('admin.index');
+})->name('dashboard');
+Route::get('job-vacancy', function () {
+    return view('admin.job-vacancy.index');
+})->name('job.vacancy');
+Route::get('account-siswa', function () {
+    return view('admin.account-siswa');
+})->name('account.siswa');
+Route::get('alumni-register', function () {
+    return view('admin.alumni-register');
+})->name('alumni.register');
+Route::get('add-major', function () {
+    return view('admin.add-major');
+})->name('add.major');
+Route::get('add-class', function () {
+    return view('admin.add-class');
+})->name('add.class');
+Route::get('teacher-gallery', function () {
+    return view('admin.teacher-gallery');
 })->name('teacher.gallery');
-Route::get('upload-news', function (){
-    return view('upload-news');
+Route::get('upload-news', function () {
+    return view('admin.upload-news');
 })->name('upload.news');
+Route::get('verify-company', function () {
+    return view('admin.verify-company');
+})->name('verify.company');
+Route::get('alumni-gallery', function () {
+    return view('admin.alumni-gallery');
+})->name('alumni.gallery');
+Route::get('detail-job-vacancy', function () {
+    return view('admin.job-vacancy.detail');
+})->name('detail.job.vacancy');
+
+// company
+Route::get('company', function () {
+    return view('company.index');
+});
+Route::get('job-applicant', function () {
+    return view('company.job-applicant');
+});
+Route::get('vacancy', function () {
+    return view('company.vacancy');
+});
+Route::get('profile-company', function () {
+    return view('company.profile');
+});
+Route::prefix('alumni')->name('alumni.')->group(function () {
+    Route::get('/', function () {
+        return view('alumni.index');
+    })->name('index');
+    Route::get('survei-pekerjaan', function () {
+        return view('alumni.job-survey');
+    })->name('job.survey');
+});

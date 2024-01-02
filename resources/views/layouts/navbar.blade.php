@@ -15,10 +15,6 @@
                         <a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
                         </a>
                     </li>
-                    <li class="nav-item dark-mode d-none  d-sm-flex">
-                        <a class="nav-link dark-mode-icon" href="javascript:;"><i class='bx bx-moon'></i>
-                        </a>
-                    </li>
                     <li class="nav-item dropdown dropdown-app">
                         <div class="dropdown-menu dropdown-menu-end p-0">
                             <div class="app-container p-2 my-2">
