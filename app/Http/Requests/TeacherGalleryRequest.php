@@ -9,7 +9,7 @@ class TeacherGalleryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => 'required|images',
+            'photo' => 'required|image',
             'name' => 'required|max:255',
         ];
     }

@@ -111,7 +111,7 @@
             <div class="menu-title mt-1">Upload Galery</div>
         </a>
         <ul>
-            <li> <a href="{{ route('teacher.gallery') }}"><i class='bx bx-radio-circle'></i>Galery Guru</a>
+            <li> <a href="{{ route('teacher-gallery.index') }}"><i class='bx bx-radio-circle'></i>Gallery Guru</a>
             </li>
             <li> <a href="{{ route('alumni.gallery') }}"><i class='bx bx-radio-circle'></i>Galery Alumni</a>
             </li>
