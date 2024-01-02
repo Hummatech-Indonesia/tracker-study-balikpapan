@@ -2,10 +2,8 @@
 
 namespace App\Contracts\Repositories;
 
+use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Models\User;
-use App\Contracts\Repositories\BaseRepository;
-use App\Contracts\Interfaces\RegisterInterface;
-use App\Contracts\Repositories\RegisterRepository;
 
 class RegisterRepository extends BaseRepository implements RegisterInterface
 {
@@ -22,8 +20,7 @@ class RegisterRepository extends BaseRepository implements RegisterInterface
      */
     public function store(array $data): mixed
     {
-        $user = $this->model->query()
+        return $this->model->query()
             ->create($data);
-        return $user;
     }
 }

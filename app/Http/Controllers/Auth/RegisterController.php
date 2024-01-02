@@ -7,13 +7,10 @@ use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
 use App\Services\Auth\RegisterService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -75,6 +72,6 @@ class RegisterController extends Controller
     {
         $this->service->handleRegistration($request, $this->register);
 
-        return ResponseHelper::success();
+        return ResponseHelper::success(null, trans('alert.add_success'));
     }
 }

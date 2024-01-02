@@ -44,9 +44,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-
-
-
 // Admin
 Route::get('dashboard', function () {
     return view('admin.index');
