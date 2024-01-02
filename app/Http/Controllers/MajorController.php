@@ -21,7 +21,7 @@ class MajorController extends Controller
     public function index(Request $request): View
     {
         $majors = $this->major->search($request);
-        return view('', ['majors' => $majors]);
+        return view('admin.add-major', ['majors' => $majors]);
     }
 
     /**
@@ -38,7 +38,7 @@ class MajorController extends Controller
     public function store(NameOnlyRequest $request)
     {
         $this->major->store($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('success', trans('alert.add_success'));
     }
 
     /**
@@ -63,7 +63,7 @@ class MajorController extends Controller
     public function update(NameOnlyRequest $request, Major $major)
     {
         $this->major->update($major->id, $request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
     /**
@@ -72,6 +72,6 @@ class MajorController extends Controller
     public function destroy(Major $major)
     {
         $this->major->delete($major->id);
-        return redirect()->back();
+        return redirect()->back()->with('success', trans('alert.delete_success'));
     }
 }

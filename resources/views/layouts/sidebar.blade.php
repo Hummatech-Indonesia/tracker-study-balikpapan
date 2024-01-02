@@ -39,7 +39,7 @@
                 </div>
                 <div class="menu-title mt-1">Survey Pekerjaan</div>
             </a>
-        </li>   
+        </li>
         <li>
             <a href="{{ route('job.vacancy') }}">
                 <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 38 38" fill="currentColor">
@@ -93,9 +93,9 @@
         <ul>
             <li> <a href="/school-years"><i class='bx bx-radio-circle'></i>Tambah Tahun Ajaran</a>
             </li>
-            <li> <a href="{{ route('add.major') }}"><i class='bx bx-radio-circle'></i>Tambah Jurusan</a>
+            <li> <a href="{{ route('majors.index') }}"><i class='bx bx-radio-circle'></i>Tambah Jurusan</a>
             </li>
-            <li> <a href="classrooms"><i class='bx bx-radio-circle'></i>Tambah Kelas</a>
+            <li> <a href="{{ route('classrooms.index') }}"><i class='bx bx-radio-circle'></i>Tambah Kelas</a>
             </li>
         </ul>
     </li>

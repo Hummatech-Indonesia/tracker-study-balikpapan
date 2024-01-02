@@ -21,7 +21,7 @@ class ClassroomController extends Controller
     public function index(Request $request): View
     {
         $classrooms = $this->classroom->search($request);
-        return view('', ['classrooms' => $classrooms]);
+        return view('admin.add-class', ['classrooms' => $classrooms]);
     }
 
     /**
