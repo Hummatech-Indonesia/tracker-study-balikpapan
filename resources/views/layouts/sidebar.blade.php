@@ -64,7 +64,7 @@
                 </div>
                 <div class="menu-title mt-1">Siswa</div>
             </a>
-        </li>
+        </li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"

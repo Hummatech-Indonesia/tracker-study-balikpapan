@@ -1,13 +1,22 @@
 @extends('layouts.app')
 @section('content')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
     <h4 style="font-weight: 800">
         Tambah Siswa
     </h4>
     <div class="d-flex justify-content-between">
         <div class="position-relative mb-3 col-lg-3">
             <form action="" method="get">
-                <input type="text" value="{{ request()->name }}" name="name" class="form-control search-chat py-2 ps-5" id="search-name"
-                    placeholder="Search">
+                <input type="text" value="{{ request()->name }}" name="name" class="form-control search-chat py-2 ps-5"
+                    id="search-name" placeholder="Search">
                 <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
             </form>
         </div>
@@ -30,19 +39,22 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="formFile" class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="name" id="">
+                                <input type="text" placeholder="Masukkan Nama" class="form-control" name="name"
+                                    id="">
                             </div>
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" id="" class="form-control"></input>
+                                <input name="email" placeholder="Masukkan Email" id=""
+                                    class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="password" id="">
+                                <input type="password" placeholder="Masukkan Password" class="form-control" name="password"
+                                    id="">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">NISN</label>
-                                <input type="text" name="national_student_id" id=""
+                                <input type="text" placeholder="Masukkan NISN" name="national_student_id" id=""
                                     class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
@@ -66,7 +78,8 @@
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">No Telepon</label>
-                                <input type="number" class="form-control" name="phone_number" id="">
+                                <input type="number" placeholder="Masukkan No Telepon" class="form-control"
+                                    name="phone_number" id="">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Kelas</label>
@@ -80,7 +93,7 @@
 
                             <div class="col-12">
                                 <label for="formFile" class="form-label">Alamat</label>
-                                <textarea name="address" id="" class="form-control"></textarea>
+                                <textarea name="address" placeholder="Masukkan Alamat" id="" class="form-control"></textarea>
                             </div>
 
                         </div>
@@ -171,6 +184,15 @@
     </div>
     <div class="card">
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -255,7 +277,16 @@
                                             </a>
                                         </div>
                                         <div class="">
-                                            <button class="btn btn-warning btn-edit" data-id="{{ $student->user->id }}" id="btn-edit-{{ $student->user->id }}" data-name="{{ $student->user->name }}" data-email="{{ $student->user->email }}" data-national_student_id={{ $student->national_student_id }} data-gender="{{ $student->gender }}" data-birth_date="{{ $student->birth_date }}" data-phone_number="{{ $student->user->phone_number }}" data-classroom_id="{{ $student->classroom->id }}" data-address="{{ $student->user->address }}">
+                                            <button class="btn btn-warning btn-edit" data-id="{{ $student->user->id }}"
+                                                id="btn-edit-{{ $student->user->id }}"
+                                                data-name="{{ $student->user->name }}"
+                                                data-email="{{ $student->user->email }}"
+                                                data-national_student_id={{ $student->national_student_id }}
+                                                data-gender="{{ $student->gender }}"
+                                                data-birth_date="{{ $student->birth_date }}"
+                                                data-phone_number="{{ $student->user->phone_number }}"
+                                                data-classroom_id="{{ $student->classroom->id }}"
+                                                data-address="{{ $student->user->address }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 34 35" fill="none">
                                                     <path

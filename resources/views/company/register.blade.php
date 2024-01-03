@@ -34,12 +34,12 @@
                                     <p class="mb-0 text-dark fs-6 mb-2">Daftarkan Anda Sebagai Lulusan SMKN 2 PENAJAM</p>
                                 </div>
                                 <div class="form-body">
-                                    <form action="{{ route('register') }}" method="POST" class="row g-3">
+                                    <form action="{{ route('register.company') }}" method="POST" class="row g-3">
                                         @csrf
                                         <div class="col-6">
                                             <label for="inputUsername" class="form-label">Nama</label>
                                             <input type="text" name="name" class="form-control" id="inputUsername"
-                                                value="{{ old('name') }}" placeholder="Jhon">
+                                                value="{{ old('name') }}" placeholder="Inputkan Nama">
                                             @error('name')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
@@ -49,7 +49,7 @@
                                             <label for="inputEmailAddress" class="form-label">Email Address</label>
                                             <input type="email" name="email" class="form-control"
                                                 value="{{ old('email') }}" id="inputEmailAddress"
-                                                placeholder="example@user.com">
+                                                placeholder="Inputkan alamat email">
                                             @error('email')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
@@ -84,7 +84,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-12">
                                             <label for="inputChoosePassword" class="form-label">No Telephone</label>
                                             <input type="number" name="phone_number" class="form-control border-end-0"
                                                 value="{{ old('phone_number') }}" placeholder="Enter No telephone">
@@ -93,54 +93,10 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="col-6">
-                                            <label for="inputSelectCountry" class="form-label">NISN</label>
-                                            <input type="number" name="national_student_id"
-                                                value="{{ old('national_student_id') }}" class="form-control border-end-0"
-                                                placeholder="Enter No telephone">
-                                            @error('national_student_id')
-                                                <div class="text-danger">{{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
                                         <div class="col-12">
-                                            <label for="inputSelectCountry" class="form-label">Alamat</label>
-                                            <textarea name="address" id="address" class="form-control">{{ old('address') }}</textarea>
-                                            @error('address')
-                                                <div class="text-danger">{{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="inputSelectCountry" class="form-label">Tanggal Lahir</label>
-                                            <input type="date" name="birth_date" class="form-control border-end-0" value="{{old('date')}}"
-                                                placeholder="Enter No telephone">
-                                            @error('birth_date')
-                                                <div class="text-danger">{{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="inputSelectCountry" class="form-label">Jenis Kelamin</label><br>
-                                            <input class="form-check-input me-1" type="radio" name="gender"
-                                                value="male" id="flexRadioDefault1">Laki Laki<br>
-                                            <input class="form-check-input me-1" type="radio" name="gennder"
-                                                value="female" id="flexRadioDefault1">Perempuan
-                                            @error('gender')
-                                                <div class="text-danger">{{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">Kelas</label>
-                                            <select name="classroom_id" class="form-select"
-                                                aria-label="Default select example">
-                                                <option selected>Pilih Kelas</option>
-                                                @foreach ($classrooms as $classroom)
-                                                    <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('classroom_id')
+                                            <label for="inputSelectCountry" class="form-label">Deskripsi</label>
+                                            <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
+                                            @error('description')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
                                             @enderror

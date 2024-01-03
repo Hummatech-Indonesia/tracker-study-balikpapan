@@ -61,7 +61,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::post('register-company', [RegisterController::class, 'registerCompany']);
+Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
+Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
 
 // Admin
 Route::get('dashboard', function () {
