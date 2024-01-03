@@ -44,10 +44,11 @@
     <script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
 
     <!-- Plugins js -->
+    
     <script src="{{ asset('assets/js/plugins/plugins.min.js') }}"></script>
 
     <!-- Active js -->
-    <script src="{{ ('asset') }}"></script>
+        <script src="{{ asset('assets/js/active.js') }}"></script>
     @yield('scripts')
 </body>
 

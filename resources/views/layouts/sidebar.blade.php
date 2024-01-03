@@ -3,8 +3,6 @@
         <div>
             <img src="{{ asset('logo.png') }}" class="logo-icon w-100" alt="logo icon">
         </div>
-        <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
-        </div>
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
@@ -111,7 +109,7 @@
             <div class="menu-title mt-1">Upload Galery</div>
         </a>
         <ul>
-            <li> <a href="{{ route('teacher.gallery') }}"><i class='bx bx-radio-circle'></i>Galery Guru</a>
+            <li> <a href="{{ route('teacher-gallery.index') }}"><i class='bx bx-radio-circle'></i>Gallery Guru</a>
             </li>
             <li> <a href="{{ route('alumni.gallery') }}"><i class='bx bx-radio-circle'></i>Galery Alumni</a>
             </li>

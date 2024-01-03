@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 col-xxl-4 col-12">
+        <div class="col-lg-12 col-xxl-5 col-12">
             <div class="card radius-10 w-100">
                 <div class="card-header">
                     <div class="d-flex justify-content-center mt-2 mb-2">
@@ -94,7 +94,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-lg-12 col-xxl-8 col-12">
+        <div class="col-lg-12 col-xxl-7 col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="text-center mt-2">

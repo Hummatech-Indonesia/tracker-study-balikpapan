@@ -7,6 +7,7 @@ use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\TeacherGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +23,20 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', function () {
     return view('index');
 })->name('index');
+Route::get('galery-alumni', function () {
+    return view('galery-alumni');
+});
 Route::resources([
     'school-years' => SchoolYearController::class,
     'majors' => MajorController::class,
     'classrooms' => ClassroomController::class,
     'news' => NewsController::class,
 ]);
+Route::get('teacher-gallery', [TeacherGalleryController::class, 'index'])->name('teacher-gallery.index');
+Route::post('teacher-gallery/store', [TeacherGalleryController::class, 'store'])->name('teacher-gallery.store');
+Route::put('teacher-gallery/{teacherGallery}', [TeacherGalleryController::class, 'update']);
+Route::delete('teacher-gallery/{teacherGallery}', [TeacherGalleryController::class, 'destroy']);
+
 Route::put('school-years/{schoolYear}', [SchoolYearController::class ,'update']);
 
 
@@ -63,9 +72,6 @@ Route::get('add-major', function () {
 Route::get('add-class', function () {
     return view('admin.add-class');
 })->name('add.class');
-Route::get('teacher-gallery', function () {
-    return view('admin.teacher-gallery');
-})->name('teacher.gallery');
 Route::get('verify-company', function () {
     return view('admin.verify-company');
 })->name('verify.company');

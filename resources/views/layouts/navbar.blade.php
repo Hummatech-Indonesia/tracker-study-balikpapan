@@ -4,8 +4,10 @@
             <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
             </div>
 
-            <div class="search-bar d-lg-block d-none" data-bs-toggle="modal" data-bs-target="#SearchModal">
-                <a href="avascript:;" class="btn d-flex align-items-center"><i class='bx bx-search'></i>Search</a>
+            <div class="search-bar d-lg-block d-none " >
+                <a class="nav-link toggle-icon ms-auto nav-icon-hover ms-n3" id="headerCollapse" href="javascript:void(0)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#000000" d="M7 5h14v2H7V5m0 8v-2h14v2H7M4 4.5A1.5 1.5 0 0 1 5.5 6A1.5 1.5 0 0 1 4 7.5A1.5 1.5 0 0 1 2.5 6A1.5 1.5 0 0 1 4 4.5m0 6A1.5 1.5 0 0 1 5.5 12A1.5 1.5 0 0 1 4 13.5A1.5 1.5 0 0 1 2.5 12A1.5 1.5 0 0 1 4 10.5M7 19v-2h14v2H7m-3-2.5A1.5 1.5 0 0 1 5.5 18A1.5 1.5 0 0 1 4 19.5A1.5 1.5 0 0 1 2.5 18A1.5 1.5 0 0 1 4 16.5Z"/></svg>
+                </a>
             </div>
 
             <div class="top-menu ms-auto">
@@ -33,31 +35,31 @@
                             </a>
                             <div class="header-notifications-list">
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                             </div>
                             <a href="javascript:;">
@@ -68,7 +70,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown dropdown-large">
-                        
+
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="javascript:;">
                                 <div class="msg-header">
@@ -78,31 +80,31 @@
                             </a>
                             <div class="header-message-list">
                                 <a class="dropdown-item" href="javascript:;">
-                                
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                   
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-                                    
+
                                 </a>
                             </div>
                             <a href="javascript:;">

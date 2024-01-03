@@ -447,7 +447,7 @@ img {
 .btn {
   font-size: 1rem;
   font-weight: 500;
-  color: var(--white-color);
+  color: black;
   line-height: 1;
   text-align: center;
   padding: 18px 30px;
@@ -459,7 +459,7 @@ img {
 }
 
 .btn:hover, .btn:focus, .btn:active {
-  color: var(--white-color);
+  color: #5d87ff;
   -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
@@ -684,7 +684,7 @@ img {
 .btn:active,
 .btn.sApp-btn:before,
 .benifits-item:after {
-  background: var(--primary-bg-color-2);
+  background: #ffffff;
 }
 
 /*SOCIAL ICONS*/

@@ -31,7 +31,7 @@ class TeacherGalleryController extends Controller
     public function index(): View
     {
         $data = $this->teacherGallery->get();
-        return view('', compact('data'));
+        return view('admin.teacher-gallery', compact('data'));
     }
 
     /**
@@ -43,7 +43,7 @@ class TeacherGalleryController extends Controller
     public function store(TeacherGalleryRequest $request): RedirectResponse
     {
         $this->teacherGallery->store($this->service->store($request));
-        return redirect()->back()->with('success', trans(''));
+        return redirect()->back()->with('success', trans('alert.add_success'));
     }
 
     /**
@@ -55,8 +55,8 @@ class TeacherGalleryController extends Controller
      */
     public function update(TeacherGallery $teacherGallery, TeacherGalleryUpdateRequest $request): RedirectResponse
     {
-        $this->teacherGallery->store($this->service->update($teacherGallery, $request));
-        return redirect()->back()->with('success', trans(''));
+        $this->teacherGallery->update($teacherGallery->id, $this->service->update($teacherGallery, $request));
+        return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
     /**
@@ -69,6 +69,6 @@ class TeacherGalleryController extends Controller
     {
         $this->service->remove($teacherGallery->photo);
         $this->teacherGallery->delete($teacherGallery->id);
-        return redirect()->back()->with('success', trans(''));
+        return redirect()->back()->with('success', trans('alert.delete_success'));
     }
 }
