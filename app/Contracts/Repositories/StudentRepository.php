@@ -23,4 +23,17 @@ class StudentRepository extends BaseRepository implements StudentInterface
         return $this->model->query()
             ->create($data);
     }
+
+    /**
+     * update
+     *
+     * @param  mixed $id
+     * @param  mixed $data
+     * @return mixed
+     */
+    public function update(mixed $id, array $data): mixed
+    {
+        return $this->model->query()
+            ->findOrFail($id)->update($data);
+    }
 }
