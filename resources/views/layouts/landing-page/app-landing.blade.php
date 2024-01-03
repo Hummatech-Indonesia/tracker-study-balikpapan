@@ -12,7 +12,7 @@
     <!-- Title  -->
     <title>Tracker Study</title>
     <!-- Favicon  -->
-    <link rel="icon" href="{{ asset('assets/img/favicon.png') }}">
+    <link rel="icon" href="{{ asset('LOGO SMKN 2.png') }}">
     <!-- ***** All CSS Files ***** -->
     <!-- Style css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -33,6 +33,7 @@
         @yield('content')
     </div>
 
+    @include('layouts.landing-page.footer')
 
     <!-- ***** All jQuery Plugins ***** -->
 
@@ -44,7 +45,7 @@
     <script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
 
     <!-- Plugins js -->
-    
+
     <script src="{{ asset('assets/js/plugins/plugins.min.js') }}"></script>
 
     <!-- Active js -->

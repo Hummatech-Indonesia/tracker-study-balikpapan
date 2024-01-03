@@ -1,8 +1,8 @@
     <header class="navbar navbar-sticky navbar-expand-lg navbar-dark">
         <div class="container position-relative">
             <a class="navbar-brand" href="index.html">
-                <img class="navbar-brand-regular" src="assets/img/logo/logo-white.png" alt="brand-logo">
-                <img class="navbar-brand-sticky" src="assets/img/logo/logo.png" alt="sticky brand-logo">
+                <img class="navbar-brand-regular" width="10%" src="{{ asset('LOGO SMKN 2.png') }}" alt="brand-logo">
+                <img class="navbar-brand-sticky" width="10%" src="{{ asset('LOGO SMKN 2.png') }}" alt="sticky brand-logo">
             </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="navbarToggler"
                 aria-label="Toggle navigation">
@@ -49,15 +49,15 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link scroll fw-5" href="#screenshots">Berita</a>
+                            <a class="nav-link fw-5" href="/landing-news">Berita</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link scroll fw-5" href="#pricing">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <button class="btn mt-3">
+                            <a href="/login" class="btn" style="margin-top:11px;">
                                 Login
-                            </button>
+                            </a>
                         </li>
                     </ul>
                 </nav>
