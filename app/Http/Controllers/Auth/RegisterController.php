@@ -6,7 +6,6 @@ use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Contracts\Interfaces\StudentInterface;
-use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\RegisterCompanyRequest;
@@ -14,7 +13,6 @@ use App\Providers\RouteServiceProvider;
 use App\Services\Auth\RegisterService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\JsonResponse;
 
 class RegisterController extends Controller
 {
@@ -95,7 +93,17 @@ class RegisterController extends Controller
     public function registerCompany(RegisterCompanyRequest $request)
     {
         $this->service->handleRegistrationCompany($request, $this->register, $this->company);
+        return redirect()->back()->with('success', trans('auth.register_success'));
+    }
 
-        return ResponseHelper::success(null, trans('alert.add_success'));
+    /**
+     * registerCompany
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function registerCompanyView()
+    {
+        return view('company.register');
     }
 }

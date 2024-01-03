@@ -18,6 +18,7 @@ class RegisterCompanyRequest extends FormRequest
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:8|same:password_confirmation',
             'password_confirmation' => 'required',
+            'phone_number' => 'required|numeric',
             'description' => 'required'
         ];
     }
