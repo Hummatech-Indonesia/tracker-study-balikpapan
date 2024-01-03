@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Student;
 use Laravel\Sanctum\HasApiTokens;
+use App\Base\Interfaces\HasStudent;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasStudent
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
@@ -51,13 +54,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // /**
-    //  * Get the alumni that owns the Alumni
-    //  *
-    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-    //  */
-    // public function alumni(): BelongsTo
-    // {
-    //     return $this->belongsTo(Alumni::class);
-    // }
+
+    /**
+     * student
+     *
+     * @return HasOne
+     */
+    public function student(): HasOne
+    {
+        return $this->hasOne(Student::class, 'user_id');
+    }
 }

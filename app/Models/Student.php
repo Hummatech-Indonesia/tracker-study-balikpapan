@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Classroom;
+use App\Base\Interfaces\HasUser;
+use App\Base\Interfaces\HasClassroom;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Student extends Model
+class Student extends Model implements HasUser, HasClassroom
 {
     use HasFactory;
     public $incrementing = false;
@@ -26,4 +30,24 @@ class Student extends Model
         'gender',
         'status'
     ];
+
+    /**
+     * user
+     *
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * classroom
+     *
+     * @return BelongsTo
+     */
+    public function classroom(): BelongsTo
+    {
+        return $this->belongsTo(Classroom::class);
+    }
 }

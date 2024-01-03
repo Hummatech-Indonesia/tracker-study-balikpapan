@@ -45,8 +45,10 @@ Route::delete('teacher-gallery/{teacherGallery}', [TeacherGalleryController::cla
 
 Route::put('school-years/{schoolYear}', [SchoolYearController::class, 'update']);
 
-
-
+Route::get('students', [StudentController::class, 'index'])->name('students.index');
+Route::post('students', [StudentController::class, 'store'])->name('students.store');
+Route::put('students/{user}', [StudentController::class, 'update'])->name('students.update');
+Route::delete('students/{user}', [StudentController::class, 'destroy'])->name('students.destroy');
 
 Route::get('/verify-account', function () {
     return view('auth.verify');

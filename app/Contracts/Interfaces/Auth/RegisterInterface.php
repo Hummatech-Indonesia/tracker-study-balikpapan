@@ -2,8 +2,11 @@
 
 namespace App\Contracts\Interfaces\Auth;
 
+use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
+use App\Contracts\Interfaces\Eloquent\DeleteInterface;
+use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface RegisterInterface extends StoreInterface
+interface RegisterInterface extends StoreInterface, DeleteInterface, ShowInterface, UpdateInterface
 {
 }
