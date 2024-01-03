@@ -20,9 +20,25 @@
         <div class="col-12 col-lg-5 col-xxl-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="text-dark" style="font-weight: 500">
-                        Survei Tahun 2023
-                    </h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <h5 class="text-dark" style="font-weight: 500">
+                                Survei Tahun 2023
+                            </h5>
+                        </div>
+                        <div class="">
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <p class="text-primary">
                         10 September 2023 - 12 September 2023
                     </p>
@@ -45,9 +61,25 @@
         <div class="col-12 col-lg-5 col-xxl-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="text-dark" style="font-weight: 500">
-                        Survei Tahun 2023
-                    </h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <h5 class="text-dark" style="font-weight: 500">
+                                Survei Tahun 2023
+                            </h5>
+                        </div>
+                        <div class="">
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <p class="text-primary">
                         10 September 2023 - 12 September 2023
                     </p>
@@ -70,9 +102,25 @@
         <div class="col-12 col-lg-5 col-xxl-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="text-dark" style="font-weight: 500">
-                        Survei Tahun 2023
-                    </h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <h5 class="text-dark" style="font-weight: 500">
+                                Survei Tahun 2023
+                            </h5>
+                        </div>
+                        <div class="">
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <p class="text-primary">
                         10 September 2023 - 12 September 2023
                     </p>
@@ -95,9 +143,25 @@
         <div class="col-12 col-lg-5 col-xxl-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="text-dark" style="font-weight: 500">
-                        Survei Tahun 2023
-                    </h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <h5 class="text-dark" style="font-weight: 500">
+                                Survei Tahun 2023
+                            </h5>
+                        </div>
+                        <div class="">
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <p class="text-primary">
                         10 September 2023 - 12 September 2023
                     </p>
@@ -120,9 +184,25 @@
         <div class="col-12 col-lg-5 col-xxl-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="text-dark" style="font-weight: 500">
-                        Survei Tahun 2023
-                    </h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <h5 class="text-dark" style="font-weight: 500">
+                                Survei Tahun 2023
+                            </h5>
+                        </div>
+                        <div class="">
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <p class="text-primary">
                         10 September 2023 - 12 September 2023
                     </p>
@@ -145,34 +225,25 @@
         <div class="col-12 col-lg-5 col-xxl-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="text-dark" style="font-weight: 500">
-                        Survei Tahun 2023
-                    </h5>
-                    <p class="text-primary">
-                        10 September 2023 - 12 September 2023
-                    </p>
-                    <p>
-                        Lorem Ipsum Dolor Sit Amet Lorem Ipsum
-                        Dolor Sit Amet Lorem Ipsum ...
-                    </p>
-                    <div class="d-flex justify-content-end gap-2">
+                    <div class="d-flex justify-content-between">
                         <div class="">
-                            <button class="btn text-white" style="background-color: #1D9375">Hasil Survei</button>
-
+                            <h5 class="text-dark" style="font-weight: 500">
+                                Survei Tahun 2023
+                            </h5>
                         </div>
                         <div class="">
-                            <button class="btn btn-primary">Detail</button>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-5 col-xxl-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="text-dark" style="font-weight: 500">
-                        Survei Tahun 2023
-                    </h5>
                     <p class="text-primary">
                         10 September 2023 - 12 September 2023
                     </p>
@@ -207,18 +278,18 @@
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="major" class="form-label">Judul Survei</label>
-                                <input type="text" placeholder="Masukkan Judul Survei" class="form-control" name="name"
-                                    id="">
+                                <input type="text" placeholder="Masukkan Judul Survei" class="form-control"
+                                    name="name" id="">
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="major" class="form-label">Tanggal Mulai</label>
-                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control" name="start_at"
-                                    id="">
+                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
+                                    name="start_at" id="">
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="major" class="form-label">Tanggal Selesai</label>
-                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control" name="end_at"
-                                    id="">
+                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
+                                    name="end_at" id="">
                             </div>
                             <div class="col-12">
                                 <label for="major" class="form-label">Deskripsi</label>
@@ -248,18 +319,18 @@
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="major" class="form-label">Judul Survei</label>
-                                <input type="text" placeholder="Masukkan Judul Survei" class="form-control" name="name"
-                                    id="">
+                                <input type="text" placeholder="Masukkan Judul Survei" class="form-control"
+                                    name="name" id="">
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="major" class="form-label">Tanggal Mulai</label>
-                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control" name="start_at"
-                                    id="">
+                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
+                                    name="start_at" id="">
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="major" class="form-label">Tanggal Selesai</label>
-                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control" name="end_at"
-                                    id="">
+                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
+                                    name="end_at" id="">
                             </div>
                             <div class="col-12">
                                 <label for="major" class="form-label">Deskripsi</label>
@@ -276,11 +347,10 @@
         </div>
     </div>
     <x-delete-modal-component />
-
 @endsection
 @section('script')
     <script>
-         $('.btn-edit').click(function() {
+        $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))
             var actionUrl = `teacher-gallery/${formData['id']}`;
             $('#form-update').attr('action', actionUrl);
