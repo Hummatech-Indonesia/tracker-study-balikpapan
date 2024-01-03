@@ -3,8 +3,6 @@
         <div>
             <img src="{{ asset('logo.png') }}" class="logo-icon w-100" alt="logo icon">
         </div>
-        <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
-        </div>
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
