@@ -17,252 +17,58 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-12 col-lg-5 col-xxl-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="">
-                            <h5 class="text-dark" style="font-weight: 500">
-                                Survei Tahun 2023
-                            </h5>
-                        </div>
-                        <div class="">
-                            <div class="dropdown ms-auto">
-                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
-                                    </li>
-                                </ul>
+        @forelse ($survies as $survey)
+            <div class="col-12 col-lg-5 col-xxl-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="">
+                                <h5 class="text-dark" style="font-weight: 500">
+                                    {{ $survey->name }}
+                                </h5>
+                            </div>
+                            <div class="">
+                                <div class="dropdown ms-auto">
+                                    <a class="dropdown-toggle dropdown-toggle-nocaret" href="#"
+                                        data-bs-toggle="dropdown"><i
+                                            class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item btn-edit" data-id="{{ $survey->id }}"
+                                                id="btn-edit-{{ $survey->id }}" data-name="{{ $survey->name }}"
+                                                data-start_at="{{  \Carbon\Carbon::parse($survey->start_at)->format('Y-m-d') }}"
+                                                data-end_at="{{  \Carbon\Carbon::parse($survey->end_at)->format('Y-m-d') }}"
+                                                data-description="{{ $survey->description }}">Edit</a>
+                                        </li>
+                                        <li><a class="dropdown-item btn-delete" data-id="{{ $survey->id }}"
+                                                href="javascript:;">Hapus</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <p class="text-primary">
-                        10 September 2023 - 12 September 2023
-                    </p>
-                    <p>
-                        Lorem Ipsum Dolor Sit Amet Lorem Ipsum
-                        Dolor Sit Amet Lorem Ipsum ...
-                    </p>
-                    <div class="d-flex justify-content-end gap-2">
-                        <div class="">
-                            <button class="btn text-white" style="background-color: #1D9375">Hasil Survei</button>
+                        <p class="text-primary">
+                            {{ \Carbon\Carbon::parse($survey->start_at)->translatedFormat('d F Y') }} -
+                            {{ \Carbon\Carbon::parse($survey->end_at)->translatedFormat('d F Y') }}
+                        </p>
+                        <p>
+                            {{ Str::limit($survey->description, 100) }}
+                        </p>
+                        <div class="d-flex justify-content-end gap-2">
+                            <div class="">
+                                <button class="btn text-white" style="background-color: #1D9375">Hasil Survei</button>
 
-                        </div>
-                        <div class="">
-                            <button class="btn btn-primary">Detail</button>
+                            </div>
+                            <div class="">
+                                <button class="btn btn-primary">Detail</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-lg-5 col-xxl-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="">
-                            <h5 class="text-dark" style="font-weight: 500">
-                                Survei Tahun 2023
-                            </h5>
-                        </div>
-                        <div class="">
-                            <div class="dropdown ms-auto">
-                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-primary">
-                        10 September 2023 - 12 September 2023
-                    </p>
-                    <p>
-                        Lorem Ipsum Dolor Sit Amet Lorem Ipsum
-                        Dolor Sit Amet Lorem Ipsum ...
-                    </p>
-                    <div class="d-flex justify-content-end gap-2">
-                        <div class="">
-                            <button class="btn text-white" style="background-color: #1D9375">Hasil Survei</button>
+        @empty
+        @endforelse
 
-                        </div>
-                        <div class="">
-                            <button class="btn btn-primary">Detail</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-5 col-xxl-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="">
-                            <h5 class="text-dark" style="font-weight: 500">
-                                Survei Tahun 2023
-                            </h5>
-                        </div>
-                        <div class="">
-                            <div class="dropdown ms-auto">
-                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-primary">
-                        10 September 2023 - 12 September 2023
-                    </p>
-                    <p>
-                        Lorem Ipsum Dolor Sit Amet Lorem Ipsum
-                        Dolor Sit Amet Lorem Ipsum ...
-                    </p>
-                    <div class="d-flex justify-content-end gap-2">
-                        <div class="">
-                            <button class="btn text-white" style="background-color: #1D9375">Hasil Survei</button>
-
-                        </div>
-                        <div class="">
-                            <button class="btn btn-primary">Detail</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-5 col-xxl-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="">
-                            <h5 class="text-dark" style="font-weight: 500">
-                                Survei Tahun 2023
-                            </h5>
-                        </div>
-                        <div class="">
-                            <div class="dropdown ms-auto">
-                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-primary">
-                        10 September 2023 - 12 September 2023
-                    </p>
-                    <p>
-                        Lorem Ipsum Dolor Sit Amet Lorem Ipsum
-                        Dolor Sit Amet Lorem Ipsum ...
-                    </p>
-                    <div class="d-flex justify-content-end gap-2">
-                        <div class="">
-                            <button class="btn text-white" style="background-color: #1D9375">Hasil Survei</button>
-
-                        </div>
-                        <div class="">
-                            <button class="btn btn-primary">Detail</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-5 col-xxl-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="">
-                            <h5 class="text-dark" style="font-weight: 500">
-                                Survei Tahun 2023
-                            </h5>
-                        </div>
-                        <div class="">
-                            <div class="dropdown ms-auto">
-                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-primary">
-                        10 September 2023 - 12 September 2023
-                    </p>
-                    <p>
-                        Lorem Ipsum Dolor Sit Amet Lorem Ipsum
-                        Dolor Sit Amet Lorem Ipsum ...
-                    </p>
-                    <div class="d-flex justify-content-end gap-2">
-                        <div class="">
-                            <button class="btn text-white" style="background-color: #1D9375">Hasil Survei</button>
-
-                        </div>
-                        <div class="">
-                            <button class="btn btn-primary">Detail</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-5 col-xxl-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="">
-                            <h5 class="text-dark" style="font-weight: 500">
-                                Survei Tahun 2023
-                            </h5>
-                        </div>
-                        <div class="">
-                            <div class="dropdown ms-auto">
-                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="javascript:;">Edit</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Hapus</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-primary">
-                        10 September 2023 - 12 September 2023
-                    </p>
-                    <p>
-                        Lorem Ipsum Dolor Sit Amet Lorem Ipsum
-                        Dolor Sit Amet Lorem Ipsum ...
-                    </p>
-                    <div class="d-flex justify-content-end gap-2">
-                        <div class="">
-                            <button class="btn text-white" style="background-color: #1D9375">Hasil Survei</button>
-
-                        </div>
-                        <div class="">
-                            <button class="btn btn-primary">Detail</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="modal fade" id="modal-create" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-md">
@@ -283,13 +89,13 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="major" class="form-label">Tanggal Mulai</label>
-                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
-                                    name="start_at" id="">
+                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control" name="start_at"
+                                    id="">
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="major" class="form-label">Tanggal Selesai</label>
-                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
-                                    name="end_at" id="">
+                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control" name="end_at"
+                                    id="">
                             </div>
                             <div class="col-12">
                                 <label for="major" class="form-label">Deskripsi</label>
@@ -305,11 +111,11 @@
             </form>
         </div>
     </div>
-    <div class="modal fade" id="modal-edit" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="modal-update" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-md">
-            <form action="{{ route('survey.store') }}" method="post" enctype="multipart/form-data">
+            <form id="form-update" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('POST')
+                @method('PUT')
                 <div class="modal-content">
                     <div class="modal-header text-center">
                         <h5 class="modal-title" id="exampleModalLabel">Edit Survei</h5>
@@ -325,12 +131,12 @@
                             <div class="col-12 col-md-6">
                                 <label for="major" class="form-label">Tanggal Mulai</label>
                                 <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
-                                    name="start_at" id="">
+                                    name="start_at" id="update-date">
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="major" class="form-label">Tanggal Selesai</label>
                                 <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
-                                    name="end_at" id="">
+                                    name="end_at" id="update-date-end">
                             </div>
                             <div class="col-12">
                                 <label for="major" class="form-label">Deskripsi</label>
@@ -352,17 +158,19 @@
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))
-            var actionUrl = `teacher-gallery/${formData['id']}`;
+            var actionUrl = `survey/${formData['id']}`;
             $('#form-update').attr('action', actionUrl);
+            $('#update-date').val(formData['start_at'])
 
             setFormValues('form-update', formData)
+
             $('#form-update').data('id', formData['id'])
-            $('#form-update').attr('action', );
+            $('#form-update').attr('action',actionUrl );
             $('#modal-update').modal('show')
         })
         $('.btn-delete').click(function() {
             id = $(this).data('id')
-            var actionUrl = `teacher-gallery/${id}`;
+            var actionUrl = `survey/${id}`;
             $('#form-delete').attr('action', actionUrl);
             $('#modal-delete').modal('show')
         })

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\SurveyInterface;
 use App\Http\Requests\SurveyRequest;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 
 class SurveyController extends Controller
@@ -19,8 +20,8 @@ class SurveyController extends Controller
      */
     public function index()
     {
-        $surveys = $this->survey->get();
-        return view('admin.survei-alumni',compact('surveys'));
+        $survies = $this->survey->get();
+        return view('admin.survei-alumni',compact('survies'));
     }
 
     /**
@@ -48,27 +49,23 @@ class SurveyController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
+  
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SurveyRequest $request,Survey $survey)
     {
-        //
+        $this->survey->update($survey->id,$request->validated());
+        return redirect()->back()->with('success', trans('alert.update_success'));
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Survey $survey)
     {
-        //
+        $this->survey->delete($survey->id);
+        return redirect()->back()->with('success', trans('alert.delete_success'));
     }
 }
