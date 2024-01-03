@@ -2,8 +2,9 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\NewsInterface;
+use Carbon\Carbon;
 use App\Models\News;
+use App\Contracts\Interfaces\NewsInterface;
 
 class NewsRepository extends BaseRepository implements NewsInterface
 {
@@ -70,5 +71,46 @@ class NewsRepository extends BaseRepository implements NewsInterface
     {
         return $this->show($id)
             ->delete();
+    }
+
+    /**
+     * getByMonthNow
+     *
+     * @return mixed
+     */
+    public function getByMonthNow(): mixed
+    {
+        $now = Carbon::now();
+
+        return $this->model->query()
+            ->whereYear('created_at', $now->year)
+            ->whereMonth('created_at', $now->month)
+            ->get();
+    }
+
+
+    /**
+     * getOneLatest
+     *
+     * @return mixed
+     */
+    public function getOneLatest() : mixed
+    {
+        return $this->model->query()
+        ->latest()
+        ->first();
+    }
+
+    /**
+     * getByLatest
+     *
+     * @return mixed
+     */
+    public function getByLatest() : mixed
+    {
+        return $this->model->query()
+        ->latest()
+        ->take(6)
+        ->get();
     }
 }

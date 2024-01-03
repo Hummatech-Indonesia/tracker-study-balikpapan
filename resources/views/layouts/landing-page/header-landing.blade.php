@@ -49,13 +49,13 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-5" href="/landing-news">Berita</a>
+                            <a class="nav-link fw-5" href="{{ route('landing-page-news') }}">Berita</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link scroll fw-5" href="#pricing">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/login" class="btn" style="margin-top:11px;">
+                            <a href="/login" class="btn" style="margin-top:18px;font-weight:600">
                                 Login
                             </a>
                         </li>

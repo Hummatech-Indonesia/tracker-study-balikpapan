@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\TeacherGalleryController;
 
@@ -26,10 +27,11 @@ Route::get('/', function () {
 Route::get('galery-alumni', function () {
     return view('galery-alumni');
 });
-Route::get('landing-news', function (){
-    return view('news');
-});
+Route::get('landing-page-news', [LandingPageController::class, 'news'])->name('landing-page-news');
+Route::get('detail-news/{news}', [LandingPageController::class, 'detailNews'])->name('detail-news');
+
 Route::get('galery-teacher', [TeacherGalleryController::class, 'galery']);
+
 Route::resources([
     'school-years' => SchoolYearController::class,
     'majors' => MajorController::class,
@@ -88,7 +90,7 @@ Route::get('alumni-gallery', function () {
 Route::get('detail-job-vacancy', function () {
     return view('admin.job-vacancy.detail');
 })->name('detail.job.vacancy');
-// siswa 
+// siswa
 Route::get('portofolio', function () {
     return view('student.portofolio');
 })->name('portofolio');
