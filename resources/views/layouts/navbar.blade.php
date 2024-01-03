@@ -4,9 +4,12 @@
             <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
             </div>
 
-            <div class="search-bar d-lg-block d-none " >
+            <div class="search-bar d-lg-block d-none ">
                 <a class="nav-link toggle-icon ms-auto nav-icon-hover ms-n3" id="headerCollapse" href="javascript:void(0)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#000000" d="M7 5h14v2H7V5m0 8v-2h14v2H7M4 4.5A1.5 1.5 0 0 1 5.5 6A1.5 1.5 0 0 1 4 7.5A1.5 1.5 0 0 1 2.5 6A1.5 1.5 0 0 1 4 4.5m0 6A1.5 1.5 0 0 1 5.5 12A1.5 1.5 0 0 1 4 13.5A1.5 1.5 0 0 1 2.5 12A1.5 1.5 0 0 1 4 10.5M7 19v-2h14v2H7m-3-2.5A1.5 1.5 0 0 1 5.5 18A1.5 1.5 0 0 1 4 19.5A1.5 1.5 0 0 1 2.5 18A1.5 1.5 0 0 1 4 16.5Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                        <path fill="#000000"
+                            d="M7 5h14v2H7V5m0 8v-2h14v2H7M4 4.5A1.5 1.5 0 0 1 5.5 6A1.5 1.5 0 0 1 4 7.5A1.5 1.5 0 0 1 2.5 6A1.5 1.5 0 0 1 4 4.5m0 6A1.5 1.5 0 0 1 5.5 12A1.5 1.5 0 0 1 4 13.5A1.5 1.5 0 0 1 2.5 12A1.5 1.5 0 0 1 4 10.5M7 19v-2h14v2H7m-3-2.5A1.5 1.5 0 0 1 5.5 18A1.5 1.5 0 0 1 4 19.5A1.5 1.5 0 0 1 2.5 18A1.5 1.5 0 0 1 4 16.5Z" />
+                    </svg>
                 </a>
             </div>
 
@@ -123,34 +126,26 @@
             <div class="user-box dropdown px-3">
                 <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('assets-admin/images/avatars/avatar-2.png') }}" class="user-img"
+                    <img  src="{{ asset(auth()->user()->photo == null ? 'default.jpg' : 'storage/'. auth()->user()->photo) }}" class="user-img"
                         alt="user avatar">
                     <div class="user-info">
-                        <p class="user-name mb-0">Pauline Seitz</p>
-                        <p class="designattion mb-0">Web Designer</p>
+                        <p class="user-name mb-0">{{ auth()->user()->name }}</p>
+                        <p class="designattion mb-0">{{ auth()->user()->roles[0]->name }}</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
                                 class="bx bx-user fs-5"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-cog fs-5"></i><span>Settings</span></a>
-                    </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
-                    </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-dollar-circle fs-5"></i><span>Earnings</span></a>
-                    </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-download fs-5"></i><span>Downloads</span></a>
-                    </li>
                     <li>
                         <div class="dropdown-divider mb-0"></div>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-log-out-circle"></i><span>Logout</span></a>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                    class="bx bx-log-out-circle"></i><span>Logout</span></button>
+                        </form>
                     </li>
                 </ul>
             </div>
