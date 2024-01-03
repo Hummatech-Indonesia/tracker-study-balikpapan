@@ -34,6 +34,12 @@ class TeacherGalleryController extends Controller
         return view('admin.teacher-gallery', compact('data'));
     }
 
+    public function galery(): View
+    {
+        $teachers = $this->teacherGallery->get();
+        return view('galery-teacher', compact('teachers'));
+    }
+
     /**
      * store
      *

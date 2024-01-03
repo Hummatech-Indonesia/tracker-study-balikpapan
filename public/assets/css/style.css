@@ -443,20 +443,7 @@ img {
   }
 }
 
-/*BUTTONS*/
-.btn {
-  font-size: 1rem;
-  font-weight: 500;
-  color: black;
-  line-height: 1;
-  text-align: center;
-  padding: 18px 30px;
-  border: 0 none;
-  border-radius: 6px;
-  outline: 0 none;
-  position: relative;
-  z-index: 1;
-}
+
 
 .btn:hover, .btn:focus, .btn:active {
   color: #5d87ff;

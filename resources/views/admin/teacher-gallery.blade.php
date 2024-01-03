@@ -47,7 +47,7 @@
                 <div class="card radius-10">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <div><img src="{{ asset('storage/' . $teacher->photo) }}" class="user-img-teacher"
+                            <div><img src="{{ asset('storage/' . $teacher->photo) }}" style="object-fit: cover" class="user-img-teacher"
                                     alt="...">
                             </div>
                             <div>
@@ -71,7 +71,6 @@
             <div class="d-flex justify-content-center">
                 <div>
                     <img src="{{ asset('showNoData.png') }}" alt="">
-
                     <h6>Data Kosong, Tambah Gallery Guru Untuk Menampilkan Data!!</h6>
                 </div>
             </div>

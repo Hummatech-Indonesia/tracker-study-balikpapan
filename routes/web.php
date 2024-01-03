@@ -29,6 +29,7 @@ Route::get('galery-alumni', function () {
 Route::get('landing-news', function (){
     return view('news');
 });
+Route::get('galery-teacher', [TeacherGalleryController::class, 'galery']);
 Route::resources([
     'school-years' => SchoolYearController::class,
     'majors' => MajorController::class,

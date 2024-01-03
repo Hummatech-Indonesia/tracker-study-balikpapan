@@ -17,6 +17,11 @@
     <!-- Style css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     @yield('style')
+    <style>
+        .border-custom {
+            border: 7px solid #5D87FF !important;
+        }
+    </style>    
 </head>
 
 <body>
@@ -50,7 +55,7 @@
 
     <!-- Active js -->
         <script src="{{ asset('assets/js/active.js') }}"></script>
-    @yield('scripts')
+    @yield('scripts')   
 </body>
 
 
