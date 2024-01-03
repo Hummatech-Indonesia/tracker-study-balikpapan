@@ -202,6 +202,16 @@
             <div class="menu-title mt-1">Verifikasi Perusahaan</div>
         </a>
     </li>
+    <li>
+        <a href="{{ route('survei-alumni') }}">
+            <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36 36" fill="currentColor">
+                <path d="M31.5 3.375L29.25 2.25L27 3.375L24.75 2.25L22.5 3.375L20.25 2.25L18 3.375L15.75 2.25L13.5 3.375L10.125 2.25V20.25V20.2535H25.875V29.8125C25.875 31.9873 28.2002 33.75 30.375 33.75H31.2188C33.3935 33.75 34.875 31.9873 34.875 29.8125V2.25L31.5 3.375ZM19.1602 16.875L19.125 14.625H30.3398L30.375 16.875H19.1602ZM14.6602 11.25L14.625 9H30.3398L30.375 11.25H14.6602Z" fill="currentColor"/>
+                <path d="M23.625 29.8125V22.5H1.125V24.75C1.125 28.3043 1.53141 29.7858 2.14172 30.9115C3.17742 32.8219 5.05266 33.75 7.875 33.75H25.875C25.875 33.75 23.625 32.3438 23.625 29.8125Z" fill="currentColor"/>
+              </svg></i>
+            </div>
+            <div class="menu-title mt-1">Survei Alumni</div>
+        </a>
+    </li>
     </ul>
     <!--end navigation-->
 </div>
