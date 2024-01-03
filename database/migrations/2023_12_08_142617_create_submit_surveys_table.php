@@ -12,7 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('submit_surveys', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('survey_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('student_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->char('graduation year',4);
+            $table->text('activity');
+            $table->text('url_address');
+            $table->char('phone_number',15);
+            $table->string('email');
+            $table->string('facebook');
+            $table->boolean('alumni_gathering');
+            $table->string('city');
+            $table->boolean('statement');
+            $table->text('current_activity');
             $table->timestamps();
         });
     }
