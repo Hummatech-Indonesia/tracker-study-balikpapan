@@ -3,12 +3,14 @@
 namespace App\Providers;
 
 use App\Models\Classroom;
+use App\Models\Company;
 use App\Models\Major;
 use App\Models\News;
 use App\Models\Student;
 use App\Models\TeacherGallery;
 use App\Models\User;
 use App\Observers\ClassroomObserver;
+use App\Observers\CompanyObserver;
 use App\Observers\MajorObserver;
 use App\Observers\NewsObserver;
 use App\Observers\StudentObserver;
@@ -42,6 +44,7 @@ class EventServiceProvider extends ServiceProvider
         News::observe(NewsObserver::class);
         TeacherGallery::observe(TeacherGalleryObserver::class);
         Student::observe(StudentObserver::class);
+        Company::observe(CompanyObserver::class);
     }
 
     /**

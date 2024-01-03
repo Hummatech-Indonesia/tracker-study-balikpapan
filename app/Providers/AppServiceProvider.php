@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
+use App\Contracts\Interfaces\CompanyInterface;
 use App\Contracts\Interfaces\MajorInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use Illuminate\Support\ServiceProvider;
@@ -11,6 +12,7 @@ use App\Contracts\Interfaces\SchoolYearInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\TeacherGalleryInterface;
 use App\Contracts\Repositories\ClassroomRepository;
+use App\Contracts\Repositories\CompanyRepository;
 use App\Contracts\Repositories\MajorRepository;
 use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\RegisterRepository;
@@ -27,7 +29,8 @@ class AppServiceProvider extends ServiceProvider
         ClassroomInterface::class => ClassroomRepository::class,
         NewsInterface::class => NewsRepository::class,
         TeacherGalleryInterface::class => TeacherGalleryRepository::class,
-        StudentInterface::class => StudentRepository::class
+        StudentInterface::class => StudentRepository::class,
+        CompanyInterface::class => CompanyRepository::class
     ];
 
     /**

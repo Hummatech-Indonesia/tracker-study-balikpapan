@@ -37,7 +37,7 @@ Route::post('teacher-gallery/store', [TeacherGalleryController::class, 'store'])
 Route::put('teacher-gallery/{teacherGallery}', [TeacherGalleryController::class, 'update']);
 Route::delete('teacher-gallery/{teacherGallery}', [TeacherGalleryController::class, 'destroy']);
 
-Route::put('school-years/{schoolYear}', [SchoolYearController::class ,'update']);
+Route::put('school-years/{schoolYear}', [SchoolYearController::class, 'update']);
 
 
 
@@ -51,7 +51,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-
+Route::post('register-company', [RegisterController::class, 'registerCompany']);
 
 // Admin
 Route::get('dashboard', function () {

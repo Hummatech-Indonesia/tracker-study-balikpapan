@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Contracts\Interfaces\Auth\RegisterInterface;
+use App\Contracts\Interfaces\CompanyInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\RegisterCompanyRequest;
 use App\Providers\RouteServiceProvider;
 use App\Services\Auth\RegisterService;
 use Illuminate\Contracts\View\View;
@@ -38,16 +40,18 @@ class RegisterController extends Controller
     private RegisterService $service;
     private RegisterInterface $register;
     private StudentInterface $student;
+    private CompanyInterface $company;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(RegisterService $service, RegisterInterface $register, StudentInterface $student)
+    public function __construct(RegisterService $service, RegisterInterface $register, StudentInterface $student, CompanyInterface $company)
     {
         $this->service = $service;
         $this->register = $register;
         $this->student = $student;
+        $this->company = $company;
         $this->middleware('guest');
     }
 
@@ -74,6 +78,19 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request): JsonResponse
     {
         $this->service->handleRegistration($request, $this->register, $this->student);
+
+        return ResponseHelper::success(null, trans('alert.add_success'));
+    }
+
+    /**
+     * registerCompany
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function registerCompany(RegisterCompanyRequest $request)
+    {
+        $this->service->handleRegistrationCompany($request, $this->register, $this->company);
 
         return ResponseHelper::success(null, trans('alert.add_success'));
     }
