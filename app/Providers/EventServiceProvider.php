@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\Major;
 use App\Models\News;
 use App\Models\Student;
+use App\Models\Survey;
 use App\Models\TeacherGallery;
 use App\Models\User;
 use App\Observers\ClassroomObserver;
@@ -14,6 +15,7 @@ use App\Observers\CompanyObserver;
 use App\Observers\MajorObserver;
 use App\Observers\NewsObserver;
 use App\Observers\StudentObserver;
+use App\Observers\SurveyObserver;
 use App\Observers\TeacherGalleryObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -45,6 +47,7 @@ class EventServiceProvider extends ServiceProvider
         TeacherGallery::observe(TeacherGalleryObserver::class);
         Student::observe(StudentObserver::class);
         Company::observe(CompanyObserver::class);
+        Survey::observe(SurveyObserver::class);
     }
 
     /**

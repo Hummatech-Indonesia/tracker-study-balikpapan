@@ -9,6 +9,7 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TeacherGalleryController;
 
 /*
@@ -66,9 +67,7 @@ Route::post('register-company', [RegisterController::class, 'registerCompany']);
 Route::get('dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
-Route::get('survei-alumni', function () {
-    return view('admin.survei-alumni');
-})->name('survei-alumni');
+Route::resource('survey',SurveyController::class);
 Route::get('job-vacancy', function () {
     return view('admin.job-vacancy.index');
 })->name('job.vacancy');

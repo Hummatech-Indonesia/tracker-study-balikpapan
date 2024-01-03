@@ -10,6 +10,7 @@ use App\Contracts\Interfaces\NewsInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Interfaces\SchoolYearInterface;
 use App\Contracts\Interfaces\StudentInterface;
+use App\Contracts\Interfaces\SurveyInterface;
 use App\Contracts\Interfaces\TeacherGalleryInterface;
 use App\Contracts\Repositories\ClassroomRepository;
 use App\Contracts\Repositories\CompanyRepository;
@@ -18,6 +19,7 @@ use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\RegisterRepository;
 use App\Contracts\Repositories\SchoolYearRepository;
 use App\Contracts\Repositories\StudentRepository;
+use App\Contracts\Repositories\SurveyRepository;
 use App\Contracts\Repositories\TeacherGalleryRepository;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,7 +32,8 @@ class AppServiceProvider extends ServiceProvider
         NewsInterface::class => NewsRepository::class,
         TeacherGalleryInterface::class => TeacherGalleryRepository::class,
         StudentInterface::class => StudentRepository::class,
-        CompanyInterface::class => CompanyRepository::class
+        CompanyInterface::class => CompanyRepository::class,
+        SurveyInterface::class => SurveyRepository::class
     ];
 
     /**
