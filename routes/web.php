@@ -85,6 +85,10 @@ Route::get('alumni-gallery', function () {
 Route::get('detail-job-vacancy', function () {
     return view('admin.job-vacancy.detail');
 })->name('detail.job.vacancy');
+// siswa 
+Route::get('portofolio', function () {
+    return view('student.portofolio');
+})->name('portofolio');
 
 // company
 Route::get('company', function () {
