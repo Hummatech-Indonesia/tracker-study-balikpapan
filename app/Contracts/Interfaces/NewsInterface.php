@@ -10,5 +10,24 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
 interface NewsInterface extends GetInterface, StoreInterface, ShowInterface, UpdateInterface, DeleteInterface
 {
+    /**
+     * getByMonthNow
+     *
+     * @return mixed
+     */
+    public function getByMonthNow(): mixed;
 
+    /**
+     * getByLatest
+     *
+     * @return mixed
+     */
+    public function getByLatest() : mixed;
+
+    /**
+     * getOneLatest
+     *
+     * @return mixed
+     */
+    public function getOneLatest() : mixed;
 }
