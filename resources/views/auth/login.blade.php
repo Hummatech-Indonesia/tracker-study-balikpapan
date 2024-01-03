@@ -46,16 +46,26 @@
                                     @csrf
                                     <div class="col-12">
                                         <label for="inputEmailAddress" class="form-label">Email</label>
-                                        <input type="email" name="email" class="form-control" id="inputEmailAddress"
-                                            placeholder="jhon@example.com">
+                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" id="inputEmailAddress"
+                                            placeholder="Masukkan Email">
+                                            @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                     </div>
                                     <div class="col-12">
                                         <label for="inputChoosePassword" class="form-label">Password</label>
                                         <div class="input-group" id="show_hide_password">
                                             <input type="password" name="password" class="form-control border-end-0"
-                                                id="inputChoosePassword" placeholder="Enter Password">
+                                                id="inputChoosePassword" placeholder="Masukkan Password">
                                             <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                     class="bx bx-hide"></i></a>
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
