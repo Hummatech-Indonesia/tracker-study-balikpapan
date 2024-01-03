@@ -2,16 +2,19 @@
 
 namespace App\Observers;
 
+use App\Enums\StatusEnum;
 use App\Models\Student;
+use Faker\Provider\Uuid;
 
 class StudentObserver
 {
     /**
      * Handle the Student "created" event.
      */
-    public function created(Student $student): void
+    public function creating(Student $student): void
     {
-        //
+        $student->id = Uuid::uuid();
+        $student->status = StatusEnum::NONACTIVE->value;
     }
 
     /**

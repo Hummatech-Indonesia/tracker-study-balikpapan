@@ -5,11 +5,13 @@ namespace App\Providers;
 use App\Models\Classroom;
 use App\Models\Major;
 use App\Models\News;
+use App\Models\Student;
 use App\Models\TeacherGallery;
 use App\Models\User;
 use App\Observers\ClassroomObserver;
 use App\Observers\MajorObserver;
 use App\Observers\NewsObserver;
+use App\Observers\StudentObserver;
 use App\Observers\TeacherGalleryObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -39,6 +41,7 @@ class EventServiceProvider extends ServiceProvider
         Classroom::observe(ClassroomObserver::class);
         News::observe(NewsObserver::class);
         TeacherGallery::observe(TeacherGalleryObserver::class);
+        Student::observe(StudentObserver::class);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Auth;
 
 use App\Http\Requests\ApiRequest;
+use App\Rules\GenderRule;
 
 class RegisterRequest extends ApiRequest
 {
@@ -19,6 +20,10 @@ class RegisterRequest extends ApiRequest
             'password' => 'required|min:8|same:password_confirmation',
             'password_confirmation' => 'required',
             'address' => 'required',
+            'classroom_id' => 'required|exists:classrooms,id',
+            'national_student_id' => 'required',
+            'birth_date' => 'required|date',
+            'gender' => ['required', new GenderRule],
             // 'student_id_number' => 'required|max:11',
             // 'study_program' => 'required',
             // 'graduate_date' => 'required',
@@ -60,5 +65,4 @@ class RegisterRequest extends ApiRequest
             // 'graduate_date.required' => 'Kolom Tanggal Lulus tidak boleh kosong.',
         ];
     }
-
 }

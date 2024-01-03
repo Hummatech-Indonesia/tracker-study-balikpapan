@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Contracts\Interfaces\Auth\RegisterInterface;
+use App\Contracts\Interfaces\StudentInterface;
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
@@ -36,15 +37,17 @@ class RegisterController extends Controller
 
     private RegisterService $service;
     private RegisterInterface $register;
+    private StudentInterface $student;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(RegisterService $service, RegisterInterface $register)
+    public function __construct(RegisterService $service, RegisterInterface $register, StudentInterface $student)
     {
         $this->service = $service;
         $this->register = $register;
+        $this->student = $student;
         $this->middleware('guest');
     }
 
@@ -70,7 +73,7 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request): JsonResponse
     {
-        $this->service->handleRegistration($request, $this->register);
+        $this->service->handleRegistration($request, $this->register, $this->student);
 
         return ResponseHelper::success(null, trans('alert.add_success'));
     }
