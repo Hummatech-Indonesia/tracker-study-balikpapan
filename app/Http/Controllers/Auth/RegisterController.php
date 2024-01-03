@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Contracts\Interfaces\Auth\RegisterInterface;
+use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Helpers\ResponseHelper;
@@ -41,17 +42,19 @@ class RegisterController extends Controller
     private RegisterInterface $register;
     private StudentInterface $student;
     private CompanyInterface $company;
+    private ClassroomInterface $classroom;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(RegisterService $service, RegisterInterface $register, StudentInterface $student, CompanyInterface $company)
+    public function __construct(RegisterService $service, RegisterInterface $register, StudentInterface $student, CompanyInterface $company, ClassroomInterface $classroom)
     {
         $this->service = $service;
         $this->register = $register;
         $this->student = $student;
         $this->company = $company;
+        $this->classroom = $classroom;
         $this->middleware('guest');
     }
 
@@ -63,7 +66,8 @@ class RegisterController extends Controller
     public function showRegistrationForm(): View
     {
         $title = trans('title.register');
-        return view('auth.register', compact('title'));
+        $classrooms = $this->classroom->get();
+        return view('auth.register', compact('title', 'classrooms'));
     }
 
 
@@ -75,11 +79,11 @@ class RegisterController extends Controller
      * @return RedirectResponse
      */
 
-    public function register(RegisterRequest $request): JsonResponse
+    public function register(RegisterRequest $request)
     {
         $this->service->handleRegistration($request, $this->register, $this->student);
 
-        return ResponseHelper::success(null, trans('alert.add_success'));
+        return redirect()->back()->with('success', trans('auth.register_success'));
     }
 
     /**

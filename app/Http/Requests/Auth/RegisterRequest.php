@@ -4,8 +4,9 @@ namespace App\Http\Requests\Auth;
 
 use App\Http\Requests\ApiRequest;
 use App\Rules\GenderRule;
+use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends ApiRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -24,9 +25,6 @@ class RegisterRequest extends ApiRequest
             'national_student_id' => 'required',
             'birth_date' => 'required|date',
             'gender' => ['required', new GenderRule],
-            // 'student_id_number' => 'required|max:11',
-            // 'study_program' => 'required',
-            // 'graduate_date' => 'required',
             'phone_number' => 'required',
         ];
     }

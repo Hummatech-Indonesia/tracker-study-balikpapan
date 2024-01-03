@@ -41,6 +41,14 @@ class RegisterService
         ]);
     }
 
+    /**
+     * handleRegistrationCompany
+     *
+     * @param  mixed $request
+     * @param  mixed $register
+     * @param  mixed $company
+     * @return void
+     */
     public function handleRegistrationCompany(RegisterCompanyRequest $request, RegisterInterface $register, CompanyInterface $company): void
     {
         Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email, 'user' => $request->name]));
