@@ -42,16 +42,17 @@
                                 <p class="mb-0 text-dark fs-6">Masukkan Email dan Kata Sandi!!</p>
                             </div>
                             <div class="form-body">
-                                <form class="row g-3">
+                                <form action="{{ route('login') }}" method="POST" class="row g-3">
+                                    @csrf
                                     <div class="col-12">
                                         <label for="inputEmailAddress" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="inputEmailAddress"
+                                        <input type="email" name="email" class="form-control" id="inputEmailAddress"
                                             placeholder="jhon@example.com">
                                     </div>
                                     <div class="col-12">
                                         <label for="inputChoosePassword" class="form-label">Password</label>
                                         <div class="input-group" id="show_hide_password">
-                                            <input type="password" class="form-control border-end-0"
+                                            <input type="password" name="password" class="form-control border-end-0"
                                                 id="inputChoosePassword" placeholder="Enter Password">
                                             <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                     class="bx bx-hide"></i></a>

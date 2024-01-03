@@ -16,12 +16,11 @@ class LoginService
     {
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
             if (auth()->user()->roles->pluck('name')[0] == 'alumni') {
-                dd('berhasil');
                 return view('index')->with('success', 'Berhasil Login.');
             }
+        } else{
+            return view('auth.login')->with('error', 'Email atau password salah.');
         }
-        dd('gagal');
-        return redirect()->back()->with('error', 'Email atau password salah.');
     }
 
 }
