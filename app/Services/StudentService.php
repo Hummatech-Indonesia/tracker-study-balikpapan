@@ -3,8 +3,6 @@
 namespace App\Services;
 
 use App\Enums\RoleEnum;
-use App\Enums\StatusEnum;
-use App\Services\StudentService;
 use App\Http\Requests\StudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Contracts\Interfaces\Auth\RegisterInterface;

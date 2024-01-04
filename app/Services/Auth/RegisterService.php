@@ -24,7 +24,6 @@ class RegisterService
 
     public function handleRegistration(RegisterRequest $request, RegisterInterface $register, StudentInterface $student): void
     {
-        Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email, 'user' => $request->name]));
 
         $data = $request->validated();
         $user = $register->store($data);
@@ -32,6 +31,7 @@ class RegisterService
         event(new Registered($user));
 
         $user->assignRole(RoleEnum::ALUMNI->value);
+        Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email, 'user' => $request->name, 'id' => $user->id]));
         $student->store([
             'user_id' => $user->id,
             'classroom_id' => $data['classroom_id'],
@@ -51,12 +51,11 @@ class RegisterService
      */
     public function handleRegistrationCompany(RegisterCompanyRequest $request, RegisterInterface $register, CompanyInterface $company): void
     {
-        Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email, 'user' => $request->name]));
-
         $data = $request->validated();
         $user = $register->store($data);
 
         event(new Registered($user));
+        Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email, 'user' => $request->name, 'id' => $user->id]));
 
         $user->assignRole(RoleEnum::COMPANY->value);
         $company->store([
