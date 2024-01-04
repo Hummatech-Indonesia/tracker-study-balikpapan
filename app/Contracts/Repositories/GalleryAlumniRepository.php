@@ -32,8 +32,10 @@ class GalleryAlumniRepository extends BaseRepository implements GalleryAlumniInt
      */
     public function store(array $data): mixed
     {
-        return $this->model->query()
-            ->create($data);
+        foreach ($data['photos'] as $photo) {
+            return $this->model->query()
+                ->create(['photo' => $photo]);
+        }
     }
 
     /**
