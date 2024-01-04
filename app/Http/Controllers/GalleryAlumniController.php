@@ -21,7 +21,7 @@ class GalleryAlumniController extends Controller
     {
         $this->sliderGalleryAlumni = $sliderGalleryAlumniInterface;
         $this->galleryAlumni = $galleryAlumniInterface;
-        $this->service = $$galleryAlumniService;
+        $this->service = $galleryAlumniService;
     }
 
     /**
