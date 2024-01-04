@@ -22,14 +22,6 @@ jQuery.fn.extend({
         var input = item.find('input,select,textarea');
   
         input.each(function (index, el) {
-          var attrName = $(el).data('name');
-          var skipName = $(el).data('skip-name');
-          if (skipName !== true) {
-            var originalName = $(el).attr("name");
-            if (originalName) {
-              $(el).attr("name", originalName); // Menambahkan "_key" pada nama atribut
-            }
-          }
           $(el).attr('id', generateId($(el).attr('name')));
           $(el).parent().find('label').attr('for', generateId($(el).attr('name')));
         });

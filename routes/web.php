@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlumniVideoGalleryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
@@ -77,9 +78,11 @@ Route::patch('verify-account/{user}', [VerificationController::class, 'verify'])
 Route::get('dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
+Route::post('video-alumni' , [AlumniVideoGalleryController::class , 'store'])->name('video.alumni');
 Route::get('alumni-gallery', [GalleryAlumniController::class, 'index'])->name('alumni.gallery');
 Route::post('alumni-gallery', [GalleryAlumniController::class, 'store'])->name('alumni.store');
 Route::post('slider-gallery-alumni', [SliderGalleryAlumniController::class, 'store'])->name('slider.gallery.alumni');
+Route::delete('slider-gallery-delete/{slider_gallery_alumni}', [SliderGalleryAlumniController::class, 'destroy'])->name('slider.gallery.delete');
 Route::delete('alumni-gallery-delete/{gallery_alumni}', [GalleryAlumniController::class, 'destroy'])->name('alumni.delete');
 Route::put('alumni-gallery-update/{gallery_alumni}', [GalleryAlumniController::class, 'update'])->name('alumni.update');
 Route::resource('survey', SurveyController::class);

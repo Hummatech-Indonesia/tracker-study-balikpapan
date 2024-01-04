@@ -2,39 +2,48 @@
 @section('content')
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Upload Video</h6>
     <div class="card">
-        <div class="card-body">
-            <label for="" class="text-dark mb-1">Upload Video Disini</label>
-            <input type="file" name="" class="form-control" id="">
-            <div class="d-flex justify-content-end mt-2">
-                <div class="">
-                    <button class="btn btn-primary text-white">
-                        Upload
-                    </button>
+        <form action="{{ route('video.alumni') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('POST')
+            <div class="card-body">
+                <label for="" class="text-dark mb-1">Upload Video Disini</label>
+                <input type="file" name="video" class="form-control" id="">
+                @error('video')
+                    <p class="text-danger">
+                        {{ $message }}
+                    </p>
+                @enderror
+                <div class="d-flex justify-content-end mt-2">
+                    <div class="">
+                        <button type="submit" class="btn btn-primary text-white">
+                            Upload
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar Slide</h6>
     <div class="card">
         <div class="card-body">
+        <form action="{{ route('slider.gallery.alumni') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
             <div id="repeater">
                 <!-- Repeater Heading -->
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h6 class="mb-0">File</h6>
-                            <button class="btn btn-primary repeater-add-btn px-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 19 19"
-                                    fill="none">
-                                    <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
-                                    <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                                </svg>
-                                Tambah
-                            </button>
-                        </div>
-            <form action="{{ route('slider.gallery.alumni') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    @method('POST')
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h6 class="mb-0">File</h6>
+                    <button type="button" class="btn btn-primary repeater-add-btn px-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 19 19"
+                            fill="none">
+                            <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                        Tambah
+                    </button>
+                </div>
                     <!-- Repeater Items -->
-                    <div class="items mt-2" >
+                    <div class="items mt-2">
                         <!-- Repeater Content -->
                         <div class="item-content">
                             <div class="mb-3 mt-3">
@@ -53,39 +62,40 @@
                             </button>
                         </div>
                     </div>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-            </form>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+    </form>
         </div>
     </div>
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar</h6>
     <div class="card">
         <div class="card-body" style="overflow: auto; white-space: nowrap; padding-left: 50px;">
-            <div class="d-flex justify-content-header gap-4">
-            @forelse ($sliderGalleryAlumnis as $sliderGalleryAlumni)    
-                <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
-                    <img src="{{ asset('2.png') }}" width="200px" alt="">
-                    <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
-                            fill="none">
-                            <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                            <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
+            <div class="d-flex justify-content-center gap-4">
+                @forelse ($sliderGalleryAlumnis as $sliderGalleryAlumni)
+                    <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
+                        <img src="{{ asset('storage/' . $sliderGalleryAlumni->photo) }}" style="object-fit: cover"
+                            width="200px" alt="">
+                        <button style="position: absolute; border-radius: 50%;" data-id="{{ $sliderGalleryAlumni->id }}" id="{{ $sliderGalleryAlumni->id }}" class="btn btn-delete-slider btn-sm mt-2 btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
+                                fill="none">
+                                <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
+                                    stroke-linecap="round" />
+                                <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    @empty
+                    <div class="d-flex justify-content-center">
+                        <div>
+                            <img src="{{ asset('showNoData.png') }}" alt="">
+                            <h5 class="text-center">Data Masih Kosong!!</h5>
+                        </div>
+                    </div>
+                    @endforelse
                 </div>
-                @empty
-            </div>
-            <div class="d-flex justify-content-center">
-                <div>
-                    <img src="{{ asset('showNoData.png') }}" width="300px" alt="">
-                    <h5 class="text-center">Data Masih Kosong!!</h5>
-                </div>
-            </div>
-            @endforelse
         </div>
     </div>
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar Dengan Deskripsi</h6>
@@ -96,8 +106,7 @@
         </div>
         <div class="">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 19 19"
-                    fill="none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 19 19" fill="none">
                     <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                     <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
                 </svg>
@@ -352,6 +361,12 @@
         $('.btn-delete').click(function() {
             id = $(this).data('id')
             var actionUrl = `/alumni-gallery-delete/${id}`;
+            $('#form-delete').attr('action', actionUrl);
+            $('#modal-delete').modal('show')
+        })
+        $('.btn-delete-slider').click(function() {
+            id = $(this).data('id')
+            var actionUrl = `/slider-gallery-delete/${id}`;
             $('#form-delete').attr('action', actionUrl);
             $('#modal-delete').modal('show')
         })
