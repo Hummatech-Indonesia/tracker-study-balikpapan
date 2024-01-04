@@ -25,6 +25,17 @@ class TeacherVideoGalleryRepository extends BaseRepository implements TeacherVid
     }
 
     /**
+     * getFirst
+     *
+     * @return mixed
+     */
+    public function getFirst(): mixed
+    {
+        return $this->model->query()
+            ->first();
+    }
+
+    /**
      * store
      *
      * @param  mixed $data

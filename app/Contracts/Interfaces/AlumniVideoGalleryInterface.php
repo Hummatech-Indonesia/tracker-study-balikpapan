@@ -8,5 +8,10 @@ use App\Contracts\Interfaces\Eloquent\StoreInterface;
 
 interface AlumniVideoGalleryInterface extends ShowInterface, StoreInterface, DeleteInterface
 {
-
+    /**
+     * getFirst
+     *
+     * @return mixed
+     */
+    public function getFirst(): mixed;
 }

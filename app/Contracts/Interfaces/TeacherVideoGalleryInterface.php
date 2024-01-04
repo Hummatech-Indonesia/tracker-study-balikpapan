@@ -9,4 +9,10 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
 interface TeacherVideoGalleryInterface extends ShowInterface, StoreInterface, DeleteInterface
 {
+    /**
+     * getFirst
+     *
+     * @return mixed
+     */
+    public function getFirst(): mixed;
 }

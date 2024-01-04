@@ -25,6 +25,17 @@ class AlumniVideoGalleryRepository extends BaseRepository implements AlumniVideo
     }
 
     /**
+     * getFirst
+     *
+     * @return mixed
+     */
+    public function getFirst(): mixed
+    {
+        return $this->model->query()
+            ->first();
+    }
+
+    /**
      * store
      *
      * @param  mixed $data
