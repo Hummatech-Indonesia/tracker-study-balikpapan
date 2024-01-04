@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         StudentInterface::class => StudentRepository::class,
         CompanyInterface::class => CompanyRepository::class,
         SurveyInterface::class => SurveyRepository::class,
-        UploadAlumniInterface::class=> UploadAlumniRepository::class
+        UploadAlumniInterface::class=> UploadAlumniRepository::class,
         TeacherVideoGalleryInterface::class => TeacherVideoGalleryRepository::class,
     ];
 
