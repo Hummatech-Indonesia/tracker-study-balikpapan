@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\GalleryAlumniInterface;
+use App\Contracts\Interfaces\SliderGalleryAlumniInterface;
 use App\Http\Requests\GalleryAlumniRequest;
 use App\Http\Requests\GalleryAlumniUpdateRequest;
 use App\Models\GalleryAlumni;
@@ -14,17 +15,26 @@ use Illuminate\Http\Request;
 class GalleryAlumniController extends Controller
 {
     private GalleryAlumniInterface $galleryAlumni;
+    private SliderGalleryAlumniInterface $sliderGalleryAlumni;
     private GalleryAlumniService $service;
-    public function __construct(GalleryAlumniInterface $galleryAlumniInterface, GalleryAlumniService $galleryAlumniService)
+    public function __construct(GalleryAlumniInterface $galleryAlumniInterface, GalleryAlumniService $galleryAlumniService, SliderGalleryAlumniInterface $sliderGalleryAlumniInterface)
     {
+        $this->sliderGalleryAlumni = $sliderGalleryAlumniInterface;
         $this->galleryAlumni = $galleryAlumniInterface;
         $this->service = $$galleryAlumniService;
     }
 
+    /**
+     * index
+     *
+     * @return View
+     */
     public function index(): View
     {
-        $data = $this->galleryAlumni->get();
-        return view('', compact('data'));
+        $galleryAlumnis = $this->galleryAlumni->get();
+        $sliderGalleryAlumnis = $this->sliderGalleryAlumni->get();
+
+        return view('admin.upload-alumni', compact('galleryAlumnis', 'sliderGalleryAlumnis'));
     }
 
     /**
