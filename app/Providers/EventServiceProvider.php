@@ -9,6 +9,7 @@ use App\Models\News;
 use App\Models\Student;
 use App\Models\Survey;
 use App\Models\TeacherGallery;
+use App\Models\TeacherVideoGallery;
 use App\Models\User;
 use App\Observers\ClassroomObserver;
 use App\Observers\CompanyObserver;
@@ -17,6 +18,7 @@ use App\Observers\NewsObserver;
 use App\Observers\StudentObserver;
 use App\Observers\SurveyObserver;
 use App\Observers\TeacherGalleryObserver;
+use App\Observers\TeacherVideoGalleryObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -48,6 +50,7 @@ class EventServiceProvider extends ServiceProvider
         Student::observe(StudentObserver::class);
         Company::observe(CompanyObserver::class);
         Survey::observe(SurveyObserver::class);
+        TeacherVideoGallery::observe(TeacherVideoGalleryObserver::class);
     }
 
     /**
