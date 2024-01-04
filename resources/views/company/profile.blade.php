@@ -4,7 +4,7 @@
     Profil Perusahaan
 </h5>
 <div class="row">
-    <div class="col-lg-7 col-xxl-4 col-12">
+    <div class="col-lg-4 col-xxl-4 col-12">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">

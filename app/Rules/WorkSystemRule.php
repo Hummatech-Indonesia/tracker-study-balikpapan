@@ -18,7 +18,7 @@ class WorkSystemRule implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        return in_array($value, [WorkSystemEnum::MALE->value, WorkSystemEnum::FEMALE->value]);
+        return in_array($value, [WorkSystemEnum::CONTRACT->value, WorkSystemEnum::PERMANENTWORK->value, WorkSystemEnum::WORKINGPARTTIME->value, WorkSystemEnum::FREELANCE->value]);
     }
 
     /**

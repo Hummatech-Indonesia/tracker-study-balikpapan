@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobVacancy;
 use Illuminate\Http\Request;
+use App\Services\JobVacancyService;
+use App\Http\Requests\JobVacancyRequest;
 use App\Contracts\Interfaces\JobVacancyInterface;
 
 class JobVacancyController extends Controller
 {
     private JobVacancyInterface $jobVacancy;
+    private JobVacancyService $jobVacancyService;
 
-    public function __construct(JobVacancyInterface $jobVacancy)
+    public function __construct(JobVacancyInterface $jobVacancy, JobVacancyService $jobVacancyService)
     {
         $this->jobVacancy = $jobVacancy;
+        $this->jobVacancyService = $jobVacancyService;
     }
 
     /**
@@ -19,7 +24,8 @@ class JobVacancyController extends Controller
      */
     public function index()
     {
-        //
+        $jobVacancys = $this->jobVacancy->get();
+        return view('company.vacancy', ['jobVacancys' => $jobVacancys]);
     }
 
     /**
@@ -33,16 +39,16 @@ class JobVacancyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(JobVacancyRequest $request)
     {
-        $this->JobVacancy->store($request);
-        return redirect()->back()->withErrors($validator)->withInput();
+        $this->jobVacancy->store($this->jobVacancyService->store($request));
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(JobVacancy $job_vacancy)
     {
         //
     }
@@ -50,7 +56,7 @@ class JobVacancyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(JobVacancy $job_vacancy)
     {
         //
     }
@@ -58,7 +64,7 @@ class JobVacancyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, JobVacancy $job_vacancy)
     {
         //
     }
@@ -66,7 +72,7 @@ class JobVacancyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(JobVacancy $job_vacancy)
     {
         //
     }
