@@ -21,7 +21,10 @@ class SliderGalleryAlumniService
     public function store(SliderGalleryAlumniRequest $request): array
     {
         $data = $request->validated();
-        $data['photo'] = $this->upload(UploadDiskEnum::SLIDERGALLERYALUMNI->value, $request->file('photo'));
+        $photos = [];
+        foreach ($request->file('photo') as $photo) {
+            array_push($photos, $this->upload(UploadDiskEnum::SLIDERGALLERYALUMNI->value, $photo));
+        }
         return $data;
     }
 

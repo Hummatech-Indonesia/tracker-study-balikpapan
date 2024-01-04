@@ -31,8 +31,11 @@ class SliderGalleryAlumniRepository extends BaseRepository implements SliderGall
      */
     public function store(array $data): mixed
     {
-        return $this->model->query()
-            ->create($data);
+        foreach ($data['photos'] as $photo) {
+            $this->model->query()
+                ->create(['photo' => $photo]);
+        }
+        return $data;
     }
 
     /**

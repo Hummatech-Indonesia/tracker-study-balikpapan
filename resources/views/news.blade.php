@@ -147,7 +147,7 @@
                                 <p class="blog-btn">
                                     {{ Carbon::parse($new->created_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}</p>
                                 <!-- Blog Title -->
-                                <h5 class="blog-title my-3"><a href="#">{{ $new->title }}</a></h5>
+                                <h5 style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap" class="blog-title my-3">{{ $new->title }}</h5>
 
                                 <p style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap"
                                     class="blog">{{ $new->content }}</p>

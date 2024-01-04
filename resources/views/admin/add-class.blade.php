@@ -53,6 +53,12 @@
                 </div>
             </div>
         @empty
+        <div class="d-flex justify-content-center">
+            <div>
+                <img src="{{ asset('showNoData.png') }}" alt="">
+                <h5 class="text-center">Data Kelas Kosong!!</h5>
+            </div>
+        </div>
         @endforelse
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">

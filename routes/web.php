@@ -105,6 +105,9 @@ Route::get('detail-job-vacancy', function () {
     return view('admin.job-vacancy.detail');
 })->name('detail.job.vacancy');
 // siswa
+Route::get('dashboard-student', function () {
+    return view('student.dashboard');
+})->name('dashboard-student');
 Route::get('portofolio', function () {
     return view('student.portofolio');
 })->name('portofolio');
@@ -112,7 +115,7 @@ Route::get('portofolio', function () {
 // company
 Route::get('company', function () {
     return view('company.index');
-});
+})->name('company-dashboard');
 Route::get('job-applicant', function () {
     return view('company.job-applicant');
 });
@@ -122,10 +125,11 @@ Route::get('vacancy', function () {
 Route::get('profile-company', function () {
     return view('company.profile');
 });
+
 Route::prefix('alumni')->name('alumni.')->group(function () {
-    Route::get('/', function () {
+    Route::get('dashboard-alumni', function () {
         return view('alumni.index');
-    })->name('index');
+    })->name('dashboard-alumni');
     Route::get('survei-pekerjaan', function () {
         return view('alumni.job-survey');
     })->name('job.survey');
