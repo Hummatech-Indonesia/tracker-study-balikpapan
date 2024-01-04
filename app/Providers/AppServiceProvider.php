@@ -6,10 +6,12 @@ use App\Contracts\Interfaces\AlumniVideoGalleryInterface;
 use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\CompanyInterface;
+use App\Contracts\Interfaces\GalleryAlumniInterface;
 use App\Contracts\Interfaces\MajorInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Interfaces\SchoolYearInterface;
+use App\Contracts\Interfaces\SliderGalleryAlumniInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\SurveyInterface;
 use App\Contracts\Interfaces\TeacherGalleryInterface;
@@ -18,10 +20,12 @@ use App\Contracts\Repositories\AlumniVideoGalleryRepository;
 use App\Contracts\Interfaces\UserInterface;
 use App\Contracts\Repositories\ClassroomRepository;
 use App\Contracts\Repositories\CompanyRepository;
+use App\Contracts\Repositories\GalleryAlumniRepository;
 use App\Contracts\Repositories\MajorRepository;
 use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\RegisterRepository;
 use App\Contracts\Repositories\SchoolYearRepository;
+use App\Contracts\Repositories\SliderGalleryAlumniRepository;
 use App\Contracts\Repositories\StudentRepository;
 use App\Contracts\Repositories\SurveyRepository;
 use App\Contracts\Repositories\TeacherGalleryRepository;
@@ -42,7 +46,9 @@ class AppServiceProvider extends ServiceProvider
         SurveyInterface::class => SurveyRepository::class,
         TeacherVideoGalleryInterface::class => TeacherVideoGalleryRepository::class,
         AlumniVideoGalleryInterface::class => AlumniVideoGalleryRepository::class,
-        UserInterface::class => UserRepository::class
+        UserInterface::class => UserRepository::class,
+        GalleryAlumniInterface::class => GalleryAlumniRepository::class,
+        SliderGalleryAlumniInterface::class => SliderGalleryAlumniRepository::class,
     ];
 
     /**

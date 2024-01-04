@@ -5,8 +5,10 @@ namespace App\Providers;
 use App\Models\AlumniVideoGallery;
 use App\Models\Classroom;
 use App\Models\Company;
+use App\Models\GalleryAlumni;
 use App\Models\Major;
 use App\Models\News;
+use App\Models\SliderGalleryAlumni;
 use App\Models\Student;
 use App\Models\Survey;
 use App\Models\TeacherGallery;
@@ -15,8 +17,10 @@ use App\Models\User;
 use App\Observers\AlumniVideoGalleryObserver;
 use App\Observers\ClassroomObserver;
 use App\Observers\CompanyObserver;
+use App\Observers\GalleryAlumniObserver;
 use App\Observers\MajorObserver;
 use App\Observers\NewsObserver;
+use App\Observers\SliderGalleryAlumniObserver;
 use App\Observers\StudentObserver;
 use App\Observers\SurveyObserver;
 use App\Observers\TeacherGalleryObserver;
@@ -54,6 +58,8 @@ class EventServiceProvider extends ServiceProvider
         Survey::observe(SurveyObserver::class);
         TeacherVideoGallery::observe(TeacherVideoGalleryObserver::class);
         AlumniVideoGallery::observe(AlumniVideoGalleryObserver::class);
+        GalleryAlumni::observe(GalleryAlumniObserver::class);
+        SliderGalleryAlumni::observe(SliderGalleryAlumniObserver::class);
     }
 
     /**
