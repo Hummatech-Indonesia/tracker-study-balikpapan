@@ -75,7 +75,7 @@ Route::patch('verify-account/{user}', [VerificationController::class, 'verify'])
 Route::get('dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
-Route::get('upload-alumni', [GalleryAlumniController::class, 'index'])->name('upload-alumni');
+Route::get('alumni-gallery', [GalleryAlumniController::class, 'index'])->name('alumni.gallery');
 Route::resource('survey', SurveyController::class);
 Route::get('job-vacancy', function () {
     return view('admin.job-vacancy.index');
@@ -95,9 +95,6 @@ Route::get('add-class', function () {
 Route::get('verify-company', function () {
     return view('admin.verify-company');
 })->name('verify.company');
-Route::get('alumni-gallery', function () {
-    return view('admin.alumni-gallery');
-})->name('alumni.gallery');
 Route::get('detail-job-vacancy', function () {
     return view('admin.job-vacancy.detail');
 })->name('detail.job.vacancy');

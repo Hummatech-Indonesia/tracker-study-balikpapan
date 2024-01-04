@@ -34,7 +34,7 @@ class GalleryAlumniController extends Controller
         $galleryAlumnis = $this->galleryAlumni->get();
         $sliderGalleryAlumnis = $this->sliderGalleryAlumni->get();
 
-        return view('admin.upload-alumni', compact('galleryAlumnis', 'sliderGalleryAlumnis'));
+        return view('admin.alumni-gallery', compact('galleryAlumnis', 'sliderGalleryAlumnis'));
     }
 
     /**
