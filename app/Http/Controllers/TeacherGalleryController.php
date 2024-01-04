@@ -13,18 +13,21 @@ use App\Contracts\Interfaces\NewsInterface;
 use App\Http\Requests\TeacherGalleryRequest;
 use App\Http\Requests\TeacherGalleryUpdateRequest;
 use App\Contracts\Interfaces\TeacherGalleryInterface;
+use App\Contracts\Interfaces\TeacherVideoGalleryInterface;
 
 class TeacherGalleryController extends Controller
 {
+    private TeacherVideoGalleryInterface $teacherVideo;
     private TeacherGalleryInterface $teacherGallery;
     private TeacherGalleryService $service;
     private NewsInterface $news;
 
-    public function __construct(TeacherGalleryInterface $teacherGalleryInterface, TeacherGalleryService $teacherGalleryService, NewsInterface $news)
+    public function __construct(TeacherGalleryInterface $teacherGalleryInterface, TeacherGalleryService $teacherGalleryService, NewsInterface $news, TeacherVideoGalleryInterface $teacherVideo)
     {
         $this->service = $teacherGalleryService;
         $this->teacherGallery = $teacherGalleryInterface;
         $this->news = $news;
+        $this->teacherVideo = $teacherVideo;
     }
 
     /**
@@ -42,7 +45,8 @@ class TeacherGalleryController extends Controller
     {
         $teachers = $this->teacherGallery->get();
         $news = $this->news->getByLatest();
-        return view('galery-teacher', compact('teachers','news'));
+        $videoTeacher = $this->teacherVideo->getFirst();
+        return view('galery-teacher', compact('teachers','news','videoTeacher'));
     }
 
     /**

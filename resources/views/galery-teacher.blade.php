@@ -17,9 +17,9 @@
     </style>
 @endsection
 @section('content')
-@php
-use Illuminate\Support\Carbon;
-@endphp
+    @php
+        use Illuminate\Support\Carbon;
+    @endphp
     <!-- ***** Welcome Area Start ***** -->
     <section id="home" class="section welcome-area bg-overlay overflow-hidden d-flex align-items-center">
         <div class="container">
@@ -27,18 +27,17 @@ use Illuminate\Support\Carbon;
                 <!-- Welcome Intro Start -->
                 <div class="col-12 col-md-7 col-lg-6">
                     <div class="welcome-intro">
-                        <h2 class="text-white fs-6">SELAMAT DATANG DI TRACKER STUDY SMK 2 PENAJAM</h2>
-                        <p class="text-white my-4">Nikmati pengalaman eksklusif melalui situs web kami, Tracer Study, yang
-                            dirancang khusus untuk membantu Anda melacak dan memahami perjalanan karir alumni kami.
-                            Menyajikan informasi yang komprehensif, platform ini memungkinkan Anda menjelajahi prestasi dan
-                            perkembangan mereka setelah meninggalkan lembaga pendidikan.</p>
+                        <h2 class="text-white fs-6">GALER GURU
+                            SMKN 2 PENAJAM</h2>
+                        <p class="text-white my-4">Selamat datang di Galeri Guru! Temukan momen inspiratif dalam berbagai
+                            kegiatan. Jelajahi foto eksklusif yang mencerminkan prestasi dan kontribusi lulusan kami. Dari
+                            reuni hingga pencapaian profesional, saksikan jejak perjalanan mereka di sini!</p>
                     </div>
                 </div>
-                <div class="col-0 col-md-0 col-lg-1"></div>
-                <div class="col-12 col-md-3 col-lg-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-center mt-5 ">
+                <div class="col-12 col-md-3 col-lg-6">
+                    @if ($videoTeacher == null)
+                        <div class="card">
+                            <div class="card-body">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="190" height="190" viewBox="0 0 190 190"
                                     fill="none">
                                     <g clip-path="url(#clip0_168_607)">
@@ -55,12 +54,15 @@ use Illuminate\Support\Carbon;
                                         </clipPath>
                                     </defs>
                                 </svg>
+                                <h4 class="text-center mt-3 mb-4">
+                                    Video
+                                </h4>
                             </div>
-                            <h4 class="text-center mt-3 mb-4">
-                                Video
-                            </h4>
                         </div>
-                    </div>
+                    @else
+                        <iframe width="600" height="400" src="{{ asset('storage/' . $videoTeacher->video) }}"
+                            frameborder="0" allow="autoplay" style="border: 4px solid #fff; border-radius: 10px;"></iframe>
+                    @endif
                 </div>
             </div>
         </div>
@@ -134,32 +136,34 @@ use Illuminate\Support\Carbon;
                 <div class="col-12">
                     <div class="app-screenshots">
                         @forelse ($news as $new)
-                        <div class="single-screenshot">
-                            <div class="single-blog res-margin">
-                                <div class="blog-thumb">
-                                    <img style="width: 400px; height: 200px; object-fit: cover;"
-                                        src="{{ asset('storage/' . $new->thumbnail) }}" alt="">
+                            <div class="single-screenshot">
+                                <div class="single-blog res-margin">
+                                    <div class="blog-thumb">
+                                        <img style="width: 400px; height: 200px; object-fit: cover;"
+                                            src="{{ asset('storage/' . $new->thumbnail) }}" alt="">
 
-                                </div>
-                                <!-- Blog Content -->
-                                <div class="blog-content p-4">
-                                    <!-- Blog Title -->
-                                    <h5 style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap" class="blog-title mb-2"><a href="#">{{ $new->title }}</a></h5>
-                                    <div class="blog-btn" style="font-size: 14px">
-                                        {{ Carbon::parse($new->created_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}</div>
-                                    <a href="{{ route('detail-news', ['news' => $new->id]) }}">
-                                        <div class="button mt-3">Lihat Selengkapnya</div>
-                                    </a>
+                                    </div>
+                                    <!-- Blog Content -->
+                                    <div class="blog-content p-4">
+                                        <!-- Blog Title -->
+                                        <h5 style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap"
+                                            class="blog-title mb-2"><a href="#">{{ $new->title }}</a></h5>
+                                        <div class="blog-btn" style="font-size: 14px">
+                                            {{ Carbon::parse($new->created_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
+                                        </div>
+                                        <a href="{{ route('detail-news', ['news' => $new->id]) }}">
+                                            <div class="button mt-3">Lihat Selengkapnya</div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @empty
-                        <div class="d-flex justify-content-center">
-                            <div>
-                                <img src="{{ asset('showNoData.png') }}" alt="">
-                                <h3 class="text-center">Data Masih Kosong</h3>
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <img src="{{ asset('showNoData.png') }}" alt="">
+                                    <h3 class="text-center">Data Masih Kosong</h3>
+                                </div>
                             </div>
-                        </div>
                         @endforelse
                     </div>
                 </div>

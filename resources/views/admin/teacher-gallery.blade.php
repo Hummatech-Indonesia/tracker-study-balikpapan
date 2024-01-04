@@ -21,7 +21,27 @@
         </script>
     @endif
     <h4>
-        Gambar Dengan Judul
+        Upload Video
+    </h4>
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('teacher-video-gallery.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
+                <div class="mb-3">
+                    <label class="form-label">Upload Video Disini</label>
+                    <input type="file" name="video" class="form-control" accept="video/mp4">
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary btn-md">
+                        Upload
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <h4>
+        Galery Guru
     </h4>
     <div class="d-flex justify-content-between mb-2">
         <div class="position-relative mb-3 col-lg-3">
