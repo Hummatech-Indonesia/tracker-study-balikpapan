@@ -6,6 +6,7 @@ use App\Enums\RoleEnum;
 use App\Http\Requests\StudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Contracts\Interfaces\Auth\RegisterInterface;
+use App\Enums\StatusEnum;
 
 class StudentService
 {
@@ -21,6 +22,7 @@ class StudentService
         $data = $request->validated();
         $data['email_verified_at'] = now();
         $data['password'] = bcrypt($data['password']);
+        $data['status'] = StatusEnum::ACTIVE->value;
         $user = $user->store($data);
         $user->student()->create($data);
         $user->assignRole(RoleEnum::STUDENT);
