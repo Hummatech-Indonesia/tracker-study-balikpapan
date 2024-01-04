@@ -1815,9 +1815,9 @@ img {
 }
 
 .app-screenshots .slick-dots .slick-active button {
-  background-color: var(--primary-color-2);
-  -webkit-box-shadow: 0 1px 5px var(--primary-color-2);
-          box-shadow: 0 1px 5px var(--primary-color-2);
+  background-color: #5D87FF;
+  -webkit-box-shadow: 0 1px 5px #5D87FF;
+          box-shadow: 0 1px 5px #5D87FF;
 }
 
 /* ******************************
