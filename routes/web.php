@@ -11,7 +11,6 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TeacherGalleryController;
-use App\Http\Controllers\UploadAlumniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +63,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
 Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
-Route::post('upload-alumni', [UploadAlumniController::class ,'store']); 
 // Admin
 Route::get('dashboard', function () {
     return view('admin.index');
