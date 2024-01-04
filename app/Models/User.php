@@ -32,6 +32,7 @@ class User extends Authenticatable implements HasStudent
         'password',
         'address',
         'phone_number',
+        'email_verified_at'
     ];
 
     /**

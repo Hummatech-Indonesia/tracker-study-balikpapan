@@ -6,13 +6,14 @@ use App\Models\User;
 use App\Models\Student;
 use App\Enums\StatusEnum;
 use Illuminate\Http\Request;
-use App\Services\StudentService;
 use Illuminate\Contracts\View\View;
 use App\Http\Requests\StudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\Auth\RegisterInterface;
+use App\Helpers\ResponseHelper;
+use App\Services\StudentService;
 
 class StudentController extends Controller
 {
@@ -45,7 +46,7 @@ class StudentController extends Controller
      *
      * @return view
      */
-    public function index(Request $request) : view
+    public function index(Request $request): view
     {
         $classrooms = $this->classroom->get();
         $students = $this->student->customPaginate($request, 10);
@@ -93,5 +94,6 @@ class StudentController extends Controller
         $this->register->delete($user->id);
         return redirect()->back()->with('success', trans('alert.delete_success'));
     }
+
 
 }

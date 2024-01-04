@@ -9,6 +9,7 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TeacherGalleryController;
 
@@ -63,11 +64,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
 Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
+
+Route::patch('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
+
 // Admin
 Route::get('dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
-Route::resource('survey',SurveyController::class);
+Route::resource('survey', SurveyController::class);
 Route::get('job-vacancy', function () {
     return view('admin.job-vacancy.index');
 })->name('job.vacancy');

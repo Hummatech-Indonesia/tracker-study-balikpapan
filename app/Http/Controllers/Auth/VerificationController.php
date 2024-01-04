@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Contracts\Interfaces\UserInterface;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
 
 class VerificationController extends Controller
 {
@@ -20,6 +23,7 @@ class VerificationController extends Controller
     */
 
     use VerifiesEmails;
+    private UserInterface $user;
 
     /**
      * Where to redirect users after verification.
@@ -33,10 +37,25 @@ class VerificationController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserInterface $user)
     {
-        $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
-        $this->middleware('throttle:6,1')->only('verify', 'resend');
+        $this->user = $user;
+        // $this->middleware('auth');
+        // $this->middleware('signed')->only('verify');
+        // $this->middleware('throttle:6,1')->only('verify', 'resend');
+
+
+    }
+
+    /**
+     * verify
+     *
+     * @param  mixed $user
+     * @return void
+     */
+    public function verify(User $user)
+    {
+        $this->user->update($user->id, ['email_verified_at' => now()]);
+        return redirect()->route('home')->with('success', 'Verifikasi akun berhasil');
     }
 }
