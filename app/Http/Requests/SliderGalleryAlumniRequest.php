@@ -15,7 +15,7 @@ class SliderGalleryAlumniRequest extends FormRequest
     {
         return [
             'photo' => 'array|required',
-            'photo.*' => 'required|image',
+            'photo.*' => 'image',
         ];
     }
 
@@ -29,7 +29,7 @@ class SliderGalleryAlumniRequest extends FormRequest
     {
         return [
             'photo.required' => 'Foto harus di isi!',
-            'photo.*.required' => 'Foto wajib di isi!',
+            'photo.*.image' => 'Foto harus berupa gambar!',
         ];
     }
 }
