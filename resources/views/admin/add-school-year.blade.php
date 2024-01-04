@@ -104,7 +104,12 @@
                 </div>
             </div>
         @empty
-            Data Kosong
+        <div class="d-flex justify-content-center">
+            <div>
+                <img src="{{ asset('showNoData.png') }}" alt="">
+                <h5 class="text-center">Data Tahun Ajaran Kosong!!</h5>
+            </div>
+        </div>
         @endforelse
     </div>
     <x-delete-modal-component />
