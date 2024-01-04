@@ -2,31 +2,33 @@
 
 namespace App\Providers;
 
-use App\Models\AlumniVideoGallery;
-use App\Models\Classroom;
-use App\Models\Company;
-use App\Models\GalleryAlumni;
-use App\Models\Major;
 use App\Models\News;
-use App\Models\SliderGalleryAlumni;
-use App\Models\Student;
-use App\Models\Survey;
-use App\Models\TeacherGallery;
-use App\Models\TeacherVideoGallery;
 use App\Models\User;
-use App\Observers\AlumniVideoGalleryObserver;
-use App\Observers\ClassroomObserver;
-use App\Observers\CompanyObserver;
-use App\Observers\GalleryAlumniObserver;
-use App\Observers\MajorObserver;
+use App\Models\Major;
+use App\Models\Survey;
+use App\Models\Company;
+use App\Models\Student;
+use App\Models\Classroom;
+use App\Models\JobVacancy;
+use App\Models\GalleryAlumni;
+use App\Models\TeacherGallery;
 use App\Observers\NewsObserver;
-use App\Observers\SliderGalleryAlumniObserver;
-use App\Observers\StudentObserver;
-use App\Observers\SurveyObserver;
-use App\Observers\TeacherGalleryObserver;
-use App\Observers\TeacherVideoGalleryObserver;
 use App\Observers\UserObserver;
+use App\Observers\MajorObserver;
+use App\Observers\SurveyObserver;
+use App\Models\AlumniVideoGallery;
+use App\Observers\CompanyObserver;
+use App\Observers\StudentObserver;
+use App\Models\SliderGalleryAlumni;
+use App\Models\TeacherVideoGallery;
+use App\Observers\ClassroomObserver;
+use App\Observers\JobVacancyObserver;
 use Illuminate\Auth\Events\Registered;
+use App\Observers\GalleryAlumniObserver;
+use App\Observers\TeacherGalleryObserver;
+use App\Observers\AlumniVideoGalleryObserver;
+use App\Observers\SliderGalleryAlumniObserver;
+use App\Observers\TeacherVideoGalleryObserver;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -60,6 +62,7 @@ class EventServiceProvider extends ServiceProvider
         AlumniVideoGallery::observe(AlumniVideoGalleryObserver::class);
         GalleryAlumni::observe(GalleryAlumniObserver::class);
         SliderGalleryAlumni::observe(SliderGalleryAlumniObserver::class);
+        JobVacancy::observe(JobVacancyObserver::class);
     }
 
     /**

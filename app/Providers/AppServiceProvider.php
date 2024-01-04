@@ -2,35 +2,37 @@
 
 namespace App\Providers;
 
-use App\Contracts\Interfaces\AlumniVideoGalleryInterface;
-use App\Contracts\Interfaces\Auth\RegisterInterface;
-use App\Contracts\Interfaces\ClassroomInterface;
-use App\Contracts\Interfaces\CompanyInterface;
-use App\Contracts\Interfaces\GalleryAlumniInterface;
-use App\Contracts\Interfaces\MajorInterface;
-use App\Contracts\Interfaces\NewsInterface;
 use Illuminate\Support\ServiceProvider;
-use App\Contracts\Interfaces\SchoolYearInterface;
-use App\Contracts\Interfaces\SliderGalleryAlumniInterface;
-use App\Contracts\Interfaces\StudentInterface;
+use App\Contracts\Interfaces\NewsInterface;
+use App\Contracts\Interfaces\UserInterface;
+use App\Contracts\Interfaces\MajorInterface;
 use App\Contracts\Interfaces\SurveyInterface;
+use App\Contracts\Interfaces\CompanyInterface;
+use App\Contracts\Interfaces\StudentInterface;
+use App\Contracts\Repositories\NewsRepository;
+use App\Contracts\Repositories\UserRepository;
+use App\Contracts\Repositories\MajorRepository;
+use App\Contracts\Interfaces\ClassroomInterface;
+use App\Contracts\Repositories\SurveyRepository;
+use App\Contracts\Interfaces\JobVacancyInterface;
+use App\Contracts\Interfaces\SchoolYearInterface;
+use App\Contracts\Repositories\CompanyRepository;
+use App\Contracts\Repositories\StudentRepository;
+use App\Contracts\Repositories\RegisterRepository;
+use App\Contracts\Repositories\ClassroomRepository;
+use App\Contracts\Interfaces\Auth\RegisterInterface;
+use App\Contracts\Interfaces\GalleryAlumniInterface;
+use App\Contracts\Repositories\JobVacancyRepository;
+use App\Contracts\Repositories\SchoolYearRepository;
 use App\Contracts\Interfaces\TeacherGalleryInterface;
+use App\Contracts\Repositories\GalleryAlumniRepository;
+use App\Contracts\Repositories\TeacherGalleryRepository;
+use App\Contracts\Interfaces\AlumniVideoGalleryInterface;
+use App\Contracts\Interfaces\SliderGalleryAlumniInterface;
 use App\Contracts\Interfaces\TeacherVideoGalleryInterface;
 use App\Contracts\Repositories\AlumniVideoGalleryRepository;
-use App\Contracts\Interfaces\UserInterface;
-use App\Contracts\Repositories\ClassroomRepository;
-use App\Contracts\Repositories\CompanyRepository;
-use App\Contracts\Repositories\GalleryAlumniRepository;
-use App\Contracts\Repositories\MajorRepository;
-use App\Contracts\Repositories\NewsRepository;
-use App\Contracts\Repositories\RegisterRepository;
-use App\Contracts\Repositories\SchoolYearRepository;
 use App\Contracts\Repositories\SliderGalleryAlumniRepository;
-use App\Contracts\Repositories\StudentRepository;
-use App\Contracts\Repositories\SurveyRepository;
-use App\Contracts\Repositories\TeacherGalleryRepository;
 use App\Contracts\Repositories\TeacherVideoGalleryRepository;
-use App\Contracts\Repositories\UserRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -49,6 +51,7 @@ class AppServiceProvider extends ServiceProvider
         UserInterface::class => UserRepository::class,
         GalleryAlumniInterface::class => GalleryAlumniRepository::class,
         SliderGalleryAlumniInterface::class => SliderGalleryAlumniRepository::class,
+        JobVacancyInterface::class => JobVacancyRepository::class,
     ];
 
     /**
