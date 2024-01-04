@@ -21,11 +21,7 @@ class GalleryAlumniService
     public function store(GalleryAlumniRequest $request): array
     {
         $data = $request->validated();
-        $photos = [];
-        foreach($data['photo'] as $photo) {
-            array_push($photos, $this->upload(UploadDiskEnum::GALLERYALUMNI->value, $photo->file('photo')));
-        }
-        $data['photos'] = $photos;
+        $data['photo'] = $this->upload(UploadDiskEnum::GALLERYALUMNI->value, $request->file('photo'));
         return $data;
     }
 
