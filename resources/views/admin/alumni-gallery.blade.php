@@ -34,7 +34,7 @@
                     @csrf
                     @method('POST')
                     <!-- Repeater Items -->
-                    <div class="items mt-2" data-group="test">
+                    <div class="items mt-2" >
                         <!-- Repeater Content -->
                         <div class="item-content">
                             <div class="mb-3 mt-3">
@@ -63,8 +63,8 @@
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar</h6>
     <div class="card">
         <div class="card-body" style="overflow: auto; white-space: nowrap; padding-left: 50px;">
-            @forelse ($sliderGalleryAlumnis as $sliderGalleryAlumni)    
             <div class="d-flex justify-content-header gap-4">
+            @forelse ($sliderGalleryAlumnis as $sliderGalleryAlumni)    
                 <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
                     <img src="{{ asset('2.png') }}" width="200px" alt="">
                     <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
@@ -77,8 +77,8 @@
                         </svg>
                     </button>
                 </div>
+                @empty
             </div>
-            @empty
             <div class="d-flex justify-content-center">
                 <div>
                     <img src="{{ asset('showNoData.png') }}" width="300px" alt="">
