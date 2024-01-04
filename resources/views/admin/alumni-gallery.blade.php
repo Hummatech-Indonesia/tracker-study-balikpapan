@@ -19,10 +19,8 @@
         <div class="card-body">
             <div id="repeater">
                 <!-- Repeater Heading -->
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Input</h5>
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h6 class="mb-0">File</h6>
                             <button class="btn btn-primary repeater-add-btn px-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 19 19"
                                     fill="none">
@@ -32,17 +30,14 @@
                                 Tambah
                             </button>
                         </div>
-                    </div>
-                </div>
             <form action="{{ route('slider.gallery.alumni') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <!-- Repeater Items -->
-                    <div class="items" data-group="test">
+                    <div class="items mt-2" data-group="test">
                         <!-- Repeater Content -->
                         <div class="item-content">
-                            <div class="mb-3">
-                                <label for="" class="form-label">File</label>
+                            <div class="mb-3 mt-3">
                                 <input type="file" name="photo[]" class="form-control">
                                 @error('photo')
                                     <p class="text-danger">
@@ -68,6 +63,7 @@
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar</h6>
     <div class="card">
         <div class="card-body" style="overflow: auto; white-space: nowrap; padding-left: 50px;">
+            @forelse ($sliderGalleryAlumnis as $sliderGalleryAlumni)    
             <div class="d-flex justify-content-header gap-4">
                 <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
                     <img src="{{ asset('2.png') }}" width="200px" alt="">
@@ -81,115 +77,12 @@
                         </svg>
                     </button>
                 </div>
-                <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
-                    <img src="{{ asset('2.png') }}" width="200px" alt="">
-                    <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
-                            fill="none">
-                            <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                            <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
-                    <img src="{{ asset('2.png') }}" width="200px" alt="">
-                    <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
-                            fill="none">
-                            <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                            <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
-                    <img src="{{ asset('2.png') }}" width="200px" alt="">
-                    <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
-                            fill="none">
-                            <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                            <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
-                    <img src="{{ asset('2.png') }}" width="200px" alt="">
-                    <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
-                            fill="none">
-                            <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                            <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
-                    <img src="{{ asset('2.png') }}" width="200px" alt="">
-                    <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
-                            fill="none">
-                            <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                            <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
-                    <img src="{{ asset('2.png') }}" width="200px" alt="">
-                    <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
-                            fill="none">
-                            <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                            <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
-                    <img src="{{ asset('2.png') }}" width="200px" alt="">
-                    <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
-                            fill="none">
-                            <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                            <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
-                    <img src="{{ asset('2.png') }}" width="200px" alt="">
-                    <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
-                            fill="none">
-                            <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                            <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
-                    <img src="{{ asset('2.png') }}" width="200px" alt="">
-                    <button style="position: absolute; border-radius: 50%;" class="btn btn-sm mt-2 btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
-                            fill="none">
-                            <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                            <path d="M4.67188 4.6709L13.1572 13.1562" stroke="white" stroke-width="2.5"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
             </div>
+            @empty
+                <p class="text-center">
+                    Data Kosong
+                </p>
+            @endforelse
         </div>
     </div>
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar Dengan Deskripsi</h6>
