@@ -34,7 +34,7 @@
                 <div class="col-12 col-xl-5 col-xxl-5 align-items-center justify-content-center"
                     style="background-color: #fff">
                     <div class="card rounded-0 m-5 shadow-none bg-transparent mb-0">
-                        <div class="card-body p-sm-5">
+                        <div class="card-body p-sm-4">
                             <div class="mb-3 text-center">
                                 <img src="assets/images/logo-icon.png" width="60" alt="">
                             </div>

@@ -34,7 +34,7 @@ Route::get('galery-alumni', function () {
 Route::get('landing-page-news', [LandingPageController::class, 'news'])->name('landing-page-news');
 Route::get('detail-news/{news}', [LandingPageController::class, 'detailNews'])->name('detail-news');
 
-Route::get('galery-teacher', [TeacherGalleryController::class, 'galery']);
+Route::get('gallery-teacher', [TeacherGalleryController::class, 'galery'])->name('gallery-teacher');
 
 Route::post('teacher-video-gallery', [TeacherVideoGalleryController::class, 'store'])->name('teacher-video-gallery.store');
 
