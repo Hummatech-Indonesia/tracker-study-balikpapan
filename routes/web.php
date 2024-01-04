@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MajorController;
-use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\GalleryAlumniController;
+use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TeacherGalleryController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\TeacherVideoGalleryController;
@@ -74,9 +75,7 @@ Route::patch('verify-account/{user}', [VerificationController::class, 'verify'])
 Route::get('dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
-Route::get('upload-alumni', function () {
-    return view('admin.upload-alumni');
-})->name('upload-alumni');
+Route::get('upload-alumni', [GalleryAlumniController::class, 'index'])->name('upload-alumni');
 Route::resource('survey', SurveyController::class);
 Route::get('job-vacancy', function () {
     return view('admin.job-vacancy.index');

@@ -33,19 +33,6 @@ class TeacherVideoGalleryController extends Controller
     }
 
     /**
-     * update
-     *
-     * @param  mixed $teacher_video_gallery
-     * @param  mixed $request
-     * @return void
-     */
-    public function update(TeacherVideoGallery $teacher_video_gallery, TeacherVideoGalleryUpdateRequest $request)
-    {
-        $this->teacherVideoGallery->update($teacher_video_gallery->id, $this->service->update($teacher_video_gallery, $request));
-        return redirect()->back()->with('success', trans('alert.update_success'));
-    }
-
-    /**
      * destroy
      *
      * @param  mixed $teacherVideoGallery

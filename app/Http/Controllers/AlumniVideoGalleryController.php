@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\AlumniVideoGalleryInterface;
 use App\Http\Requests\AlumniVideoGalleryRequest;
-use App\Http\Requests\AlumniVideoGalleryUpdateRequest;
 use App\Models\AlumniVideoGallery;
 use App\Services\AlumniVideoGalleryService;
 use Illuminate\Http\RedirectResponse;
@@ -24,12 +23,6 @@ class AlumniVideoGalleryController extends Controller
     {
         $this->alumniVideoGallery->store($this->service->store($request));
         return redirect()->back()->with('success', trans('alert.add_success'));
-    }
-
-    public function update(AlumniVideoGallery $alumni_video_gallery, AlumniVideoGalleryUpdateRequest $request)
-    {
-        $this->alumniVideoGallery->update($alumni_video_gallery->id, $this->service->update($alumni_video_gallery, $request));
-        return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
     /**

@@ -10,7 +10,7 @@ class AlumniVideoGallery extends Model
     use HasFactory;
 
     protected $table = 'alumni_video_galleries';
-    protected $fillable = ['id', 'video'];
+    protected $fillable = ['id', 'video', 'is_video'];
     protected $guarded = [];
     protected $primaryKey = 'id';
     public $incrementing = false;

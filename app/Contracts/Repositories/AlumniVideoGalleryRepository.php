@@ -33,32 +33,7 @@ class AlumniVideoGalleryRepository extends BaseRepository implements AlumniVideo
     public function store(array $data): mixed
     {
         return $this->model->query()
-            ->create($data);
-    }
-
-    /**
-     * getFirst
-     *
-     * @return mixed
-     */
-    public function getFirst(): mixed
-    {
-        return $this->model->query()
-            ->first();
-    }
-
-    /**
-     * update
-     *
-     * @param  mixed $id
-     * @param  mixed $data
-     * @return mixed
-     */
-    public function update(mixed $id, array $data): mixed
-    {
-        return $this->model->query()
-            ->findOrFail($id)
-            ->update($data);
+            ->updateOrCreate(['is_video' => 1], $data);
     }
 
     /**

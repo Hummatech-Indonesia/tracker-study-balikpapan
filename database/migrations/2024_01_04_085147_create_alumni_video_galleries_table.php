@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('alumni_video_galleries', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('video');
+            $table->boolean('is_video')->default(0);
             $table->timestamps();
         });
     }

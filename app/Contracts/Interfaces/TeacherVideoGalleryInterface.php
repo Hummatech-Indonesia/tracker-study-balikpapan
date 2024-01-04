@@ -7,12 +7,6 @@ use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface TeacherVideoGalleryInterface extends ShowInterface, StoreInterface, UpdateInterface, DeleteInterface
+interface TeacherVideoGalleryInterface extends ShowInterface, StoreInterface, DeleteInterface
 {
-    /**
-     * getFirst
-     *
-     * @return mixed
-     */
-    public function getFirst(): mixed;
 }
