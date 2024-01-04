@@ -44,7 +44,7 @@
                                 <p class="mb-0 text-dark fs-6">Masukkan Email dan Kata Sandi!!</p>
                             </div>
                             <div class="form-body">
-                                <form action="{{ route('login') }}" method="POST" class="row g-3">
+                                <form action="{{ route('login') }}" method="post" class="row g-3">
                                     @csrf
                                     <div class="col-12">
                                         <label for="inputEmailAddress" class="form-label">Email</label>

@@ -30,7 +30,7 @@
                                     <a class="dropdown-item" href="{{ route('gallery-teacher') }}">Galery Guru</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="">Galery Alumni</a>
+                                    <a class="dropdown-item" href="/galery-alumni">Galery Alumni</a>
                                 </li>
                             </ul>
                         </li>

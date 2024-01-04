@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\LoginRequest as RequestsLoginRequest;
 use App\Providers\RouteServiceProvider;
 use App\Services\Auth\LoginService;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -20,9 +24,11 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-     */
+    */
 
     use AuthenticatesUsers;
+
+    private LoginService $loginService;
 
     public function __construct(LoginService $loginService)
     {
@@ -35,10 +41,11 @@ class LoginController extends Controller
      * This function is responsible for handling user login requests.
      *
      * @param \App\Http\Requests\Auth\LoginRequest $request The incoming login request.
+     * @return \Illuminate\Http\JsonResponse Returns a JSON response.
      */
-    public function login(LoginRequest $request)
+    public function login(RequestsLoginRequest $request)
     {
-        $this->loginService->handleLogin($request);
+        return $this->loginService->handleLogin($request);
     }
 
     /**
@@ -50,10 +57,10 @@ class LoginController extends Controller
      * @return \Illuminate\Http\JsonResponse Returns a JSON response.
      */
 
-    public function logout()
+    public function logout(Request $request)
     {
-        auth()->logout();
-        return to_route('index');
+            auth()->logout();
+            return to_route('index');
     }
 
     /**
@@ -62,5 +69,4 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
 }
