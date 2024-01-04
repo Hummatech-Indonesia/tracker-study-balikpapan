@@ -1,10 +1,10 @@
 @extends('layouts.auth.app')
 @section('style')
-<style>
-    .btn:hover {
-    color: var(--bs-btn-hover-color);
-}
-</style>
+    <style>
+        .btn:hover {
+            color: var(--bs-btn-hover-color);
+        }
+    </style>
 @endsection
 @section('content')
     <div class="section-authentication-cover">
@@ -26,11 +26,13 @@
                                     TRACER STUDY SMKN 2 PENAJAM
                                 </h5>
                             </div>
-                            <img src="{{ asset('High School-cuate.png') }}" width="550" alt="" style="object-fit: cover" />
+                            <img src="{{ asset('High School-cuate.png') }}" width="550" alt=""
+                                style="object-fit: cover" />
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-xl-5 col-xxl-5 align-items-center justify-content-center" style="background-color: #fff">
+                <div class="col-12 col-xl-5 col-xxl-5 align-items-center justify-content-center"
+                    style="background-color: #fff">
                     <div class="card rounded-0 m-5 shadow-none bg-transparent mb-0">
                         <div class="card-body p-sm-5">
                             <div class="mb-3 text-center">
@@ -46,13 +48,14 @@
                                     @csrf
                                     <div class="col-12">
                                         <label for="inputEmailAddress" class="form-label">Email</label>
-                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" id="inputEmailAddress"
+                                        <input type="email" name="email" value="{{ old('email') }}"
+                                            class="form-control @error('email') is-invalid @enderror" id="inputEmailAddress"
                                             placeholder="Masukkan Email">
-                                            @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="col-12">
                                         <label for="inputChoosePassword" class="form-label">Password</label>
@@ -61,11 +64,11 @@
                                                 id="inputChoosePassword" placeholder="Masukkan Password">
                                             <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                     class="bx bx-hide"></i></a>
-                                                    @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -74,7 +77,8 @@
                                             <label class="form-check-label" for="flexSwitchCheckChecked">Ingat Saya</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 text-end"> <a href="authentication-forgot-password.html">Lupa Password ?</a>
+                                    <div class="col-md-6 text-end"> <a href="authentication-forgot-password.html">Lupa
+                                            Password ?</a>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-grid">
@@ -83,12 +87,25 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="text-center ">
-                                            <p class="mb-0">Belum Mempunyai Akun? <a
-                                                    href="/register">Daftar</a>
+                                            <p class="mb-0">Belum Mempunyai Akun? <span class="fw-semibold">Daftar di
+                                                    bawah</span>
                                             </p>
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <a href="{{ route('register.company') }}">
+                                    <img width="60%" class="rounded-3" src="{{ asset('perusahaan.png') }}" alt=""
+                                        srcset="">
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="{{ route('register') }}">
+                                    <img width="60%" src="{{ asset('siswa.png') }}" alt="" class="rounded-3">
+                                </a>
                             </div>
                         </div>
                     </div>

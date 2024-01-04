@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TeacherGalleryController;
+use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\TeacherVideoGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,8 @@ Route::get('landing-page-news', [LandingPageController::class, 'news'])->name('l
 Route::get('detail-news/{news}', [LandingPageController::class, 'detailNews'])->name('detail-news');
 
 Route::get('galery-teacher', [TeacherGalleryController::class, 'galery']);
+
+Route::post('teacher-video-gallery', [TeacherVideoGalleryController::class, 'store'])->name('teacher-video-gallery.store');
 
 Route::resources([
     'school-years' => SchoolYearController::class,
