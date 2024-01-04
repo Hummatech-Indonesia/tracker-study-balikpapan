@@ -44,7 +44,7 @@ class TeacherVideoGalleryRepository extends BaseRepository implements TeacherVid
     public function store(array $data): mixed
     {
         return $this->model->query()
-            ->updateOrCreate(['is_video'], $data);
+            ->updateOrCreate(['is_video' => 1], $data);
     }
 
     /**
