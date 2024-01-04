@@ -25,8 +25,11 @@ class LoginService
             else if (auth()->user()->roles->pluck('name')[0] == 'company') {
                 return view('company.index')->with('success', 'Berhasil Login.');
             }
+            else if (auth()->user()->roles->pluck('name')[0] == 'student') {
+                return view('company.index')->with('success', 'Berhasil Login.');
+            }
         } else{
-            dd('cek');
+            // dd('gagal');
             return view('auth.login')->with('error', 'Email atau password salah.');
         }
     }

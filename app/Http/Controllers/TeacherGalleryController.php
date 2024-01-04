@@ -2,25 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\TeacherGalleryInterface;
-use App\Http\Requests\TeacherGalleryRequest;
-use App\Http\Requests\TeacherGalleryUpdateRequest;
 use App\Models\Teacher;
+use Illuminate\Http\Request;
 use App\Models\TeacherGallery;
-use App\Services\TeacherGalleryService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Services\TeacherGalleryService;
 use Illuminate\Support\Facades\Redirect;
+use App\Contracts\Interfaces\NewsInterface;
+use App\Http\Requests\TeacherGalleryRequest;
+use App\Http\Requests\TeacherGalleryUpdateRequest;
+use App\Contracts\Interfaces\TeacherGalleryInterface;
 
 class TeacherGalleryController extends Controller
 {
     private TeacherGalleryInterface $teacherGallery;
     private TeacherGalleryService $service;
-    public function __construct(TeacherGalleryInterface $teacherGalleryInterface, TeacherGalleryService $teacherGalleryService)
+    private NewsInterface $news;
+
+    public function __construct(TeacherGalleryInterface $teacherGalleryInterface, TeacherGalleryService $teacherGalleryService, NewsInterface $news)
     {
         $this->service = $teacherGalleryService;
         $this->teacherGallery = $teacherGalleryInterface;
+        $this->news = $news;
     }
 
     /**
@@ -37,7 +41,8 @@ class TeacherGalleryController extends Controller
     public function galery(): View
     {
         $teachers = $this->teacherGallery->get();
-        return view('galery-teacher', compact('teachers'));
+        $news = $this->news->getByLatest();
+        return view('galery-teacher', compact('teachers','news'));
     }
 
     /**
