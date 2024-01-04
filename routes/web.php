@@ -13,7 +13,9 @@ use App\Http\Controllers\GalleryAlumniController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TeacherGalleryController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\SliderGalleryAlumniController;
 use App\Http\Controllers\TeacherVideoGalleryController;
+use App\Models\SliderGalleryAlumni;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +78,10 @@ Route::get('dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
 Route::get('alumni-gallery', [GalleryAlumniController::class, 'index'])->name('alumni.gallery');
+Route::post('alumni-gallery', [GalleryAlumniController::class, 'store'])->name('alumni.store');
+Route::post('slider-gallery-alumni', [SliderGalleryAlumniController::class, 'store'])->name('slider.gallery.alumni');
+Route::delete('alumni-gallery-delete/{gallery_alumni}', [GalleryAlumniController::class, 'destroy'])->name('alumni.delete');
+Route::put('alumni-gallery-update/{gallery_alumni}', [GalleryAlumniController::class, 'update'])->name('alumni.update');
 Route::resource('survey', SurveyController::class);
 Route::get('job-vacancy', function () {
     return view('admin.job-vacancy.index');

@@ -19,7 +19,7 @@ class SliderGalleryAlumniController extends Controller
     public function __construct(SliderGalleryAlumniInterface $sliderGalleryAlumniInterface, SliderGalleryAlumniService $sliderGalleryAlumniService)
     {
         $this->sliderGalleryAlumni = $sliderGalleryAlumniInterface;
-        $this->service = $$sliderGalleryAlumniService;
+        $this->service = $sliderGalleryAlumniService;
     }
 
     public function index(): View

@@ -195,14 +195,40 @@
             <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
         </div>
         <div class="">
-            <button class="btn btn-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 19 19"
-                    fill="none">
+            <button type="buttonk" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 19 19" fill="none">
                     <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                     <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
                 </svg>
                 Tambah Gambar
             </button>
+            
+            {{-- modal create gambar deskripsi  --}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Gambar</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('school-years.store') }}" method="post">
+                                @csrf
+                                @method('POST')
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Judul</label>
+                                    <input type="text" id="name" placeholder="Masukkan Tahun Ajaran" name="name"
+                                        class="form-control">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="card">
