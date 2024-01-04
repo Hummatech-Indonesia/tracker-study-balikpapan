@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\UploadAlumniEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('upload_alumnis', function (Blueprint $table) {
+        Schema::create('alumni_video_galleries', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->enum('categories' ,[UploadAlumniEnum::VIDEO->value ,UploadAlumniEnum::IMAGE->value]);
-            $table->string('judul');
-            $table->string('file');
+            $table->string('video');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('upload_alumnis');
+        Schema::dropIfExists('alumni_video_galleries');
     }
 };
