@@ -34,39 +34,35 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ route('slider.gallery.alumni') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('slider.gallery.alumni') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <!-- Repeater Items -->
                     <div class="items" data-group="test">
-                        <div class="card">
-                            <div class="card-body">
-                                <!-- Repeater Content -->
-                                <div class="item-content">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">File</label>
-                                        <input type="file" name="photo" class="form-control">
-                                            @error('photo')
-                                                <p class="text-danger">
-                                                    {{ $message }}
-                                                </p>
-                                            @enderror
-                                    </div>
-                                </div>
-                                <!-- Repeater Remove Btn -->
-                                <div class="repeater-remove-btn">
-                                    <button class="btn btn-danger remove-btn px-4">
-                                        Hapus
-                                    </button>
-                                </div>
+                        <!-- Repeater Content -->
+                        <div class="item-content">
+                            <div class="mb-3">
+                                <label for="" class="form-label">File</label>
+                                <input type="file" name="photo[]" class="form-control">
+                                @error('photo')
+                                    <p class="text-danger">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
                             </div>
+                        </div>
+                        <!-- Repeater Remove Btn -->
+                        <div class="repeater-remove-btn">
+                            <button type="button" class="btn btn-danger remove-btn px-4">
+                                Hapus
+                            </button>
                         </div>
                     </div>
                     </div>
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
-                </form>
+            </form>
         </div>
     </div>
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar</h6>
