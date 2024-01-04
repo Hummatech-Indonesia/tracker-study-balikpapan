@@ -41,7 +41,7 @@
                             <!-- Repeater Content -->
                             <div class="item-content">
                                 <div class="mb-3">
-                                    <label for="inputName1" class="form-label">Name</label>
+                                    <label for="inputName1" class="form-label">File</label>
                                     <input type="file" class="form-control" id="inputName1" placeholder="Name"
                                         data-name="name">
                                 </div>
@@ -55,6 +55,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
         </div>
     </div>
