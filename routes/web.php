@@ -69,6 +69,9 @@ Route::post('upload-alumni', [UploadAlumniController::class ,'store']);
 Route::get('dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
+Route::get('upload-alumni', function () {
+    return view('admin.upload-alumni');
+})->name('upload-alumni');
 Route::resource('survey',SurveyController::class);
 Route::get('job-vacancy', function () {
     return view('admin.job-vacancy.index');
