@@ -79,9 +79,12 @@
                 </div>
             </div>
             @empty
-                <p class="text-center">
-                    Data Kosong
-                </p>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <img src="{{ asset('showNoData.png') }}" width="300px" alt="">
+                    <h5 class="text-center">Data Masih Kosong!!</h5>
+                </div>
+            </div>
             @endforelse
         </div>
     </div>
@@ -303,7 +306,12 @@
                         @empty
                             <tr colspan="9">
                                 <td colspan="9">
-                                    Data Masih kosong
+                                    <div class="d-flex justify-content-center">
+                                        <div>
+                                            <img src="{{ asset('showNoData.png') }}" width="300px" alt="">
+                                            <h5 class="text-center">Data Masih Kosong!!</h5>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforelse
