@@ -14,8 +14,7 @@ class SliderGalleryAlumniRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => 'array|required',
-            'photo.*' => 'image',
+            'photo.*' => 'image|mimes:jpeg,jpg,png'
         ];
     }
 

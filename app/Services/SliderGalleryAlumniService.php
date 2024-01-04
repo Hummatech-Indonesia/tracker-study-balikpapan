@@ -25,6 +25,7 @@ class SliderGalleryAlumniService
         foreach ($request->file('photo') as $photo) {
             array_push($photos, $this->upload(UploadDiskEnum::SLIDERGALLERYALUMNI->value, $photo));
         }
+        $data['photos'] = $photos;
         return $data;
     }
 
