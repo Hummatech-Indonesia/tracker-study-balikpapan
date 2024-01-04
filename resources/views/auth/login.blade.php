@@ -96,15 +96,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col d-flex justify-content-end">
                                 <a href="{{ route('register.company') }}">
-                                    <img width="60%" class="rounded-3" src="{{ asset('perusahaan.png') }}" alt=""
+                                    <img width="100%" class="rounded-3" src="{{ asset('perusahaan.png') }}" alt=""
                                         srcset="">
+                                        <h6 class="text-center mb-5 mt-2">Perusahaan</h6>
                                 </a>
                             </div>
-                            <div class="col">
+                            <div class="col d-flex justify-content-start">
                                 <a href="{{ route('register') }}">
-                                    <img width="60%" src="{{ asset('siswa.png') }}" alt="" class="rounded-3">
+                                    <img width="100%" src="{{ asset('siswa.png') }}" alt="" class="rounded-3">
+                                    <h6 class="text-center mb-5 mt-2">Siswa</h6>
                                 </a>
                             </div>
                         </div>
