@@ -14,10 +14,24 @@ class GalleryAlumniUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => 'required|array',
-            'photo.*' => 'required|image',
-            'title' => 'required|array',
-            'title.*' => 'required|max:255',
+            'photo' => 'nullable|image',
+            'title' => 'required|max:255',
+        ];
+    }
+
+     /**
+     * Custom Validation Messages
+     *
+     * @return array<string, mixed>
+     */
+
+    public function messages(): array
+    {
+        return [
+            'photo.image' => 'Foto harus berupa gambar!',
+            'photo.requiimred' => 'Foto wajib di isi!',
+            'title.required' => 'Judul wajib di isi!',
+            'title.max' => 'Judul maksimal :max karakter!',
         ];
     }
 

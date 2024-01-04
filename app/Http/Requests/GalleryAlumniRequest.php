@@ -14,10 +14,8 @@ class GalleryAlumniRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => 'required|array',
-            'photo.*' => 'required|image',
-            'title' => 'required|array',
-            'title.*' => 'required|max:255',
+            'photo' => 'required|image',
+            'title' => 'required|max:255',
         ];
     }
 
@@ -30,9 +28,10 @@ class GalleryAlumniRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'email.required' => 'Email Wajib Diisi!',
-            'email.email' => 'Email Tidak Valid!',
-            'password.required' => 'Password Wajib Diisi!'
+            'photo.image' => 'Foto harus berupa gambar!',
+            'photo.requiimred' => 'Foto wajib di isi!',
+            'title.required' => 'Judul wajib di isi!',
+            'title.max' => 'Judul maksimal :max karakter!',
         ];
     }
 }

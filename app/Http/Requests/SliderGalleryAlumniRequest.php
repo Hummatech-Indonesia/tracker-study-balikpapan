@@ -7,14 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 class SliderGalleryAlumniRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -22,7 +14,22 @@ class SliderGalleryAlumniRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'photo' => 'array|required',
+            'photo.*' => 'required|image',
+        ];
+    }
+
+     /**
+     * Custom Validation Messages
+     *
+     * @return array<string, mixed>
+     */
+
+    public function messages(): array
+    {
+        return [
+            'photo.required' => 'Foto harus di isi!',
+            'photo.*.required' => 'Foto wajib di isi!',
         ];
     }
 }
