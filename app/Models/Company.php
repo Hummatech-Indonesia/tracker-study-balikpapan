@@ -22,6 +22,8 @@ class Company extends Model implements HasUser
      */
     protected $fillable = [
         'user_id',
+        'company_field',
+        'website',
         'description',
     ];
 

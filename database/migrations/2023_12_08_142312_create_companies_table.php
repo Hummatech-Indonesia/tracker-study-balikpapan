@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('company_field')->nullable();
+            $table->string('website')->nullable();
             $table->text('description');
             $table->timestamps();
         });
