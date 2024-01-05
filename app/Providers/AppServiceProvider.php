@@ -25,9 +25,11 @@ use App\Contracts\Interfaces\GalleryAlumniInterface;
 use App\Contracts\Repositories\JobVacancyRepository;
 use App\Contracts\Repositories\SchoolYearRepository;
 use App\Contracts\Interfaces\TeacherGalleryInterface;
+use App\Contracts\Interfaces\ApplyJobVacancyInterface;
 use App\Contracts\Repositories\GalleryAlumniRepository;
 use App\Contracts\Repositories\TeacherGalleryRepository;
 use App\Contracts\Interfaces\AlumniVideoGalleryInterface;
+use App\Contracts\Repositories\ApplyJobVacancyRepository;
 use App\Contracts\Interfaces\SliderGalleryAlumniInterface;
 use App\Contracts\Interfaces\TeacherVideoGalleryInterface;
 use App\Contracts\Repositories\AlumniVideoGalleryRepository;
@@ -52,6 +54,7 @@ class AppServiceProvider extends ServiceProvider
         GalleryAlumniInterface::class => GalleryAlumniRepository::class,
         SliderGalleryAlumniInterface::class => SliderGalleryAlumniRepository::class,
         JobVacancyInterface::class => JobVacancyRepository::class,
+        ApplyJobVacancyInterface::class => ApplyJobVacancyRepository::class,
     ];
 
     /**

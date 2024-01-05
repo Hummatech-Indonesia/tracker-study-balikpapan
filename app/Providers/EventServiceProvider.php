@@ -12,6 +12,7 @@ use App\Models\Classroom;
 use App\Models\JobVacancy;
 use App\Models\GalleryAlumni;
 use App\Models\TeacherGallery;
+use App\Models\ApplyJobVacancy;
 use App\Observers\NewsObserver;
 use App\Observers\UserObserver;
 use App\Observers\MajorObserver;
@@ -26,6 +27,7 @@ use App\Observers\JobVacancyObserver;
 use Illuminate\Auth\Events\Registered;
 use App\Observers\GalleryAlumniObserver;
 use App\Observers\TeacherGalleryObserver;
+use App\Observers\ApplyJobVacancyObserver;
 use App\Observers\AlumniVideoGalleryObserver;
 use App\Observers\SliderGalleryAlumniObserver;
 use App\Observers\TeacherVideoGalleryObserver;
@@ -63,6 +65,7 @@ class EventServiceProvider extends ServiceProvider
         GalleryAlumni::observe(GalleryAlumniObserver::class);
         SliderGalleryAlumni::observe(SliderGalleryAlumniObserver::class);
         JobVacancy::observe(JobVacancyObserver::class);
+        ApplyJobVacancy::observe(ApplyJobVacancyObserver::class);
     }
 
     /**

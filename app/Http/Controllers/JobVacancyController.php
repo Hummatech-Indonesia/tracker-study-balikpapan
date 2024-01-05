@@ -42,7 +42,7 @@ class JobVacancyController extends Controller
     public function store(JobVacancyRequest $request)
     {
         $this->jobVacancy->store($this->jobVacancyService->store($request));
-        return redirect()->back();
+        return redirect()->back()->with('success', trans('alert.add_success'));
     }
 
     /**
@@ -64,9 +64,10 @@ class JobVacancyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobVacancy $job_vacancy)
+    public function update(JobVacancyRequest $request, JobVacancy $job_vacancy)
     {
-        //
+        $this->jobVacancy->update($job_vacancy->id, $request->validated());
+        return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
     /**
