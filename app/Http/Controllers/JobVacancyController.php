@@ -28,9 +28,10 @@ class JobVacancyController extends Controller
         return view('company.vacancy', ['jobVacancys' => $jobVacancys]);
     }
 
-    public function jovvacancy ()
+    public function jobvacancy ()
     {
-        
+        $jobVacancys = $this->jobVacancy->get();
+        return view('alumni.vacancies-available' , ['jobVacancys' => $jobVacancys]);
     }
 
     /**
