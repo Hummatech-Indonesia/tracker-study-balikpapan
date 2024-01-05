@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Enums\ApplicantStatusEnum;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -13,6 +14,11 @@ return new class extends Migration
     {
         Schema::create('apply_job_vacancies', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('job_vacancy_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('student_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->text('cv')->nullable();
+            $table->enum('status', [ApplicantStatusEnum::PENDING->value, ApplicantStatusEnum::ACCEPTED->value, ApplicantStatusEnum::REJECTED->value]);
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }

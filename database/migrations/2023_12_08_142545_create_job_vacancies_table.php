@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('job_vacancies', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('company_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('job_title');
             $table->string('basic_salary');
             $table->enum('work_system', [WorkSystemEnum::CONTRACT->value, WorkSystemEnum::PERMANENTWORK->value, WorkSystemEnum::WORKINGPARTTIME->value, WorkSystemEnum::FREELANCE->value]);

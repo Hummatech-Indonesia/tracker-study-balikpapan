@@ -15,7 +15,7 @@ class JobVacancyService
     public function store(JobVacancyRequest $request): array
     {
         $data = $request->validated();
-        $data['user_id'] = auth()->user()->id;
+        $data['company_id'] = auth()->user()->company->id;
         return $data;
     }
 }

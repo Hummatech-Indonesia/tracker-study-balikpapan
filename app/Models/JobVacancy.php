@@ -19,7 +19,7 @@ class JobVacancy extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
+        'company_id',
         'job_title',
         'basic_salary',
         'work_system',

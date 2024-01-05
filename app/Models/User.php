@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Company;
 use App\Models\Student;
 use Laravel\Sanctum\HasApiTokens;
 use App\Base\Interfaces\HasStudent;
@@ -64,5 +65,15 @@ class User extends Authenticatable implements HasStudent
     public function student(): HasOne
     {
         return $this->hasOne(Student::class, 'user_id');
+    }
+
+    /**
+     * company
+     *
+     * @return HasOne
+     */
+    public function company(): HasOne
+    {
+        return $this->hasOne(Company::class);
     }
 }
