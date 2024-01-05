@@ -42,9 +42,52 @@
     <div class="col">
         <div class="card">
             <div class="card-body">
-                <p >
-                    Lowongan Pada Bagian
-                </p>
+                <div class="row">
+                    <div class="col">
+                        <p class="fs-6 mb-2" style="font-weight: 600">
+                            Lowongan Pada Bagian
+                        </p>
+                        <h5 class="text-primary" style="font-weight:500">
+                            Ketua PT KAI Indonesia
+                        </h5>
+                        <p class="fs-6 mb-2 mt-5" style="font-weight: 600">
+                            Lowongan Pada Bagian
+                        </p>
+                        <p class="text-primary">
+                            - Kontrak
+                        </p>
+                        <p class="fs-6 mb-2 mt-5" style="font-weight: 600">
+                            Gaji Pokok
+                        </p>
+                        <div class="bg-light-primary col-5 py-1 rounded">
+                            <h5 class="text-primary mb-0 text-center" style="font-weight:500">
+                                Rp. 300.000.000
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="fs-6 mb-2" style="font-weight: 600">
+                            Deskripsi Sistem Kerja
+                        </p>
+                        <p>
+                            Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Ipsum Dolor Sit Amet Lorem Ipsum Lorem Ipsum Dolor Sit Amet Ipsum Dolor Sit Amet Lorem
+                        </p>
+                        <p class="fs-6 mb-2 mt-5" style="font-weight: 600">
+                            Kualifikasi / Syarat Syarat
+                        </p>
+                        <ul>
+                            <li>
+                                Membawa KTP Asli
+                            </li>
+                            <li>
+                                Membawa KTP Asli
+                            </li>
+                            <li>
+                                Membawa KTP Asli
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
