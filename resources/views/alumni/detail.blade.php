@@ -31,7 +31,7 @@
                 <p class="text-center">
                     www.ptkai.id
                 </p>
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center mb-5">
                     <button type="button" class="btn btn-primary">
                         Kirim CV
                     </button>
@@ -42,7 +42,7 @@
     <div class="col">
         <div class="card">
             <div class="card-body">
-                <div class="row">
+                <div class="row mb-5 mt-3">
                     <div class="col">
                         <p class="fs-6 mb-2" style="font-weight: 600">
                             Lowongan Pada Bagian

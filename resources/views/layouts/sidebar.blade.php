@@ -353,7 +353,7 @@
             <ul>
                 <li> <a href="{{ route('alumni.vacancies.available') }}"><i class='bx bx-radio-circle'></i>Lowongan Tersedia</a>
                 </li>
-                <li> <a href="#"><i class='bx bx-radio-circle'></i>Lowongan Yang di Lamar</a>
+                <li> <a href="{{ route('alumni.job.vacancy.page') }}"><i class='bx bx-radio-circle'></i>Lowongan Yang di Lamar</a>
                 </li>
         </li>
         @endif

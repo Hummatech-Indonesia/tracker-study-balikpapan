@@ -28,6 +28,11 @@ class JobVacancyController extends Controller
         return view('company.vacancy', ['jobVacancys' => $jobVacancys]);
     }
 
+    public function jovvacancy ()
+    {
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      */

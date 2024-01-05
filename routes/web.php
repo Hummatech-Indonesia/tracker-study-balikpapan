@@ -136,4 +136,7 @@ Route::prefix('alumni')->name('alumni.')->group(function () {
     Route::get('detail-lowongan-tersedia', function () {
         return view('alumni.detail');
     })->name('detail.lowongan.tersedia');
+    Route::get('lowongan', function () {
+        return view('alumni.job-vacancy-page');
+    })->name('job.vacancy.page');
 });
