@@ -130,4 +130,10 @@ Route::prefix('alumni')->name('alumni.')->group(function () {
     Route::get('survei-pekerjaan', function () {
         return view('alumni.job-survey');
     })->name('job.survey');
+    Route::get('lowongan-tersedia', function () {
+        return view('alumni.vacancies-available');
+    })->name('vacancies.available');
+    Route::get('detail-lowongan-tersedia', function () {
+        return view('alumni.detail');
+    })->name('detail.lowongan.tersedia');
 });

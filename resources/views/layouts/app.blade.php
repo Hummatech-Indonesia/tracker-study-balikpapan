@@ -35,6 +35,9 @@
         .user-circle {
             border-radius: 50%;
         }
+        .border-custom {
+                border: 7px solid #5D87FF !important;
+            }
     </style>
 </head>
 
