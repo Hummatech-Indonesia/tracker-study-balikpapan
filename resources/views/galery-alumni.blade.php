@@ -77,126 +77,67 @@
                 <div class="col-12">
                     <!-- App Screenshot Slider Area -->
                     <div class="app-screenshots">
-                        <!-- Single Screenshot Item -->
-                        <div class="single-screenshot">
-                            <img src="{{ asset('1.png') }}" alt="">
-                        </div>
-                        <!-- Single Screenshot Item -->
-                        <div class="single-screenshot">
-                            <img src="{{ asset('1.png') }}" alt="">
-                        </div>
-                        <!-- Single Screenshot Item -->
-                        <div class="single-screenshot">
-                            <img src="{{ asset('2.png') }}" alt="">
-                        </div>
-                        <!-- Single Screenshot Item -->
-                        <div class="single-screenshot">
-                            <img src="{{ asset('3.png') }}" alt="">
-                        </div>
-                        <!-- Single Screenshot Item -->
-                        <div class="single-screenshot">
-                            <img src="{{ asset('3.png') }}" alt="">
-                        </div>
+                        @forelse ($slidergaleryalumnis->chunk(2) as $chunk)
+                            <div class="single-screenshot">
+                                @foreach ($chunk as $slidergaleryalumni)
+                                    <div class="reviewer-thumb mt-3">
+                                        <div class="border-custom"
+                                            style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden;">
+                                            <img style="object-fit: cover; width: 100%; height: 100%;"
+                                                src="{{ asset('storage/' . $slidergaleryalumni->photo) }}" alt="">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @empty
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <img src="{{ asset('showNoData.png') }}" alt="">
+                                    <h3 class="text-center">Data Masih Kosong</h3>
+                                </div>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="blog" class="section blog-area ">
+    <section id="screenshots" class="section screenshots-area blog-area">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-4">
-                    <!-- Single Blog -->
-                    <div class="single-blog res-margin">
-                        <!-- Blog Thumb -->
-                        <div class="blog-thumb">
-                            <a href="#"><img src="{{ asset('1.png') }}" alt=""></a>
-                        </div>
-                        <!-- Blog Content -->
-                        <div class="blog-content p-4">
-                            <!-- Blog Title -->
-                            <h3 class="blog-title my-3"><a href="#">Alumni Angkatan  2021 - 2023 Berkumpul Di Sekolah</a></h3>
-                            <a href="#" class="blog-btn mt-3">12 Februai 2038</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <!-- Single Blog -->
-                    <div class="single-blog res-margin">
-                        <!-- Blog Thumb -->
-                        <div class="blog-thumb">
-                            <a href="#"><img src="{{ asset('1.png') }}" alt=""></a>
-                        </div>
-                        <!-- Blog Content -->
-                        <div class="blog-content p-4">
-                            <!-- Blog Title -->
-                            <h3 class="blog-title my-3"><a href="#">Alumni Angkatan  2021 - 2023 Berkumpul Di Sekolah</a></h3>
-                            <a href="#" class="blog-btn mt-3">12 Februai 2038</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <!-- Single Blog -->
-                    <div class="single-blog res-margin">
-                        <!-- Blog Thumb -->
-                        <div class="blog-thumb">
-                            <a href="#"><img src="{{ asset('1.png') }}" alt=""></a>
-                        </div>
-                        <!-- Blog Content -->
-                        <div class="blog-content p-4">
-                            <!-- Blog Title -->
-                            <h3 class="blog-title my-3"><a href="#">Alumni Angkatan  2021 - 2023 Berkumpul Di Sekolah</a></h3>
-                            <a href="#" class="blog-btn mt-3">12 Februai 2038</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mt-5">
-                    <!-- Single Blog -->
-                    <div class="single-blog res-margin">
-                        <!-- Blog Thumb -->
-                        <div class="blog-thumb">
-                            <a href="#"><img src="{{ asset('1.png') }}" alt=""></a>
-                        </div>
-                        <!-- Blog Content -->
-                        <div class="blog-content p-4">
-                            <!-- Blog Title -->
-                            <h3 class="blog-title my-3"><a href="#">Alumni Angkatan  2021 - 2023 Berkumpul Di Sekolah</a></h3>
-                            <a href="#" class="blog-btn mt-3">12 Februai 2038</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mt-5">
-                    <!-- Single Blog -->
-                    <div class="single-blog res-margin">
-                        <!-- Blog Thumb -->
-                        <div class="blog-thumb">
-                            <a href="#"><img src="{{ asset('1.png') }}" alt=""></a>
-                        </div>
-                        <!-- Blog Content -->
-                        <div class="blog-content p-4">
-                            <!-- Blog Title -->
-                            <h3 class="blog-title my-3"><a href="#">Alumni Angkatan  2021 - 2023 Berkumpul Di Sekolah</a></h3>
-                            <a href="#" class="blog-btn mt-3">12 Februai 2038</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mt-5">
-                    <!-- Single Blog -->
-                    <div class="single-blog res-margin">
-                        <!-- Blog Thumb -->
-                        <div class="blog-thumb">
-                            <a href="#"><img src="{{ asset('1.png') }}" alt=""></a>
-                        </div>
-                        <!-- Blog Content -->
-                        <div class="blog-content p-4">
-                            <!-- Blog Title -->
-                            <h3 class="blog-title my-3"><a href="#">Alumni Angkatan  2021 - 2023 Berkumpul Di Sekolah</a></h3>
-                            <a href="#" class="blog-btn mt-3">12 Februai 2038</a>
-                        </div>
+                <div class="col-12">
+                    <div class="app-screenshots">
+                        @forelse ($galleryAlumnis as $galleryAlumni)
+                            <div class="single-screenshot">
+                                <div class="single-blog res-margin">
+                                    <div class="blog-thumb">
+                                        <img style="width: 800px; height: 400px; object-fit: cover;"
+                                            src="{{ asset('storage/' . $galleryAlumni->photo) }}" alt="">
+                                    </div>
+                                    <!-- Blog Content -->
+                                    <div class="blog-content p-4">
+                                        <!-- Blog Title -->
+                                        <h5 style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap"
+                                            class="blog-title mb-2"><a href="#">{{ $galleryAlumni->title }}</a></h5>
+                                        <div class="blog-btn" style="font-size: 14px">
+                                            {{ \Carbon\Carbon::parse($galleryAlumni->created_at)->locale('id')->isoFormat('LL') }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <img src="{{ asset('showNoData.png') }}" alt="">
+                                    <h3 class="text-center">Data Masih Kosong</h3>
+                                </div>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
