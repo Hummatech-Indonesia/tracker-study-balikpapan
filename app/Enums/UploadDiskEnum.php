@@ -11,4 +11,5 @@ enum UploadDiskEnum: string
     case SLIDERGALLERYALUMNI = 'slider_gallery_alumni';
     case GALLERYALUMNI = 'gallery_alumni';
     case CV = 'cv';
+    case PROFILE = 'profile';
 }

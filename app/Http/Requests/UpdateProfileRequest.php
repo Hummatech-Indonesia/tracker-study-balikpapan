@@ -15,7 +15,7 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'profile' => 'nullable|mimes:png,jpg,jpeg',
+            'photo' => 'nullable|mimes:png,jpg,jpeg',
         ];
     }
 
@@ -27,8 +27,7 @@ class UpdateProfileRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'profile.required' => 'Foto Profile wajib diisi',
-            'profile.mimes' => 'Foto Profile harus berformat png, jpg, ataupun jpeg',
+            'photo.mimes' => 'Foto Profile harus berformat png, jpg, ataupun jpeg',
         ];
     }
 }

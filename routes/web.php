@@ -4,6 +4,7 @@ use App\Models\SliderGalleryAlumni;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\StudentController;
@@ -118,9 +119,9 @@ Route::get('company', function () {
 Route::get('job-applicant', function () {
     return view('company.job-applicant');
 });
-Route::get('profile-company', function () {
-    return view('company.profile');
-});
+Route::get('profile-company', [UserController::class, 'company'])->name('profile-company');
+Route::put('update-company-profile/{user}', [UserController::class, 'updateCompany'])->name('update-company-profile');
+Route::patch('update-profile', [UserController::class, 'updateProfile'])->name('update-profile');
 
 
 Route::prefix('alumni')->name('alumni.')->group(function () {

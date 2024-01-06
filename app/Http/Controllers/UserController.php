@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Helpers\UserHelper;
 use App\Services\UserService;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Http\Requests\UpdateCompanyProfileRequest;

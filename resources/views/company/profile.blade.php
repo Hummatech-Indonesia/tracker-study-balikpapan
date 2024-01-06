@@ -7,18 +7,26 @@
         <div class="col-lg-4 col-xxl-4 col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex flex-column align-items-center text-center">
-                        <h4 class="mb-4">
-                            PROFIL
-                        </h4>
-                        <img src="{{ asset(auth()->user()->photo == null ? 'default.jpg' : 'storage/' . auth()->user()->photo) }}"
-                            alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
-                        <div class="mt-3">
-                            <h4>{{ auth()->user()->name }}</h4>
-                            <p class="text-secondary mb-4">{{ auth()->user()->email }}</p>
-                            <button class="btn btn-primary mb-3">Upload</button>
+                    <form action="{{ route('update-profile') }}" method="post" enctype="multipart/form-data">
+                        @method('PATCH')
+                        @csrf
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <h4 class="mb-4">
+                                PROFIL
+                            </h4>
+                            <img id="preview"
+                                src="{{ asset(auth()->user()->photo == null ? 'default.jpg' : 'storage/' . auth()->user()->photo) }}"
+                                alt="Admin" class="rounded-circle p-1 bg-primary" style="object-fit: cover"
+                                width="50%">
+                            <div class="mt-3">
+                                <h4>{{ auth()->user()->name }}</h4>
+                                <p class="text-secondary mb-4">{{ auth()->user()->email }}</p>
+                                <input type="file" style="display: none" name="photo" id="photo">
+                                <button class="btn btn-warning mb-3 btn-upload text-white" id="btn-upload">Ganti</button>
+                                <button class="btn btn-primary mb-3 " type="submit">Upload</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -51,7 +59,9 @@
                                 <h6 class="mb-0">Bidang Perusahaan</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" value="{{ auth()->user()->company->company_field ? auth()->user()->company->company_field : '-' }}" name="company_field" class="form-control" />
+                                <input type="text"
+                                    value="{{ auth()->user()->company->company_field ? auth()->user()->company->company_field : '-' }}"
+                                    name="company_field" class="form-control" />
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -59,7 +69,9 @@
                                 <h6 class="mb-0">Website (Opsional)</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" value="{{ auth()->user()->company->website ? auth()->user()->company->website : '-' }}" name="website" class="form-control" />
+                                <input type="text"
+                                    value="{{ auth()->user()->company->website ? auth()->user()->company->website : '-' }}"
+                                    name="website" class="form-control" />
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -132,4 +144,27 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        document.getElementById('btn-upload').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default form submission behavior
+            document.getElementById('photo').click();
+        });
+
+        document.getElementById('photo').addEventListener('change', function() {
+            displayImage(this);
+        });
+
+        function displayImage(input) {
+            var file = input.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 @endsection
