@@ -27,8 +27,7 @@ class UserService
             if ($old_file != null) {
                 $this->remove($old_file);
             }
-
-            $old_file = $request->file('photo')->store($destinationPath, 'public');
+            $old_file = $this->upload(UserHelper::getUserName() . '/' . UploadDiskEnum::PROFILE->value, $request->file('photo'));
         }
         $data['photo'] = $old_file;
         return $data;
