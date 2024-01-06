@@ -122,6 +122,7 @@ Route::get('job-applicant', function () {
 Route::get('profile-company', [UserController::class, 'company'])->name('profile-company');
 Route::put('update-company-profile/{user}', [UserController::class, 'updateCompany'])->name('update-company-profile');
 Route::patch('update-profile', [UserController::class, 'updateProfile'])->name('update-profile');
+Route::patch('update-password', [UserController::class, 'updatePassword'])->name('update-password');
 
 
 Route::prefix('alumni')->name('alumni.')->group(function () {

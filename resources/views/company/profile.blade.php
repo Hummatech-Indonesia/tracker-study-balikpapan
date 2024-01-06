@@ -103,44 +103,48 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-body">
-                    <div class="text-center mb-3">
-                        <h5>Ubah Password</h5>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-3">
-                            <h6 class="mb-0">Password Lama</h6>
+                <form action="{{ route('update-password') }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <h5>Ubah Password</h5>
                         </div>
-                        <div class="col-sm-9 text-secondary">
-                            <input type="password" placeholder="" class="form-control" />
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Password Lama</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="password" placeholder="Masukkan Password Lama" name="current_password" placeholder="" class="form-control" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-3">
-                            <h6 class="mb-0">Password Baru</h6>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Password Baru</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="password" placeholder="Masukkan Password Baru" name="password" class="form-control" />
+                            </div>
                         </div>
-                        <div class="col-sm-9 text-secondary">
-                            <input type="password" class="form-control" />
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Konfirmasi Password</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="password" placeholder="Konfirmasi Password" name="password_confirmation" class="form-control" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-3">
-                            <h6 class="mb-0">Konfirmasi Password</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            <input type="password" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="d-flex justify-content-end gap-2">
-                            <div class="">
-                                <button class="btn text-white btn-info">
-                                    Ubah Password
-                                </button>
+                        <div class="row">
+                            <div class="d-flex justify-content-end gap-2">
+                                <div class="">
+                                    <button type="submit" class="btn text-white btn-info">
+                                        Ubah Password
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
