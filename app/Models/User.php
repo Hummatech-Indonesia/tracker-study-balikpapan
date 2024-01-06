@@ -31,6 +31,7 @@ class User extends Authenticatable implements HasStudent
         'name',
         'email',
         'password',
+        'photo',
         'address',
         'phone_number',
         'email_verified_at'
