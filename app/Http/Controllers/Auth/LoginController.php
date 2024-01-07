@@ -15,17 +15,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
     private LoginService $loginService;
@@ -56,11 +45,10 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse Returns a JSON response.
      */
-
     public function logout(Request $request)
     {
-            auth()->logout();
-            return to_route('index');
+        Auth::logout();
+        return redirect()->route('login');
     }
 
     /**
