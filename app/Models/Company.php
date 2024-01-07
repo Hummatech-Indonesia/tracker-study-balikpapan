@@ -25,6 +25,7 @@ class Company extends Model implements HasUser
         'company_field',
         'website',
         'description',
+        'status'
     ];
 
     /**

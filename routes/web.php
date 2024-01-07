@@ -17,6 +17,7 @@ use App\Http\Controllers\GalleryAlumniController;
 use App\Http\Controllers\TeacherGalleryController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AlumniVideoGalleryController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SliderGalleryAlumniController;
 use App\Http\Controllers\TeacherVideoGalleryController;
 
@@ -38,7 +39,7 @@ Route::get('landing-page-news', [LandingPageController::class, 'news'])->name('l
 Route::get('detail-news/{news}', [LandingPageController::class, 'detailNews'])->name('detail-news');
 
 Route::get('gallery-teacher', [TeacherGalleryController::class, 'galery'])->name('gallery-teacher');
-Route::get('galery-alumni' , [LandingPageController::class, 'alumni'])->name('galery-alumni');
+Route::get('galery-alumni', [LandingPageController::class, 'alumni'])->name('galery-alumni');
 Route::post('teacher-video-gallery', [TeacherVideoGalleryController::class, 'store'])->name('teacher-video-gallery.store');
 
 Route::resources([
@@ -75,7 +76,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
 Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
 
-Route::patch('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
+Route::get('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
 
 
 // Admin
@@ -104,9 +105,11 @@ Route::get('add-major', function () {
 Route::get('add-class', function () {
     return view('admin.add-class');
 })->name('add.class');
-Route::get('verify-company', function () {
-    return view('admin.verify-company');
-})->name('verify.company');
+
+Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
+Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
+Route::patch('reject-verify-company/{company}', [CompanyController::class, 'reject'])->name('reject.verify.company');
+
 Route::get('detail-job-vacancy', function () {
     return view('admin.job-vacancy.detail');
 })->name('detail.job.vacancy');
@@ -141,7 +144,7 @@ Route::prefix('alumni')->name('alumni.')->group(function () {
     Route::get('detail-lowongan-tersedia', function () {
         return view('alumni.detail');
     })->name('detail.lowongan.tersedia');
-    Route::get('lowongan-tersedia' , [JobVacancyController::class , 'jobvacancy'])->name('vacancies.available');
+    Route::get('lowongan-tersedia', [JobVacancyController::class, 'jobvacancy'])->name('vacancies.available');
     Route::get('lowongan', function () {
         return view('alumni.job-vacancy-page');
     })->name('job.vacancy.page');

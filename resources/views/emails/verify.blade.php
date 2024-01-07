@@ -138,18 +138,15 @@
                 border="0">
                 <tbody>
                     <tr>
-                        <form action="{{ route('verification.account', $data['id']) }}" method="post">
-                            @method('PATCH')
-                            @csrf
-                            <td style="border: none; border-radius: 3px; color: white; cursor: auto; padding: 15px 19px;"
-                                align="center" valign="middle" bgcolor="#1D9375">
-                                <button type="submit"
-                                    style="text-decoration: none; line-height: 100%; background: ##1D9375; color: white; font-family: Ubuntu, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: normal; text-transform: none; margin: 0px;"
-                                    target="_blank">
-                                    Verifikasi
-                                </button>
-                            </td>
-                        </form>
+
+                        <td style="border: none; border-radius: 3px; color: white; cursor: auto; padding: 15px 19px;"
+                            align="center" valign="middle" bgcolor="#1D9375">
+                            <a href="{{ route('verification.account', $data['id']) }}"
+                                style="text-decoration: none; line-height: 100%; background: ##1D9375; color: white; font-family: Ubuntu, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: normal; text-transform: none; margin: 0px;"
+                                target="_blank">
+                                Verifikasi
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
