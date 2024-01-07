@@ -74,11 +74,12 @@ Route::post('register-company', [RegisterController::class, 'registerCompany'])-
 
 Route::patch('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
 
+
 // Admin
 Route::get('dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
-Route::post('video-alumni' , [AlumniVideoGalleryController::class , 'store'])->name('video.alumni');
+Route::post('video-alumni', [AlumniVideoGalleryController::class, 'store'])->name('video.alumni');
 Route::get('alumni-gallery', [GalleryAlumniController::class, 'index'])->name('alumni.gallery');
 Route::post('alumni-gallery', [GalleryAlumniController::class, 'store'])->name('alumni.store');
 Route::post('slider-gallery-alumni', [SliderGalleryAlumniController::class, 'store'])->name('slider.gallery.alumni');
@@ -86,9 +87,11 @@ Route::delete('slider-gallery-delete/{slider_gallery_alumni}', [SliderGalleryAlu
 Route::delete('alumni-gallery-delete/{gallery_alumni}', [GalleryAlumniController::class, 'destroy'])->name('alumni.delete');
 Route::put('alumni-gallery-update/{gallery_alumni}', [GalleryAlumniController::class, 'update'])->name('alumni.update');
 Route::resource('survey', SurveyController::class);
-Route::get('account-siswa', function () {
-    return view('admin.account-siswa');
-})->name('account.siswa');
+
+Route::get('account-siswa', [StudentController::class, 'viewVerificationStudent'])->name('account.siswa');
+
+Route::patch('verification-student/{student}', [StudentController::class, 'verificationStudent'])->name('verification.student');
+Route::patch('reject-verification-student/{student}', [StudentController::class, 'rejectVerificationStudent'])->name('reject.verification.student');
 Route::get('alumni-register', function () {
     return view('admin.alumni-register');
 })->name('alumni.register');
