@@ -151,7 +151,7 @@ Route::patch('update-password', [UserController::class, 'updatePassword'])->name
 
 
 Route::prefix('alumni')->name('alumni.')->group(function () {
-    Route::get('survei-pekerjaan', function () {
+    Route::get('survei', function () {
         return view('alumni.job-survey');
     })->name('job.survey');
     Route::get('detail-lowongan-tersedia', function () {
