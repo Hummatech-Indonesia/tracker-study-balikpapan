@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\SliderGalleryAlumni;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
@@ -20,6 +19,7 @@ use App\Http\Controllers\AlumniVideoGalleryController;
 use App\Http\Controllers\ApplyJobVacancyController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\SliderGalleryAlumniController;
 use App\Http\Controllers\TeacherVideoGalleryController;
 
@@ -35,7 +35,7 @@ use App\Http\Controllers\TeacherVideoGalleryController;
 */
 
 //Landing Page
-Route::get('/',[HomeController::class,'index'])->name('landing-page');
+Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 
 Route::get('berita', [LandingPageController::class, 'news'])->name('landing-page-news');
 Route::get('berita/{news}', [LandingPageController::class, 'detailNews'])->name('detail-news');
@@ -51,11 +51,11 @@ Route::get('verify-account', function () {
     return view('auth.verify');
 });
 
-Route::middleware('auth')->group(function(){
-    
-    Route::get('dashboard',[HomeController::class,'dashboard'])->name('dashboard');
-    
-    Route::middleware('role:admin')->group(function(){
+Route::middleware('auth')->group(function () {
+
+    Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+
+    Route::middleware('role:admin')->group(function () {
 
         Route::resources([
             'school-years' => SchoolYearController::class,
@@ -81,19 +81,14 @@ Route::middleware('auth')->group(function(){
         Route::delete('slider-gallery-delete/{slider_gallery_alumni}', [SliderGalleryAlumniController::class, 'destroy'])->name('slider.gallery.delete');
         Route::delete('alumni-gallery-delete/{gallery_alumni}', [GalleryAlumniController::class, 'destroy'])->name('alumni.delete');
         Route::put('alumni-gallery-update/{gallery_alumni}', [GalleryAlumniController::class, 'update'])->name('alumni.update');
-
     });
-    Route::middleware('role:student')->group(function(){
-
+    Route::middleware('role:student')->group(function () {
     });
-    Route::middleware('role:alumni')->group(function(){
-
+    Route::middleware('role:alumni')->group(function () {
     });
-    Route::middleware('role:company')->group(function(){
-
+    Route::middleware('role:company')->group(function () {
     });
-    Route::middleware('role:student|alumni')->group(function(){
-
+    Route::middleware('role:student|alumni')->group(function () {
     });
 });
 
@@ -119,6 +114,9 @@ Route::patch('reject-verification-student/{student}', [StudentController::class,
 Route::get('alumni-register', function () {
     return view('admin.alumni-register');
 })->name('alumni.register');
+
+Route::post('portofolios', [PortofolioController::class, 'store']);
+Route::put('portofolios/{portofolio}', [PortofolioController::class, 'update']);
 
 Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
 Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');

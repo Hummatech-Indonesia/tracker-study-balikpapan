@@ -30,7 +30,7 @@ class RegisterService
 
         event(new Registered($user));
 
-        $user->assignRole(RoleEnum::STUDENT->value);
+        $user->assignRole(RoleEnum::ALUMNI->value);
         Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email, 'user' => $request->name, 'id' => $user->id]));
         $student->store([
             'user_id' => $user->id,
