@@ -1,0 +1,35 @@
+@extends('layouts.app')
+@section('content')
+<h3>Pilih Kelas</h3>
+<div class="position-relative mb-3 col-lg-2">
+    <input type="text" class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
+    <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+</div>
+<div class="row">
+        <div class="col-6 col-lg-3 col-xxl-3">
+            <div class="card border-primary border-bottom border-3 border-0">
+                <img src="{{ asset('assets-admin/images/gallery/01.png') }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-dark" style="font-weight: 700">XII Multimedia A</h5>
+                    <p class="card-text mt-2 mb-3">Tahun Ajaran 2002</p>
+                    <div class="d-flex justify-content-center gap-5">
+                        <div class="text-center me-3">
+                            <span class="badge bg-light-primary text-primary fs-4">20</span>
+                            <p class="m-0">Alumni</p>
+                        </div>
+                        <div class="text-center">
+                            <span class="badge bg-light-warning text-warning fs-4">20</span>
+                            <p class="m-0">Siswa</p>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    <div class="d-flex align-items-center gap-2">
+                        <a class="btn btn-primary btn-delete text-white w-100"
+                            href="{{ route('student.classroom.status') }}">Masuk</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+@endsection

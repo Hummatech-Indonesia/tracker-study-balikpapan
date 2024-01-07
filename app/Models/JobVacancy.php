@@ -25,6 +25,7 @@ class JobVacancy extends Model
         'job_title',
         'basic_salary',
         'work_system',
+        'position',
         'description_working_system',
         'qualifications',
     ];

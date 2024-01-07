@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('apply_job_vacancies', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignUuid('job_vacancy_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignUuid('student_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('cv')->nullable();

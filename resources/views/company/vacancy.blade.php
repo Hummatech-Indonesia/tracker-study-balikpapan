@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-6 mb-2">
                             <label for="formFile" class="form-label">Gaji Pokok</label>
-                            <input name="basic_salary" placeholder="Masukkan Gaji Pokok" type="number" id="" class="form-control"></input>
+                            <input name="basic_salary" placeholder="Masukkan Gaji Pokok" type="number" id="" class="form-control">
                         </div>
                         <div class="col-6">
                             <label for="formFile" class="form-label">Sistem Kerja</label>
@@ -40,7 +40,11 @@
                                 <option value="freelance">Freelance</option>
                             </select>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 mb-3">
+                            <label for="" class="form-label">Posisi</label>
+                            <input type="text" name="position" class="form-control">
+                        </div>
+                        <div class="col-12 mb-3">
                             <label for="formFile" class="form-label">Deskripsi Sistem Kerja</label>
                             <textarea placeholder="Masukkan Deskripsi Sistem Kerja" name="description_working_system" id="" class="form-control"></textarea>
                         </div>

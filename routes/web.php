@@ -16,6 +16,7 @@ use App\Http\Controllers\GalleryAlumniController;
 use App\Http\Controllers\TeacherGalleryController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AlumniVideoGalleryController;
+use App\Http\Controllers\ApplyJobVacancyController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortofolioController;
@@ -63,7 +64,13 @@ Route::middleware('auth')->group(function () {
             'news' => NewsController::class,
             'survey' => SurveyController::class
         ]);
-
+        
+        Route::get('student-status',function () {
+            return view('admin.student-classroom');
+        })->name('student.classroom');
+        Route::get('student-status/detail',function () {
+            return view('admin.student-status');
+        })->name('student.classroom.status');
         Route::get('students', [StudentController::class, 'index'])->name('students.index');
         Route::post('students', [StudentController::class, 'store'])->name('students.store');
         Route::put('students/{user}', [StudentController::class, 'update'])->name('students.update');
@@ -152,9 +159,8 @@ Route::prefix('alumni')->name('alumni.')->group(function () {
     Route::get('survei', function () {
         return view('alumni.job-survey');
     })->name('job.survey');
-    Route::get('detail-lowongan-tersedia', function () {
-        return view('alumni.detail');
-    })->name('detail.lowongan.tersedia');
+    Route::get('detail-lowongan-tersedia/{job_vacancy}',[JobVacancyController::class,'show'])->name('detail.lowongan.tersedia');
+    Route::post('detail-lowongan-tersedia/{jobVacancy}',[ApplyJobVacancyController::class,'store'])->name('send.cv');
     Route::get('lowongan-tersedia', [JobVacancyController::class, 'jobvacancy'])->name('vacancies.available');
     Route::get('lowongan', function () {
         return view('alumni.job-vacancy-page');

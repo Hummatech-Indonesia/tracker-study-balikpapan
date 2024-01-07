@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignUuid('company_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('job_title');
             $table->string('basic_salary');
+            $table->string('position');
             $table->enum('work_system', [WorkSystemEnum::CONTRACT->value, WorkSystemEnum::PERMANENTWORK->value, WorkSystemEnum::WORKINGPARTTIME->value, WorkSystemEnum::FREELANCE->value]);
             $table->text('description_working_system');
             $table->text('qualifications');
