@@ -63,6 +63,9 @@ Route::delete('students/{user}', [StudentController::class, 'destroy'])->name('s
 Route::get('/verify-account', function () {
     return view('auth.verify');
 });
+Route::get('pilih-role', function () {
+    return view('auth.choice-of-roles');
+});
 
 Auth::routes();
 
