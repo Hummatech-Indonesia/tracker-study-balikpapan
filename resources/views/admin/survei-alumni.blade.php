@@ -67,6 +67,12 @@
                 </div>
             </div>
         @empty
+        <div class="d-flex justify-content-center">
+            <div>
+                <img src="{{ asset('showNoData.png') }}" alt="">
+                <h5 class="text-center">Belum Ada Survei Ditambahkan!!</h5>
+            </div>
+        </div>
         @endforelse
 
     </div>
