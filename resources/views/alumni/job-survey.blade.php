@@ -10,6 +10,10 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-6 col-sm-12 mb-3">
+                    <label for="graduation_year" class="form-label">Nama ( dengan gelar jika ada )</label>
+                    <input type="text" name="name" id="graduation_year" placeholder="Ex : 2023" class="form-control">
+                </div>
+                <div class="col-lg-6 col-sm-12 mb-3">
                     <label for="graduation_year" class="form-label">Tahun Lulus</label>
                     <input type="number" name="graduation_year" id="graduation_year" placeholder="Ex : 2023" class="form-control">
                 </div>
