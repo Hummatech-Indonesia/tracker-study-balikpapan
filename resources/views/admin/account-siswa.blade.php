@@ -33,8 +33,10 @@
                             <img src="{{ asset('assets-admin/images/avatars/avatar-2.png') }}" width="100px"
                                 class="user-circle" alt="user">
                         </div>
-                        <h5 class="card-title text-dark text-center" style="font-weight: 700">XII Multimedia A</h5>
-                        <p class="card-text mt-2 text-center mb-5">Tahun Ajaran 2024-2025.</p>
+                        <h5 class="card-title text-dark text-center" style="font-weight: 700">
+                            {{ $student->classroom->name }}</h5>
+                        <p class="card-text mt-2 text-center mb-5">Tahun Ajaran {{ $student->classroom->schoolYear->name }}.
+                        </p>
                         <div class="d-flex align-items-center gap-2 mb-2">
                             <button class="btn btn-warning w-100 text-white">Detail</button>
                             <form action="{{ route('reject.verification.student', $student->id) }}" class=" w-100"

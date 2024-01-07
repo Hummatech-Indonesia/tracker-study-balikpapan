@@ -4,6 +4,7 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Models\Company;
+use Illuminate\Http\Request;
 
 class CompanyRepository extends BaseRepository implements CompanyInterface
 {
@@ -35,5 +36,19 @@ class CompanyRepository extends BaseRepository implements CompanyInterface
     {
         return $this->model->query()
             ->findOrFail($id)->update($data);
+    }
+
+    /**
+     * get
+     *
+     * @return mixed
+     */
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+            ->when($request->name, function ($query) use ($request) {
+                $query->whereRelation('user', 'name', $request->name);
+            })
+            ->get();
     }
 }
