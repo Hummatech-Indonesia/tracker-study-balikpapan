@@ -18,7 +18,7 @@
                 <nav>
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link scroll fw-5" href="#features">Home</a>
+                            <a class="nav-link fw-5" href="{{ route('landing-page') }}">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle fw-5" href="javascript:;" id="navbarDropdownMenuLink"
@@ -30,22 +30,15 @@
                                     <a class="dropdown-item" href="{{ route('gallery-teacher') }}">Galery Guru</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="/galery-alumni">Galery Alumni</a>
+                                    <a class="dropdown-item" href="{{ route('galery-alumni') }}">Galery Alumni</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-5" href="">Survei</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link fw-5" href="{{ route('landing-page-news') }}">Berita</a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link fw-5" href="#pricing">Contact</a>
-                        </li>
                         <li class="nav-item px-3">
-                            <a href="/login" class="btn" style="margin-top:18px;font-weight:600">
+                            <a href="{{ route('login') }}" class="btn" style="margin-top:18px;font-weight:600">
                                 Login
                             </a>
                         </li>

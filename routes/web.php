@@ -34,7 +34,7 @@ use App\Http\Controllers\TeacherVideoGalleryController;
 */
 
 //Landing Page
-Route::get('/',[HomeController::class,'index'])->name('index');
+Route::get('/',[HomeController::class,'index'])->name('landing-page');
 
 Route::get('berita', [LandingPageController::class, 'news'])->name('landing-page-news');
 Route::get('berita/{news}', [LandingPageController::class, 'detailNews'])->name('detail-news');
