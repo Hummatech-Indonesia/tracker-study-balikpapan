@@ -18,6 +18,7 @@ use App\Http\Controllers\TeacherGalleryController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AlumniVideoGalleryController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SliderGalleryAlumniController;
 use App\Http\Controllers\TeacherVideoGalleryController;
 
@@ -32,15 +33,34 @@ use App\Http\Controllers\TeacherVideoGalleryController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
-Route::get('landing-page-news', [LandingPageController::class, 'news'])->name('landing-page-news');
-Route::get('detail-news/{news}', [LandingPageController::class, 'detailNews'])->name('detail-news');
+//Landing Page
+Route::get('/',[HomeController::class,'index'])->name('index');
 
-Route::get('gallery-teacher', [TeacherGalleryController::class, 'galery'])->name('gallery-teacher');
-Route::get('galery-alumni', [LandingPageController::class, 'alumni'])->name('galery-alumni');
-Route::post('teacher-video-gallery', [TeacherVideoGalleryController::class, 'store'])->name('teacher-video-gallery.store');
+Route::get('berita', [LandingPageController::class, 'news'])->name('landing-page-news');
+Route::get('berita/{news}', [LandingPageController::class, 'detailNews'])->name('detail-news');
+
+Route::get('galeri-guru', [TeacherGalleryController::class, 'galery'])->name('gallery-teacher');
+Route::get('galeri-alumni', [LandingPageController::class, 'alumni'])->name('galery-alumni');
+Route::post('vidio-galeri-guru', [TeacherVideoGalleryController::class, 'store'])->name('teacher-video-gallery.store');
+
+Route::middleware('auth')->group(function(){
+    Route::middleware('role:admin')->group(function(){
+
+    });
+    Route::middleware('role:student')->group(function(){
+
+    });
+    Route::middleware('role:alumni')->group(function(){
+
+    });
+    Route::middleware('role:company')->group(function(){
+
+    });
+    Route::middleware('role:student|alumni')->group(function(){
+
+    });
+});
+
 
 Route::resources([
     'school-years' => SchoolYearController::class,
