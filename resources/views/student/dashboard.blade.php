@@ -13,7 +13,6 @@
                             <img src="{{ asset(Auth::user()->photo ?? 'default.jpg') }}"
                                 class="rounded-circle user-profile mb-2" id="detail-photo" width="150" alt="photo-siswa"
                                 height="150" />
-
                         </div>
                         <div class="text-center">
                             <h3 class="username">{{ Auth::user()->name }}</h3>
