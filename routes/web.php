@@ -64,7 +64,13 @@ Route::middleware('auth')->group(function () {
             'news' => NewsController::class,
             'survey' => SurveyController::class
         ]);
-
+        
+        Route::get('student-status',function () {
+            return view('admin.student-classroom');
+        })->name('student.classroom');
+        Route::get('student-status/detail',function () {
+            return view('admin.student-status');
+        })->name('student.classroom.status');
         Route::get('students', [StudentController::class, 'index'])->name('students.index');
         Route::post('students', [StudentController::class, 'store'])->name('students.store');
         Route::put('students/{user}', [StudentController::class, 'update'])->name('students.update');
