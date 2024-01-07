@@ -21,33 +21,53 @@
                     <label for="phone_number" class="form-label">No Telepon</label>
                     <input type="text" name="phone_number" placeholder="Ex : 086754...." class="form-control" id="phone_number">
                 </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <label for="create-name" class="form-label">Alamat Link/ URL ( Link Website atau Lainya )</label>
+                    <input type="text" name="name" id="create-name" placeholder="Masukan Link" class="form-control">
+                </div>
                 <div class="col-12 mb-3">
-                    <label for="" class="form-label">Deskripsi ( Jelaskan Secara Rinci )</label>
+                    <label for="" class="form-label">Sebutkan dan Jelaskan Kegiatan Anda ( Jelaskan Secara Rinci )</label>
                     <textarea name="" class="form-control" placeholder="Description" id="" cols="30" rows="10"></textarea>
                 </div>
                 <div class="col-lg-4 col-sm-12 mb-3">
-                    <label for="create-tahun-lulus" class="form-label">Status Saat Ini</label>
-                    <select name="" class="form-select" id="create-tahun-lulus">
-                        <option value="">Pilih status</option>
-                    </select>
+                    <label for="create-tahun-lulus" class="form-check-label">Status Saat Ini</label>
+                    <div class="gap-3">
+                        <input type="radio" name="status" id="kerja" value="kerja" class="form-check-input">  <label class="form-check-label" for="kerja">
+                            Kerja
+                          </label>                        
+                        <input type="radio" name="status" id="kuliah" value="kuliah" class="form-check-input">  <label class="form-check-label" for="kuliah">
+                            Kuliah
+                          </label>
+                        
+                        <input type="radio" name="status" id="tidak bekerja" value="tidak bekerja" class="form-check-input">  <label class="form-check-label" for="tidak bekerja">
+                            Tidak Bekerja
+                          </label>
+                        
+                    </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 mb-3">
-                    <label for="create-tahun-lulus" class="form-label">Reuni Alumni</label>
-                    <select name="" class="form-select" id="create-tahun-lulus">
-                        <option value="">hadir</option>
-                    </select>
+                <div class="col-lg-4 col-sm-12 mb-3 gap-4">
+                    <label for="create-tahun-lulus" class="form-check-label">Akan Menghadiri Reuni Alumni ?</label>
+                    <div class="gap-3">
+                        <input type="radio" name="status" id="Ya" value="Ya" class="form-check-input">  <label class="form-check-label" for="Ya">
+                            Ya
+                          </label>                        
+                        <input type="radio" name="status" id="Tidak " value="Tidak " class="form-check-input">  <label class="form-check-label" for="Tidak ">
+                            Tidak 
+                          </label>
+                        
+                    </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 mb-3">
                     <label for="create-tahun-lulus" class="form-label">Tempat Tinggal Saat Ini</label>
                     <input type="text" name="telp_number" class="form-control" id="">
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-                    <label for="create-name" class="form-label">Alamat Link/ URL ( Link Website atau Lainya )</label>
-                    <input type="text" name="name" id="create-name" placeholder="Masukan nama" class="form-control">
+                    <label for="create-name" class="form-label">Email</label>
+                    <input type="email" name="name" id="create-name" placeholder="Masukan Email" class="form-control">
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                     <label for="create-email" class="form-label">Akun Facebook </label>
-                    <input type="text" name="email" id="create-email" placeholder="Masukan email" class="form-control">
+                    <input type="text" name="email" id="create-email" placeholder="Masukan Akun Facebook" class="form-control">
                 </div>
             </div>
         </div>
