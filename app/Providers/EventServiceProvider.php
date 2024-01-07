@@ -18,6 +18,8 @@ use App\Observers\UserObserver;
 use App\Observers\MajorObserver;
 use App\Observers\SurveyObserver;
 use App\Models\AlumniVideoGallery;
+use App\Models\PhotoPortofolio;
+use App\Models\Portofolio;
 use App\Observers\CompanyObserver;
 use App\Observers\StudentObserver;
 use App\Models\SliderGalleryAlumni;
@@ -29,6 +31,8 @@ use App\Observers\GalleryAlumniObserver;
 use App\Observers\TeacherGalleryObserver;
 use App\Observers\ApplyJobVacancyObserver;
 use App\Observers\AlumniVideoGalleryObserver;
+use App\Observers\PhotoPortofolioObserver;
+use App\Observers\PortofolioObserver;
 use App\Observers\SliderGalleryAlumniObserver;
 use App\Observers\TeacherVideoGalleryObserver;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -66,6 +70,8 @@ class EventServiceProvider extends ServiceProvider
         SliderGalleryAlumni::observe(SliderGalleryAlumniObserver::class);
         JobVacancy::observe(JobVacancyObserver::class);
         ApplyJobVacancy::observe(ApplyJobVacancyObserver::class);
+        Portofolio::observe(PortofolioObserver::class);
+        PhotoPortofolio::observe(PhotoPortofolioObserver::class);
     }
 
     /**
