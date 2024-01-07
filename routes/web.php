@@ -17,6 +17,7 @@ use App\Http\Controllers\GalleryAlumniController;
 use App\Http\Controllers\TeacherGalleryController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AlumniVideoGalleryController;
+use App\Http\Controllers\ApplyJobVacancyController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SliderGalleryAlumniController;
@@ -154,9 +155,8 @@ Route::prefix('alumni')->name('alumni.')->group(function () {
     Route::get('survei-pekerjaan', function () {
         return view('alumni.job-survey');
     })->name('job.survey');
-    Route::get('detail-lowongan-tersedia', function () {
-        return view('alumni.detail');
-    })->name('detail.lowongan.tersedia');
+    Route::get('detail-lowongan-tersedia/{job_vacancy}',[JobVacancyController::class,'show'])->name('detail.lowongan.tersedia');
+    Route::post('detail-lowongan-tersedia/{jobVacancy}',[ApplyJobVacancyController::class,'store'])->name('send.cv');
     Route::get('lowongan-tersedia', [JobVacancyController::class, 'jobvacancy'])->name('vacancies.available');
     Route::get('lowongan', function () {
         return view('alumni.job-vacancy-page');

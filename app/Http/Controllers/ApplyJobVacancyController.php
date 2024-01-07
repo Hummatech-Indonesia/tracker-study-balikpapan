@@ -6,10 +6,12 @@ use App\Models\JobVacancy;
 use Illuminate\Http\Request;
 use App\Services\ApplyJobVacancyService;
 use App\Http\Requests\ApplyJobVacancyRequest;
+use App\Contracts\Interfaces\ApplyJobVacancyInterface;
 
 class ApplyJobVacancyController extends Controller
 {
     private ApplyJobVacancyInterface $applyJobVacancy;
+    private ApplyJobVacancyService $service;
 
     public function __construct(ApplyJobVacancyInterface $applyJobVacancy, ApplyJobVacancyService $service)
     {

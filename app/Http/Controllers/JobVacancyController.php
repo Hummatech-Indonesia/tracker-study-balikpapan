@@ -56,7 +56,8 @@ class JobVacancyController extends Controller
      */
     public function show(JobVacancy $job_vacancy)
     {
-        //
+        $jobVacancy = $job_vacancy;
+        return view('alumni.detail',compact('jobVacancy'));
     }
 
     /**

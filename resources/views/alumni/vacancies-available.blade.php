@@ -31,7 +31,7 @@
                     style="font-weight: 500; color:black; font-size:12px; font-style: normal;">{{ $jobVacancy->description_working_system }}</p>
                 <!-- Plan Button -->
                 <div class="plan-button position-relative">
-                    <a href="{{ route('alumni.detail.lowongan.tersedia') }}" class="p-2 rounded text-white"
+                    <a href="{{ route('alumni.detail.lowongan.tersedia',['job_vacancy' => $jobVacancy->id]) }}" class="p-2 rounded text-white"
                         style="position: absolute; bottom: -1.9rem; left: 50%; transform: translateX(-50%); font-weight:450; background-color:#FFAE1F;">Selengkapnya</a>
                 </div>
             </div>

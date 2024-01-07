@@ -1,5 +1,13 @@
 @extends('layouts.app')
 @section('content')
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+    <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+        {{ $error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endforeach
+@endif
 <div class="d-flex justify-content-between">
     <div class="">
         <h5 class="text-dark" style="font-weight: 500">
@@ -26,13 +34,13 @@
                     </div>
                 </div>
                 <h5 class="text-dark text-center mt-3" style="font-weight: 600">
-                    PT KAI INDONESIA
+                    {{ $jobVacancy->company->user->name }}
                 </h5>
                 <p class="text-center">
                     www.ptkai.id
                 </p>
                 <div class="d-flex justify-content-center mb-5">
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Kirim CV
                     </button>
                 </div>
@@ -48,20 +56,28 @@
                             Lowongan Pada Bagian
                         </p>
                         <h5 class="text-primary" style="font-weight:500">
-                            Ketua PT KAI Indonesia
+                            {{ $jobVacancy->position }}
                         </h5>
                         <p class="fs-6 mb-2 mt-5" style="font-weight: 600">
-                            Lowongan Pada Bagian
+                            Sistem Kerja
                         </p>
                         <p class="text-primary">
-                            - Kontrak
+                            @if ($jobVacancy->work_system == 'contract')
+                            Kontrak
+                            @elseif ($jobVacancy->work_system == 'permanentwork')
+                            Kerja Tetap
+                            @elseif ($jobVacancy->work_system == 'workingparttime')
+                            Kerja Paruh Waktu
+                            @else
+                            Freelance
+                            @endif
                         </p>
                         <p class="fs-6 mb-2 mt-5" style="font-weight: 600">
                             Gaji Pokok
                         </p>
                         <div class="bg-light-primary col-5 py-1 rounded">
                             <h5 class="text-primary mb-0 text-center" style="font-weight:500">
-                                Rp. 300.000.000
+                                Rp. {{ number_format($jobVacancy->basic_salary, 0, ',', '.') }}
                             </h5>
                         </div>
                     </div>
@@ -70,26 +86,37 @@
                             Deskripsi Sistem Kerja
                         </p>
                         <p>
-                            Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Ipsum Dolor Sit Amet Lorem Ipsum Lorem Ipsum Dolor Sit Amet Ipsum Dolor Sit Amet Lorem
+                            {{ $jobVacancy->description_working_system }}
                         </p>
                         <p class="fs-6 mb-2 mt-5" style="font-weight: 600">
                             Kualifikasi / Syarat Syarat
                         </p>
-                        <ul>
-                            <li>
-                                Membawa KTP Asli
-                            </li>
-                            <li>
-                                Membawa KTP Asli
-                            </li>
-                            <li>
-                                Membawa KTP Asli
-                            </li>
-                        </ul>
+                       <p>{{ $jobVacancy->qualifications }}</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <form action="{{ route('alumni.send.cv',['jobVacancy' => $jobVacancy->id]) }}" enctype="multipart/form-data" method="post">
+            @csrf
+            @method('POST')
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Kelas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="file" name="cv" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                    <button type="submit" class="btn btn-primary text-white">Tambah</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 @endsection

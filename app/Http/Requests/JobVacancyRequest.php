@@ -18,6 +18,7 @@ class JobVacancyRequest extends FormRequest
         return [
             'job_title' => 'required',
             'basic_salary' => 'required|numeric',
+            'position'=>'required',
             'work_system' => ['required', new WorkSystemRule],
             'description_working_system' => 'required|max:255',
             'qualifications' => 'required|max:255',
@@ -36,6 +37,7 @@ public function messages(): array
         'basic_salary.required' => 'Gaji pokok wajib diisi.',
         'basic_salary.numeric' => 'Gaji pokok harus berupa angka.',
         'work_system.required' => 'Sistem kerja wajib diisi.',
+        'position.required' => 'Posisi wajib diisi',
         'description_working_system.required' => 'Deskripsi sistem kerja wajib diisi.',
         'description_working_system.max' => 'Deskripsi sistem kerja tidak boleh lebih dari :max karakter.',
         'qualifications.required' => 'Kualifikasi wajib diisi.',
