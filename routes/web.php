@@ -117,6 +117,15 @@ Route::get('dashboard-student', function () {
 Route::get('portofolio', function () {
     return view('student.portofolio');
 })->name('portofolio');
+Route::get('add-portofolio', function () {
+    return view('student.add-portofolio');
+})->name('add.portofolio');
+Route::get('detail-portofolio', function () {
+    return view('student.detail-portofolio');
+})->name('detail.portofolio');
+Route::get('edit-portofolio', function () {
+    return view('student.edit-portofolio');
+})->name('edit.portofolio');
 
 // company
 Route::get('company', function () {

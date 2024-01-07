@@ -62,7 +62,6 @@
         .photo-stack:hover img:nth-child(5) {
             transform: translate3d(-5%, -2%, 0) rotate3d(0, 0, 1, 2deg);
         }
-
     </style>
 @endsection
 @section('content')
@@ -76,7 +75,7 @@
                     <h5 class="text-primary mt-3">Project Tracer Study Nomer 2 Malang</h5>
                 </div>
                 <div class="">
-                    <button class="btn btn-warning text-white">Edit Portofolio</button>
+                    <button class="btn btn-warning text-white"  data-bs-toggle="modal" data-bs-target="#edit_portofolio">Edit Portofolio</button>
                 </div>
             </div>
             <p class="mt-4">
@@ -84,6 +83,26 @@
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                 unknown printer took a galley of type and scrambled it to make a type specimen book.
             </p>
+        </div>
+    </div>
+    <div class="modal fade" id="edit_portofolio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Portofolio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="">Judul</label>
+                    <input type="text" class="form-control">
+                    <label for="" class="form-label mt-2">Tahun Ajaran</label>
+                    <textarea name="" id="" class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </div>
         </div>
     </div>
     <h4>
@@ -98,13 +117,13 @@
             </select>
         </div>
         <div class="">
-            <button class="btn btn-primary text-white">
+            <a href="{{ route('add.portofolio') }}" class="btn btn-primary text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 19 19" fill="none">
                     <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                     <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
                 </svg>
                 Tambah Project
-            </button>
+            </a>
         </div>
     </div>
     <div class="card">
@@ -146,7 +165,7 @@
                     </button>
                 </div>
                 <div class="">
-                    <button class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    <a href="{{ route('edit.portofolio') }}" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                             viewBox="0 0 38 38" fill="none">
                             <path
                                 d="M6.84778 28.4972L8.30299 28.861L6.84778 28.4972C6.84378 28.5132 6.83958 28.5299 6.83523 28.5472C6.78335 28.7535 6.70953 29.047 6.68399 29.3081C6.6545 29.6096 6.64333 30.2817 7.19232 30.8307L8.25298 29.77L7.19233 30.8307C7.74132 31.3797 8.41342 31.3685 8.71489 31.339C8.97594 31.3135 9.26951 31.2396 9.47581 31.1878C9.4931 31.1834 9.50978 31.1792 9.52577 31.1752L13.8951 30.0829C13.8974 30.0823 13.8997 30.0817 13.902 30.0811C13.9253 30.0753 13.9493 30.0694 13.974 30.0633C14.2675 29.991 14.6523 29.8961 15.0054 29.6962C15.3585 29.4963 15.6378 29.2151 15.8509 29.0007C15.8706 28.9809 15.8897 28.9616 15.9082 28.9431L27.4708 17.3805L27.4708 17.3805L26.4101 16.3198L27.4708 17.3805C27.4897 17.3616 27.5085 17.3428 27.5273 17.324C27.9504 16.9011 28.367 16.4847 28.6652 16.0938C29.0031 15.651 29.3268 15.0696 29.3268 14.3164C29.3268 13.5631 29.0031 12.9818 28.6652 12.5389C28.3669 12.148 27.9504 11.7316 27.5273 11.3087C27.5085 11.2899 27.4897 11.2711 27.4708 11.2522L26.7708 10.5522L25.7101 11.6128L26.7708 10.5522C26.7519 10.5333 26.7331 10.5145 26.7143 10.4957C26.2914 10.0726 25.875 9.65604 25.4841 9.35781C25.0412 9.0199 24.4599 8.69618 23.7066 8.69618C22.9534 8.69618 22.372 9.0199 21.9291 9.35781C21.5383 9.65604 21.1219 10.0726 20.699 10.4957C20.6802 10.5145 20.6613 10.5333 20.6425 10.5522L9.07993 22.1148C9.06137 22.1333 9.04213 22.1524 9.02232 22.1721C8.80785 22.3852 8.5267 22.6645 8.32677 23.0176C8.12685 23.3707 8.032 23.7555 7.95965 24.049C7.95296 24.0761 7.94647 24.1024 7.94011 24.1279L6.84778 28.4972Z"
@@ -154,11 +173,11 @@
                             <path d="M19.7842 11.9622L24.4912 8.82422L29.1982 13.5312L26.0602 18.2382L19.7842 11.9622Z"
                                 stroke="white" stroke-width="2.5" />
                         </svg>
-                    </button>
+                    </a>
                 </div>
                 <div class="">
-                    <button class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                            viewBox="0 0 38 38" fill="none">
+                    <a href="{{ route('detail.portofolio') }}" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                            height="18" viewBox="0 0 38 38" fill="none">
                             <path
                                 d="M19.0968 23.579C21.6964 23.579 23.8037 21.4716 23.8037 18.872C23.8037 16.2724 21.6964 14.165 19.0968 14.165C16.4972 14.165 14.3898 16.2724 14.3898 18.872C14.3898 21.4716 16.4972 23.579 19.0968 23.579Z"
                                 fill="white" />
@@ -166,7 +185,7 @@
                                 d="M29.3065 10.4273C26.0911 8.2224 22.6498 7.10449 19.0791 7.10449C15.8659 7.10449 12.7335 8.0606 9.76884 9.93457C6.77916 11.8284 3.84833 15.2682 1.44556 18.872C3.38866 22.108 6.04664 25.4353 8.81494 27.3431C11.9907 29.5303 15.4437 30.6394 19.0791 30.6394C22.6829 30.6394 26.1286 29.5311 29.3242 27.3453C32.1373 25.4176 34.8144 22.0948 36.748 18.872C34.8078 15.6778 32.1219 12.3587 29.3065 10.4273ZM19.0968 25.9324C17.7003 25.9324 16.3353 25.5184 15.1742 24.7425C14.0131 23.9667 13.1081 22.864 12.5737 21.5739C12.0393 20.2838 11.8995 18.8641 12.1719 17.4945C12.4444 16.1249 13.1168 14.8669 14.1042 13.8794C15.0917 12.892 16.3497 12.2196 17.7193 11.9471C19.0889 11.6747 20.5086 11.8145 21.7987 12.3489C23.0888 12.8833 24.1915 13.7883 24.9673 14.9494C25.7432 16.1105 26.1572 17.4755 26.1572 18.872C26.1551 20.7439 25.4105 22.5385 24.0869 23.8621C22.7633 25.1857 20.9687 25.9303 19.0968 25.9324Z"
                                 fill="white" />
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
