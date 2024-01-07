@@ -46,8 +46,14 @@ Route::post('vidio-galeri-guru', [TeacherVideoGalleryController::class, 'store']
 //Auth
 Auth::routes();
 
+Route::get('verify-account', function () {
+    return view('auth.verify');
+});
 
 Route::middleware('auth')->group(function(){
+    
+    Route::get('dashboard',[HomeController::class,'dashboard'])->name('dashboard');
+    
     Route::middleware('role:admin')->group(function(){
 
         Route::resources([
@@ -55,6 +61,7 @@ Route::middleware('auth')->group(function(){
             'majors' => MajorController::class,
             'classrooms' => ClassroomController::class,
             'news' => NewsController::class,
+            'survey' => SurveyController::class
         ]);
 
         Route::get('students', [StudentController::class, 'index'])->name('students.index');
@@ -65,6 +72,14 @@ Route::middleware('auth')->group(function(){
         Route::post('teacher-gallery/store', [TeacherGalleryController::class, 'store'])->name('teacher-gallery.store');
         Route::put('teacher-gallery/{teacherGallery}', [TeacherGalleryController::class, 'update']);
         Route::delete('teacher-gallery/{teacherGallery}', [TeacherGalleryController::class, 'destroy']);
+
+        Route::post('video-alumni', [AlumniVideoGalleryController::class, 'store'])->name('video.alumni');
+        Route::get('alumni-gallery', [GalleryAlumniController::class, 'index'])->name('alumni.gallery');
+        Route::post('alumni-gallery', [GalleryAlumniController::class, 'store'])->name('alumni.store');
+        Route::post('slider-gallery-alumni', [SliderGalleryAlumniController::class, 'store'])->name('slider.gallery.alumni');
+        Route::delete('slider-gallery-delete/{slider_gallery_alumni}', [SliderGalleryAlumniController::class, 'destroy'])->name('slider.gallery.delete');
+        Route::delete('alumni-gallery-delete/{gallery_alumni}', [GalleryAlumniController::class, 'destroy'])->name('alumni.delete');
+        Route::put('alumni-gallery-update/{gallery_alumni}', [GalleryAlumniController::class, 'update'])->name('alumni.update');
 
     });
     Route::middleware('role:student')->group(function(){
@@ -85,9 +100,6 @@ Route::resources([
     'job-vacancy' => JobVacancyController::class,
 ]);
 
-Route::get('/verify-account', function () {
-    return view('auth.verify');
-});
 Route::get('pilih-role', function () {
     return view('auth.choice-of-roles');
 });
@@ -98,18 +110,6 @@ Route::post('register-company', [RegisterController::class, 'registerCompany'])-
 Route::get('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
 
 
-// Admin
-Route::get('dashboard', function () {
-    return view('admin.index');
-})->name('dashboard');
-Route::post('video-alumni', [AlumniVideoGalleryController::class, 'store'])->name('video.alumni');
-Route::get('alumni-gallery', [GalleryAlumniController::class, 'index'])->name('alumni.gallery');
-Route::post('alumni-gallery', [GalleryAlumniController::class, 'store'])->name('alumni.store');
-Route::post('slider-gallery-alumni', [SliderGalleryAlumniController::class, 'store'])->name('slider.gallery.alumni');
-Route::delete('slider-gallery-delete/{slider_gallery_alumni}', [SliderGalleryAlumniController::class, 'destroy'])->name('slider.gallery.delete');
-Route::delete('alumni-gallery-delete/{gallery_alumni}', [GalleryAlumniController::class, 'destroy'])->name('alumni.delete');
-Route::put('alumni-gallery-update/{gallery_alumni}', [GalleryAlumniController::class, 'update'])->name('alumni.update');
-Route::resource('survey', SurveyController::class);
 
 Route::get('account-siswa', [StudentController::class, 'viewVerificationStudent'])->name('account.siswa');
 
@@ -118,12 +118,6 @@ Route::patch('reject-verification-student/{student}', [StudentController::class,
 Route::get('alumni-register', function () {
     return view('admin.alumni-register');
 })->name('alumni.register');
-Route::get('add-major', function () {
-    return view('admin.add-major');
-})->name('add.major');
-Route::get('add-class', function () {
-    return view('admin.add-class');
-})->name('add.class');
 
 Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
 Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
@@ -133,9 +127,7 @@ Route::get('detail-job-vacancy', function () {
     return view('admin.job-vacancy.detail');
 })->name('detail.job.vacancy');
 // siswa
-Route::get('dashboard-student', function () {
-    return view('student.dashboard');
-})->name('dashboard-student');
+
 Route::get('portofolio', function () {
     return view('student.portofolio');
 })->name('portofolio');
@@ -149,10 +141,6 @@ Route::get('edit-portofolio', function () {
     return view('student.edit-portofolio');
 })->name('edit.portofolio');
 
-// company
-Route::get('company', function () {
-    return view('company.index');
-})->name('company-dashboard');
 Route::get('job-applicant', function () {
     return view('company.job-applicant');
 });
@@ -163,9 +151,6 @@ Route::patch('update-password', [UserController::class, 'updatePassword'])->name
 
 
 Route::prefix('alumni')->name('alumni.')->group(function () {
-    Route::get('dashboard-alumni', function () {
-        return view('alumni.index');
-    })->name('dashboard-alumni');
     Route::get('survei-pekerjaan', function () {
         return view('alumni.job-survey');
     })->name('job.survey');
