@@ -65,47 +65,7 @@
     </style>
 @endsection
 @section('content')
-    <h4>
-        Portofolio
-    </h4>
-    <div class="card">
-        <div class="card-body">
-            <div class="d-flex justify-content-between">
-                <div class="">
-                    <h5 class="text-primary mt-3">Project Tracer Study Nomer 2 Malang</h5>
-                </div>
-                <div class="">
-                    <button class="btn btn-warning text-white"  data-bs-toggle="modal" data-bs-target="#edit_portofolio">Edit Portofolio</button>
-                </div>
-            </div>
-            <p class="mt-4">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                unknown printer took a galley of type and scrambled it to make a type specimen book.
-            </p>
-        </div>
-    </div>
-    <div class="modal fade" id="edit_portofolio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Portofolio</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <label for="">Judul</label>
-                    <input type="text" class="form-control">
-                    <label for="" class="form-label mt-2">Tahun Ajaran</label>
-                    <textarea name="" id="" class="form-control"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <h4>
+    <h4 class="mb-3"> 
         Pengalaman Project
     </h4>
     <div class="d-flex justify-content-between mb-4">
