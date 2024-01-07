@@ -13,6 +13,11 @@
                             Menyajikan informasi yang komprehensif, platform ini memungkinkan Anda menjelajahi prestasi dan
                             perkembangan mereka setelah meninggalkan lembaga pendidikan.</p>
                     </div>
+                    <div class="">
+                        <a href="/pilih-role" class="btn text-white py-2 py-1"  style="background-color:#FFAE1F; width:25% ; height:25%">
+                            Daftar
+                        </a>
+                    </div>
                 </div>
                 <div class="col-0 col-md-0 col-lg-1"></div>
                 <div class="col-12 col-md-3 col-lg-4"><img src="logo-welcome.png" alt=""></div>

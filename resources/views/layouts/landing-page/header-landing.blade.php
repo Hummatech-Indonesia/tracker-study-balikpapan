@@ -44,11 +44,6 @@
                         <li class="nav-item">
                             <a class="nav-link fw-5" href="#pricing">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/pilih-role" class="btn" style="margin-top:18px;font-weight:600">
-                                Register
-                            </a>
-                        </li>
                         <li class="nav-item px-3">
                             <a href="/login" class="btn" style="margin-top:18px;font-weight:600">
                                 Login
