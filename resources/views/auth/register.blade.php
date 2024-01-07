@@ -124,7 +124,7 @@
                                             <label for="inputSelectCountry" class="form-label">Jenis Kelamin</label><br>
                                             <input class="form-check-input me-1" type="radio" name="gender"
                                                 value="male" id="flexRadioDefault1">Laki Laki<br>
-                                            <input class="form-check-input me-1" type="radio" name="gennder"
+                                            <input class="form-check-input me-1" type="radio" name="gender"
                                                 value="female" id="flexRadioDefault1">Perempuan
                                             @error('gender')
                                                 <div class="text-danger">{{ $message }}
