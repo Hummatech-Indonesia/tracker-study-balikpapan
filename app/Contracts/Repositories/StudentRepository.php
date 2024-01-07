@@ -5,6 +5,7 @@ namespace App\Contracts\Repositories;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Contracts\Interfaces\StudentInterface;
+use App\Enums\StatusEnum;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class StudentRepository extends BaseRepository implements StudentInterface
@@ -52,6 +53,20 @@ class StudentRepository extends BaseRepository implements StudentInterface
             ->when($request->name, function ($query) use ($request) {
                 $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
             })
+            ->fastPaginate($pagination);
+    }
+
+    /**
+     * studentNonactive
+     *
+     * @param  mixed $request
+     * @param  mixed $pagination
+     * @return LengthAwarePaginator
+     */
+    public function studentNonactive(Request $request, int $pagination = 10): LengthAwarePaginator
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::NONACTIVE->value])
             ->fastPaginate($pagination);
     }
 }

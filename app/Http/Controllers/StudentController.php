@@ -35,10 +35,42 @@ class StudentController extends Controller
         $this->classroom = $classroom;
     }
 
+    /**
+     * verificationStudent
+     *
+     * @param  mixed $student
+     * @return void
+     */
     public function verificationStudent(Student $student)
     {
-        $this->student->update($student->id, ['status' => StatusEnum::NONACTIVE->value]);
-        return redirect()->back(null, trans('alert.update_success'));
+        $this->student->update($student->id, ['status' => StatusEnum::ACTIVE->value]);
+        return redirect()->back()->with('success', trans('alert.update_success'));
+    }
+
+    /**
+     * rejectVerificationStudent
+     *
+     * @param  mixed $student
+     * @return void
+     */
+    public function rejectVerificationStudent(Student $student)
+    {
+        $this->student->update($student->id, ['status' => StatusEnum::REJECT->value]);
+        return redirect()->back()->with('success', trans('alert.update_success'));
+    }
+
+    /**
+     * viewVerificationStudent
+     *
+     * @param  mixed $student
+     * @return void
+     */
+    public function viewVerificationStudent(Request $request)
+    {
+        $students = $this->student->studentNonactive($request, 10);
+        return view('admin.account-siswa', [
+            'students' => $students
+        ]);
     }
 
     /**
@@ -94,6 +126,4 @@ class StudentController extends Controller
         $this->register->delete($user->id);
         return redirect()->back()->with('success', trans('alert.delete_success'));
     }
-
-
 }

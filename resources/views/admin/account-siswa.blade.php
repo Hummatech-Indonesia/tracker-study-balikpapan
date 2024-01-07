@@ -1,5 +1,17 @@
 @extends('layouts.app')
 @section('content')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+    <h4 class="mb-3">
+        Data Alumni
+    </h4>
     <div class="d-flex justify-content-between">
         <div class="">
             <h4 class="mb-3">
@@ -13,78 +25,36 @@
 
     </div>
     <div class="row">
-        <div class="col-12 col-lg-4 col-xxl-3">
-            <div class="card border-primary border-bottom border-3 border-0">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center mt-2 mb-4">
-                        <img src="{{ asset('assets-admin/images/avatars/avatar-2.png') }}" width="100px"
-                            class="user-circle" alt="user">
+        @forelse ($students as $student)
+            <div class="col-12 col-lg-4 col-xxl-3">
+                <div class="card border-primary border-bottom border-3 border-0">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center mt-2 mb-4">
+                            <img src="{{ asset('assets-admin/images/avatars/avatar-2.png') }}" width="100px"
+                                class="user-circle" alt="user">
+                        </div>
+                        <h5 class="card-title text-dark text-center" style="font-weight: 700">XII Multimedia A</h5>
+                        <p class="card-text mt-2 text-center mb-5">Tahun Ajaran 2024-2025.</p>
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <button class="btn btn-warning w-100 text-white">Detail</button>
+                            <form action="{{ route('reject.verification.student', $student->id) }}" class=" w-100"
+                                method="post">
+                                @method('PATCH')
+                                @csrf
+                                <button type="submit" class="btn btn-inverse-danger w-100">Tolak</button>
+                            </form>
+                        </div>
+                        <form action="{{ route('verification.student', $student->id) }}" method="post">
+                            @method('PATCH')
+                            @csrf
+                            <button type="submit" class="btn w-100 text-white"
+                                style="background-color: #1D9375">Terima</button>
+                        </form>
                     </div>
-                    <h5 class="card-title text-dark text-center" style="font-weight: 700">Zanuar Andai Andiyans</h5>
-                    <div class="card-text mt-2 mb-2 text-center">Tahun Ajaran 2024-2025.</div>
-                    <h6 class="card-title text-center mb-3" style="font-weight: 700;color:#5D87FF;">RPL</h6>
-                    <div class="d-flex align-items-center gap-2 mb-2">
-                        <button class="btn btn-warning w-100 text-white">Detail</button>
-                        <button class="btn btn-danger w-100">Tolak</button>
-                    </div>
-                    <button class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-lg-4 col-xxl-3">
-            <div class="card border-primary border-bottom border-3 border-0">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center mt-2 mb-4">
-                        <img src="{{ asset('assets-admin/images/avatars/avatar-2.png') }}" width="100px"
-                            class="user-circle" alt="user">
-                    </div>
-                    <h5 class="card-title text-dark text-center" style="font-weight: 700">Zanuar Andai Andiyans</h5>
-                    <div class="card-text mt-2 mb-2 text-center">Tahun Ajaran 2024-2025.</div>
-                    <h6 class="card-title text-center mb-3" style="font-weight: 700;color:#5D87FF;">RPL</h6>
-                    <div class="d-flex align-items-center gap-2 mb-2">
-                        <button class="btn btn-warning w-100 text-white">Detail</button>
-                        <button class="btn btn-danger w-100">Tolak</button>
-                    </div>
-                    <button class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-4 col-xxl-3">
-            <div class="card border-primary border-bottom border-3 border-0">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center mt-2 mb-4">
-                        <img src="{{ asset('assets-admin/images/avatars/avatar-2.png') }}" width="100px"
-                            class="user-circle" alt="user">
-                    </div>
-                    <h5 class="card-title text-dark text-center" style="font-weight: 700">Zanuar Andai Andiyans</h5>
-                    <div class="card-text mt-2 mb-2 text-center">Tahun Ajaran 2024-2025.</div>
-                    <h6 class="card-title text-center mb-3" style="font-weight: 700;color:#5D87FF;">RPL</h6>
-                    <div class="d-flex align-items-center gap-2 mb-2">
-                        <button class="btn btn-warning w-100 text-white">Detail</button>
-                        <button class="btn btn-danger w-100">Tolak</button>
-                    </div>
-                    <button class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-4 col-xxl-3">
-            <div class="card border-primary border-bottom border-3 border-0">
-                <div class="card-body">
-                    <div class="d-flex justify-content-center mt-2 mb-4">
-                        <img src="{{ asset('assets-admin/images/avatars/avatar-2.png') }}" width="100px"
-                            class="user-circle" alt="user">
-                    </div>
-                    <h5 class="card-title text-dark text-center" style="font-weight: 700">Zanuar Andai Andiyans</h5>
-                    <div class="card-text mt-2 mb-2 text-center">Tahun Ajaran 2024-2025.</div>
-                    <h6 class="card-title text-center mb-3" style="font-weight: 700;color:#5D87FF;">RPL</h6>
-                    <div class="d-flex align-items-center gap-2 mb-2">
-                        <button class="btn btn-warning w-100 text-white">Detail</button>
-                        <button class="btn btn-danger w-100">Tolak</button>
-                    </div>
-                    <button class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
-                </div>
-            </div>
-        </div>
-
+        @empty
+            <p>Data Kosong</p>
+        @endforelse
     </div>
 @endsection

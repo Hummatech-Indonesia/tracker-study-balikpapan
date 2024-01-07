@@ -64,7 +64,7 @@ class SchoolYearController extends Controller
     public function update(NameOnlyRequest $request, SchoolYear $schoolYear)
     {
         $this->schoolYear->update($schoolYear->id, $request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('success', trans('alert.add_success'));
     }
 
     /**
