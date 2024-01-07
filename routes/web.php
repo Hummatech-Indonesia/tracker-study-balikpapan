@@ -43,8 +43,28 @@ Route::get('galeri-guru', [TeacherGalleryController::class, 'galery'])->name('ga
 Route::get('galeri-alumni', [LandingPageController::class, 'alumni'])->name('galery-alumni');
 Route::post('vidio-galeri-guru', [TeacherVideoGalleryController::class, 'store'])->name('teacher-video-gallery.store');
 
+//Auth
+Auth::routes();
+
+
 Route::middleware('auth')->group(function(){
     Route::middleware('role:admin')->group(function(){
+
+        Route::resources([
+            'school-years' => SchoolYearController::class,
+            'majors' => MajorController::class,
+            'classrooms' => ClassroomController::class,
+            'news' => NewsController::class,
+        ]);
+
+        Route::get('students', [StudentController::class, 'index'])->name('students.index');
+        Route::post('students', [StudentController::class, 'store'])->name('students.store');
+        Route::put('students/{user}', [StudentController::class, 'update'])->name('students.update');
+        Route::delete('students/{user}', [StudentController::class, 'destroy'])->name('students.destroy');
+        Route::get('teacher-gallery', [TeacherGalleryController::class, 'index'])->name('teacher-gallery.index');
+        Route::post('teacher-gallery/store', [TeacherGalleryController::class, 'store'])->name('teacher-gallery.store');
+        Route::put('teacher-gallery/{teacherGallery}', [TeacherGalleryController::class, 'update']);
+        Route::delete('teacher-gallery/{teacherGallery}', [TeacherGalleryController::class, 'destroy']);
 
     });
     Route::middleware('role:student')->group(function(){
@@ -61,25 +81,9 @@ Route::middleware('auth')->group(function(){
     });
 });
 
-
 Route::resources([
-    'school-years' => SchoolYearController::class,
-    'majors' => MajorController::class,
-    'classrooms' => ClassroomController::class,
-    'news' => NewsController::class,
     'job-vacancy' => JobVacancyController::class,
 ]);
-Route::get('teacher-gallery', [TeacherGalleryController::class, 'index'])->name('teacher-gallery.index');
-Route::post('teacher-gallery/store', [TeacherGalleryController::class, 'store'])->name('teacher-gallery.store');
-Route::put('teacher-gallery/{teacherGallery}', [TeacherGalleryController::class, 'update']);
-Route::delete('teacher-gallery/{teacherGallery}', [TeacherGalleryController::class, 'destroy']);
-
-Route::put('school-years/{schoolYear}', [SchoolYearController::class, 'update']);
-
-Route::get('students', [StudentController::class, 'index'])->name('students.index');
-Route::post('students', [StudentController::class, 'store'])->name('students.store');
-Route::put('students/{user}', [StudentController::class, 'update'])->name('students.update');
-Route::delete('students/{user}', [StudentController::class, 'destroy'])->name('students.destroy');
 
 Route::get('/verify-account', function () {
     return view('auth.verify');
@@ -87,11 +91,6 @@ Route::get('/verify-account', function () {
 Route::get('pilih-role', function () {
     return view('auth.choice-of-roles');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
 Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
