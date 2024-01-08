@@ -80,19 +80,19 @@ class PortofolioController extends Controller
      */
     public function update(PortofolioUpdateRequest $request, Portofolio $portofolio)
     {
-        $service = $this->service->store($request);
+        $data = $request->validated();
         $this->portofolio->update($portofolio->id, $request->validated());
         $photoPortofolioes = $this->photoPortofolio->show($portofolio->id);
-        foreach ($photoPortofolioes as $photoPortofolio) {
-            $this->photoPortofolio->delete($photoPortofolio->id);
-        }
-
-        $data = $request->validated();
-        if ($data['photo'] != null) {
+        if (isset($data['photo'])) {
+            $service = $this->service->store($request);
             foreach ($service['photo'] as $photo) {
                 $data['photo'] = $photo;
                 $data['portofolio_id'] = $portofolio->id;
                 $this->photoPortofolio->store($data);
+            }
+            foreach ($photoPortofolioes as $photoPortofolio) {
+                $this->photoPortofolio->delete($photoPortofolio->id);
+                $this->service->remove($photoPortofolio->photo);
             }
         }
         return redirect()->route('portofolio')->with('success', trans('alert.update_success'));

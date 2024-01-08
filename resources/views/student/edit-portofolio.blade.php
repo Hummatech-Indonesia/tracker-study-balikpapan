@@ -3,7 +3,7 @@
     <link href="{{ asset('assets-admin/plugins/Drag-And-Drop/dist/imageuploadify.min.css') }}" rel="stylesheet" />
 @endsection
 @section('content')
-    <form action="{{ route('portofolio.update', $portofolio->id) }}" method="post">
+    <form action="{{ route('portofolio.update', $portofolio->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="d-flex justify-content-between mb-3">
@@ -66,6 +66,14 @@
             <div class="card-body">
                 <input id="image-uploadify" type="file" name="photo[]"
                     accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+                @error('photo')
+                    <div class="text-danger">{{ $message }}
+                    </div>
+                @enderror
+                @error('photo.*')
+                    <div class="text-danger">{{ $message }}
+                    </div>
+                @enderror
             </div>
         </div>
     </form>
