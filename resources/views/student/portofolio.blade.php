@@ -143,7 +143,7 @@
                         </a>
                     </div>
                     <div class="">
-                        <a href="{{ route('detail.portofolio') }}" class="btn btn-primary"><svg
+                        <a href="{{ route('detail.portofolio', $portofolio->id) }}" class="btn btn-primary"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 38 38"
                                 fill="none">
                                 <path
