@@ -121,8 +121,8 @@ Route::get('alumni-register', function () {
     return view('admin.alumni-register');
 })->name('alumni.register');
 
-Route::post('portofolios', [PortofolioController::class, 'store']);
-Route::put('portofolios/{portofolio}', [PortofolioController::class, 'update']);
+Route::post('portofolio', [PortofolioController::class, 'store'])->name('portofolio.store');
+Route::put('portofolio/{portofolio}', [PortofolioController::class, 'update'])->name('portofolio.update');
 
 Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
 Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
@@ -133,19 +133,17 @@ Route::get('detail-job-vacancy', function () {
 })->name('detail.job.vacancy');
 // siswa
 
-Route::get('portofolio', function () {
-    return view('student.portofolio');
-})->name('portofolio');
+
+Route::get('portofolio', [PortofolioController::class, 'index'])->name('portofolio');
+
 Route::get('add-portofolio', function () {
     return view('student.add-portofolio');
 })->name('add.portofolio');
 Route::get('detail-portofolio', function () {
     return view('student.detail-portofolio');
 })->name('detail.portofolio');
-Route::get('edit-portofolio', function () {
-    return view('student.edit-portofolio');
-})->name('edit.portofolio');
 
+Route::get('edit-portofolio/{portofolio}', [PortofolioController::class, 'edit'])->name('edit.portofolio');
 Route::get('job-applicant', function () {
     return view('company.job-applicant');
 });

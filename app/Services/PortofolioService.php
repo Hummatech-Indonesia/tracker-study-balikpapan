@@ -33,23 +33,4 @@ class PortofolioService
         $data['photo'] = $photoes;
         return $data;
     }
-
-    // /**
-    //  * update
-    //  *
-    //  * @param  mixed $news
-    //  * @param  mixed $request
-    //  * @return array
-    //  */
-    // public function update(Portofolio $portofolio, PortofolioRequest $request): array
-    // {
-    //     $data = $request->validated();
-    //     $oldThumbnail = $news->thumbnail;
-    //     if ($request->hasFile('thumbnail')) {
-    //         $this->remove($oldThumbnail);
-    //         $oldThumbnail = $this->upload(UploadDiskEnum::THUMBNAIL->value, $request->file('thumbnail'));
-    //     }
-    //     $data['thumbnail'] = $oldThumbnail;
-    //     return $data;
-    // }
 }

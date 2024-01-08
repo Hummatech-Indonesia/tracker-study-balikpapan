@@ -7,6 +7,7 @@ use App\Contracts\Interfaces\PortofolioInterface;
 use App\Http\Requests\PortofolioRequest;
 use App\Models\Portofolio;
 use App\Services\PortofolioService;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class PortofolioController extends Controller
@@ -27,7 +28,8 @@ class PortofolioController extends Controller
      */
     public function index(Request $request)
     {
-        // return view('');
+        $portofolios = $this->portofolio->search($request);
+        return view('student.portofolio', ['portofolios' => $portofolios]);
     }
 
     /**
@@ -41,6 +43,15 @@ class PortofolioController extends Controller
         $service = $this->service->store($request);
         $this->portofolio->store($service);
         return redirect()->back()->with('success', trans('alert.add_success'));
+    }
+
+    public function edit(Portofolio $portofolio): View
+    {
+        $photoes = [];
+        foreach ($portofolio->photoPortofolios as $photoPortofolio) {
+            $photoes[] = asset('storage/' . $photoPortofolio->photo);
+        }
+        return view('student.edit-portofolio', ['portofolio' => $portofolio, 'photoes' => $photoes]);
     }
 
     /**
