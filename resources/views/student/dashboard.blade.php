@@ -59,7 +59,7 @@
                                 <div>
                                     <p class="mb-0 text-dark" style="font-weight: 600">Jumlah Potofolio
                                         Kamu</p>
-                                    <h4 class="my-1 text-success mb-4">4805</h4>
+                                    <h4 class="my-1 text-success mb-4">{{ $countPortofolio }}</h4>
                                 </div>
                                 <div class="widgets-icons-2 rounded-circle bg-light-success text-white ms-auto"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44"

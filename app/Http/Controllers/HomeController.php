@@ -2,8 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\PortofolioInterface;
+
 class HomeController extends Controller
 {
+
+    private PortofolioInterface $portofolio;
+
+    public function __construct(PortofolioInterface $portofolio)
+    {
+        $this->portofolio = $portofolio;
+    }
 
     /**
      *
@@ -23,7 +32,8 @@ class HomeController extends Controller
                 return view('admin.index');
                 break;
             case 'student':
-                return view('student.dashboard');
+                $countPortofolio = $this->portofolio->countPortofolio();
+                return view('student.dashboard',compact('countPortofolio'));
                 break;
             case 'alumni':
                 return view('alumni.index');

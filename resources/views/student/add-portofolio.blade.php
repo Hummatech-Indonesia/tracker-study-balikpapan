@@ -3,7 +3,7 @@
     <link href="{{ asset('assets-admin/plugins/Drag-And-Drop/dist/imageuploadify.min.css') }}" rel="stylesheet" />
 @endsection
 @section('content')
-    <form action="{{ route('portofolios') }}" method="post">
+    <form action="{{ route('portofolio.store') }}" method="post">
         @csrf
         <div class="d-flex justify-content-between mb-3">
             <div class="">

@@ -18,6 +18,7 @@ class Portofolio extends Model implements HasPhotoPortofolios
     protected $fillable = [
         'id',
         'name',
+        'student_id',
         'start_at',
         'end_at',
         'description',

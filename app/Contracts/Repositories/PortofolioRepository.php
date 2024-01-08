@@ -2,9 +2,10 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\PortofolioInterface;
 use App\Models\Portofolio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Contracts\Interfaces\PortofolioInterface;
 
 class PortofolioRepository extends BaseRepository implements PortofolioInterface
 {
@@ -92,4 +93,13 @@ class PortofolioRepository extends BaseRepository implements PortofolioInterface
             })
             ->get();
     }
+    public function countPortofolio(): string
+    {
+        $userId = Auth::user()->student->id; 
+    
+        return $this->model->query()
+            ->where('student_id', $userId)
+            ->count();
+    }
+    
 }
