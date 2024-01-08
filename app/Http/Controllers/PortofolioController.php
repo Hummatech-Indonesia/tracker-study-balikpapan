@@ -47,6 +47,16 @@ class PortofolioController extends Controller
     }
 
     /**
+     * show
+     *
+     * @param  mixed $portofolio
+     * @return View
+     */
+    public function show(Portofolio $portofolio): View
+    {
+        return view('student.detail-portofolio', compact('portofolio'));
+    }
+    /**
      * edit
      *
      * @param  mixed $portofolio

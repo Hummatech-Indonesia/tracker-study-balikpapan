@@ -140,9 +140,8 @@ Route::get('portofolio', [PortofolioController::class, 'index'])->name('portofol
 Route::get('add-portofolio', function () {
     return view('student.add-portofolio');
 })->name('add.portofolio');
-Route::get('detail-portofolio', function () {
-    return view('student.detail-portofolio');
-})->name('detail.portofolio');
+
+Route::get('detail-portofolio/{portofolio}', [PortofolioController::class, 'show'])->name('detail.portofolio');
 
 Route::get('edit-portofolio/{portofolio}', [PortofolioController::class, 'edit'])->name('edit.portofolio');
 Route::get('job-applicant', function () {
