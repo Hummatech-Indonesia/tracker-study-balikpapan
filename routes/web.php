@@ -64,11 +64,11 @@ Route::middleware('auth')->group(function () {
             'news' => NewsController::class,
             'survey' => SurveyController::class
         ]);
-        
-        Route::get('student-status',function () {
+
+        Route::get('student-status', function () {
             return view('admin.student-classroom');
         })->name('student.classroom');
-        Route::get('student-status/detail',function () {
+        Route::get('student-status/detail', function () {
             return view('admin.student-status');
         })->name('student.classroom.status');
         Route::get('students', [StudentController::class, 'index'])->name('students.index');
@@ -123,6 +123,7 @@ Route::get('alumni-register', function () {
 
 Route::post('portofolio', [PortofolioController::class, 'store'])->name('portofolio.store');
 Route::put('portofolio/{portofolio}', [PortofolioController::class, 'update'])->name('portofolio.update');
+Route::delete('portofolio/{portofolio}', [PortofolioController::class, 'destroy'])->name('portofolio.destroy');
 
 Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
 Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
@@ -157,8 +158,8 @@ Route::prefix('alumni')->name('alumni.')->group(function () {
     Route::get('survei', function () {
         return view('alumni.job-survey');
     })->name('job.survey');
-    Route::get('detail-lowongan-tersedia/{job_vacancy}',[JobVacancyController::class,'show'])->name('detail.lowongan.tersedia');
-    Route::post('detail-lowongan-tersedia/{jobVacancy}',[ApplyJobVacancyController::class,'store'])->name('send.cv');
+    Route::get('detail-lowongan-tersedia/{job_vacancy}', [JobVacancyController::class, 'show'])->name('detail.lowongan.tersedia');
+    Route::post('detail-lowongan-tersedia/{jobVacancy}', [ApplyJobVacancyController::class, 'store'])->name('send.cv');
     Route::get('lowongan-tersedia', [JobVacancyController::class, 'jobvacancy'])->name('vacancies.available');
     Route::get('lowongan', function () {
         return view('alumni.job-vacancy-page');

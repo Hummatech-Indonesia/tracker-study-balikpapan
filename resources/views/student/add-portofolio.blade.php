@@ -20,6 +20,7 @@
                 </button>
             </div>
         </div>
+
         <div class="card form-body">
             <div class="card-body row g-3">
                 <div class="col-12">
@@ -29,19 +30,30 @@
                         <div class="text-danger">{{ $message }}
                         </div>
                     @enderror
-
                 </div>
                 <div class="col-6">
                     <label for="" class="mt-2">Tanggal Mulai</label>
                     <input type="date" name="start_at" class="form-control mt-2">
+                    @error('start_at')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="col-6">
                     <label for="" class="mt-2">Tanggal Berakhir</label>
                     <input type="date" name="end_at" class="form-control mt-2">
+                    @error('end_at')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="col-12">
                     <label for="" class="mt-2">Deskripsi Project</label>
                     <textarea name="description" class="form-control mt-2" cols="30" rows="5"></textarea>
+                    @error('description')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
         </div>

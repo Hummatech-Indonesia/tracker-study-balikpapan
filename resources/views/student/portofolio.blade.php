@@ -64,6 +64,9 @@
         }
     </style>
 @endsection
+@php
+    use Carbon\Carbon;
+@endphp
 @section('content')
     <h4 class="mb-3">
         Pengalaman Project
@@ -87,43 +90,45 @@
         </div>
     </div>
     <div class="card">
-        @foreach ($portofolios as $portofolio)
+        @forelse ($portofolios as $portofolio)
             <div class="row g-0">
                 <div class="col-md-4">
                     <div class="photo-stack mt-4">
-                        <img src="http://placekitten.com/300/200" />
-                        <img src="http://placekitten.com/300/200?image=2" />
-                        <img src="http://placekitten.com/300/200?image=3" />
+                        @foreach ($portofolio->photoPortofolios as $photoPortofolio)
+                            <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="300" />
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
                         <p class="text-primary text-end ">
-                            12 September 2023 -30 September 2023
+                            {{ Carbon::parse($portofolio->start_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
+                            - {{ Carbon::parse($portofolio->end_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
                         </p>
-                        <h5 class="card-title">Project Tracer Study Nomer 2 Malang</h5>
-                        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and the printing and
-                            typesetting industry. Lorem Ipsum has been the industry's the industry's
-                            standard dummy text ever since the 1500s, when an galley of type and scrambled
-                            unknown printer took a galley of type and scrambled galley of type and scrambled....</p>
+                        <h5 class="card-title">{{ $portofolio->name }}</h5>
+                        <p class="card-text">{{ $portofolio->description }}</p>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mb-4 gap-3 px-4">
                     <div class="">
-                        <button class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                viewBox="0 0 38 38" fill="none">
-                                <path d="M14.981 22.7949L14.981 18.0879" stroke="white" stroke-width="3"
-                                    stroke-linecap="round" />
-                                <path d="M22.8254 22.7949L22.8254 18.0879" stroke="white" stroke-width="3"
-                                    stroke-linecap="round" />
-                                <path
-                                    d="M4.78223 10.2422H33.0242V10.2422C30.5229 10.2422 29.2722 10.2422 28.4621 10.9772C28.3942 11.0388 28.3293 11.1037 28.2676 11.1717C27.5327 11.9817 27.5327 13.2324 27.5327 15.7337V24.9725C27.5327 27.6438 27.5327 28.9794 26.7028 29.8093C25.8729 30.6391 24.5373 30.6391 21.866 30.6391H15.9404C13.2691 30.6391 11.9334 30.6391 11.1036 29.8093C10.2737 28.9794 10.2737 27.6438 10.2737 24.9725V15.7337C10.2737 13.2324 10.2737 11.9817 9.53874 11.1717C9.47709 11.1037 9.41218 11.0388 9.34424 10.9772C8.53418 10.2422 7.28353 10.2422 4.78223 10.2422V10.2422Z"
-                                    stroke="white" stroke-width="3" stroke-linecap="round" />
-                                <path
-                                    d="M14.9804 5.53617C14.9804 5.53617 15.7649 3.9668 18.9029 3.9668C22.0409 3.9668 22.8254 5.53579 22.8254 5.53579"
-                                    stroke="white" stroke-width="3" stroke-linecap="round" />
-                            </svg>
-                        </button>
+                        <form action="{{ route('portofolio.destroy', $portofolio->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="18" height="18" viewBox="0 0 38 38" fill="none">
+                                    <path d="M14.981 22.7949L14.981 18.0879" stroke="white" stroke-width="3"
+                                        stroke-linecap="round" />
+                                    <path d="M22.8254 22.7949L22.8254 18.0879" stroke="white" stroke-width="3"
+                                        stroke-linecap="round" />
+                                    <path
+                                        d="M4.78223 10.2422H33.0242V10.2422C30.5229 10.2422 29.2722 10.2422 28.4621 10.9772C28.3942 11.0388 28.3293 11.1037 28.2676 11.1717C27.5327 11.9817 27.5327 13.2324 27.5327 15.7337V24.9725C27.5327 27.6438 27.5327 28.9794 26.7028 29.8093C25.8729 30.6391 24.5373 30.6391 21.866 30.6391H15.9404C13.2691 30.6391 11.9334 30.6391 11.1036 29.8093C10.2737 28.9794 10.2737 27.6438 10.2737 24.9725V15.7337C10.2737 13.2324 10.2737 11.9817 9.53874 11.1717C9.47709 11.1037 9.41218 11.0388 9.34424 10.9772C8.53418 10.2422 7.28353 10.2422 4.78223 10.2422V10.2422Z"
+                                        stroke="white" stroke-width="3" stroke-linecap="round" />
+                                    <path
+                                        d="M14.9804 5.53617C14.9804 5.53617 15.7649 3.9668 18.9029 3.9668C22.0409 3.9668 22.8254 5.53579 22.8254 5.53579"
+                                        stroke="white" stroke-width="3" stroke-linecap="round" />
+                                </svg>
+                            </button>
+                        </form>
                     </div>
                     <div class="">
                         <a href="{{ route('edit.portofolio', $portofolio->id) }}" class="btn btn-warning"><svg
@@ -152,7 +157,8 @@
                     </div>
                 </div>
             </div>
-        @endforeach
-
+        @empty
+            <p>data kosong</p>
+        @endforelse
     </div>
 @endsection

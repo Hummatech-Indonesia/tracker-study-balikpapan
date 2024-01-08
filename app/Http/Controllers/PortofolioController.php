@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\Interfaces\PhotoPortofolioInterface;
 use App\Contracts\Interfaces\PortofolioInterface;
 use App\Http\Requests\PortofolioRequest;
+use App\Http\Requests\PortofolioUpdateRequest;
 use App\Models\Portofolio;
 use App\Services\PortofolioService;
 use Illuminate\Contracts\View\View;
@@ -42,9 +43,15 @@ class PortofolioController extends Controller
     {
         $service = $this->service->store($request);
         $this->portofolio->store($service);
-        return redirect()->back()->with('success', trans('alert.add_success'));
+        return redirect()->route('portofolio')->with('success', trans('alert.add_success'));
     }
 
+    /**
+     * edit
+     *
+     * @param  mixed $portofolio
+     * @return View
+     */
     public function edit(Portofolio $portofolio): View
     {
         $photoes = [];
@@ -61,7 +68,7 @@ class PortofolioController extends Controller
      * @param  mixed $portofolio
      * @return void
      */
-    public function update(PortofolioRequest $request, Portofolio $portofolio)
+    public function update(PortofolioUpdateRequest $request, Portofolio $portofolio)
     {
         $service = $this->service->store($request);
         $this->portofolio->update($portofolio->id, $request->validated());
@@ -70,12 +77,15 @@ class PortofolioController extends Controller
             $this->photoPortofolio->delete($photoPortofolio->id);
         }
 
-        foreach ($service['photo'] as $photo) {
-            $data['photo'] = $photo;
-            $data['portofolio_id'] = $portofolio->id;
-            $this->photoPortofolio->store($data);
+        $data = $request->validated();
+        if ($data['photo'] != null) {
+            foreach ($service['photo'] as $photo) {
+                $data['photo'] = $photo;
+                $data['portofolio_id'] = $portofolio->id;
+                $this->photoPortofolio->store($data);
+            }
         }
-        return redirect()->back()->with('success', trans('alert.update_success'));
+        return redirect()->route('portofolio')->with('success', trans('alert.update_success'));
     }
 
     /**
@@ -86,6 +96,9 @@ class PortofolioController extends Controller
      */
     public function destroy(Portofolio $portofolio)
     {
+        foreach ($portofolio->photoPortofolios as $photoPortofolio) {
+            $this->service->remove($photoPortofolio->photo);
+        }
         $this->portofolio->delete($portofolio->id);
         return redirect()->back()->with('success', trans('alert.delete_success'));
     }

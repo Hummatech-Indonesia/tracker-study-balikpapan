@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-between mb-3">
             <div class="">
                 <h5 class="text-dark" style="font-weight: 550">
-                    Buat Project
+                    Edit Project
                 </h5>
             </div>
             <div class="">
@@ -21,6 +21,7 @@
                 </button>
             </div>
         </div>
+
         <div class="card form-body">
             <div class="card-body row g-3">
                 <div class="col-12">
@@ -30,19 +31,30 @@
                         <div class="text-danger">{{ $message }}
                         </div>
                     @enderror
-
                 </div>
                 <div class="col-6">
                     <label for="" class="mt-2">Tanggal Mulai</label>
                     <input type="date" name="start_at" class="form-control mt-2" value="{{ $portofolio->start_at }}">
+                    @error('start_at')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="col-6">
                     <label for="" class="mt-2">Tanggal Berakhir</label>
                     <input type="date" name="end_at" class="form-control mt-2" value="{{ $portofolio->end_at }}">
+                    @error('end_at')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="col-12">
                     <label for="" class="mt-2">Deskripsi Project</label>
                     <textarea name="description" class="form-control mt-2" cols="30" rows="5">{{ $portofolio->description }}</textarea>
+                    @error('description')
+                        <div class="text-danger">{{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -50,12 +62,12 @@
             Foto Project
         </h5>
 
-        <div class="card">
+        {{-- <div class="card">
             <div class="card-body">
                 <input id="image-uploadify" type="file" name="photo[]"
                     accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
             </div>
-        </div>
+        </div> --}}
     </form>
 @endsection
 @section('script')

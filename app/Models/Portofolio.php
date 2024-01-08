@@ -22,6 +22,7 @@ class Portofolio extends Model implements HasPhotoPortofolios
         'start_at',
         'end_at',
         'description',
+        'student_id'
     ];
     protected $guarded = [];
 
