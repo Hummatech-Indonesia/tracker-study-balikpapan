@@ -39,27 +39,27 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="formFile" class="form-label">Nama</label>
-                                <input type="text" placeholder="Masukkan Nama" class="form-control" name="name"
+                                <input type="text" placeholder="Masukkan Nama" class="form-control" value="{{ old('name') }}" name="name"
                                     id="">
                             </div>
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" placeholder="Masukkan Email" id=""
+                                <input name="email" placeholder="Masukkan Email" id="" value="{{ old('email') }}"
                                     class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Password</label>
-                                <input type="password" placeholder="Masukkan Password" class="form-control" name="password"
+                                <input type="password" placeholder="Masukkan Password" value="{{ old('password') }}" class="form-control" name="password"
                                     id="">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">NISN</label>
-                                <input type="text" placeholder="Masukkan NISN" name="national_student_id" id=""
+                                <input type="text" placeholder="Masukkan NISN" value="{{ old('nisn') }}" name="national_student_id" id=""
                                     class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="birth_date" id="">
+                                <input type="date" value="{{ old('birth_date') }}" class="form-control" name="birth_date" id="">
                             </div>
                             <div class="col-6 mt-2">
                                 <p>
@@ -78,12 +78,12 @@
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">No Telepon</label>
-                                <input type="number" placeholder="Masukkan No Telepon" class="form-control"
+                                <input type="number" value="{{ old('phone_number') }}" placeholder="Masukkan No Telepon" class="form-control"
                                     name="phone_number" id="">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Kelas</label>
-                                <select class="form-select mb-3" name="classroom_id" aria-label="Default select example">
+                                <select class="form-select mb-3" value="{{ old('classroom_id') }}" name="classroom_id" aria-label="Default select example">
                                     <option>Pilih Kelas</option>
                                     @foreach ($classrooms as $classroom)
                                         <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
@@ -93,7 +93,7 @@
 
                             <div class="col-12">
                                 <label for="formFile" class="form-label">Alamat</label>
-                                <textarea name="address" placeholder="Masukkan Alamat" id="" class="form-control"></textarea>
+                                <textarea name="address" placeholder="Masukkan Alamat" id="" class="form-control">{{ old('address') }}</textarea>
                             </div>
 
                         </div>
