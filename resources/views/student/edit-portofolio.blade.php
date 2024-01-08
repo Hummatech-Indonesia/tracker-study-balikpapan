@@ -62,12 +62,12 @@
             Foto Project
         </h5>
 
-        {{-- <div class="card">
+        <div class="card">
             <div class="card-body">
                 <input id="image-uploadify" type="file" name="photo[]"
                     accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
             </div>
-        </div> --}}
+        </div>
     </form>
 @endsection
 @section('script')

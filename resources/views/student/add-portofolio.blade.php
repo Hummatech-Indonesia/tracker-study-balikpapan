@@ -12,9 +12,9 @@
                 </h5>
             </div>
             <div class="">
-                <button onclick="history.back()" class="btn btn-warning text-white">
+                <a href="{{ route('portofolio') }}" class="btn btn-warning text-white">
                     Kembali
-                </button>
+                </a>
                 <button type="submit" class="btn btn-primary text-white">
                     Kirim
                 </button>
