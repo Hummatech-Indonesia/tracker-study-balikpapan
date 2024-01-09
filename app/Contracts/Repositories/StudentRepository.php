@@ -36,8 +36,10 @@ class StudentRepository extends BaseRepository implements StudentInterface
      */
     public function update(mixed $id, array $data): mixed
     {
-        return $this->model->query()
-            ->findOrFail($id)->update($data);
+        $student = $this->show($id);
+        $student->update($data);
+        $student->user->syncRoles($data['role']);
+        return $student;
     }
 
     /**
@@ -129,5 +131,17 @@ class StudentRepository extends BaseRepository implements StudentInterface
         return $this->model->query()
             ->whereIn('id', $select)
             ->update($data);
+    }
+
+    /**
+     * show
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function show(mixed $id): mixed
+    {
+        return $this->model->query()
+            ->findOrFail($id);
     }
 }

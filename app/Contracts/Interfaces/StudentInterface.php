@@ -6,11 +6,12 @@ use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 use App\Contracts\Interfaces\Eloquent\CustomPaginationInterface;
 use App\Contracts\Interfaces\Eloquent\SearchInterface;
+use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\WhereInInterface;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-interface StudentInterface extends CustomPaginationInterface, StoreInterface, UpdateInterface
+interface StudentInterface extends CustomPaginationInterface, StoreInterface, UpdateInterface, ShowInterface
 {
     /**
      * studentNonactive
@@ -45,7 +46,7 @@ interface StudentInterface extends CustomPaginationInterface, StoreInterface, Up
      * @return int
      */
     public function countAlumni(?array $data): int;
-    
+
     /**
      * updateSelect
      *

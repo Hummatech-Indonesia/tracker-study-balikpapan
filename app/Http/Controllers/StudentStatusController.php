@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\StudentInterface;
+use App\Enums\RoleEnum;
 use App\Helpers\ResponseHelper;
 use App\Http\Requests\SelectChangeUpdateRequest;
 use App\Models\Classroom;
@@ -57,7 +58,9 @@ class StudentStatusController extends Controller
      */
     public function changeAlumni(Student $student)
     {
-        $this->student->update($student->id, ['is_graduate' => 1]);
+        $data['is_graduate'] = 1;
+        $data['role'] = RoleEnum::ALUMNI->value;
+        $this->student->update($student->id, $data);
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
@@ -68,7 +71,9 @@ class StudentStatusController extends Controller
      */
     public function changeStudent(Student $student)
     {
-        $this->student->update($student->id, ['is_graduate' => 0]);
+        $data['is_graduate'] = 0;
+        $data['role'] = RoleEnum::STUDENT->value;
+        $this->student->update($student->id, $data);
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
