@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
@@ -38,9 +39,7 @@ use App\Http\Controllers\TeacherVideoGalleryController;
 //Landing Page
 Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 
-Route::get('lowongan', function () {
-    return view('lowongan');
-});
+Route::get('lowongan', [LandingPageController::class, 'jobVacancy'])->name('lowongan');
 
 Route::get('detail-lowongan/{jobVacancy}', [LandingPageController::class, 'detailJobVacancy'])->name('detail-lowongan');
 
@@ -64,7 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware('role:admin')->group(function () {
-        
+
         Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
         Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
         Route::patch('reject-verify-company/{company}', [CompanyController::class, 'reject'])->name('reject.verify.company');
@@ -75,7 +74,8 @@ Route::middleware('auth')->group(function () {
             'majors' => MajorController::class,
             'classrooms' => ClassroomController::class,
             'news' => NewsController::class,
-            'survey' => SurveyController::class
+            'survey' => SurveyController::class,
+            'users' => AccountController::class
         ]);
 
 

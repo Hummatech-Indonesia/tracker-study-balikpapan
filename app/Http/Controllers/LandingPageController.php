@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\SliderGalleryAlumni;
 use Illuminate\Contracts\View\View;
 use App\Contracts\Interfaces\NewsInterface;
+use App\Contracts\Interfaces\JobVacancyInterface;
 use App\Contracts\Interfaces\GalleryAlumniInterface;
 
 class LandingPageController extends Controller
@@ -15,11 +16,14 @@ class LandingPageController extends Controller
     private NewsInterface $news;
     private SliderGalleryAlumni $slidergaleryalumni;
     private GalleryAlumniInterface $galleryAlumni;
+    private JobVacancyInterface $jobVacancy;
 
-    public function __construct(NewsInterface $news , SliderGalleryAlumni $slidergaleryalumni , GalleryAlumniInterface $galleryAlumni){
+    public function __construct(NewsInterface $news , SliderGalleryAlumni $slidergaleryalumni , GalleryAlumniInterface $galleryAlumni, JobVacancyInterface $jobVacancy)
+    {
         $this->news = $news;
         $this->slidergaleryalumni = $slidergaleryalumni;
         $this->galleryAlumni = $galleryAlumni;
+        $this->jobVacancy = $jobVacancy;
     }
 
     /**
@@ -44,6 +48,18 @@ class LandingPageController extends Controller
         $galleryAlumnis = $this->galleryAlumni->get();
         $slidergaleryalumnis = $this->slidergaleryalumni->get();
         return view('galery-alumni' , ['slidergaleryalumnis' => $slidergaleryalumnis , 'galleryAlumnis'=>$galleryAlumnis]);
+    }
+
+    /**
+     * jobVacancy
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function jobVacancy(Request $request)
+    {
+        $jobVacancys = $this->jobVacancy->customPaginate($request, 10);
+        return view('lowongan', compact('jobVacancys'));
     }
 
 

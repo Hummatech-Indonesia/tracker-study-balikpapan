@@ -190,7 +190,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 @forelse ($jobVacancys as $jobVacancy)
                 <div class="col-12 col-md-6 col-lg-3 res-margin my-4">
                     <!-- Single Price Plan -->
@@ -230,11 +230,31 @@
                     </div>
                 </div>
                 @empty
+                <div class="d-flex mb-4" style="min-height:16rem">
+                    <div class="my-auto">
+                        <img src="{{ asset('showNoData.png') }}" width="350" height="350" />
+                        <h4 class="text-center mt-4">Data Lowongan Pekerjaan Kosong!!</h4>
+                    </div>
+                </div>
                 @endforelse
             </div>
+            @if ($jobVacancys)
             <div class="row justify-content-center">
-                <a href="/lowongan" class="btn btn-outline-primary btn-md mt-4 mb-4">Lowongan Lainnya</a>
+                <a href="{{ route('lowongan') }}" style="font-size: 1rem;
+                font-weight: 500;
+                color: #fff;
+                line-height: 1;
+                background-color: #5D87FF;
+                padding: 10px 10px;
+                border-radius: 6px;
+                outline: 0 none;
+                position: relative;
+                z-index: 1;margin-top:40px;margin-bottom:40px;">Lowongan Lainnya</a>
             </div>
+            @else
+
+            @endif
+
         </div>
     </section>
     <!-- ***** Review Area End ***** -->

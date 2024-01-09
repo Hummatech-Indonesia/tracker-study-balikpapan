@@ -3,6 +3,8 @@
 namespace App\Contracts\Repositories;
 
 use App\Models\JobVacancy;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Contracts\Interfaces\JobVacancyInterface;
 
 class JobVacancyRepository extends BaseRepository implements JobVacancyInterface
@@ -70,5 +72,22 @@ class JobVacancyRepository extends BaseRepository implements JobVacancyInterface
     public function delete(mixed $id): mixed
     {
         return $this->show($id)->delete($id);
+    }
+
+    /**
+     * customPaginate
+     *
+     * @param  mixed $request
+     * @param  mixed $pagination
+     * @return LengthAwarePaginator
+     */
+    public function customPaginate(Request $request, int $pagination = 10): LengthAwarePaginator
+    {
+        return $this->model->query()
+            ->when($request->job_title, function ($query) use ($request) {
+                $query->where('job_title', 'LIKE', '%' . $request->job_title . '%');
+            })
+            ->latest()
+            ->fastPaginate($pagination);
     }
 }
