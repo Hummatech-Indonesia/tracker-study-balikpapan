@@ -89,13 +89,13 @@
             </a>
         </div>
     </div>
+    @forelse ($portofolios as $portofolio)
     <div class="card">
-        @forelse ($portofolios as $portofolio)
             <div class="row g-0">
                 <div class="col-md-3">
                     <div class="photo-stack mt-4">
                         @foreach ($portofolio->photoPortofolios as $photoPortofolio)
-                            <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="300" />
+                            <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="250" height="250" style="object-fit: cover"/>
                         @endforeach
                     </div>
                 </div>
@@ -172,10 +172,16 @@
 
                 </div>
             </div>
+        </div>
+
         @empty
-            <p>data kosong</p>
+        <div class="d-flex justify-content-center">
+            <div>
+                <img src="{{ asset('showNoData.png') }}" alt="">
+                <h5 class="text-center mb-5">Data Kosong!!</h5>
+            </div>
+        </div>
         @endforelse
-    </div>
     <x-delete-modal-component />
 
 @endsection
