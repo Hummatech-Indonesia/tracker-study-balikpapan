@@ -36,6 +36,7 @@ class ApplyJobVacancyController extends Controller
         $data = $request->validated();
         $data['status'] = ApplicantStatusEnum::ACCEPTED->value;
         $this->applyJobVacancy->update($apply_job_vacancies->id, $data);
+        $this->service->sendMailAccept(['email' => $apply_job_vacancies->student->user->email, 'message' => $data['message']]);
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
