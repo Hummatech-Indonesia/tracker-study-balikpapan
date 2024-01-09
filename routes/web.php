@@ -128,9 +128,7 @@ Route::resources([
 Route::get('pilih-role', function () {
     return view('auth.choice-of-roles');
 });
-Route::get('detail-lowongan-company', function () {
-    return view('company.detail');
-});
+Route::get('detail-lowongan-company/{job_vacancy}',[JobVacancyController::class,'detail'])->name('detail.job-vacancy.company');
 
 Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
 Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
