@@ -20,10 +20,10 @@
             <thead>
                 <tr>
                     <td>
-                        No
+                        <input type="checkbox" name="checkbox" id="select-all" class="form-check-input">
                     </td>
                     <td>
-                        <input type="checkbox" name="checkbox" id="select-all" class="form-check-input">
+                        No
                     </td>
                     <td>
                         Nama Siswa
@@ -49,12 +49,12 @@
                 @foreach ($students as $index => $student)
                     <tr>
                         <td>
+                            <input type="checkbox" name="checkbox" class="form-check-input select" value="{{ $student->id }}">
+                        </td>
+                        <td>
                             <p class="mb-0 fw-normal mt-2">
                                 {{ $index + 1 }}
                             </p>
-                        </td>
-                        <td>
-                            <input type="checkbox" name="checkbox" class="form-check-input select" value="{{ $student->id }}">
                         </td>
                         <td>
                             <p class="mb-0 fw-normal mt-2">
@@ -161,6 +161,17 @@
 @endsection
 @section('script')
     <script>
+          $(document).ready(function() {
+        $("#select-all").change(function() {
+            $(".select").prop("checked", $(this).prop("checked"));
+        });
+
+        $(".select").change(function() {
+            if (!$(this).prop("checked")) {
+                $("#select-all").prop("checked", false);
+            }
+        });
+    });
         $('.btn-student').click(function() {
             id = $(this).data('id')
             var actionUrl = `/change-student/${id}`;
