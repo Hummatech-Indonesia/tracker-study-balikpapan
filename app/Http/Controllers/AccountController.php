@@ -44,21 +44,6 @@ class AccountController extends Controller
         return redirect()->back()->with('success',trans('alert.add_success'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,14 +54,16 @@ class AccountController extends Controller
         $data['password'] ? '' : $data['password'] = $user->password;
         $this->user->update($user->id,$data);
         
-        return redirect()->back()->with('success',trans('alert.add_success'));
+        return redirect()->back()->with('success',trans('alert.update_success'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $this->user->delete($user->id);
+
+        return redirect()->back()->with('success',trans('alert.delete_success'));
     }
 }
