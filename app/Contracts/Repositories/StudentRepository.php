@@ -73,4 +73,21 @@ class StudentRepository extends BaseRepository implements StudentInterface
             })
             ->fastPaginate($pagination);
     }
+
+    /**
+     * studentClassroom
+     *
+     * @param  mixed $request
+     * @param  mixed $pagination
+     * @return LengthAwarePaginator
+     */
+    public function studentClassroom(Request $request, int $pagination = 10): LengthAwarePaginator
+    {
+        return $this->model->query()
+            ->where(['classroom_id' => $request->classroom_id, 'status' => StatusEnum::ACTIVE->value])
+            ->when($request->name, function ($query) use ($request) {
+                $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
+            })
+            ->fastPaginate($pagination);
+    }
 }

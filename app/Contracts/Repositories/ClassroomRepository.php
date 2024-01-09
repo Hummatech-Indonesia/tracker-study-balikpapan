@@ -5,6 +5,7 @@ namespace App\Contracts\Repositories;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ClassroomRepository extends BaseRepository implements ClassroomInterface
 {
@@ -21,7 +22,7 @@ class ClassroomRepository extends BaseRepository implements ClassroomInterface
     public function get(): mixed
     {
         return $this->model->query()
-        ->get();
+            ->get();
     }
 
     /**
@@ -84,5 +85,18 @@ class ClassroomRepository extends BaseRepository implements ClassroomInterface
                 $query->where('name', 'LIKE', '%' . $request->name . '%');
             })
             ->get();
+    }
+
+    /**
+     * customPaginate
+     *
+     * @param  mixed $request
+     * @param  mixed $pagination
+     * @return LengthAwarePaginator
+     */
+    public function customPaginate(Request $request, int $pagination = 10): LengthAwarePaginator
+    {
+        return $this->model->query()
+            ->fastPaginate($pagination);
     }
 }
