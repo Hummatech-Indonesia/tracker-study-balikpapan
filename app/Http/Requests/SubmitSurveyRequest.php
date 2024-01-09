@@ -21,7 +21,7 @@ class SubmitSurveyRequest extends FormRequest
             'activity' => 'required',
             'current_activity' => 'required',
             'email' => 'required|email',
-            'facebook' => 'facebook',
+            'facebook' => 'required',
             'url_address' => 'required',
             'city' => 'required',
             'alumni_gathering' => 'required|boolean'
