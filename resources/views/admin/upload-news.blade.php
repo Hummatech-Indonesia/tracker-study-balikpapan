@@ -25,7 +25,7 @@
                         <th scope="col">Judul</th>
                         <th scope="col">Deskripsi</th>
                         <th scope="col" class="text-center">Gambar</th>
-                        <th scope="col" class="text-center">Aksi</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,8 +35,8 @@
                         <td>{{ $news->title }}</td>
                         <td style="text-overflow: ellipsis;overflow: hidden ;max-width: 250px ;white-space: nowrap">{{ $news->content }}</td>
                         <td width="30%" class="text-center"><img width="50%" src="{{ asset('storage/'. $news->thumbnail) }}" alt="" srcset=""></td>
-                        <td>
-                            <div class="d-flex gap-1">
+                        <td class="">
+                            <div class="d-flex d-flex justify-content-center gap-2 text-center">
                                 <button class="btn btn-primary btn-sm btn-detail" id="btn-detail-{{ $news->id }}" data-title="{{ $news->title }}"
                                     data-content="{{ $news->content }}"
                                     data-thumbnail="{{ asset('storage/'. $news->thumbnail) }}">

@@ -39,9 +39,7 @@ use App\Http\Controllers\TeacherVideoGalleryController;
 //Landing Page
 Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 
-Route::get('lowongan', function () {
-    return view('lowongan');
-});
+Route::get('lowongan', [LandingPageController::class, 'jobVacancy'])->name('lowongan');
 
 Route::get('detail-lowongan/{jobVacancy}', [LandingPageController::class, 'detailJobVacancy'])->name('detail-lowongan');
 
@@ -81,6 +79,8 @@ Route::middleware('auth')->group(function () {
         ]);
 
 
+        Route::patch('change-alumni-select', [StudentStatusController::class, 'selectChangeAlumni'])->name('change.alumni.select');
+        Route::patch('change-student-select', [StudentStatusController::class, 'selectChangeStudent'])->name('change.student.select');
 
         Route::get('student-status', [StudentStatusController::class, 'index'])->name('student.classroom');
         Route::get('detail-student-status/{classroom}', [StudentStatusController::class, 'show'])->name('student.classroom.status');
@@ -130,9 +130,7 @@ Route::resources([
 Route::get('pilih-role', function () {
     return view('auth.choice-of-roles');
 });
-Route::get('detail-lowongan-company', function () {
-    return view('company.detail');
-});
+Route::get('detail-lowongan-company/{job_vacancy}',[JobVacancyController::class,'detail'])->name('detail.job-vacancy.company');
 
 Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
 Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');

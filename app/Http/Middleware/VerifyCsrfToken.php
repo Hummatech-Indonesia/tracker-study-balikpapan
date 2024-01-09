@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        'portofolios/adae7c10-f74e-3161-9d8b-e0b3be686840'
+        'change-alumni-select',
+        'change-student-select'
     ];
 }

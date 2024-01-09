@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\ApplyJobVacancyInterface;
 use App\Models\JobVacancy;
 use Illuminate\Http\Request;
 use App\Services\JobVacancyService;
@@ -13,11 +14,13 @@ class JobVacancyController extends Controller
 {
     private JobVacancyInterface $jobVacancy;
     private JobVacancyService $jobVacancyService;
+    private ApplyJobVacancyInterface $applyJobVacancy;
 
-    public function __construct(JobVacancyInterface $jobVacancy, JobVacancyService $jobVacancyService)
+    public function __construct(JobVacancyInterface $jobVacancy, JobVacancyService $jobVacancyService,ApplyJobVacancyInterface $applyJobVacancy)
     {
         $this->jobVacancy = $jobVacancy;
         $this->jobVacancyService = $jobVacancyService;
+        $this->applyJobVacancy = $applyJobVacancy;
     }
 
     /**
@@ -59,6 +62,19 @@ class JobVacancyController extends Controller
     {
         $jobVacancy = $job_vacancy;
         return view('alumni.detail',compact('jobVacancy'));
+    }
+    /**
+     * Display the specified resource.
+     */
+    public function detail(JobVacancy $job_vacancy)
+    {
+        $jobVacancy = $job_vacancy;
+        $applyJobVacancies = $this->applyJobVacancy->getApplicant($job_vacancy->id);
+
+        $countAccepted = $this->applyJobVacancy->countAccepted($job_vacancy->id);
+        $countPending = $this->applyJobVacancy->countPending($job_vacancy->id);
+        $countRejected = $this->applyJobVacancy->countRejected($job_vacancy->id);
+        return view('company.detail',compact('jobVacancy','countAccepted','countPending','countRejected','applyJobVacancies'));
     }
 
     /**

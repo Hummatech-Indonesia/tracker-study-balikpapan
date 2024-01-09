@@ -5,10 +5,13 @@ namespace App\Contracts\Interfaces;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 use App\Contracts\Interfaces\Eloquent\CustomPaginationInterface;
+use App\Contracts\Interfaces\Eloquent\SearchInterface;
+use App\Contracts\Interfaces\Eloquent\ShowInterface;
+use App\Contracts\Interfaces\Eloquent\WhereInInterface;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-interface StudentInterface extends CustomPaginationInterface, StoreInterface, UpdateInterface
+interface StudentInterface extends CustomPaginationInterface, StoreInterface, UpdateInterface, ShowInterface
 {
     /**
      * studentNonactive
@@ -28,4 +31,28 @@ interface StudentInterface extends CustomPaginationInterface, StoreInterface, Up
      * @return LengthAwarePaginator
      */
     public function studentClassroom(Request $request, int $pagination = 10): LengthAwarePaginator;
+
+    /**
+     * count
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countStudent(?array $data): int;
+    /**
+     * countAlumni
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumni(?array $data): int;
+
+    /**
+     * updateSelect
+     *
+     * @param  mixed $data
+     * @param  mixed $select
+     * @return mixed
+     */
+    public function updateSelect(array $data, array $select): mixed;
 }

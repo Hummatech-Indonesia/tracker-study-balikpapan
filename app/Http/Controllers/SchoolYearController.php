@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\SchoolYearInterface;
-use App\Http\Requests\NameOnlyRequest;
 use App\Http\Requests\SchoolYearRequest;
 use App\Models\SchoolYear;
 use Illuminate\Contracts\View\View;
@@ -36,7 +35,7 @@ class SchoolYearController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(NameOnlyRequest $request)
+    public function store(SchoolYearRequest $request)
     {
         $this->schoolYear->store($request->validated());
         return redirect()->back();
@@ -61,7 +60,7 @@ class SchoolYearController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(NameOnlyRequest $request, SchoolYear $schoolYear)
+    public function update(SchoolYearRequest $request, SchoolYear $schoolYear)
     {
         $this->schoolYear->update($schoolYear->id, $request->validated());
         return redirect()->back()->with('success', trans('alert.add_success'));
