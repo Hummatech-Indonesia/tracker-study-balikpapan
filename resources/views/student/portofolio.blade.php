@@ -92,21 +92,20 @@
     <div class="card">
         @forelse ($portofolios as $portofolio)
             <div class="row g-0">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="photo-stack mt-4">
                         @foreach ($portofolio->photoPortofolios as $photoPortofolio)
                             <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="300" />
                         @endforeach
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="card-body">
                         <p class="text-primary text-end ">
-                            {{ Carbon::parse($portofolio->start_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
-                            - {{ Carbon::parse($portofolio->end_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
+                            {{ \Carbon\Carbon::parse($portofolio->start_at)->locale('id_ID')->isoFormat('DD MMMM Y') }} - {{ \Carbon\Carbon::parse($portofolio->end_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
                         </p>
                         <h5 class="card-title">{{ $portofolio->name }}</h5>
-                        <p class="card-text">{{ $portofolio->description }}</p>
+                        <p class="card-text">{{ Illuminate\Support\Str::limit($portofolio->description, $limit = 325, $end = '...') }}</p>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mb-4 gap-3 px-4">
@@ -158,7 +157,7 @@
                         </a>
                     </div>
                     <div class="">
-                        <a href="{{ route('detail.portofolio', $portofolio->id) }}" class="btn btn-primary"><svg
+                        <a href="{{ route('detail.portofolio',['portofolio'=>$portofolio->id]) }}" class="btn btn-primary"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 38 38"
                                 fill="none">
                                 <path

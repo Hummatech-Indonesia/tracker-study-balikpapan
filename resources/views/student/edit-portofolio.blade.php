@@ -3,6 +3,14 @@
     <link href="{{ asset('assets-admin/plugins/Drag-And-Drop/dist/imageuploadify.min.css') }}" rel="stylesheet" />
 @endsection
 @section('content')
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+    <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+        {{ $error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endforeach
+@endif
     <form action="{{ route('portofolio.update', $portofolio->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
