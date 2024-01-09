@@ -36,8 +36,10 @@ class StudentRepository extends BaseRepository implements StudentInterface
      */
     public function update(mixed $id, array $data): mixed
     {
-        return $this->model->query()
-            ->findOrFail($id)->update($data);
+        $student = $this->show($id);
+        $student->update($data);
+        $student->user->syncRoles($data['role']);
+        return $student;
     }
 
     /**
@@ -89,5 +91,57 @@ class StudentRepository extends BaseRepository implements StudentInterface
                 $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
             })
             ->fastPaginate($pagination);
+    }
+
+    /**
+     * countStudent
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countStudent(?array $data): int
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 0])
+            ->count();
+    }
+
+    /**
+     * countAlumni
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumni(?array $data): int
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
+            ->count();
+    }
+
+    /**
+     * updateSelect
+     *
+     * @param  mixed $data
+     * @param  mixed $select
+     * @return mixed
+     */
+    public function updateSelect(array $data, array $select): mixed
+    {
+        return $this->model->query()
+            ->whereIn('id', $select)
+            ->update($data);
+    }
+
+    /**
+     * show
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function show(mixed $id): mixed
+    {
+        return $this->model->query()
+            ->findOrFail($id);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SchoolYearRequest extends FormRequest
+class AcceptAndRejectApplyJobVancyRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,20 +14,14 @@ class SchoolYearRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:4'
+            'message' => 'required',
         ];
     }
 
-    /**
-     * messages
-     *
-     * @return array
-     */
-    public function messages(): array
+    public function messages()
     {
         return [
-            'name.required' => 'Nama wajib diisi',
-            'name.max' => 'Nama maksimal 4 karakter'
+            'message.required' => 'Pesan wajib di isi',
         ];
     }
 }

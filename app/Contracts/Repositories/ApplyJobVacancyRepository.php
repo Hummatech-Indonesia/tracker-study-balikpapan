@@ -14,6 +14,19 @@ class ApplyJobVacancyRepository extends BaseRepository implements ApplyJobVacanc
     }
 
     /**
+     * getByCompany
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function getByCompany(mixed $id): mixed
+    {
+        return $this->model->query()
+            ->whereRelation('jobVacancy', 'company_id', $id)
+            ->get();
+    }
+
+    /**
      * store
      *
      * @param  mixed $data
@@ -37,6 +50,19 @@ class ApplyJobVacancyRepository extends BaseRepository implements ApplyJobVacanc
     {
         return $this->model->query()
             ->findOrFail($id);
+    }
+
+    /**
+     * update
+     *
+     * @param  mixed $id
+     * @param  mixed $data
+     * @return mixed
+     */
+    public function update(mixed $id, array $data): mixed
+    {
+        return $this->show($id)
+            ->update($data);
     }
 
     public function countAccepted(mixed $id): mixed

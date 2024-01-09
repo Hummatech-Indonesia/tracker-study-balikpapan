@@ -203,7 +203,7 @@ a {
 }
 
 a:hover, a:focus {
-  color: var(--primary-color-2);
+  color: white;
   text-decoration: none;
   outline: none;
   -webkit-box-shadow: none;

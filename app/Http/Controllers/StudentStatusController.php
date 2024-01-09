@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\StudentInterface;
+use App\Enums\RoleEnum;
+use App\Helpers\ResponseHelper;
+use App\Http\Requests\SelectChangeUpdateRequest;
 use App\Models\Classroom;
 use App\Models\Student;
 use Illuminate\Contracts\View\View;
@@ -28,7 +31,9 @@ class StudentStatusController extends Controller
     public function index(Request $request): View
     {
         $classrooms = $this->classroom->customPaginate($request, 8);
-        return view('admin.student-classroom', compact('classrooms'));
+        $countStudent = $this->student->countStudent(null);
+        $countAlumni = $this->student->countAlumni(null);
+        return view('admin.student-classroom', compact('classrooms', 'countStudent', 'countAlumni'));
     }
 
     /**
@@ -44,6 +49,7 @@ class StudentStatusController extends Controller
         return view('admin.student-status', compact('students', 'classroom'));
     }
 
+
     /**
      * changeAlumni
      *
@@ -52,7 +58,9 @@ class StudentStatusController extends Controller
      */
     public function changeAlumni(Student $student)
     {
-        $this->student->update($student->id, ['is_graduate' => 1]);
+        $data['is_graduate'] = 1;
+        $data['role'] = RoleEnum::ALUMNI->value;
+        $this->student->update($student->id, $data);
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
@@ -63,7 +71,35 @@ class StudentStatusController extends Controller
      */
     public function changeStudent(Student $student)
     {
-        $this->student->update($student->id, ['is_graduate' => 0]);
+        $data['is_graduate'] = 0;
+        $data['role'] = RoleEnum::STUDENT->value;
+        $this->student->update($student->id, $data);
         return redirect()->back()->with('success', trans('alert.update_success'));
+    }
+
+    /**
+     * selectChangeAlumni
+     *
+     * @param  mixed $student
+     * @return void
+     */
+    public function selectChangeAlumni(SelectChangeUpdateRequest $request)
+    {
+        $data = $request->validated();
+        $this->student->updateSelect(['is_graduate' => 1], $data['select']);
+        return ResponseHelper::success(null, trans('alert.update_success'));
+    }
+
+    /**
+     * selectChangeStudent
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function selectChangeStudent(SelectChangeUpdateRequest $request)
+    {
+        $data = $request->validated();
+        $this->student->updateSelect(['is_graduate' => 0], $data['select']);
+        return ResponseHelper::success(null, trans('alert.update_success'));
     }
 }

@@ -178,7 +178,7 @@
         <div class="d-flex justify-content-center">
             <div>
                 <img src="{{ asset('showNoData.png') }}" alt="">
-                <h5 class="text-center mb-5">Data Kosong!!</h5>
+                <h5 class="text-center">Portofolio Anda Masih Kosong!!</h5>
             </div>
         </div>
         @endforelse

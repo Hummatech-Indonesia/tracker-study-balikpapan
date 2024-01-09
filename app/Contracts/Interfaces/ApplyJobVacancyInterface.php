@@ -4,8 +4,9 @@ namespace App\Contracts\Interfaces;
 
 use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
+use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface ApplyJobVacancyInterface extends StoreInterface,ShowInterface
+interface ApplyJobVacancyInterface extends StoreInterface,ShowInterface, UpdateInterface
 {
     /**
      * getJob
@@ -16,7 +17,7 @@ interface ApplyJobVacancyInterface extends StoreInterface,ShowInterface
 
     /**
      * getApplicant
-     * @param $id 
+     * @param $id
      * @return mixed
      */
     public function getApplicant(mixed $id): mixed;
@@ -40,4 +41,12 @@ interface ApplyJobVacancyInterface extends StoreInterface,ShowInterface
      * @return mixed
      */
     public function countRejected(mixed $id): mixed;
+
+    /**
+     * getByCompany
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function getByCompany(mixed $id): mixed;
 }
