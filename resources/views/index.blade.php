@@ -117,7 +117,6 @@
             </div>
         </div>
     </section>
-    <!-- ***** Features Area Start ***** -->
     <section id="features" class="section features-area style-two overflow-hidden">
         <div class="container">
             <div class="row justify-content-center">
@@ -186,8 +185,8 @@
                 <div class="col-12 col-md-10 col-lg-8">
                     <!-- Section Heading -->
                     <div class="text-center">
-                        <h3 class="text-capitalize">ULASAN PENGGUNA</h3>
-                        <h3 class="text-capitalize" style="color: #5D87FF">APA KATA ALUMNI SMKN 2 PENAJAM ?</h3>
+                        <h3 class="text-capitalize">Lowongan Pekerjaan</h3>
+                        <div class="text-capitalize ">Berikut Merupakan Lowongan pekerjaan dari beberapa instansi</div>
                     </div>
                 </div>
             </div>
@@ -340,161 +339,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-3 res-margin my-4">
-                    <!-- Single Price Plan -->
-                    <div class="single-price-plan text-center py-3 wow fadeInLeft" data-aos-duration="2s"
-                        data-wow-delay="0.4s">
 
-                        <div class="card-top p-4 d-flex justify-content-center align-items-center">
-                            <div class="rounded-circle bg-secondary" style="width: 5.2rem; height:5.2rem;"></div>
-                        </div>
-                        <div class="bg-primary p-2 text-white d-flex justify-content-center"
-                            style="font-weight: 600; font-size:12px; font-style: normal;">KEMENTRIAN BUMN INDONESIA</div>
-                        <p class="d-flex text-black d-flex justify-content-center px-2 pt-2"
-                            style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Menerima Lowongan
-                        </p>
-                        <div style="background-color: #ECF2FF;" class="p-2 mx-4 d-flex justify-content-center mt-3">
-                            <p style="color: #5D87FF; font-weight:600">Admin Kecamatan</p>
-                        </div>
-                        <p class="d-flex text-black d-flex justify-content-center p-2"
-                            style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Dengan Gaji
-                        </p>
-                        <p style="color: #5D87FF; font-weight:600" class="d-flex justify-content-center">100.000.000/bln
-                        </p>
-                        <p class="d-flex text-black d-flex justify-content-center p-2"
-                            style="font-weight: bold; color:black; font-size:14px; font-style: normal;">Deskripsi Lowongan
-                        </p>
-                        <p class="d-flex text-black d-flex justify-content-center p-3 text-center mb-3"
-                            style="font-weight: 500; color:black; font-size:12px; font-style: normal;">Lorem ipsum dolor
-                            sit amet consectetur, adipisicing elit. Iusto distinctio repellendus sapiente ratione quae aut
-                            nobis natus?
-                        </p>
-
-                        <!-- Plan Button -->
-                        <div class="plan-button">
-                            <a href="#" class="p-2 rounded text-white"
-                                style="margin-top: -1rem; font-weight:450;background-color:#FFAE1F">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-    <!-- ***** Review Area End ***** -->
-
-
-    <!-- ***** Review Area Start ***** -->
-    <section id="review" class="review-area mt-5">
-        <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8">
-                    <!-- Section Heading -->
-                    <div class="text-center mb-4">
-                        <h3 class="text-capitalize">ULASAN PENGGUNA</h3>
-                        <h3 class="text-capitalize" style="color: #5D87FF">APA KATA ALUMNI SMKN 2 PENAJAM ?</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 res-margin">
-                    <!-- Single Review -->
-                    <div class="single-review card">
-                        <!-- Card Top -->
-                        <div class="card-top p-4">
-                            <div class="review-icon">
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                            </div>
-                            <h4 class="mt-4 mb-3" style="color:#5D87FF">Excellent service &amp; support!!</h4>
-                            <!-- Review Text -->
-                            <div class="review-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis nam id facilis, provident
-                                    doloremque placeat eveniet molestias laboriosam. Optio, esse.</p>
-                            </div>
-                        </div>
-                        <!-- Reviewer -->
-                        <div class="reviewer media bg-gray p-4">
-                            <!-- Reviewer Thumb -->
-                            <div class="reviewer-thumb">
-                                <img class="avatar-lg radius-100" src="assets/img/avatar/avatar-1.png" alt="">
-                            </div>
-                            <!-- Reviewer Media -->
-                            <div class="reviewer-meta media-body align-self-center ml-4">
-                                <h5 class="reviewer-name color-primary mb-2">Junaid Hasan</h5>
-                                <h6 class="text-secondary fw-6">CEO, Themeland</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 res-margin">
-                    <!-- Single Review -->
-                    <div class="single-review card">
-                        <!-- Card Top -->
-                        <div class="card-top p-4">
-                            <div class="review-icon">
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star-half-alt text-warning"></i>
-                            </div>
-                            <h4 class="mt-4 mb-3" style="color:#5D87FF">Nice work! Keep it up</h4>
-                            <!-- Review Text -->
-                            <div class="review-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis nam id facilis, provident
-                                    doloremque placeat eveniet molestias laboriosam. Optio, esse.</p>
-                            </div>
-                        </div>
-                        <!-- Reviewer -->
-                        <div class="reviewer media bg-gray p-4">
-                            <!-- Reviewer Thumb -->
-                            <div class="reviewer-thumb">
-                                <img class="avatar-lg radius-100" src="assets/img/avatar/avatar-2.png" alt="">
-                            </div>
-                            <!-- Reviewer Media -->
-                            <div class="reviewer-meta media-body align-self-center ml-4">
-                                <h5 class="reviewer-name color-primary mb-2">Junaid Hasan</h5>
-                                <h6 class="text-secondary fw-6">CEO, Themeland</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <!-- Single Review -->
-                    <div class="single-review card">
-                        <!-- Card Top -->
-                        <div class="card-top p-4">
-                            <div class="review-icon">
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                            </div>
-                            <h4 class="mt-4 mb-3" style="color:#5D87FF">Great support!!</h4>
-                            <!-- Review Text -->
-                            <div class="review-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis nam id facilis, provident
-                                    doloremque placeat eveniet molestias laboriosam. Optio, esse.</p>
-                            </div>
-                        </div>
-                        <!-- Reviewer -->
-                        <div class="reviewer media bg-gray p-4">
-                            <!-- Reviewer Thumb -->
-                            <div class="reviewer-thumb">
-                                <img class="avatar-lg radius-100" src="assets/img/avatar/avatar-3.png" alt="">
-                            </div>
-                            <!-- Reviewer Media -->
-                            <div class="reviewer-meta media-body align-self-center ml-4">
-                                <h5 class="reviewer-name color-primary mb-2">Junaid Hasan</h5>
-                                <h6 class="text-secondary fw-6">CEO, Themeland</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a href="/lowongan" class="btn btn-outline-primary btn-md mt-4 mb-4">Lowongan Lainnya</a>
             </div>
         </div>
     </section>
