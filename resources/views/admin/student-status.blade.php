@@ -14,6 +14,10 @@
                 </form>
             </div>
         </div>
+        <div class="">
+            <button id="btn-select-change-alumni" class="btn text-white btn-primary">Jadikan Alumni</button>
+            <button id="btn-select-change-student" class="btn text-white btn-warning">Jadikan Siswa</button>
+        </div>
     </div>
     <div class="table-responsive">
         <table class="table">
@@ -49,7 +53,8 @@
                 @foreach ($students as $index => $student)
                     <tr>
                         <td>
-                            <input type="checkbox" name="checkbox" class="form-check-input select" value="{{ $student->id }}">
+                            <input type="checkbox" name="select" class="form-check-input select"
+                                value="{{ $student->id }}">
                         </td>
                         <td>
                             <p class="mb-0 fw-normal mt-2">
@@ -160,18 +165,72 @@
     </div>
 @endsection
 @section('script')
-    <script>
-          $(document).ready(function() {
-        $("#select-all").change(function() {
-            $(".select").prop("checked", $(this).prop("checked"));
-        });
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-        $(".select").change(function() {
-            if (!$(this).prop("checked")) {
-                $("#select-all").prop("checked", false);
-            }
+    <script>
+        $(document).ready(function() {
+            var selectedValues = []; // Pindahkan variabel ke tingkat atas agar dapat diakses oleh kedua fungsi
+
+            $(".select").change(function() {
+                selectedValues = [];
+                $(".select:checked").each(function() {
+                    selectedValues.push($(this).val());
+                });
+                console.log(selectedValues);
+            });
+
+            $("#btn-select-change-alumni").click(function() {
+                $.ajax({
+                    url: '{{ route('change.alumni.select') }}',
+                    method: 'PATCH',
+                    data: {
+                        select: selectedValues,
+                    },
+                    success: function(response) {
+                        console.log(response.message);
+                        location.reload();
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                        // Handle error jika diperlukan
+                    }
+                });
+            });
+            $("#btn-select-change-student").click(function() {
+                $.ajax({
+                    url: '{{ route('change.student.select') }}',
+                    method: 'PATCH',
+                    data: {
+                        select: selectedValues,
+                    },
+                    success: function(response) {
+                        console.log(response.message);
+                        location.reload();
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                        // Handle error jika diperlukan
+                    }
+                });
+            });
         });
-    });
+    </script>
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $("#select-all").change(function() {
+                $(".select").prop("checked", $(this).prop("checked"));
+            });
+
+            $(".select").change(function() {
+                if (!$(this).prop("checked")) {
+                    $("#select-all").prop("checked", false);
+                }
+            });
+        });
         $('.btn-student').click(function() {
             id = $(this).data('id')
             var actionUrl = `/change-student/${id}`;

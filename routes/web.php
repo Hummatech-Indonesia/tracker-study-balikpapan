@@ -79,6 +79,8 @@ Route::middleware('auth')->group(function () {
         ]);
 
 
+        Route::patch('change-alumni-select', [StudentStatusController::class, 'selectChangeAlumni'])->name('change.alumni.select');
+        Route::patch('change-student-select', [StudentStatusController::class, 'selectChangeStudent'])->name('change.student.select');
 
         Route::get('student-status', [StudentStatusController::class, 'index'])->name('student.classroom');
         Route::get('detail-student-status/{classroom}', [StudentStatusController::class, 'show'])->name('student.classroom.status');

@@ -90,4 +90,44 @@ class StudentRepository extends BaseRepository implements StudentInterface
             })
             ->fastPaginate($pagination);
     }
+
+    /**
+     * countStudent
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countStudent(?array $data): int
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 0])
+            ->count();
+    }
+
+    /**
+     * countAlumni
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumni(?array $data): int
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
+            ->count();
+    }
+
+    /**
+     * updateSelect
+     *
+     * @param  mixed $data
+     * @param  mixed $select
+     * @return mixed
+     */
+    public function updateSelect(array $data, array $select): mixed
+    {
+        return $this->model->query()
+            ->whereIn('id', $select)
+            ->update($data);
+    }
 }
