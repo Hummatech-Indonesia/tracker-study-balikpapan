@@ -90,7 +90,16 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware('role:student')->group(function () {
     });
-    Route::middleware('role:alumni')->group(function () {
+    Route::middleware('role:alumni')->prefix('alumni')->name('alumni.')->group(function () {
+        Route::get('survei',[SurveyController::class,'survei'])->name('job.survey');
+        Route::post('submit-survei/{survey}',[SurveyController::class,'submit'])->name('submit.survey');
+
+        Route::get('detail-lowongan-tersedia/{job_vacancy}',[JobVacancyController::class,'show'])->name('detail.lowongan.tersedia');
+        Route::post('detail-lowongan-tersedia/{jobVacancy}',[ApplyJobVacancyController::class,'store'])->name('send.cv');
+        Route::get('lowongan-tersedia', [JobVacancyController::class, 'jobvacancy'])->name('vacancies.available');
+        Route::get('lowongan', function () {
+            return view('alumni.job-vacancy-page');
+        })->name('job.vacancy.page');
     });
     Route::middleware('role:company')->group(function () {
     });

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\SurveyInterface;
+use App\Http\Requests\SubmitSurveyRequest;
 use App\Http\Requests\SurveyRequest;
 use App\Models\Survey;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class SurveyController extends Controller
 {
@@ -67,5 +70,27 @@ class SurveyController extends Controller
     {
         $this->survey->delete($survey->id);
         return redirect()->back()->with('success', trans('alert.delete_success'));
+    }
+    
+    /**
+     * survei
+     *
+     * @return View
+     */
+    public function survei() : View
+    {
+        $survey = $this->survey->getLatest();
+        
+        return view('alumni.job-survey',compact('survey'));
+    }
+
+    public function submit(Survey $survey,SubmitSurveyRequest $request) : RedirectResponse
+    {
+        $data = $request->validated();
+        $data['survey_id'] = $survey->id;
+
+        $this->survey->store($data);
+
+        return redirect()->back()->with('success',trans('alert.add_success'));
     }
 }

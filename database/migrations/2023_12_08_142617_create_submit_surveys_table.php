@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ActivityStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,8 +24,7 @@ return new class extends Migration
             $table->string('facebook');
             $table->boolean('alumni_gathering');
             $table->string('city');
-            $table->boolean('statement');
-            $table->text('current_activity');
+            $table->enum('current_activity',[ActivityStatusEnum::STUDY->value,ActivityStatusEnum::WORK->value,ActivityStatusEnum::NOTWORK]);
             $table->timestamps();
         });
     }
