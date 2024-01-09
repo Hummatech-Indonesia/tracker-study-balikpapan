@@ -36,4 +36,14 @@ class ApplyJobVacancy extends Model
     {
         return $this->belongsTo(JobVacancy::class);
     }
+
+    /**
+     * student
+     *
+     * @return BelongsTo
+     */
+    public function student(): BelongsTo
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

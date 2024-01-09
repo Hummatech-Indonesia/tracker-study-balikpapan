@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 use App\Services\ApplyJobVacancyService;
 use App\Http\Requests\ApplyJobVacancyRequest;
 use App\Contracts\Interfaces\ApplyJobVacancyInterface;
+use App\Enums\ApplicantStatusEnum;
+use App\Http\Requests\AcceptAndRejectApplyJobVancyRequest;
+use App\Models\ApplyJobVacancy;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ApplyJobVacancyController extends Controller
 {
@@ -20,7 +24,36 @@ class ApplyJobVacancyController extends Controller
         $this->service = $service;
     }
 
+    /**
+     * accept
+     *
+     * @param  mixed $apply_job_vacancies
+     * @param  mixed $request
+     * @return RedirectResponse
+     */
+    public function accept(ApplyJobVacancy $apply_job_vacancies, AcceptAndRejectApplyJobVancyRequest $request): RedirectResponse
+    {
+        $data = $request->validated();
+        $data['status'] = ApplicantStatusEnum::ACCEPTED->value;
+        $this->applyJobVacancy->update($apply_job_vacancies->id, $data);
+        return redirect()->back()->with('success', trans('alert.update_success'));
+    }
 
+    /**
+     * reject
+     *
+     * @param  mixed $apply_job_vacancies
+     * @param  mixed $request
+     * @return RedirectResponse
+     */
+    public function reject(ApplyJobVacancy $apply_job_vacancies, AcceptAndRejectApplyJobVancyRequest $request): RedirectResponse
+    {
+        $data = $request->validated();
+        $data['status'] = ApplicantStatusEnum::REJECTED->value;
+        $this->applyJobVacancy->update($apply_job_vacancies->id, $data);
+        $this->service->sendMailReject(['email' => $apply_job_vacancies->student->user->email, 'message' => $data['message']]);
+        return redirect()->back()->with('success', trans('alert.update_success'));
+    }
 
     /**
      * store

@@ -52,6 +52,19 @@ class ApplyJobVacancyRepository extends BaseRepository implements ApplyJobVacanc
             ->findOrFail($id);
     }
 
+    /**
+     * update
+     *
+     * @param  mixed $id
+     * @param  mixed $data
+     * @return mixed
+     */
+    public function update(mixed $id, array $data): mixed
+    {
+        return $this->show($id)
+            ->update($data);
+    }
+
     public function countAccepted(mixed $id): mixed
     {
          return $this->model->query()
