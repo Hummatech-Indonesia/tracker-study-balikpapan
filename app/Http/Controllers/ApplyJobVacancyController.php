@@ -83,7 +83,7 @@ class ApplyJobVacancyController extends Controller
     public function companyApplyJobVacancy() : View
     {
         $applyJobVacancies = $this->applyJobVacancy->getByCompany(auth()->user()->company->id);
-        return view('company.job-applicant');
+        return view('company.job-applicant', compact('applyJobVacancies'));
     }
 
 }

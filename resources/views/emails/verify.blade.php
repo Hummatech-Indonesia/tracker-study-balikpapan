@@ -296,9 +296,10 @@
                                                             Aktivasi Akun Anda
                                                         </h4>
                                                         <p>
-                                                          Terimakasih {{ $data['user'] }} telah mendaftar di <span style="color: #000000;">Tracer Study SMKN 2
-                                                              PENAJAM,</span>
-                                                      </p>
+                                                            Terimakasih {{ $data['user'] }} telah mendaftar di <span
+                                                                style="color: #000000;">Tracer Study SMKN 2
+                                                                PENAJAM,</span>
+                                                        </p>
                                                     </div>
                                                 </td>
                                             </tr>
