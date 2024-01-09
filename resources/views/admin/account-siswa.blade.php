@@ -55,7 +55,12 @@
             <x-confirm-approve-modal-component />
             <x-confirm-reject-modal-component />
         @empty
-            <p>Data Kosong</p>
+        <div class="d-flex justify-content-center">
+            <div>
+                <img src="{{ asset('showNoData.png') }}" alt="">
+                <h5 class="text-center">Semua Data Sudah Di Verifikasi!!</h5>
+            </div>
+        </div>
         @endforelse
     </div>
 @endsection

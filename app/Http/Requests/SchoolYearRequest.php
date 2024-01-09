@@ -14,7 +14,7 @@ class SchoolYearRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255'
+            'name' => 'required|max:4'
         ];
     }
 
@@ -27,7 +27,7 @@ class SchoolYearRequest extends FormRequest
     {
         return [
             'name.required' => 'Nama wajib diisi',
-            'name.max' => 'Nama maksimal 255 karakter'
+            'name.max' => 'Nama maksimal 4 karakter'
         ];
     }
 }
