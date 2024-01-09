@@ -77,7 +77,7 @@ class SurveyController extends Controller
      *
      * @return View
      */
-    public function survei() : View
+    public function survey() : View
     {
         $survey = $this->survey->getLatest();
         

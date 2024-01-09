@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\JobVacancyService;
 use App\Http\Requests\JobVacancyRequest;
 use App\Contracts\Interfaces\JobVacancyInterface;
+use Illuminate\Contracts\View\View;
 
 class JobVacancyController extends Controller
 {
@@ -83,5 +84,8 @@ class JobVacancyController extends Controller
     public function destroy(JobVacancy $job_vacancy)
     {
         //
+    }
+    public function getJob() {
+        
     }
 }

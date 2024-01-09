@@ -1,5 +1,13 @@
 @extends('layouts.app')
 @section('content')
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+    <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+        {{ $error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endforeach
+@endif
 <div class="d-flex justify-content-between">
     <div class="">
         <h5>
