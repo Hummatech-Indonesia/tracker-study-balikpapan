@@ -23,4 +23,11 @@ class ApplyJobVacancyRepository extends BaseRepository implements ApplyJobVacanc
         return $this->model->query()
             ->create($data);
     }
+
+    public function getJob(): mixed
+    {
+        return $this->model->query()
+            ->where('student_id', auth()->user()->student->id)
+            ->get();
+    }
 }

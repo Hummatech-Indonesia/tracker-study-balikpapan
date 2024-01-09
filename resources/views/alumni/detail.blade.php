@@ -28,8 +28,16 @@
                     <div class="reviewer-thumb mt-3">
                         <div class="border-custom"
                             style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;">
-                            <img style="object-fit: cover; width: 100%; height: 100%;"
-                                src="{{ asset('1.png') }}" alt="">
+                           
+                                @if ($jobVacancy->company->user->photo)
+                                <img src="{{ asset('storage/'.$jobVacancy->company->user->photo) }}"
+                                    class="rounded-circle" style="object-fit: cover; width: 100%; height: 100%;">
+                            @else
+                                <div class="rounded-circle bg-secondary" style="object-fit: cover; width: 100%; height: 100%;">
+                                    <img src="{{ asset('default.jpg') }}"
+                                    class="rounded-circle" style="object-fit: cover; width: 100%; height: 100%;">
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\ApplyJobVacancyService;
 use App\Http\Requests\ApplyJobVacancyRequest;
 use App\Contracts\Interfaces\ApplyJobVacancyInterface;
+use Illuminate\Contracts\View\View;
 
 class ApplyJobVacancyController extends Controller
 {
@@ -32,5 +33,10 @@ class ApplyJobVacancyController extends Controller
     {
         $this->applyJobVacancy->store($this->service->store($request, $jobVacancy));
         return redirect()->back()->with('success', trans('alert.add_success'));
+    }
+
+    public function index() : View {
+        $applyJobVacancies = $this->applyJobVacancy->getJob();
+        return view('alumni.job-vacancy-page',compact('applyJobVacancies'));
     }
 }

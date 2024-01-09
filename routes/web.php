@@ -162,13 +162,9 @@ Route::patch('update-password', [UserController::class, 'updatePassword'])->name
 
 
 Route::prefix('alumni')->name('alumni.')->group(function () {
-    Route::get('survei', function () {
-        return view('alumni.job-survey');
-    })->name('job.survey');
+    Route::get('survei',[SurveyController::class,'survey'])->name('job.survey');
     Route::get('detail-lowongan-tersedia/{job_vacancy}', [JobVacancyController::class, 'show'])->name('detail.lowongan.tersedia');
     Route::post('detail-lowongan-tersedia/{jobVacancy}', [ApplyJobVacancyController::class, 'store'])->name('send.cv');
     Route::get('lowongan-tersedia', [JobVacancyController::class, 'jobvacancy'])->name('vacancies.available');
-    Route::get('lowongan', function () {
-        return view('alumni.job-vacancy-page');
-    })->name('job.vacancy.page');
+    Route::get('lowongan',[ApplyJobVacancyController::class,'index'])->name('job.vacancy.page');
 });
