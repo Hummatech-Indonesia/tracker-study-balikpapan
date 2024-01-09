@@ -21,6 +21,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\SliderGalleryAlumniController;
+use App\Http\Controllers\StudentStatusController;
 use App\Http\Controllers\TeacherVideoGalleryController;
 
 /*
@@ -50,6 +51,7 @@ Route::get('galeri-guru', [TeacherGalleryController::class, 'galery'])->name('ga
 Route::get('galeri-alumni', [LandingPageController::class, 'alumni'])->name('galery-alumni');
 Route::post('vidio-galeri-guru', [TeacherVideoGalleryController::class, 'store'])->name('teacher-video-gallery.store');
 
+
 //Auth
 Auth::routes();
 
@@ -62,6 +64,11 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware('role:admin')->group(function () {
+        
+        Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
+        Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
+        Route::patch('reject-verify-company/{company}', [CompanyController::class, 'reject'])->name('reject.verify.company');
+
 
         Route::resources([
             'school-years' => SchoolYearController::class,
@@ -71,12 +78,13 @@ Route::middleware('auth')->group(function () {
             'survey' => SurveyController::class
         ]);
 
-        Route::get('student-status', function () {
-            return view('admin.student-classroom');
-        })->name('student.classroom');
-        Route::get('student-status/detail', function () {
-            return view('admin.student-status');
-        })->name('student.classroom.status');
+
+
+        Route::get('student-status', [StudentStatusController::class, 'index'])->name('student.classroom');
+        Route::get('detail-student-status/{classroom}', [StudentStatusController::class, 'show'])->name('student.classroom.status');
+        Route::patch('change-alumni/{student}', [StudentStatusController::class, 'changeAlumni'])->name('change.alumni');
+        Route::patch('change-student/{student}', [StudentStatusController::class, 'changeStudent'])->name('change.student');
+
         Route::get('students', [StudentController::class, 'index'])->name('students.index');
         Route::post('students', [StudentController::class, 'store'])->name('students.store');
         Route::put('students/{user}', [StudentController::class, 'update'])->name('students.update');
@@ -97,11 +105,11 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:student')->group(function () {
     });
     Route::middleware('role:alumni')->prefix('alumni')->name('alumni.')->group(function () {
-        Route::get('survei',[SurveyController::class,'survei'])->name('job.survey');
-        Route::post('submit-survei/{survey}',[SurveyController::class,'submit'])->name('submit.survey');
+        Route::get('survei', [SurveyController::class, 'survei'])->name('job.survey');
+        Route::post('submit-survei/{survey}', [SurveyController::class, 'submit'])->name('submit.survey');
 
-        Route::get('detail-lowongan-tersedia/{job_vacancy}',[JobVacancyController::class,'show'])->name('detail.lowongan.tersedia');
-        Route::post('detail-lowongan-tersedia/{jobVacancy}',[ApplyJobVacancyController::class,'store'])->name('send.cv');
+        Route::get('detail-lowongan-tersedia/{job_vacancy}', [JobVacancyController::class, 'show'])->name('detail.lowongan.tersedia');
+        Route::post('detail-lowongan-tersedia/{jobVacancy}', [ApplyJobVacancyController::class, 'store'])->name('send.cv');
         Route::get('lowongan-tersedia', [JobVacancyController::class, 'jobvacancy'])->name('vacancies.available');
         Route::get('lowongan', function () {
             return view('alumni.job-vacancy-page');
@@ -140,10 +148,6 @@ Route::post('portofolio', [PortofolioController::class, 'store'])->name('portofo
 Route::put('portofolio/{portofolio}', [PortofolioController::class, 'update'])->name('portofolio.update');
 Route::delete('portofolio/{portofolio}', [PortofolioController::class, 'destroy'])->name('portofolio.destroy');
 
-Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
-Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
-Route::patch('reject-verify-company/{company}', [CompanyController::class, 'reject'])->name('reject.verify.company');
-
 Route::get('detail-job-vacancy', function () {
     return view('admin.job-vacancy.detail');
 })->name('detail.job.vacancy');
@@ -155,7 +159,7 @@ Route::get('portofolio', [PortofolioController::class, 'index'])->name('portofol
 Route::get('add-portofolio', function () {
     return view('student.add-portofolio');
 })->name('add.portofolio');
-Route::get('detail-portofolio/{portofolio}',[PortofolioController::class, 'show'])->name('detail.portofolio');
+Route::get('detail-portofolio/{portofolio}', [PortofolioController::class, 'show'])->name('detail.portofolio');
 
 Route::get('edit-portofolio/{portofolio}', [PortofolioController::class, 'edit'])->name('edit.portofolio');
 Route::get('job-applicant', function () {
@@ -168,9 +172,9 @@ Route::patch('update-password', [UserController::class, 'updatePassword'])->name
 
 
 Route::prefix('alumni')->name('alumni.')->group(function () {
-    Route::get('survei',[SurveyController::class,'survey'])->name('job.survey');
+    Route::get('survei', [SurveyController::class, 'survey'])->name('job.survey');
     Route::get('detail-lowongan-tersedia/{job_vacancy}', [JobVacancyController::class, 'show'])->name('detail.lowongan.tersedia');
     Route::post('detail-lowongan-tersedia/{jobVacancy}', [ApplyJobVacancyController::class, 'store'])->name('send.cv');
     Route::get('lowongan-tersedia', [JobVacancyController::class, 'jobvacancy'])->name('vacancies.available');
-    Route::get('lowongan',[ApplyJobVacancyController::class,'index'])->name('job.vacancy.page');
+    Route::get('lowongan', [ApplyJobVacancyController::class, 'index'])->name('job.vacancy.page');
 });

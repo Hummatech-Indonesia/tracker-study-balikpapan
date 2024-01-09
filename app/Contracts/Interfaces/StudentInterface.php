@@ -18,4 +18,14 @@ interface StudentInterface extends CustomPaginationInterface, StoreInterface, Up
      * @return LengthAwarePaginator
      */
     public function studentNonactive(Request $request, int $pagination = 10): LengthAwarePaginator;
+
+
+    /**
+     * studentClassroom
+     *
+     * @param  mixed $request
+     * @param  mixed $pagination
+     * @return LengthAwarePaginator
+     */
+    public function studentClassroom(Request $request, int $pagination = 10): LengthAwarePaginator;
 }

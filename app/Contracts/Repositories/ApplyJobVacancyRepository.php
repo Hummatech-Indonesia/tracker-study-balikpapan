@@ -21,7 +21,10 @@ class ApplyJobVacancyRepository extends BaseRepository implements ApplyJobVacanc
     public function store(array $data): mixed
     {
         return $this->model->query()
-            ->create($data);
+            ->updateOrCreate([
+                'student_id'=>$data['student_id'],
+                'job_vacancy_id'=>$data['job_vacancy_id'],
+            ]);
     }
 
     public function getJob(): mixed

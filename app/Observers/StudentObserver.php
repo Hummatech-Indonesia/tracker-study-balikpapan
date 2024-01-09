@@ -14,7 +14,6 @@ class StudentObserver
     public function creating(Student $student): void
     {
         $student->id = Uuid::uuid();
-        $student->status = StatusEnum::NONACTIVE->value;
     }
 
     /**

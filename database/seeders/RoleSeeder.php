@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\RoleEnum;
+use Faker\Provider\Uuid;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -21,9 +22,10 @@ class RoleSeeder extends Seeder
         $reflection = new \ReflectionClass(RoleEnum::class);
 
         foreach ($reflection->getConstants() as $case) {
-           Role::create([
-               'name' => $case
-           ]);
+            Role::create([
+                'name' => $case,
+                'uuid' => Uuid::uuid()
+            ]);
         }
     }
 }

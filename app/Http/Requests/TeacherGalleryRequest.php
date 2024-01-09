@@ -25,7 +25,7 @@ class TeacherGalleryRequest extends FormRequest
             'photo.required' => 'Foto wajib di isi',
             'name.required' => 'Nama wajib di isi',
             'name.max' => 'Nama maksimal :max karakter',
-            'photo.images' => 'Foto harus berupa gambar',
+            'photo.image' => 'Foto harus berupa gambar',
         ];
     }
 }

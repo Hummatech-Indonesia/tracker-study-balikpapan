@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Enums\RoleEnum;
+use App\Enums\StatusEnum;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\RegisterCompanyRequest;
 use Illuminate\Support\Facades\Mail;
@@ -35,6 +36,7 @@ class RegisterService
         $student->store([
             'user_id' => $user->id,
             'is_graduate' => 1,
+            'status' => StatusEnum::NONACTIVE->value,
             'classroom_id' => $data['classroom_id'],
             'national_student_id' => $data['national_student_id'],
             'birth_date' => $data['birth_date'],
