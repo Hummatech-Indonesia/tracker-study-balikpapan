@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    
+
     /**
      * Run the migrations.
      */
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('facebook');
             $table->boolean('alumni_gathering');
             $table->string('city');
-            $table->enum('current_activity',[ActivityStatusEnum::STUDY->value,ActivityStatusEnum::WORK->value,ActivityStatusEnum::NOTWORK,ActivityStatusEnum::BUSSINESS->value]);
+            $table->enum('current_activity',[ActivityStatusEnum::STUDY->value,ActivityStatusEnum::WORK->value,ActivityStatusEnum::NOTWORK->value,ActivityStatusEnum::BUSSINESS->value]);
             $table->timestamps();
         });
     }
