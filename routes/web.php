@@ -165,9 +165,8 @@ Route::get('add-portofolio', function () {
 Route::get('detail-portofolio/{portofolio}', [PortofolioController::class, 'show'])->name('detail.portofolio');
 
 Route::get('edit-portofolio/{portofolio}', [PortofolioController::class, 'edit'])->name('edit.portofolio');
-Route::get('job-applicant', function () {
-    return view('company.job-applicant');
-});
+
+Route::get('job-applicant',[ApplyJobVacancyController::class, 'companyApplyJobVacancy'])->name('job-applicant');
 Route::get('profile-company', [UserController::class, 'company'])->name('profile-company');
 Route::put('update-company-profile/{user}', [UserController::class, 'updateCompany'])->name('update-company-profile');
 Route::patch('update-profile', [UserController::class, 'updateProfile'])->name('update-profile');

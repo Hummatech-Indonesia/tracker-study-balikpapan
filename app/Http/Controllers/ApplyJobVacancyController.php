@@ -20,7 +20,7 @@ class ApplyJobVacancyController extends Controller
         $this->service = $service;
     }
 
-    
+
 
     /**
      * store
@@ -35,8 +35,21 @@ class ApplyJobVacancyController extends Controller
         return redirect()->back()->with('success', trans('alert.add_success'));
     }
 
-    public function index() : View {
+    /**
+     * index
+     *
+     * @return View
+     */
+    public function index() : View
+    {
         $applyJobVacancies = $this->applyJobVacancy->getJob();
         return view('alumni.job-vacancy-page',compact('applyJobVacancies'));
     }
+
+    public function companyApplyJobVacancy() : View
+    {
+        $applyJobVacancies = $this->applyJobVacancy->getByCompany(auth()->user()->company->id);
+        return view('company.job-applicant');
+    }
+
 }
