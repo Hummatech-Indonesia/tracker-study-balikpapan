@@ -50,6 +50,7 @@ class StudentRepository extends BaseRepository implements StudentInterface
     public function customPaginate(Request $request, int $pagination = 10): LengthAwarePaginator
     {
         return $this->model->query()
+            ->where('is_graduate', 0)
             ->when($request->name, function ($query) use ($request) {
                 $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
             })
@@ -66,7 +67,10 @@ class StudentRepository extends BaseRepository implements StudentInterface
     public function studentNonactive(Request $request, int $pagination = 10): LengthAwarePaginator
     {
         return $this->model->query()
-            ->where(['status' => StatusEnum::NONACTIVE->value])
+            ->where(['status' => StatusEnum::NONACTIVE->value, 'is_graduate' => 1])
+            ->when($request->name, function ($query) use ($request) {
+                $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
+            })
             ->fastPaginate($pagination);
     }
 }

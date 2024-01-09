@@ -25,19 +25,13 @@
                             {{ $company->description }}
                         </p>
                         <div class="d-flex align-items-center gap-2 mb-2">
-                            <form action="{{ route('approve.verify.company', $company->id) }}" class="w-100"
-                                method="post">
-                                @method('PATCH')
-                                @csrf
-                                <button type="submit" class="btn w-100 text-white" style="background-color:#1D9375 ">
-                                    Terima</button>
-                            </form>
-                            <form action="{{ route('reject.verify.company', $company->id) }}" class="w-100" method="post">
-                                @method('PATCH')
-                                @csrf
-                                <button class="btn btn-inverse-danger w-100">Tolak</button>
-                            </form>
+                            <button class="btn btn-approve w-100 text-white" data-id="{{ $company->id }}"
+                                data-bs-toggle="modal" style="background-color: #1D9375">Terima</button>
+                            <button class="btn btn-reject btn-inverse-danger w-100" data-id="{{ $company->id }}"
+                                data-bs-toggle="modal">Tolak</button>
+
                         </div>
+                        <button class="btn btn-warning w-100 text-white">Detail</button>
                     </div>
                 </div>
             </div>
@@ -45,4 +39,22 @@
             Data Kosong
         @endforelse
     </div>
+    <x-confirm-approve-modal-component />
+    <x-confirm-reject-modal-component />
+@endsection
+@section('script')
+    <script>
+        $('.btn-approve').click(function() {
+            id = $(this).data('id')
+            var actionUrl = `approve-verify-company/${id}`;
+            $('#form-approve').attr('action', actionUrl);
+            $('#modal-approve').modal('show')
+        })
+        $('.btn-reject').click(function() {
+            id = $(this).data('id')
+            var actionUrl = `reject-verify-company/${id}`;
+            $('#form-reject').attr('action', actionUrl);
+            $('#modal-reject').modal('show')
+        })
+    </script>
 @endsection

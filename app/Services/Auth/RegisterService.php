@@ -34,6 +34,7 @@ class RegisterService
         Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email, 'user' => $request->name, 'id' => $user->id]));
         $student->store([
             'user_id' => $user->id,
+            'is_graduate' => 1,
             'classroom_id' => $data['classroom_id'],
             'national_student_id' => $data['national_student_id'],
             'birth_date' => $data['birth_date'],

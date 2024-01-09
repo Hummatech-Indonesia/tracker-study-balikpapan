@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\PortofolioInterface;
+use App\Enums\RoleEnum;
 
 class HomeController extends Controller
 {
@@ -26,23 +27,21 @@ class HomeController extends Controller
     {
 
         $role = auth()->user()->roles[0]->name;
-        
-        switch($role){
-            case 'admin':
+
+        switch ($role) {
+            case RoleEnum::ADMIN->value:
                 return view('admin.index');
                 break;
-            case 'student':
+            case RoleEnum::STUDENT->value:
                 $countPortofolio = $this->portofolio->countPortofolio();
-                return view('student.dashboard',compact('countPortofolio'));
+                return view('student.dashboard', compact('countPortofolio'));
                 break;
-            case 'alumni':
+            case RoleEnum::ALUMNI->value:
                 return view('alumni.index');
                 break;
-            case 'company':
+            case RoleEnum::COMPANY->value:
                 return view('company.index');
                 break;
         }
-
-        
     }
 }

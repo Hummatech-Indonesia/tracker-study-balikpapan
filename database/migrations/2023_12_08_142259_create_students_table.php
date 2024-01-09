@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignUuid('classroom_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->char('national_student_id', 10);
             $table->date('birth_date');
+            $table->boolean('is_graduate');
             $table->enum('gender', [GenderEnum::MALE->value, GenderEnum::FEMALE->value]);
             $table->enum('status', [StatusEnum::ACTIVE->value, StatusEnum::NONACTIVE->value, StatusEnum::REJECT->value]);
             $table->timestamps();

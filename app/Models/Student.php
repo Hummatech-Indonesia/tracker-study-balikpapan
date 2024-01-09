@@ -29,6 +29,7 @@ class Student extends Model implements HasUser, HasClassroom
         'national_student_id',
         'birth_date',
         'gender',
+        'is_graduate',
         'status'
     ];
 
