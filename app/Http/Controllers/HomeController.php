@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\PortofolioInterface;
 use App\Enums\RoleEnum;
+use App\Contracts\Interfaces\JobVacancyInterface;
+use App\Contracts\Interfaces\PortofolioInterface;
 
 class HomeController extends Controller
 {
 
     private PortofolioInterface $portofolio;
+    private JobVacancyInterface $jobVacancy;
 
-    public function __construct(PortofolioInterface $portofolio)
+    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy)
     {
         $this->portofolio = $portofolio;
+        $this->jobVacancy = $jobVacancy;
     }
 
     /**
@@ -20,9 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $jobVacancys = $this->jobVacancy->get();
+        return view('index', compact('jobVacancys'));
     }
 
+    /**
+     * dashboard
+     *
+     * @return void
+     */
     public function dashboard()
     {
 

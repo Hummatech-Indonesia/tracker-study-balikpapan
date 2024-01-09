@@ -40,9 +40,8 @@ Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 Route::get('lowongan', function () {
     return view('lowongan');
 });
-Route::get('detail-lowongan', function () {
-    return view('detail-lowongan');
-});
+
+Route::get('detail-lowongan/{jobVacancy}', [LandingPageController::class, 'detailJobVacancy'])->name('detail-lowongan');
 
 Route::get('berita', [LandingPageController::class, 'news'])->name('landing-page-news');
 Route::get('berita/{news}', [LandingPageController::class, 'detailNews'])->name('detail-news');
