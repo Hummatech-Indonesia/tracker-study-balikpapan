@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="row mt-3">
-        <div class="col-4">
+        <div class="col-12 col-lg-6 col-xl-4">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-center">
@@ -81,7 +81,7 @@
                             <p class="fs-6 mb-2" style="font-weight: 600">
                                 Gaji Pokok
                             </p>
-                            <div class="bg-light-primary col-5 py-1 rounded mb-5">
+                            <div class="bg-light-primary col-8 col-xl-5 py-1 rounded mb-5">
                                 <h5 class="text-primary mb-0 text-center" style="font-weight:500">
                                     Rp. {{ number_format($jobVacancy->basic_salary, 0, ',', '.') }}
                                 </h5>
@@ -89,21 +89,38 @@
                             <p class="fs-6 mb-2" style="font-weight: 600">
                                 Data Pelamar
                             </p>
-                            <div class="d-flex gap-2">
-                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Menunggu" class="bg-light-warning col-2 py-2 rounded mb-5">
-                                    <h5 class="text-warning mb-0 text-center" style="font-weight:500">
-                                        {{ $countPending }}
-                                    </h5>
+                            <div class="d-flex gap-2 mb-0">
+                                <div>
+                                    <div data-bs-toggle="tooltip" data-bs-placement="top" title="Menunggu" class="bg-light-primary mb-0 col-12 py-2 rounded mb-2">
+                                        <h5 class="text-primary mb-0 text-center" style="font-weight:500">
+                                            {{ $countPending }}
+                                        </h5>
+                                    </div>
+                                    <p class="text-center">
+                                        Menunggu
+                                    </p>
                                 </div>
-                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Diterima" class="bg-light-success col-2 py-2 rounded mb-5">
-                                    <h5 class="text-success mb-0 text-center" style="font-weight:500">
-                                        {{ $countAccepted }}
-                                    </h5>
+                                
+                                <div>
+                                    <div data-bs-toggle="tooltip" data-bs-placement="top" title="Diterima" class="bg-light-success mb-0 col-12 py-2 rounded mb-2">
+                                        <h5 class="text-success mb-0 text-center" style="font-weight:500">
+                                            {{ $countAccepted }}
+                                        </h5>
+                                    </div>
+                                    <p class="text-center">
+                                        Diterima
+                                    </p>
                                 </div>
-                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Ditolak" class="bg-light-danger col-2 py-2 rounded mb-5">
-                                    <h5 class="text-danger mb-0 text-center" style="font-weight:500">
-                                        {{ $countRejected }}
-                                    </h5>
+                                
+                                <div>
+                                    <div data-bs-toggle="tooltip" data-bs-placement="top" title="Ditolak" class="bg-light-danger mb-0 col-12 py-2 rounded mb-2">
+                                        <h5 class="text-danger mb-0 text-center" style="font-weight:500">
+                                            {{ $countRejected }}
+                                        </h5>
+                                    </div>
+                                    <p class="text-center">
+                                        Ditolak
+                                    </p>
                                 </div>
                             </div>
                         </div>
