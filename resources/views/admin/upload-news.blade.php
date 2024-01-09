@@ -55,7 +55,16 @@
                         </td>
                     </tr>
                     @empty
-
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            <div class="d-flex justify-content-center" style="min-height:16rem">
+                                <div class="my-auto">
+                                    <img src="{{ asset('showNoData.png') }}" width="300" height="300" />
+                                    <h4 class="text-center mt-4">Berita Kosong!!</h4>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                     @endforelse
                 </tbody>
             </table>

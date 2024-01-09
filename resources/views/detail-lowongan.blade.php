@@ -51,17 +51,19 @@
             <div class="row">
                 <div class="card shadow p-3 bg-body-tertiary rounded col-12">
                     <div class="card-body d-flex">
-                        <img class="rounded-circle" style="border: #5D87FF solid;" width="20%"
-                            src="assets/img/avatar/avatar-2.png" alt="">
+                        <img class="rounded-circle"
+                            src="{{ asset($jobVacancy->company->user->photo == null ? 'default.jpg' : 'storage/' . $jobVacancy->company->user->photo) }}"
+                            style="border: #5D87FF solid;" width="20%" src="assets/img/avatar/avatar-2.png"
+                            alt="">
                         <div class="ml-5"> <!-- Adjust margin-left as needed -->
-                            <h2>PT KAI INDONESIA</h2>
-                            <h4 style="color: #5D87FF">
-                                Transportasi kereta api
-                            </h4>
-                            <div class="mb-2 mt-2">www.keretaapiindonesia.com</div>
+                            <h3>{{ $jobVacancy->company->user->name }}</h3>
+                            <h5 style="color: #5D87FF">
+                                {{ $jobVacancy->company->company_field ? $jobVacancy->company->company_field : '-' }}
+                            </h5>
+                            <div class="mb-2 mt-2">{{ $jobVacancy->company->website ? $jobVacancy->company->website : '-' }}
+                            </div>
                             <div class="mt-2 mb-2">
-                                Jl, Sendangrejo, Kota Madiun
-                                Jawa Timur, Indonesia
+                                {{ $jobVacancy->company->user->address ? $jobVacancy->company->user->address : '-' }}
                             </div>
                         </div>
                     </div>
@@ -78,30 +80,24 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h4>Lowongan Pada Bagian</h4>
-                            <h6 class="mt-3 mb-3" style="color: #5D87FF;">www.ptkai.id</h6>
+                            <h6 class="mt-3 mb-3" style="color: #5D87FF;">{{ $jobVacancy->position }}</h6>
                             <h4>Deskripsi Sistem Kerja</h4>
                             <p class="mt-3 mb-3">
-                                Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Dolor Sit Amet. Lorem
-                                Ipsum
-                                Dolor Sit Amet. Ipsum Dolor Sit Amet. Lorem Ipsum Lorem Ipsum Dolor Sit Amet Ipsum Dolor Sit
-                                Amet
-                                Lorem
+                                {{ $jobVacancy->description_working_system }}
                             </p>
                             <h4 class="mt-3">Sistem Kerja</h4>
                             <ul class="list-unstyled mt-2">
-                                <li>- Kontrak</li>
+                                <li>- {{ $jobVacancy->work_system }}</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <h4 class="mb-3">Kualifikasi / Syarat - syarat</h4>
-                            <ul class="mb-2">
-                                <li>Membawa KTP Asli</li>
-                                <li>Membawa CV Yang Bagus dan Benar</li>
-                                <li>Membawa Portofolio Diri</li>
-                            </ul>
+                            <div class="mb-2">
+                                {{ $jobVacancy->qualifications }}
+                            </div>
                             <h4 class="mb-3">Gaji Pokok</h4>
                             <button class="button">
-                                Rp. 300.000.00
+                                {{ 'Rp. ' . number_format($jobVacancy->basic_salary, 2, ',', '.') }}
                             </button>
                         </div>
                     </div>
