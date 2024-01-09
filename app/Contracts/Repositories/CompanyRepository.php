@@ -3,6 +3,7 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\CompanyInterface;
+use App\Enums\StatusEnum;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,7 @@ class CompanyRepository extends BaseRepository implements CompanyInterface
     public function search(Request $request): mixed
     {
         return $this->model->query()
+            ->where('status', StatusEnum::NONACTIVE->value)
             ->when($request->name, function ($query) use ($request) {
                 $query->whereRelation('user', 'name', $request->name);
             })

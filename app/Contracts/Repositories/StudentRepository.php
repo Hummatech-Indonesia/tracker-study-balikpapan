@@ -67,6 +67,9 @@ class StudentRepository extends BaseRepository implements StudentInterface
     {
         return $this->model->query()
             ->where(['status' => StatusEnum::NONACTIVE->value])
+            ->when($request->name, function ($query) use ($request) {
+                $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
+            })
             ->fastPaginate($pagination);
     }
 }
