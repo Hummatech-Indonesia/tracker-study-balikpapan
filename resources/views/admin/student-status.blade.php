@@ -23,6 +23,9 @@
                         No
                     </td>
                     <td>
+                        <input type="checkbox" name="checkbox" id="select-all" class="form-check-input">
+                    </td>
+                    <td>
                         Nama Siswa
                     </td>
                     <td>
@@ -49,6 +52,9 @@
                             <p class="mb-0 fw-normal mt-2">
                                 {{ $index + 1 }}
                             </p>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="checkbox" class="form-check-input select" value="{{ $student->id }}">
                         </td>
                         <td>
                             <p class="mb-0 fw-normal mt-2">
