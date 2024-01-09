@@ -191,7 +191,7 @@
                         <tr>
                             <td
                                 style="
-                  background-color: #fafafa;
+                  background-color: #eaf6e8;
                     text-align: center;
                     vertical-align: top;
                     direction: ltr;
