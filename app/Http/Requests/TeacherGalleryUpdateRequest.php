@@ -9,7 +9,7 @@ class TeacherGalleryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => 'nullable|images',
+            'photo' => 'nullable|image',
             'name' => 'required|max:255',
         ];
     }
@@ -24,7 +24,7 @@ class TeacherGalleryUpdateRequest extends FormRequest
         return [
             'name.required' => 'Nama wajib di isi',
             'name.max' => 'Nama maksimal :max karakter',
-            'photo.images' => 'Foto harus berupa gambar',
+            'photo.image' => 'Foto harus berupa gambar',
         ];
     }
 }

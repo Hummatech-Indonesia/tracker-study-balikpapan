@@ -51,6 +51,7 @@ Route::get('galeri-guru', [TeacherGalleryController::class, 'galery'])->name('ga
 Route::get('galeri-alumni', [LandingPageController::class, 'alumni'])->name('galery-alumni');
 Route::post('vidio-galeri-guru', [TeacherVideoGalleryController::class, 'store'])->name('teacher-video-gallery.store');
 
+
 //Auth
 Auth::routes();
 
@@ -63,6 +64,11 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware('role:admin')->group(function () {
+        
+        Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
+        Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
+        Route::patch('reject-verify-company/{company}', [CompanyController::class, 'reject'])->name('reject.verify.company');
+
 
         Route::resources([
             'school-years' => SchoolYearController::class,
@@ -140,10 +146,6 @@ Route::get('alumni-register', function () {
 Route::post('portofolio', [PortofolioController::class, 'store'])->name('portofolio.store');
 Route::put('portofolio/{portofolio}', [PortofolioController::class, 'update'])->name('portofolio.update');
 Route::delete('portofolio/{portofolio}', [PortofolioController::class, 'destroy'])->name('portofolio.destroy');
-
-Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
-Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
-Route::patch('reject-verify-company/{company}', [CompanyController::class, 'reject'])->name('reject.verify.company');
 
 Route::get('detail-job-vacancy', function () {
     return view('admin.job-vacancy.detail');
