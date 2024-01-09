@@ -11,24 +11,25 @@ use App\Enums\StatusEnum;
 class StudentService
 {
 
-/**
- * store
- *
- * @param  mixed $request
- * @return array
- */
+    /**
+     * store
+     *
+     * @param  mixed $request
+     * @return array
+     */
     public function store(StudentRequest $request, RegisterInterface $user)
     {
         $data = $request->validated();
         $data['email_verified_at'] = now();
         $data['password'] = bcrypt($data['password']);
         $data['status'] = StatusEnum::ACTIVE->value;
+        $data['is_graduate'] = 0;
         $user = $user->store($data);
         $user->student()->create($data);
         $user->assignRole(RoleEnum::STUDENT);
     }
 
-     /**
+    /**
      * update
      *
      * @param  mixed $request
