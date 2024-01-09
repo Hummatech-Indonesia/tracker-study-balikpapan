@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@if (session('success'))
+    @if (session('success'))
         <script>
             Swal.fire({
                 icon: 'success',
@@ -38,7 +38,8 @@
                             </div>
                             <div class="modal-body">
                                 <label for="" class="form-label">Tahun Ajaran</label>
-                                <input type="text" placeholder="Masukkan Tahun Ajaran" name="name" class="form-control">
+                                <input type="number" placeholder="Masukkan Tahun Ajaran" name="name"
+                                    class="form-control">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -61,7 +62,7 @@
                             </div>
                             <div class="modal-body">
                                 <label for="" class="form-label">Tahun Ajaran</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="number" name="name" class="form-control">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -73,6 +74,12 @@
             </div>
         </div>
     </div>
+    @if ($errors->has('name'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ $errors->first('name') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="row">
         @forelse ($schoolYear as $schoolYears)
             <div class="col-lg-4 col-xxl-3 col-12">
@@ -94,22 +101,23 @@
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-header gap-2">
-                                <button class="btn btn-danger w-100 btn-delete"
-                                    data-id="{{ $schoolYears->id }}" data-bs-toggle="modal" data-bs-target="#modal-delete">Hapus</button>
-                                    <button type="button" id="btn-edit-{{ $schoolYears->id }}" data-id="{{ $schoolYears->id }}"
-                                        data-name="{{ $schoolYears->name }}" class="btn-edit btn btn-primary text-white w-100">Edit</button>
+                                <button class="btn btn-danger w-100 btn-delete" data-id="{{ $schoolYears->id }}"
+                                    data-bs-toggle="modal" data-bs-target="#modal-delete">Hapus</button>
+                                <button type="button" id="btn-edit-{{ $schoolYears->id }}"
+                                    data-id="{{ $schoolYears->id }}" data-name="{{ $schoolYears->name }}"
+                                    class="btn-edit btn btn-primary text-white w-100">Edit</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         @empty
-        <div class="d-flex justify-content-center">
-            <div>
-                <img src="{{ asset('showNoData.png') }}" alt="">
-                <h5 class="text-center">Data Tahun Ajaran Kosong!!</h5>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <img src="{{ asset('showNoData.png') }}" alt="">
+                    <h5 class="text-center">Data Tahun Ajaran Kosong!!</h5>
+                </div>
             </div>
-        </div>
         @endforelse
     </div>
     <x-delete-modal-component />
