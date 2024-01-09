@@ -191,155 +191,46 @@
                 </div>
             </div>
             <div class="row">
+                @forelse ($jobVacancys as $jobVacancy)
                 <div class="col-12 col-md-6 col-lg-3 res-margin my-4">
                     <!-- Single Price Plan -->
                     <div class="single-price-plan text-center py-3 wow fadeInLeft" data-aos-duration="2s"
                         data-wow-delay="0.4s">
 
                         <div class="card-top p-4 d-flex justify-content-center align-items-center">
-                            <div class="rounded-circle bg-secondary" style="width: 5.2rem; height:5.2rem;"></div>
+                            <img class="rounded-circle bg-secondary" style="width: 8rem; height:8rem;border:#5D87FF solid;" src="{{ asset($jobVacancy->company->user->photo == null ? 'default.jpg' : 'storage/'. $jobVacancy->company->user->photo) }}" alt="">
                         </div>
                         <div class="bg-primary p-2 text-white d-flex justify-content-center"
-                            style="font-weight: 600; font-size:12px; font-style: normal;">KEMENTRIAN BUMN INDONESIA</div>
+                            style="font-weight: 600; font-size:12px; font-style: normal;">{{ $jobVacancy->company->user->name }}</div>
                         <p class="d-flex text-black d-flex justify-content-center px-2 pt-2"
                             style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Menerima Lowongan
                         </p>
                         <div style="background-color: #ECF2FF;" class="p-2 mx-4 d-flex justify-content-center mt-3">
-                            <p style="color: #5D87FF; font-weight:600">Admin Kecamatan</p>
+                            <p style="color: #5D87FF; font-weight:600">{{ $jobVacancy->job_title }}</p>
                         </div>
                         <p class="d-flex text-black d-flex justify-content-center p-2"
                             style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Dengan Gaji
                         </p>
-                        <p style="color: #5D87FF; font-weight:600" class="d-flex justify-content-center">100.000.000/bln
+                        <p style="color: #5D87FF; font-weight:600" class="d-flex justify-content-center">{{ 'Rp. ' . number_format($jobVacancy->basic_salary, 2, ',', '.') }}/bln
                         </p>
                         <p class="d-flex text-black d-flex justify-content-center p-2"
                             style="font-weight: bold; color:black; font-size:14px; font-style: normal;">Deskripsi Lowongan
                         </p>
                         <p class="d-flex text-black d-flex justify-content-center p-3 text-center mb-3"
-                            style="font-weight: 500; color:black; font-size:12px; font-style: normal;">Lorem ipsum dolor
-                            sit amet consectetur, adipisicing elit. Iusto distinctio repellendus sapiente ratione quae aut
-                            nobis natus?
-                        </p>
+                        style="font-weight: 500; color: black; font-size: 12px; font-style: normal;">
+                        {{ Str::limit($jobVacancy->description_working_system, 100, '...') }}
+                     </p>
+
 
                         <!-- Plan Button -->
                         <div class="plan-button">
-                            <a href="#" class="p-2 rounded text-white"
+                            <a href="{{ route('detail-lowongan',['jobVacancy' => $jobVacancy->id]) }}" class="p-2 rounded text-white"
                                 style="margin-top: -1rem; font-weight:450;background-color:#FFAE1F">Selengkapnya</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-3 res-margin my-4">
-                    <!-- Single Price Plan -->
-                    <div class="single-price-plan text-center py-3 wow fadeInLeft" data-aos-duration="2s"
-                        data-wow-delay="0.4s">
-
-                        <div class="card-top p-4 d-flex justify-content-center align-items-center">
-                            <div class="rounded-circle bg-secondary" style="width: 5.2rem; height:5.2rem;"></div>
-                        </div>
-                        <div class="bg-primary p-2 text-white d-flex justify-content-center"
-                            style="font-weight: 600; font-size:12px; font-style: normal;">KEMENTRIAN BUMN INDONESIA</div>
-                        <p class="d-flex text-black d-flex justify-content-center px-2 pt-2"
-                            style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Menerima Lowongan
-                        </p>
-                        <div style="background-color: #ECF2FF;" class="p-2 mx-4 d-flex justify-content-center mt-3">
-                            <p style="color: #5D87FF; font-weight:600">Admin Kecamatan</p>
-                        </div>
-                        <p class="d-flex text-black d-flex justify-content-center p-2"
-                            style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Dengan Gaji
-                        </p>
-                        <p style="color: #5D87FF; font-weight:600" class="d-flex justify-content-center">100.000.000/bln
-                        </p>
-                        <p class="d-flex text-black d-flex justify-content-center p-2"
-                            style="font-weight: bold; color:black; font-size:14px; font-style: normal;">Deskripsi Lowongan
-                        </p>
-                        <p class="d-flex text-black d-flex justify-content-center p-3 text-center mb-3"
-                            style="font-weight: 500; color:black; font-size:12px; font-style: normal;">Lorem ipsum dolor
-                            sit amet consectetur, adipisicing elit. Iusto distinctio repellendus sapiente ratione quae aut
-                            nobis natus?
-                        </p>
-
-                        <!-- Plan Button -->
-                        <div class="plan-button">
-                            <a href="#" class="p-2 rounded text-white"
-                                style="margin-top: -1rem; font-weight:450;background-color:#FFAE1F">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 res-margin my-4">
-                    <!-- Single Price Plan -->
-                    <div class="single-price-plan text-center py-3 wow fadeInLeft" data-aos-duration="2s"
-                        data-wow-delay="0.4s">
-
-                        <div class="card-top p-4 d-flex justify-content-center align-items-center">
-                            <div class="rounded-circle bg-secondary" style="width: 5.2rem; height:5.2rem;"></div>
-                        </div>
-                        <div class="bg-primary p-2 text-white d-flex justify-content-center"
-                            style="font-weight: 600; font-size:12px; font-style: normal;">KEMENTRIAN BUMN INDONESIA</div>
-                        <p class="d-flex text-black d-flex justify-content-center px-2 pt-2"
-                            style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Menerima Lowongan
-                        </p>
-                        <div style="background-color: #ECF2FF;" class="p-2 mx-4 d-flex justify-content-center mt-3">
-                            <p style="color: #5D87FF; font-weight:600">Admin Kecamatan</p>
-                        </div>
-                        <p class="d-flex text-black d-flex justify-content-center p-2"
-                            style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Dengan Gaji
-                        </p>
-                        <p style="color: #5D87FF; font-weight:600" class="d-flex justify-content-center">100.000.000/bln
-                        </p>
-                        <p class="d-flex text-black d-flex justify-content-center p-2"
-                            style="font-weight: bold; color:black; font-size:14px; font-style: normal;">Deskripsi Lowongan
-                        </p>
-                        <p class="d-flex text-black d-flex justify-content-center p-3 text-center mb-3"
-                            style="font-weight: 500; color:black; font-size:12px; font-style: normal;">Lorem ipsum dolor
-                            sit amet consectetur, adipisicing elit. Iusto distinctio repellendus sapiente ratione quae aut
-                            nobis natus?
-                        </p>
-
-                        <!-- Plan Button -->
-                        <div class="plan-button">
-                            <a href="#" class="p-2 rounded text-white"
-                                style="margin-top: -1rem; font-weight:450;background-color:#FFAE1F">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 res-margin my-4">
-                    <!-- Single Price Plan -->
-                    <div class="single-price-plan text-center py-3 wow fadeInLeft" data-aos-duration="2s"
-                        data-wow-delay="0.4s">
-
-                        <div class="card-top p-4 d-flex justify-content-center align-items-center">
-                            <div class="rounded-circle bg-secondary" style="width: 5.2rem; height:5.2rem;"></div>
-                        </div>
-                        <div class="bg-primary p-2 text-white d-flex justify-content-center"
-                            style="font-weight: 600; font-size:12px; font-style: normal;">KEMENTRIAN BUMN INDONESIA</div>
-                        <p class="d-flex text-black d-flex justify-content-center px-2 pt-2"
-                            style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Menerima Lowongan
-                        </p>
-                        <div style="background-color: #ECF2FF;" class="p-2 mx-4 d-flex justify-content-center mt-3">
-                            <p style="color: #5D87FF; font-weight:600">Admin Kecamatan</p>
-                        </div>
-                        <p class="d-flex text-black d-flex justify-content-center p-2"
-                            style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Dengan Gaji
-                        </p>
-                        <p style="color: #5D87FF; font-weight:600" class="d-flex justify-content-center">100.000.000/bln
-                        </p>
-                        <p class="d-flex text-black d-flex justify-content-center p-2"
-                            style="font-weight: bold; color:black; font-size:14px; font-style: normal;">Deskripsi Lowongan
-                        </p>
-                        <p class="d-flex text-black d-flex justify-content-center p-3 text-center mb-3"
-                            style="font-weight: 500; color:black; font-size:12px; font-style: normal;">Lorem ipsum dolor
-                            sit amet consectetur, adipisicing elit. Iusto distinctio repellendus sapiente ratione quae aut
-                            nobis natus?
-                        </p>
-
-                        <!-- Plan Button -->
-                        <div class="plan-button">
-                            <a href="#" class="p-2 rounded text-white"
-                                style="margin-top: -1rem; font-weight:450;background-color:#FFAE1F">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-
+                @empty
+                @endforelse
             </div>
             <div class="row justify-content-center">
                 <a href="/lowongan" class="btn btn-outline-primary btn-md mt-4 mb-4">Lowongan Lainnya</a>
