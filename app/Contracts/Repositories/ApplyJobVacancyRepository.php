@@ -14,6 +14,19 @@ class ApplyJobVacancyRepository extends BaseRepository implements ApplyJobVacanc
     }
 
     /**
+     * getByCompany
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function getByCompany(mixed $id): mixed
+    {
+        return $this->model->query()
+            ->whereRelation('jobVacancy', 'company_id', $id)
+            ->get();
+    }
+
+    /**
      * store
      *
      * @param  mixed $data

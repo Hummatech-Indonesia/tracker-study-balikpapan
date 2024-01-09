@@ -16,7 +16,7 @@ interface ApplyJobVacancyInterface extends StoreInterface,ShowInterface
 
     /**
      * getApplicant
-     * @param $id 
+     * @param $id
      * @return mixed
      */
     public function getApplicant(mixed $id): mixed;
@@ -40,4 +40,12 @@ interface ApplyJobVacancyInterface extends StoreInterface,ShowInterface
      * @return mixed
      */
     public function countRejected(mixed $id): mixed;
+
+    /**
+     * getByCompany
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function getByCompany(mixed $id): mixed;
 }
