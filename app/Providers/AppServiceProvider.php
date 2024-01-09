@@ -33,11 +33,13 @@ use App\Contracts\Interfaces\PhotoPortofolioInterface;
 use App\Contracts\Interfaces\PortofolioInterface;
 use App\Contracts\Repositories\ApplyJobVacancyRepository;
 use App\Contracts\Interfaces\SliderGalleryAlumniInterface;
+use App\Contracts\Interfaces\SubmitSurveyInterface;
 use App\Contracts\Interfaces\TeacherVideoGalleryInterface;
 use App\Contracts\Repositories\AlumniVideoGalleryRepository;
 use App\Contracts\Repositories\PhotoPortofolioRepository;
 use App\Contracts\Repositories\PortofolioRepository;
 use App\Contracts\Repositories\SliderGalleryAlumniRepository;
+use App\Contracts\Repositories\SubmitSurveyRepository;
 use App\Contracts\Repositories\TeacherVideoGalleryRepository;
 
 class AppServiceProvider extends ServiceProvider
@@ -60,7 +62,8 @@ class AppServiceProvider extends ServiceProvider
         JobVacancyInterface::class => JobVacancyRepository::class,
         ApplyJobVacancyInterface::class => ApplyJobVacancyRepository::class,
         PortofolioInterface::class => PortofolioRepository::class,
-        PhotoPortofolioInterface::class => PhotoPortofolioRepository::class
+        PhotoPortofolioInterface::class => PhotoPortofolioRepository::class,
+        SubmitSurveyInterface::class => SubmitSurveyRepository::class
     ];
 
     /**
