@@ -39,9 +39,7 @@ use App\Http\Controllers\TeacherVideoGalleryController;
 //Landing Page
 Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 
-Route::get('lowongan', function () {
-    return view('lowongan');
-});
+Route::get('lowongan', [LandingPageController::class, 'jobVacancy'])->name('lowongan');
 
 Route::get('detail-lowongan/{jobVacancy}', [LandingPageController::class, 'detailJobVacancy'])->name('detail-lowongan');
 
