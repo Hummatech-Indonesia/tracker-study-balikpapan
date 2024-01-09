@@ -1,8 +1,8 @@
     <header class="navbar navbar-sticky navbar-expand-lg navbar-dark">
         <div class="container position-relative">
             <a class="navbar-brand" href="index.html">
-                <img class="navbar-brand-regular" width="10%" src="{{ asset('LOGO SMKN 2.png') }}" alt="brand-logo">
-                <img class="navbar-brand-sticky" width="10%" src="{{ asset('LOGO SMKN 2.png') }}" alt="sticky brand-logo">
+                <img class="navbar-brand-regular" width="8%" src="{{ asset('LOGO SMKN 2.png') }}" alt="brand-logo">
+                <img class="navbar-brand-sticky" width="8%" src="{{ asset('LOGO SMKN 2.png') }}" alt="sticky brand-logo">
             </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="navbarToggler"
                 aria-label="Toggle navigation">

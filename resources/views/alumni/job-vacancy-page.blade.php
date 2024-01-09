@@ -28,8 +28,8 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @forelse ($applyJobVacancies as $applyJobVacancy)
                     <tr>
-                        @forelse ($applyJobVacancies as $applyJobVacancy)
                         <td>
                             {{ $loop->iteration }}
                         </td>
@@ -72,10 +72,19 @@
                             @endif
                            
                         </td>
-                        @empty
-                            
-                        @endforelse
                     </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4">
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <img src="{{ asset('showNoData.png') }}" alt="">
+                                        <h5 class="text-center">Anda belum melamar di perusahaan mana pun!!</h5>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforelse
                 </tbody>
             </table>
         </div>
