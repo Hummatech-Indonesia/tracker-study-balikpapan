@@ -92,26 +92,25 @@
     <div class="card">
         @forelse ($portofolios as $portofolio)
             <div class="row g-0">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="photo-stack mt-4">
                         @foreach ($portofolio->photoPortofolios as $photoPortofolio)
                             <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="300" />
                         @endforeach
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="card-body">
                         <p class="text-primary text-end ">
-                            {{ Carbon::parse($portofolio->start_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
-                            - {{ Carbon::parse($portofolio->end_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
+                            {{ \Carbon\Carbon::parse($portofolio->start_at)->locale('id_ID')->isoFormat('DD MMMM Y') }} - {{ \Carbon\Carbon::parse($portofolio->end_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
                         </p>
                         <h5 class="card-title">{{ $portofolio->name }}</h5>
-                        <p class="card-text">{{ $portofolio->description }}</p>
+                        <p class="card-text">{{ Illuminate\Support\Str::limit($portofolio->description, $limit = 325, $end = '...') }}</p>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mb-4 gap-3 px-4">
                     <div class="">
-                        <form action="{{ route('portofolio.destroy', $portofolio->id) }}" method="post">
+                        {{-- <form action="{{ route('portofolio.destroy', $portofolio->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +127,22 @@
                                         stroke="white" stroke-width="3" stroke-linecap="round" />
                                 </svg>
                             </button>
-                        </form>
+                        </form> --}}
+                        <button class="btn btn-danger btn-delete" data-id="{{ $portofolio->id }}" data-bs-toggle="modal"
+                            data-bs-target="#modal-delete">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34"
+                                fill="none">
+                                <path d="M13.4587 20.5418L13.4587 16.2918" stroke="white" stroke-width="3"
+                                    stroke-linecap="round" />
+                                <path d="M20.5413 20.5418L20.5413 16.2918" stroke="white" stroke-width="3"
+                                    stroke-linecap="round" />
+                                <path
+                                    d="M4.25 9.20819H29.75V9.20819C27.7603 9.20819 26.7655 9.20819 26.0509 9.68569C25.7415 9.89241 25.4759 10.158 25.2692 10.4674C24.7917 11.182 24.7917 12.1769 24.7917 14.1665V21.9582C24.7917 24.6295 24.7917 25.9651 23.9618 26.795C23.1319 27.6249 21.7963 27.6249 19.125 27.6249H14.875C12.2037 27.6249 10.8681 27.6249 10.0382 26.795C9.20833 25.9651 9.20833 24.6295 9.20833 21.9582V14.1665C9.20833 12.1769 9.20833 11.182 8.73083 10.4674C8.52411 10.158 8.25849 9.89241 7.94912 9.68569C7.23448 9.20819 6.23965 9.20819 4.25 9.20819V9.20819Z"
+                                    stroke="white" stroke-width="3" stroke-linecap="round" />
+                                <path
+                                    d="M13.4579 4.95882C13.4579 4.95882 14.1663 3.54181 16.9996 3.54181C19.8329 3.54181 20.5413 4.95848 20.5413 4.95848"
+                                    stroke="white" stroke-width="3" stroke-linecap="round" />
+                            </svg> </button>
                     </div>
                     <div class="">
                         <a href="{{ route('edit.portofolio', $portofolio->id) }}" class="btn btn-warning"><svg
@@ -143,7 +157,7 @@
                         </a>
                     </div>
                     <div class="">
-                        <a href="{{ route('detail.portofolio', $portofolio->id) }}" class="btn btn-primary"><svg
+                        <a href="{{ route('detail.portofolio',['portofolio'=>$portofolio->id]) }}" class="btn btn-primary"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 38 38"
                                 fill="none">
                                 <path
@@ -155,10 +169,23 @@
                             </svg>
                         </a>
                     </div>
+
                 </div>
             </div>
         @empty
             <p>data kosong</p>
         @endforelse
     </div>
+    <x-delete-modal-component />
+
+@endsection
+@section('script')
+    <script>
+        $('.btn-delete').click(function() {
+            id = $(this).data('id')
+            var actionUrl = `portofolio/${id}`;
+            $('#form-delete').attr('action', actionUrl);
+            $('#modal-delete').modal('show')
+        })
+    </script>
 @endsection

@@ -2,14 +2,14 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\SurveyInterface;
-use App\Models\Survey;
+use App\Models\News;
+use App\Contracts\Interfaces\SubmitSurveyInterface;
 
-class SurveyRepository extends BaseRepository implements SurveyInterface
+class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInterface
 {
-    public function __construct(Survey $survey)
+    public function __construct(News $news)
     {
-        $this->model = $survey;
+        $this->model = $news;
     }
 
     /**
@@ -32,7 +32,10 @@ class SurveyRepository extends BaseRepository implements SurveyInterface
     public function store(array $data): mixed
     {
         return $this->model->query()
-            ->create($data);
+            ->updateOrCreate([
+                'student_id' => $data['student_id'],
+                'survey_id' => $data['survey_id']
+            ],$data);
     }
 
     /**
@@ -70,17 +73,5 @@ class SurveyRepository extends BaseRepository implements SurveyInterface
     {
         return $this->show($id)
             ->delete();
-    }
-    
-    /**
-     * getLatest
-     *
-     * @return mixed
-     */
-    public function getLatest(): mixed
-    {
-        return $this->model->query()
-            ->latest()
-            ->first();
     }
 }

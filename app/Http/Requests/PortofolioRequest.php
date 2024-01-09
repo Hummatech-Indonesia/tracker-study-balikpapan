@@ -19,7 +19,7 @@ class PortofolioRequest extends FormRequest
             'end_at' => 'required|date',
             'description' => 'required',
             'photo' => 'required|array',
-            'photo.*' => 'mimes:png,jpg,jpeg'
+            'photo.*' => 'required  '
         ];
     }
 }

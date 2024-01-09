@@ -22,40 +22,69 @@
                         <td>
                             Tanggal Melamar
                         </td>
-                        <td>
+                        <td align="center">
                             Status
                         </td>
                     </tr>
                 </thead>
                 <tbody>
+                    @forelse ($applyJobVacancies as $applyJobVacancy)
                     <tr>
                         <td>
-                            1.
+                            {{ $loop->iteration }}
                         </td>
                         <td>
                             <div class="d-flex justify-content-header">
                                 <div class="">
-                                    <img  src="{{ asset(auth()->user()->photo == null ? 'default.jpg' : 'storage/'. auth()->user()->photo) }}" class="user-img"
+                                    <img src="{{ asset($applyJobVacancy->jobVacancy->company->user->photo ? 'storage/'.$applyJobVacancy->jobVacancy->company->user->photo : 'default.jpg') }}"
+                                    class="user-img"
                                     alt="user avatar">
                                 </div>
                                 <div class="">
                                     <p class="text-dark mt-2 px-2">
-                                        PT Hummatech
+                                        {{ $applyJobVacancy->jobVacancy->company->user->name }}
                                     </p>
                                 </div>
                             </div>
                         </td>
                         <td>
-                            10 September 2023
+                            {{ \Carbon\Carbon::parse( $applyJobVacancy->created_at )->locale('id_ID')->isoFormat('DD MMMM Y') }}
                         </td>
-                        <td>
+                        <td align="center">
+                            @if ($applyJobVacancy->status == "accepted")
                             <div class="bg-light-primary col-5">
                                 <p class="text-primary py-1 mb-0 text-center">
                                     Diterima Interview
                                 </p>
                             </div>
+                            @elseif($applyJobVacancy->status == "rejected")
+                            <div class="bg-light-danger col-5">
+                                <p class="text-danger py-1 mb-0 text-center">
+                                    Ditolak Interview
+                                </p>
+                            </div>
+                            @else
+                            <div class="bg-light-warning col-5">
+                                <p class="text-warning py-1 mb-0 text-center">
+                                    Menunggu
+                                </p>
+                            </div>
+                            @endif
+                           
                         </td>
                     </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4">
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        <img src="{{ asset('showNoData.png') }}" alt="">
+                                        <h5 class="text-center">Anda belum melamar di perusahaan mana pun!!</h5>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforelse
                 </tbody>
             </table>
         </div>

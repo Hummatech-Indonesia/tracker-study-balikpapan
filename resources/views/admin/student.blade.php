@@ -39,51 +39,53 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="formFile" class="form-label">Nama</label>
-                                <input type="text" placeholder="Masukkan Nama" class="form-control" value="{{ old('name') }}" name="name"
-                                    id="">
+                                <input type="text" placeholder="Masukkan Nama" class="form-control"
+                                    value="{{ old('name') }}" name="name">
                             </div>
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" placeholder="Masukkan Email" id="" value="{{ old('email') }}"
-                                    class="form-control"></input>
+                                <input name="email" placeholder="Masukkan Email"
+                                    value="{{ old('email') }}" class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Password</label>
-                                <input type="password" placeholder="Masukkan Password" value="{{ old('password') }}" class="form-control" name="password"
-                                    id="">
+                                <input type="password" placeholder="Masukkan Password" value="{{ old('password') }}"
+                                    class="form-control" name="password">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">NISN</label>
-                                <input type="text" placeholder="Masukkan NISN" value="{{ old('nisn') }}" name="national_student_id" id=""
-                                    class="form-control"></input>
+                                <input type="text" placeholder="Masukkan NISN" value="{{ old('nisn') }}"
+                                    name="national_student_id" class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Tanggal Lahir</label>
-                                <input type="date" value="{{ old('birth_date') }}" class="form-control" name="birth_date" id="">
+                                <input type="date" value="{{ old('birth_date') }}" class="form-control" name="birth_date"
+                                >
                             </div>
                             <div class="col-6 mt-2">
                                 <p>
                                     Jenis Kelamin
                                 </p>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                                    <input class="form-check-input" type="radio" name="gender" 
                                         value="male">
                                     <label class="form-check-label" for="inlineRadio1">Laki - Laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                                    <input class="form-check-input" type="radio" name="gender" 
                                         value="female">
                                     <label class="form-check-label" for="inlineRadio1">Perempuan</label>
                                 </div>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">No Telepon</label>
-                                <input type="number" value="{{ old('phone_number') }}" placeholder="Masukkan No Telepon" class="form-control"
-                                    name="phone_number" id="">
+                                <input type="number" value="{{ old('phone_number') }}" placeholder="Masukkan No Telepon"
+                                    class="form-control" name="phone_number">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Kelas</label>
-                                <select class="form-select mb-3" value="{{ old('classroom_id') }}" name="classroom_id" aria-label="Default select example">
+                                <select class="form-select mb-3" value="{{ old('classroom_id') }}" name="classroom_id"
+                                    aria-label="Default select example">
                                     <option>Pilih Kelas</option>
                                     @foreach ($classrooms as $classroom)
                                         <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
@@ -93,7 +95,7 @@
 
                             <div class="col-12">
                                 <label for="formFile" class="form-label">Alamat</label>
-                                <textarea name="address" placeholder="Masukkan Alamat" id="" class="form-control">{{ old('address') }}</textarea>
+                                <textarea name="address" placeholder="Masukkan Alamat" class="form-control">{{ old('address') }}</textarea>
                             </div>
 
                         </div>
@@ -105,6 +107,66 @@
                 </div>
             </div>
         </form>
+    </div>
+
+    <div class="modal fade" id="modal-detail" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header d-flex align-items-center">
+                    <h4 class="modal-title" id="myModalLabel">
+                        Detail Siswa
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="" class="rounded-circle mb-2" id="detail-photo" width="150"
+                            alt="photo-siswa" height="150" />
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="font-weight: bold;">Nama : <span id="detail-name"
+                                            style="font-weight: normal;"></span>
+                                    </li>
+                                    <li class="list-group-item" style="font-weight: bold;">Email: <span id="detail-email"
+                                            style="font-weight: normal;"></span>
+                                    </li>
+                                    <li class="list-group-item" style="font-weight: bold;">Jenis Kelamin : <span
+                                            id="detail-gender" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">NISN: <span
+                                            id="detail-national_student_id" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">Tanggal Lahir: <span
+                                            id="detail-date_birth" style="font-weight: normal;"></span></li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="font-weight: bold;">Tahun Ajaran: <span
+                                            id="detail-school_year" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">Jurusan: <span
+                                            id="detail-major" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">Kelas: <span
+                                            id="detail-classroom" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">No Telepon: <span
+                                            id="detail-phone_number" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">Alamat: <span
+                                            id="detail-address" style="font-weight: normal;"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-danger text-danger font-medium waves-effect"
+                        data-bs-dismiss="modal">Tutup</button>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </div>
     <div class="modal fade" id="modal-update" tabindex="-1" aria-hidden="true">
         <form id="form-update" method="post">
@@ -119,43 +181,43 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="formFile" class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="name" id="">
+                                <input type="text" class="form-control" name="name">
                             </div>
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" id="" class="form-control"></input>
+                                <input name="email" class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="password" id="">
+                                <input type="password" class="form-control" name="password">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">NISN</label>
-                                <input type="text" name="national_student_id" id=""
+                                <input type="text" name="national_student_id"
                                     class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="birth_date" id="">
+                                <input type="date" class="form-control" name="birth_date">
                             </div>
                             <div class="col-6 mt-2">
                                 <p>
                                     Jenis Kelamin
                                 </p>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                                    <input class="form-check-input" type="radio" name="gender" 
                                         value="male">
                                     <label class="form-check-label" for="inlineRadio1">Laki - Laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                                    <input class="form-check-input" type="radio" name="gender" 
                                         value="female">
                                     <label class="form-check-label" for="inlineRadio1">Perempuan</label>
                                 </div>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">No Telepon</label>
-                                <input type="number" class="form-control" name="phone_number" id="">
+                                <input type="number" class="form-control" name="phone_number">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Kelas</label>
@@ -169,7 +231,7 @@
 
                             <div class="col-12">
                                 <label for="formFile" class="form-label">Alamat</label>
-                                <textarea name="address" id="" class="form-control"></textarea>
+                                <textarea name="address" class="form-control"></textarea>
                             </div>
 
                         </div>
@@ -264,8 +326,20 @@
                                 <td>
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
-                                            <a href="{{ route('detail.job.vacancy') }}" class="btn text-white"
-                                                style="background-color: #1D9375">
+                                            <a data-id="{{ $student->user->id }}"
+                                                id="btn-detail-{{ $student->user->id }}"
+                                                data-name="{{ $student->user->name }}"
+                                                data-email="{{ $student->user->email }}"
+                                                data-national_student_id={{ $student->national_student_id }}
+                                                data-gender="{{ $student->gender }}"
+                                                data-birth_date="{{ $student->birth_date }}"
+                                                data-phone_number="{{ $student->user->phone_number }}"
+                                                data-classroom="{{ $student->classroom->name }}"
+                                                data-major = "{{ $student->classroom->major->name }}"
+                                                data-school_year="{{ $student->classroom->schoolYear->name }}"
+                                                data-address="{{ $student->user->address }}"
+                                                data-photo="{{ $student->user->photo ? "storage/".$student->user->photo : "default.jpg" }}"
+                                                class="btn text-white btn-detail" style="background-color: #1D9375">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
                                                     <path fill="currentColor"
@@ -348,6 +422,13 @@
             $('#form-update').data('id', formData['id'])
             $('#form-update').attr('action', );
             $('#modal-update').modal('show')
+        })
+        $('.btn-detail').click(function() {
+            const data = getDataAttributes($(this).attr('id'))
+            handleDetail(data)
+            const detailPhoto = document.getElementById("detail-photo");
+            detailPhoto.src = data['photo'];
+            $('#modal-detail').modal('show')
         })
         $('.btn-delete').click(function() {
             id = $(this).data('id')

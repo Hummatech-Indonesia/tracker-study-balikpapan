@@ -50,6 +50,18 @@ class JobVacancyRepository extends BaseRepository implements JobVacancyInterface
     }
 
     /**
+     * show
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function show(mixed $id): mixed
+    {
+        return $this->model->query()
+            ->findOrFail($id);
+    }
+
+    /**
      * delete
      *
      * @param  mixed $id
@@ -59,5 +71,4 @@ class JobVacancyRepository extends BaseRepository implements JobVacancyInterface
     {
         return $this->show($id)->delete($id);
     }
-
 }
