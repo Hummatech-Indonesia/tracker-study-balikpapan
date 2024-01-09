@@ -26,8 +26,24 @@ class ApplyJobVacancy extends Model
         'status',
         'message',
     ];
+
+    /**
+     * jobVacancy
+     *
+     * @return BelongsTo
+     */
     public function jobVacancy(): BelongsTo
     {
         return $this->belongsTo(JobVacancy::class);
+    }
+
+    /**
+     * student
+     *
+     * @return BelongsTo
+     */
+    public function student(): BelongsTo
+    {
+        return $this->belongsTo(Student::class);
     }
 }
