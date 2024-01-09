@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
@@ -64,7 +65,7 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware('role:admin')->group(function () {
-        
+
         Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
         Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
         Route::patch('reject-verify-company/{company}', [CompanyController::class, 'reject'])->name('reject.verify.company');
@@ -75,7 +76,8 @@ Route::middleware('auth')->group(function () {
             'majors' => MajorController::class,
             'classrooms' => ClassroomController::class,
             'news' => NewsController::class,
-            'survey' => SurveyController::class
+            'survey' => SurveyController::class,
+            'users' => AccountController::class
         ]);
 
 

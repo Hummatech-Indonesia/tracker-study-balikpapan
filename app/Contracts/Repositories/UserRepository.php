@@ -87,4 +87,18 @@ class UserRepository extends BaseRepository implements UserInterface
             })
             ->get();
     }
+    
+    /**
+     * getByRole
+     *
+     * @param  mixed $role
+     * @return mixed
+     */
+    public function getByRole(string $role): mixed
+    {
+        return $this->model->query()
+            ->role($role)
+            ->whereNot('email','admin@gmail.com')
+            ->get();
+    }
 }

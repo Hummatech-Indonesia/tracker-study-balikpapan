@@ -227,6 +227,18 @@
                     <div class="menu-title mt-1">Status Siswa & Alumni</div>
                 </a>
             </li>
+            <li>
+                <a href="{{Route('users.index')}}">
+                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                            viewBox="0 0 40 40" fill="currentColor">
+                            <path
+                                d="M31.6667 33.3332H8.33333C6.49238 33.3332 5 31.8408 5 29.9998L5 9.99984C5 8.15889 6.49239 6.6665 8.33333 6.6665L25 6.6665C26.841 6.6665 28.3333 8.15889 28.3333 9.99984V11.6665M31.6667 33.3332C29.8257 33.3332 28.3333 31.8408 28.3333 29.9998L28.3333 11.6665M31.6667 33.3332C33.5076 33.3332 35 31.8408 35 29.9998V14.9998C35 13.1589 33.5076 11.6665 31.6667 11.6665L28.3333 11.6665M21.6667 6.6665L15 6.6665M11.6667 26.6665H21.6667M11.6667 13.3332H21.6667V19.9998H11.6667V13.3332Z"
+                                stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></i>
+                    </div>
+                    <div class="menu-title mt-1">Manage Akun</div>
+                </a>
+            </li>
         @elseif(auth()->user()->roles[0]->name == 'company')
             <li>
                 <a href="{{ route('job-vacancy.index') }}">
