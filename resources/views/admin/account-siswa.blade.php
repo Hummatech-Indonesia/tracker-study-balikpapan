@@ -34,7 +34,7 @@
                 <div class="card border-primary border-bottom border-3 border-0">
                     <div class="card-body">
                         <div class="d-flex justify-content-center mt-2 mb-4">
-                            <img src="{{ asset('assets-admin/images/avatars/avatar-2.png') }}" width="100px"
+                            <img src="{{ asset($student->user->photo == null ? 'default.jpg' : 'storage/'. $student->user->photo) }}" width="100px"
                                 class="user-circle" alt="user">
                         </div>
                         <h5 class="card-title text-dark text-center" style="font-weight: 700">
