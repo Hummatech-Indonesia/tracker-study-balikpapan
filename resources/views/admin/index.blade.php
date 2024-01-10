@@ -135,7 +135,7 @@
                 <div class="card-body">
                     <div class="text-center mt-2">
                         <h5 style="font-weight: 700">
-                            Sebaran Bidang Pekerjaan
+                            Jumlah Alumni Perjurusan
                         </h5>
                         <p>
                             Klik Untuk Melihat Presentase persen
