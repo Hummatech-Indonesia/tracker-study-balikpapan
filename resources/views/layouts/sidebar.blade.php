@@ -41,6 +41,27 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('school-years.index') }}">
+                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+                    </div>
+                    <div class="menu-title mt-1">Tahun Ajaran</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('majors.index') }}">
+                    <div class="parent-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M4 21q-.825 0-1.412-.587T2 19V5q0-.825.588-1.412T4 3h14q.825 0 1.413.588T20 5v2h2v2h-2v2h2v2h-2v2h2v2h-2v2q0 .825-.587 1.413T18 21zm0-2h14V5H4zm2-2h5v-4H6zm6-7h4V7h-4zm-6 2h5V7H6zm6 5h4v-6h-4zM4 5v14z"/></svg>
+                    </div>
+                    <div class="menu-title mt-1">Jurusan</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('classrooms.index') }}">
+                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.75 19V7h1v11h7v1zm4-12.5q-.71 0-1.201-.491q-.491-.492-.491-1.201q0-.71.491-1.201q.491-.492 1.201-.492q.71 0 1.201.492t.491 1.2q0 .71-.491 1.202T10.75 6.5m5.5 15V17h-7.5V9.73q0-.857.571-1.428t1.429-.571q.858 0 1.429.57q.571.572.571 1.43V15h4.5v6.5z"/></svg>
+                    </div>
+                    <div class="menu-title mt-1">Kelas</div>
+                </a>
+            </li>
+            <li>
                 <a class="has-arrow" href="javascript:;">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
                             viewBox="0 0 36 36" fill="currentColor">
