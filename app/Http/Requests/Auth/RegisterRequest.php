@@ -4,6 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use App\Http\Requests\ApiRequest;
 use App\Rules\GenderRule;
+use App\Rules\RoleRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -25,6 +26,7 @@ class RegisterRequest extends FormRequest
             'national_student_id' => 'required',
             'birth_date' => 'required|date',
             'gender' => ['required', new GenderRule],
+            'role' => ['required', new RoleRule],
             'phone_number' => 'required',
         ];
     }
@@ -55,12 +57,7 @@ class RegisterRequest extends FormRequest
 
             'phone_number.required' => 'Kolom nomor telepon harus diisi.',
 
-            // 'student_id_number.required' => 'Kolom nomor induk mahasiswa harus diisi.',
-            // 'student_id_number.max' => 'Nomor induk mahasiswa tidak boleh lebih dari 11 karakter.',
-
-            // 'study_program.required' => 'Kolom Program Study tidak boleh kosong.',
-
-            // 'graduate_date.required' => 'Kolom Tanggal Lulus tidak boleh kosong.',
+            'role.required' => 'Role wajib diisi',
         ];
     }
 }

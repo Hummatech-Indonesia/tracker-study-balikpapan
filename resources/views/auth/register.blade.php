@@ -113,8 +113,8 @@
                                         </div>
                                         <div class="col-12">
                                             <label for="inputSelectCountry" class="form-label">Tanggal Lahir</label>
-                                            <input type="date" name="birth_date" class="form-control border-end-0" value="{{old('date')}}"
-                                                placeholder="Enter No telephone">
+                                            <input type="date" name="birth_date" class="form-control border-end-0"
+                                                value="{{ old('date') }}" placeholder="Enter No telephone">
                                             @error('birth_date')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
@@ -141,6 +141,17 @@
                                                 @endforeach
                                             </select>
                                             @error('classroom_id')
+                                                <div class="text-danger">{{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="inputSelectCountry" class="form-label">Pilih Role</label><br>
+                                            <input class="form-check-input me-1" type="radio" name="role"
+                                                value="alumni" id="flexRadioDefault1">Alumni<br>
+                                            <input class="form-check-input me-1" type="radio" name="role"
+                                                value="student" id="flexRadioDefault1">Siswa
+                                            @error('role')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
                                             @enderror

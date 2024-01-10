@@ -51,10 +51,14 @@ class StudentRepository extends BaseRepository implements StudentInterface
      */
     public function customPaginate(Request $request, int $pagination = 10): LengthAwarePaginator
     {
+        // dd($request);
         return $this->model->query()
             ->where('is_graduate', 0)
             ->when($request->name, function ($query) use ($request) {
                 $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
+            })
+            ->when($request->classroom, function ($query) use ($request) {
+                $query->where('classroom_id', $request->classroom);
             })
             ->fastPaginate($pagination);
     }

@@ -38,7 +38,7 @@ class ApplyJobVacancyRepository extends BaseRepository implements ApplyJobVacanc
             ->updateOrCreate([
                 'student_id'=>$data['student_id'],
                 'job_vacancy_id'=>$data['job_vacancy_id'],
-            ]);
+            ], $data);
     }
         /**
      * show

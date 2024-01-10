@@ -13,13 +13,28 @@
         Tambah Siswa
     </h4>
     <div class="d-flex justify-content-between">
-        <div class="position-relative mb-3 col-lg-3">
-            <form action="" method="get">
-                <input type="text" value="{{ request()->name }}" name="name" class="form-control search-chat py-2 ps-5"
-                    id="search-name" placeholder="Search">
-                <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
-            </form>
-        </div>
+        <form action="" method="get">
+            <div class="d-flex justify-content-header gap-3">
+                <div class="position-relative mb-3 col-lg-6">
+                    <input type="text" name="name" value="{{ request()->name }}"
+                        class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
+                    <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                </div>
+                <div class="col-lg-4">
+                    <select name="classroom" id="" class="form-select py-2">
+                        <option value="">Filter Kelas</option>
+                        @foreach ($classrooms as $classroom)
+                            <option {{ request()->classroom == $classroom->id ? 'selected' : '' }} value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-lg-2">
+                    <button type="submit" class="btn btn-primary btn-md">
+                        Cari
+                    </button>
+                </div>
+            </div>
+        </form>
         <div class="">
             <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
                 style="background-color: #1D9375">Tambah Siswa</button>
@@ -44,8 +59,8 @@
                             </div>
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" placeholder="Masukkan Email"
-                                    value="{{ old('email') }}" class="form-control"></input>
+                                <input name="email" placeholder="Masukkan Email" value="{{ old('email') }}"
+                                    class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Password</label>
@@ -59,21 +74,19 @@
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Tanggal Lahir</label>
-                                <input type="date" value="{{ old('birth_date') }}" class="form-control" name="birth_date"
-                                >
+                                <input type="date" value="{{ old('birth_date') }}" class="form-control"
+                                    name="birth_date">
                             </div>
                             <div class="col-6 mt-2">
                                 <p>
                                     Jenis Kelamin
                                 </p>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" 
-                                        value="male">
+                                    <input class="form-check-input" type="radio" name="gender" value="male">
                                     <label class="form-check-label" for="inlineRadio1">Laki - Laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" 
-                                        value="female">
+                                    <input class="form-check-input" type="radio" name="gender" value="female">
                                     <label class="form-check-label" for="inlineRadio1">Perempuan</label>
                                 </div>
                             </div>
@@ -193,8 +206,7 @@
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">NISN</label>
-                                <input type="text" name="national_student_id"
-                                    class="form-control"></input>
+                                <input type="text" name="national_student_id" class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Tanggal Lahir</label>
@@ -205,13 +217,11 @@
                                     Jenis Kelamin
                                 </p>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" 
-                                        value="male">
+                                    <input class="form-check-input" type="radio" name="gender" value="male">
                                     <label class="form-check-label" for="inlineRadio1">Laki - Laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" 
-                                        value="female">
+                                    <input class="form-check-input" type="radio" name="gender" value="female">
                                     <label class="form-check-label" for="inlineRadio1">Perempuan</label>
                                 </div>
                             </div>
@@ -338,7 +348,7 @@
                                                 data-major = "{{ $student->classroom->major->name }}"
                                                 data-school_year="{{ $student->classroom->schoolYear->name }}"
                                                 data-address="{{ $student->user->address }}"
-                                                data-photo="{{ $student->user->photo ? "storage/".$student->user->photo : "default.jpg" }}"
+                                                data-photo="{{ $student->user->photo ? 'storage/' . $student->user->photo : 'default.jpg' }}"
                                                 class="btn text-white btn-detail" style="background-color: #1D9375">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
