@@ -99,13 +99,13 @@
                                 fill="currentColor" />
                         </svg></i>
                     </div>
-                    <div class="menu-title mt-1">Upload Galery</div>
+                    <div class="menu-title mt-1">Unggah Foto Galeri</div>
                 </a>
                 <ul>
-                    <li> <a href="{{ route('teacher-gallery.index') }}"><i class='bx bx-radio-circle'></i>Gallery
+                    <li> <a href="{{ route('teacher-gallery.index') }}"><i class='bx bx-radio-circle'></i>Galeri
                             Guru</a>
                     </li>
-                    <li> <a href="{{ route('alumni.gallery') }}"><i class='bx bx-radio-circle'></i>Galery Alumni</a>
+                    <li> <a href="{{ route('alumni.gallery') }}"><i class='bx bx-radio-circle'></i>Galleri Alumni</a>
                     </li>
                 </ul>
             </li>
@@ -118,7 +118,7 @@
                                 stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                         </svg></i>
                     </div>
-                    <div class="menu-title mt-1">Upload Berita</div>
+                    <div class="menu-title mt-1">Unggah Berita</div>
                 </a>
             </li>
             <li>
@@ -244,7 +244,7 @@
                                 stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                         </svg></i>
                     </div>
-                    <div class="menu-title mt-1">Manage Akun</div>
+                    <div class="menu-title mt-1">Kelola Akun</div>
                 </a>
             </li>
         @elseif(auth()->user()->roles[0]->name == 'company')
