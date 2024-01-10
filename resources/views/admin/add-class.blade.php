@@ -29,10 +29,14 @@
         </div>
     </div>
     <div class="row">
-        @forelse ($classrooms as $classroom)
+        @forelse ($classrooms as $index => $classroom)
             <div class="col-6 col-lg-3 col-xxl-3">
                 <div class="card border-primary border-bottom border-3 border-0">
-                    <img src="{{ asset('assets-admin/images/gallery/01.png') }}" class="card-img-top" alt="...">
+                    @if ($index % 2 == 0)
+                        <img src="{{ asset('Biru JPG.jpg') }}" class="card-img-top" alt="...">
+                    @else
+                        <img src="{{ asset('Hijau JPG.jpg') }}" class="card-img-top" alt="...">
+                    @endif
                     <div class="card-body">
                         <div class="text-dark mb-2" style="font-weight: 500">
                             Kelas {{ $classroom->name }}
