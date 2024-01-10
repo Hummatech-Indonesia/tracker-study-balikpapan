@@ -87,7 +87,7 @@ class UserRepository extends BaseRepository implements UserInterface
             })
             ->get();
     }
-    
+
     /**
      * getByRole
      *
@@ -98,7 +98,20 @@ class UserRepository extends BaseRepository implements UserInterface
     {
         return $this->model->query()
             ->role($role)
-            ->whereNot('email','admin@gmail.com')
+            ->whereNot('email', 'admin@gmail.com')
             ->get();
+    }
+
+    /**
+     * getWhere
+     *
+     * @param  mixed $data
+     * @return mixed
+     */
+    public function getWhere(array $data): mixed
+    {
+        return $this->model->query()
+            ->where('email', $data['email'])
+            ->first();
     }
 }

@@ -36,6 +36,8 @@
             </div>
         </form>
         <div class="">
+            <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#importStudent"
+                style="background-color: #1D9375">Import Siswa</button>
             <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
                 style="background-color: #1D9375">Tambah Siswa</button>
         </div>
@@ -120,6 +122,27 @@
                 </div>
             </div>
         </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="importStudent" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <p class="text-left ms-3 fs-5 mt-3" style="font-weight:800">
+                    Tambah Siswa
+                </p>
+                <form action="{{ route('import.student') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="file" name="import" id="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn text-white" style="background-color: #1D9375">Tambah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="modal-detail" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
