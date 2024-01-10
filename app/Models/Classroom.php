@@ -6,11 +6,13 @@ use App\Models\Major;
 use App\Models\SchoolYear;
 use App\Base\Interfaces\HasMajor;
 use App\Base\Interfaces\HasSchoolYear;
+use App\Base\Interfaces\HasStudents;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Classroom extends Model implements HasMajor, HasSchoolYear
+class Classroom extends Model implements HasMajor, HasSchoolYear, HasStudents
 {
     use HasFactory;
     public $incrementing = false;
@@ -47,5 +49,15 @@ class Classroom extends Model implements HasMajor, HasSchoolYear
     public function schoolYear(): BelongsTo
     {
         return $this->belongsTo(SchoolYear::class);
+    }
+
+    /**
+     * students
+     *
+     * @return HasMany
+     */
+    public function students(): HasMany
+    {
+        return $this->hasMany(Student::class);
     }
 }
