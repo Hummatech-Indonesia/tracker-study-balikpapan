@@ -31,11 +31,16 @@ class RegisterService
 
         event(new Registered($user));
 
-        $user->assignRole(RoleEnum::ALUMNI->value);
+        $user->assignRole($data['role']);
+        if ($data['role'] == RoleEnum::ALUMNI->value) {
+            $graduate = 1;
+        } else {
+            $graduate = 0;
+        }
         Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email, 'user' => $request->name, 'id' => $user->id]));
         $student->store([
             'user_id' => $user->id,
-            'is_graduate' => 1,
+            'is_graduate' => $graduate,
             'status' => StatusEnum::NONACTIVE->value,
             'classroom_id' => $data['classroom_id'],
             'national_student_id' => $data['national_student_id'],
