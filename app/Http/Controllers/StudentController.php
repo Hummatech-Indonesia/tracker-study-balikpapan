@@ -70,8 +70,23 @@ class StudentController extends Controller
      */
     public function viewVerificationStudent(Request $request)
     {
+        $request->merge(['is_graduate' => 0]);
         $students = $this->student->studentNonactive($request, 10);
         return view('admin.account-siswa', [
+            'students' => $students
+        ]);
+    }
+    /**
+     * viewVerificationAlumni
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function viewVerificationAlumni(Request $request)
+    {
+        $request->merge(['is_graduate' => 1]);
+        $students = $this->student->studentNonactive($request, 10);
+        return view('admin.account-alumni', [
             'students' => $students
         ]);
     }

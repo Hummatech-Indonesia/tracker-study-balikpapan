@@ -148,6 +148,7 @@ Route::get('verify-account/{user}', [VerificationController::class, 'verify'])->
 
 
 Route::get('account-siswa', [StudentController::class, 'viewVerificationStudent'])->name('account.siswa');
+Route::get('account-alummni', [StudentController::class, 'viewVerificationAlumni'])->name('account.alumni');
 
 Route::patch('verification-student/{student}', [StudentController::class, 'verificationStudent'])->name('verification.student');
 Route::patch('reject-verification-student/{student}', [StudentController::class, 'rejectVerificationStudent'])->name('reject.verification.student');
