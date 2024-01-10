@@ -196,6 +196,15 @@
     </div>
 @endsection
 @section('script')
+@if (session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: '{{ session('success') }}',
+    })
+</script>
+@endif
     <script>
         document.getElementById('btn-upload').addEventListener('click', function(e) {
             e.preventDefault();
