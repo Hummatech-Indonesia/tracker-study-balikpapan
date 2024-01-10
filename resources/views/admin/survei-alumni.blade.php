@@ -36,8 +36,8 @@
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item btn-edit" data-id="{{ $survey->id }}"
                                                 id="btn-edit-{{ $survey->id }}" data-name="{{ $survey->name }}"
-                                                data-start_at="{{  \Carbon\Carbon::parse($survey->start_at)->format('Y-m-d') }}"
-                                                data-end_at="{{  \Carbon\Carbon::parse($survey->end_at)->format('Y-m-d') }}"
+                                                data-start_at="{{ \Carbon\Carbon::parse($survey->start_at)->format('Y-m-d') }}"
+                                                data-end_at="{{ \Carbon\Carbon::parse($survey->end_at)->format('Y-m-d') }}"
                                                 data-description="{{ $survey->description }}">Edit</a>
                                         </li>
                                         <li><a class="dropdown-item btn-delete" data-id="{{ $survey->id }}"
@@ -60,19 +60,24 @@
 
                             </div>
                             <div class="">
-                                <button class="btn btn-primary">Detail</button>
+                                <button data-id="{{ $survey->id }}" id="btn-detail-{{ $survey->id }}"
+                                    data-start_at="{{ \Carbon\Carbon::parse($survey->start_at)->translatedFormat('d F Y') }}"
+                                    data-name="{{ $survey->name }}"
+                                    data-end_at="{{ \Carbon\Carbon::parse($survey->end_at)->translatedFormat('d F Y') }}"
+                                    data-description="{{ $survey->description }}"
+                                    class="btn btn-detail btn-primary">Detail</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         @empty
-        <div class="d-flex justify-content-center">
-            <div>
-                <img src="{{ asset('showNoData.png') }}" alt="">
-                <h5 class="text-center">Belum Ada Survei Ditambahkan!!</h5>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <img src="{{ asset('showNoData.png') }}" alt="">
+                    <h5 class="text-center">Belum Ada Survei Ditambahkan!!</h5>
+                </div>
             </div>
-        </div>
         @endforelse
 
     </div>
@@ -117,6 +122,7 @@
             </form>
         </div>
     </div>
+
     <div class="modal fade" id="modal-update" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <form id="form-update" method="post" enctype="multipart/form-data">
@@ -158,9 +164,74 @@
             </form>
         </div>
     </div>
+    <div class="modal fade" id="modal-detail" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-lg">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Survei</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <h4><span id="detail-name"></span></h4>
+                        <div class="col-6">
+                            <p>Tanggal Mulai : <span id="detail-start_at"></span></p>
+                            <p>Tanggal Berakhir : <span id="detail-end_at"></span></p>
+                        </div>
+                        <div class="col-6">
+                            Deskripsi : <span id="detail-description"></span>
+                        </div>
+                        <div>
+                            <h4>Isi Survei</h4>
+                            <table>
+                                <tr>
+                                    <td>Kegiatan Saat Ini</td>
+                                    <td>:</td>
+                                    <td >(Contoh) Bekerja di Pt Rekayasa Perangkat Lunak dan menjadi staff programmer</td>
+                                </tr>
+                                <tr>
+                                    <td>Tempat Tinggal Sekarang</td>
+                                    <td>:</td>
+                                    <td>(Contoh) Karanglposo, Malang, Jawa Timur, Indonesia</td>
+                                </tr>
+                                <tr>
+                                    <td>Temu Alumni</td>
+                                    <td>:</td>
+                                    <td>(Contoh) Hadir/Tidak</td>
+                                </tr>
+                                <tr>
+                                    <td>Alamat Link/URL</td>
+                                    <td>:</td>
+                                    <td>(Contoh) https//:LoremIpsum</td>
+                                </tr>
+                                <tr>
+                                    <td>Akun Facebook</td>
+                                    <td>:</td>
+                                    <td>(Contoh) https//:LoremIpsum</td>
+                                </tr>
+                            </table>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                    <button type="submit" class="btn btn-primary text-white">Tambah</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <x-delete-modal-component />
 @endsection
 @section('script')
+@if (session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: '{{ session('success') }}',
+    });
+</script>
+@endif
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))
@@ -171,7 +242,7 @@
             setFormValues('form-update', formData)
 
             $('#form-update').data('id', formData['id'])
-            $('#form-update').attr('action',actionUrl );
+            $('#form-update').attr('action', actionUrl);
             $('#modal-update').modal('show')
         })
         $('.btn-delete').click(function() {
@@ -179,6 +250,13 @@
             var actionUrl = `survey/${id}`;
             $('#form-delete').attr('action', actionUrl);
             $('#modal-delete').modal('show')
+        })
+        $('.btn-detail').click(function() {
+            const data = getDataAttributes($(this).attr('id'))
+            handleDetail(data)
+            handleFile(data)
+            $('#modal-detail').modal('show')
+            $('#modal-detail').modal('show')
         })
     </script>
 @endsection

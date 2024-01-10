@@ -36,7 +36,12 @@
                 </div>
             </div>
         @empty
-            Data Kosong
+            <div class="d-flex justify-content-center" style="min-height:16rem">
+                <div class="my-auto">
+                    <img src="{{ asset('showNoData.png') }}" width="350" height="350" />
+                    <h4 class="text-center mt-4">Belum ada perusahaan terdaftar!!</h4>
+                </div>
+            </div>
         @endforelse
     </div>
     <x-confirm-approve-modal-component />

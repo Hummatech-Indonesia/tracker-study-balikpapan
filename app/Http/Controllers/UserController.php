@@ -10,6 +10,7 @@ use App\Http\Requests\UpdatePasswordRequest;
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Http\Requests\UpdateCompanyProfileRequest;
 use App\Contracts\Interfaces\Auth\RegisterInterface;
+use App\Http\Requests\ProfileRequest;
 
 class UserController extends Controller
 {
@@ -28,6 +29,10 @@ class UserController extends Controller
     {
         return view('company.profile');
     }
+    public function profile()
+    {
+        return view('auth.profile');
+    }
 
     /**
      * updateProfile
@@ -41,13 +46,24 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
+    /**
+     * updateProfile
+     *
+     * @return void
+     */
+    public function updateProfile(ProfileRequest $request, User $user)
+    {
+        $this->user->update($user->id, $request->validated());
+
+        return redirect()->back()->with('success', trans('alert.update_success'));
+    }
 
     /**
      * updateProfile
      *
      * @return void
      */
-    public function updateProfile(UpdateProfileRequest $request)
+    public function updatePhotoProfile(UpdateProfileRequest $request)
     {
         $this->user->update(UserHelper::getUserId(), $this->service->updateProfile($request));
 

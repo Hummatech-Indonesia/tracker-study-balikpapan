@@ -41,22 +41,22 @@
         </div>
     </div>
     @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <h4>
         Galery Guru
     </h4>
     <div class="d-flex justify-content-between mb-2">
         <div class="position-relative mb-3 col-lg-3">
             <form action="">
-                <input type="text" name="name" value="{{ request()->name }}" class="form-control search-chat py-2 ps-5"
-                    id="search-name" placeholder="Search">
+                <input type="text" name="name" value="{{ request()->name }}"
+                    class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
                 <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
             </form>
         </div>
@@ -76,8 +76,8 @@
                 <div class="card radius-10">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <div><img src="{{ asset('storage/' . $teacher->photo) }}" style="object-fit: cover" class="user-img-teacher"
-                                    alt="...">
+                            <div><img src="{{ asset('storage/' . $teacher->photo) }}" style="object-fit: cover"
+                                    class="user-img-teacher" alt="...">
                             </div>
                             <div>
                                 <h6 class="ms-2">{{ $teacher->name }}</h6>
@@ -172,6 +172,15 @@
     <x-delete-modal-component />
 @endsection
 @section('script')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))

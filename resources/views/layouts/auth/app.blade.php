@@ -22,6 +22,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
 	<link href="{{ asset('assets-admin/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('assets-admin/css/icons.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('tidak di pakai/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
+
 	<title>Tracker Study</title>
   @yield('style')
 </head>
@@ -38,6 +40,8 @@
 	<script src="{{ asset('assets-admin/plugins/simplebar/js/simplebar.min.js') }}"></script>
 	<script src="{{ asset('assets-admin/plugins/metismenu/js/metisMenu.min.js') }}"></script>
 	<script src="{{ asset('assets-admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+	<script src="{{ asset('tidak di pakai/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+
 	<!--Password show & hide js -->
 	<script>
 		$(document).ready(function () {

@@ -15,7 +15,7 @@
                 <a href="{{ route('portofolio') }}" class="btn btn-warning text-white">
                     Kembali
                 </a>
-                
+
             </div>
         </div>
 
@@ -60,8 +60,7 @@
         </h5>
         <div class="card">
             <div class="card-body">
-                <input id="image-uploadify" type="file" name="photo[]"
-                    accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+                <input id="image-uploadify" type="file" name="photo[]" accept="image/*" multiple>
                 @error('photo')
                     <div class="text-danger">{{ $message }}
                     </div>

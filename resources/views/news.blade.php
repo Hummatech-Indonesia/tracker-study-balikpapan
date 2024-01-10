@@ -169,7 +169,5 @@
         </div>
     </section>
 
-    <!--====== Height Emulator Area Start ======-->
     <div class="height-emulator d-none d-lg-block"></div>
-    <!--====== Height Emulator Area End ======-->
 @endsection

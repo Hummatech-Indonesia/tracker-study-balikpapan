@@ -44,13 +44,7 @@
                                 <p class="mb-0 text-dark fs-6">Masukkan Email dan Kata Sandi!!</p>
                             </div>
                             <div class="form-body">
-                                @if ($errors->any())
-                                    <div>
-                                        @foreach ($errors->all() as $error)
-                                            <p class="text-danger">{{ $error }}</p>
-                                        @endforeach
-                                    </div>
-                                @endif
+
                                 <form action="{{ route('login') }}" method="post" class="row g-3">
                                     @csrf
                                     <div class="col-12">
@@ -60,7 +54,7 @@
                                             placeholder="Masukkan Email">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <i>{{ $message }}</i>
                                             </span>
                                         @enderror
                                     </div>
@@ -74,7 +68,7 @@
                                                     class="bx bx-hide"></i></a>
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <i>{{ $message }}</i>
                                                 </span>
                                             @enderror
                                         </div>
@@ -85,9 +79,16 @@
                                             <label class="form-check-label" for="flexSwitchCheckChecked">Ingat Saya</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 text-end"> <a href="authentication-forgot-password.html">Lupa
+                                    <div class="col-md-6 text-end"> <a href="/forgot-password">Lupa
                                             Password ?</a>
                                     </div>
+                                    @if ($errors->any())
+                                        <div class="text-center">
+                                            @foreach ($errors->all() as $error)
+                                                <p class="text-danger">{{ $error }}</p>
+                                            @endforeach
+                                        </div>
+                                    @endif
                                     <div class="col-12">
                                         <div class="d-grid">
                                             <button type="submit" class="text-white btn btn-default ">Login</button>

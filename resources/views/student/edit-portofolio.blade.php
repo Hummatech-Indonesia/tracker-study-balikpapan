@@ -3,14 +3,14 @@
     <link href="{{ asset('assets-admin/plugins/Drag-And-Drop/dist/imageuploadify.min.css') }}" rel="stylesheet" />
 @endsection
 @section('content')
-@if ($errors->any())
-@foreach ($errors->all() as $error)
-    <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
-        {{ $error }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endforeach
-@endif
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
+    @endif
     <form action="{{ route('portofolio.update', $portofolio->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -72,8 +72,7 @@
 
         <div class="card">
             <div class="card-body">
-                <input id="image-uploadify" type="file" name="photo[]"
-                    accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+                <input id="image-uploadify" type="file" name="photo[]" accept="image/*" multiple>
                 @error('photo')
                     <div class="text-danger">{{ $message }}
                     </div>

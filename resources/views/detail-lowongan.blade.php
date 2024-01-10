@@ -87,7 +87,15 @@
                             </p>
                             <h4 class="mt-3">Sistem Kerja</h4>
                             <ul class="list-unstyled mt-2">
-                                <li>- {{ $jobVacancy->work_system }}</li>
+                                <li>@if ($jobVacancy->work_system == 'contract')
+                                    - Kontrak
+                                    @elseif ($jobVacancy->work_system == 'permanentwork')
+                                    - Kerja Tetap
+                                    @elseif ($jobVacancy->work_system == 'workingparttime')
+                                    - Kerja Paruh Waktu
+                                    @else
+                                    - Freelance
+                                    @endif</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
