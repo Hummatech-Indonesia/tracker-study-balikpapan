@@ -31,9 +31,8 @@ class StudentStatusController extends Controller
     public function index(Request $request): View
     {
         $classrooms = $this->classroom->customPaginate($request, 8);
-        $countStudent = $this->student->countStudent(null);
-        $countAlumni = $this->student->countAlumni(null);
-        return view('admin.student-classroom', compact('classrooms', 'countStudent', 'countAlumni'));
+
+        return view('admin.student-classroom', compact('classrooms'));
     }
 
     /**
