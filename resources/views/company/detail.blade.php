@@ -204,19 +204,19 @@
                                 </td>
                                 <td>
                                     @if ($applyJobVacancy->status == 'accepted')
-                                        <div class="bg-light-primary col-10">
+                                        <div class="bg-light-primary col-12">
                                             <p class="text-primary py-1 mb-0 text-center">
                                                 Diterima Interview
                                             </p>
                                         </div>
                                     @elseif($applyJobVacancy->status == 'rejected')
-                                        <div class="bg-light-danger col-10">
+                                        <div class="bg-light-danger col-12">
                                             <p class="text-danger py-1 mb-0 text-center">
                                                 Ditolak Interview
                                             </p>
                                         </div>
                                     @else
-                                        <div class="bg-light-warning col-5">
+                                        <div class="bg-light-warning col-12">
                                             <p class="text-warning py-1 mb-0 text-center">
                                                 Menunggu
                                             </p>
