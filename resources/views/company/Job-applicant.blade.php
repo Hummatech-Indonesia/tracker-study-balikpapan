@@ -187,7 +187,7 @@
         });
         $('.btn-reject').click(function() {
             const formData = getDataAttributes($(this).attr('id'))
-            var actionUrl = `accept-job-vacancy/${formData['id']}`;
+            var actionUrl = `reject-job-vacancy/${formData['id']}`;
             $('#form-update-reject').attr('action', actionUrl);
 
             setFormValues('form-update-reject', formData)
