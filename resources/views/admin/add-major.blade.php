@@ -37,29 +37,36 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        @forelse ($majors as $major)
+        @forelse ($majors as $index => $major)
             <div class="col-6 col-lg-3">
                 <div class="card border-primary border-bottom border-3 border-0">
-                    <img src="{{ asset('assets-admin/images/gallery/01.png') }}" class="card-img-top" alt="...">
+                    {{-- Ganti gambar secara bergantian --}}
+                    @if ($index % 2 == 0)
+                        <img src="{{ asset('Asset Biru.jpg') }}" class="card-img-top" alt="...">
+                    @else
+                        <img src="{{ asset('Asset Hijau.jpg') }}" class="card-img-top" alt="...">
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title text-dark" style="font-weight: 700">{{ $major->name }}</h5>
                         <hr>
                         <div class="d-flex align-items-center gap-2">
-                            <button type="button" class="btn btn-danger btn-delete text-white w-100" data-id="{{ $major->id }}"
-                                data-bs-toggle="modal" data-bs-target="#modal-delete">Hapus</button>
+                            <button type="button" class="btn btn-danger btn-delete text-white w-100"
+                                data-id="{{ $major->id }}" data-bs-toggle="modal"
+                                data-bs-target="#modal-delete">Hapus</button>
                             <button type="button" id="btn-edit-{{ $major->id }}" data-id="{{ $major->id }}"
-                                data-name="{{ $major->name }}" class="btn-edit btn btn-warning text-white w-100">Edit</button>
+                                data-name="{{ $major->name }}"
+                                class="btn-edit btn btn-warning text-white w-100">Edit</button>
                         </div>
                     </div>
                 </div>
             </div>
         @empty
-        <div class="d-flex justify-content-center">
-            <div>
-                <img src="{{ asset('showNoData.png') }}" alt="">
-                <h5 class="text-center">Data Jurusan Kosong!!</h5>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <img src="{{ asset('showNoData.png') }}" alt="">
+                    <h5 class="text-center">Data Jurusan Kosong!!</h5>
+                </div>
             </div>
-        </div>
         @endforelse
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">

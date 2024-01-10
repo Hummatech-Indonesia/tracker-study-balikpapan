@@ -13,7 +13,10 @@ use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Helpers\ResponseHelper;
+use App\Http\Requests\ImportRequest;
+use App\Imports\StudentImport;
 use App\Services\StudentService;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentController extends Controller
 {
@@ -125,5 +128,18 @@ class StudentController extends Controller
     {
         $this->register->delete($user->id);
         return redirect()->back()->with('success', trans('alert.delete_success'));
+    }
+
+    /**
+     * import
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function import(ImportRequest $request)
+    {
+        $data = $request->validated();
+        Excel::import(new StudentImport, $data['import']);
+        return redirect()->back()->with('success', trans('alert.add_success'));
     }
 }

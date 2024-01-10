@@ -18,6 +18,7 @@ use App\Http\Controllers\TeacherGalleryController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AlumniVideoGalleryController;
 use App\Http\Controllers\ApplyJobVacancyController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortofolioController;
@@ -50,6 +51,11 @@ Route::get('galeri-guru', [TeacherGalleryController::class, 'galery'])->name('ga
 Route::get('galeri-alumni', [LandingPageController::class, 'alumni'])->name('galery-alumni');
 Route::post('vidio-galeri-guru', [TeacherVideoGalleryController::class, 'store'])->name('teacher-video-gallery.store');
 
+Route::get('forgot-password', [ResetPasswordController::class, 'index']);
+Route::get('reset-password/{user}', [ResetPasswordController::class, 'viewResetPassword'])->name('reset.password');
+Route::post('send-email-forgot-password', [ResetPasswordController::class, 'sendEmailForgotPassword'])->name('send.email.forgot.password');
+Route::post('reset-password-user/{user}', [ResetPasswordController::class, 'resetPassword'])->name('reset.password.user');
+
 
 //Auth
 Auth::routes();
@@ -63,6 +69,7 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware('role:admin')->group(function () {
+        Route::post('import-student', [StudentController::class, 'import'])->name('import.student');
 
         Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
         Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
@@ -130,7 +137,7 @@ Route::resources([
 Route::get('pilih-role', function () {
     return view('auth.choice-of-roles');
 });
-Route::get('detail-lowongan-company/{job_vacancy}',[JobVacancyController::class,'detail'])->name('detail.job-vacancy.company');
+Route::get('detail-lowongan-company/{job_vacancy}', [JobVacancyController::class, 'detail'])->name('detail.job-vacancy.company');
 
 Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
 Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
@@ -166,9 +173,9 @@ Route::get('detail-portofolio/{portofolio}', [PortofolioController::class, 'show
 
 Route::get('edit-portofolio/{portofolio}', [PortofolioController::class, 'edit'])->name('edit.portofolio');
 
-Route::get('job-applicant',[ApplyJobVacancyController::class, 'companyApplyJobVacancy'])->name('job-applicant');
-Route::patch('accept-job-vacancy/{apply_job_vacancies}',[ApplyJobVacancyController::class, 'accept'])->name('accept-job-vacancy');
-Route::patch('reject-job-vacancy/{apply_job_vacancies}',[ApplyJobVacancyController::class, 'reject'])->name('reject-job-vacancy');
+Route::get('job-applicant', [ApplyJobVacancyController::class, 'companyApplyJobVacancy'])->name('job-applicant');
+Route::patch('accept-job-vacancy/{apply_job_vacancies}', [ApplyJobVacancyController::class, 'accept'])->name('accept-job-vacancy');
+Route::patch('reject-job-vacancy/{apply_job_vacancies}', [ApplyJobVacancyController::class, 'reject'])->name('reject-job-vacancy');
 Route::get('profile-company', [UserController::class, 'company'])->name('profile-company');
 Route::put('update-company-profile/{user}', [UserController::class, 'updateCompany'])->name('update-company-profile');
 Route::patch('update-profile', [UserController::class, 'updateProfile'])->name('update-profile');
