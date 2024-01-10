@@ -90,30 +90,6 @@
             </li>
             <li>
                 <a class="has-arrow" href="javascript:;">
-                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                            viewBox="0 0 36 36" fill="currentColor">
-                            <path
-                                d="M7.875 5.625H28.125V3.9375C28.125 3.48995 27.9472 3.06072 27.6307 2.74426C27.3143 2.42779 26.8851 2.25 26.4375 2.25H4.64062C4.00659 2.25 3.39853 2.50187 2.9502 2.9502C2.50187 3.39853 2.25 4.00659 2.25 4.64062V26.4375C2.25 26.8851 2.42779 27.3143 2.74426 27.6307C3.06072 27.9472 3.48995 28.125 3.9375 28.125H5.625V7.875C5.625 7.27826 5.86205 6.70597 6.28401 6.28401C6.70597 5.86205 7.27826 5.625 7.875 5.625Z"
-                                fill="currentColor" />
-                            <path
-                                d="M32.0625 7.875H9.5625C9.11495 7.875 8.68572 8.05279 8.36926 8.36926C8.05279 8.68572 7.875 9.11495 7.875 9.5625V32.0625C7.875 32.5101 8.05279 32.9393 8.36926 33.2557C8.68572 33.5722 9.11495 33.75 9.5625 33.75H32.0625C32.5101 33.75 32.9393 33.5722 33.2557 33.2557C33.5722 32.9393 33.75 32.5101 33.75 32.0625V9.5625C33.75 9.11495 33.5722 8.68572 33.2557 8.36926C32.9393 8.05279 32.5101 7.875 32.0625 7.875ZM27.5625 21.9375H21.9375V27.5625H19.6875V21.9375H14.0625V19.6875H19.6875V14.0625H21.9375V19.6875H27.5625V21.9375Z"
-                                fill="currentColor" />
-                        </svg></i>
-                    </div>
-                    <div class="menu-title mt-1">Tambah Ajaran</div>
-                </a>
-                <ul>
-                    <li> <a href="{{ route('school-years.index') }}"><i class='bx bx-radio-circle'></i>Tambah Tahun
-                            Ajaran</a>
-                    </li>
-                    <li> <a href="{{ route('majors.index') }}"><i class='bx bx-radio-circle'></i>Tambah Jurusan</a>
-                    </li>
-                    <li> <a href="{{ route('classrooms.index') }}"><i class='bx bx-radio-circle'></i>Tambah Kelas</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="javascript:;">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                             viewBox="0 0 36 36" fill="currentColor">
                             <path
