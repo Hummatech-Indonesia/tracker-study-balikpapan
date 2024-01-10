@@ -191,7 +191,7 @@
                         <tr>
                             <td
                                 style="
-                  background-color: #eaf6e8;
+                  background-color: #b8e5bd;
                     text-align: center;
                     vertical-align: top;
                     direction: ltr;
@@ -212,7 +212,7 @@
                       line-height: 36px;
                       text-align: center;
                     ">
-                                    <img src="https://i.postimg.cc/QCtQsQXG/smk.png" alt="" />
+                                    <img src="https://i.postimg.cc/26xqDSpn/logo-removebg-preview.png" alt="" />
                                 </div>
                                 <!--[if mso | IE]>
         </td></tr></table>
@@ -464,4 +464,3 @@
 </body>
 
 </html>
-    
