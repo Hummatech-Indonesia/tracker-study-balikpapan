@@ -24,7 +24,8 @@
                     <select name="classroom" id="" class="form-select py-2">
                         <option value="">Filter Kelas</option>
                         @foreach ($classrooms as $classroom)
-                            <option {{ request()->classroom == $classroom->id ? 'selected' : '' }} value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                            <option {{ request()->classroom == $classroom->id ? 'selected' : '' }}
+                                value="{{ $classroom->id }}">{{ $classroom->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -94,8 +95,8 @@
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">No Telepon</label>
-                                <input type="number" value="{{ old('phone_number') }}" placeholder="Masukkan No Telepon"
-                                    class="form-control" name="phone_number">
+                                <input type="number" value="{{ old('phone_number') }}"
+                                    placeholder="Masukkan No Telepon" class="form-control" name="phone_number">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Kelas</label>
@@ -445,6 +446,15 @@
     <x-delete-modal-component />
 @endsection
 @section('script')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))

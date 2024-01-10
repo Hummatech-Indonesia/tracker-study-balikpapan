@@ -31,7 +31,8 @@
                                 <div class="text-center">
                                     <img src="{{ asset('logo.png') }}" alt="">
                                     <h3 class="text-dark mt-3" style="font-weight: 800">Register</h3>
-                                    <p class="mb-0 text-dark fs-6 mb-2">Daftarkan Anda Sebagai Perusahaan di SMKN 2 PENAJAM</p>
+                                    <p class="mb-0 text-dark fs-6 mb-2">Daftarkan Anda Sebagai Perusahaan di SMKN 2 PENAJAM
+                                    </p>
                                 </div>
                                 <div class="form-body">
                                     <form action="{{ route('register.company') }}" method="POST" class="row g-3">
@@ -46,7 +47,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-6">
-                                            <label for="inputEmailAddress" class="form-label">Email Address</label>
+                                            <label for="inputEmailAddress" class="form-label">Alamat Email</label>
                                             <input type="email" name="email" class="form-control"
                                                 value="{{ old('email') }}" id="inputEmailAddress"
                                                 placeholder="Inputkan alamat email">
@@ -130,4 +131,19 @@
             <!--end row-->
         </div>
     </div>
+@endsection
+@section('script')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Registrasi berhasil cek email anda untuk verifikasi email!!',
+            }).then((result) => {
+                if (result.isConfirmed || result.isDismissed) {
+                    window.location.href = '{{ route('login') }}';
+                }
+            });
+        </script>
+    @endif
 @endsection
