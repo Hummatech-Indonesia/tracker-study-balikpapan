@@ -127,15 +127,21 @@
                 <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img  src="{{ asset(auth()->user()->photo == null ? 'default.jpg' : 'storage/'. auth()->user()->photo) }}" class="user-img"
-                        alt="user avatar">
+                        alt="user avatar" style="object-fit: cover">
                     <div class="user-info">
                         <p class="user-name mb-0">{{ auth()->user()->name }}</p>
                         <p class="designattion mb-0">{{ auth()->user()->roles[0]->name }}</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-user fs-5"></i><span>Profile</span></a>
+                    @if (auth()->user()->roles[0]->name != 'company')
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('profile') }}"><i
+                        class="bx bx-user fs-5"></i><span>Profile</span></a>
+                    @else
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('profile-company') }}"><i
+                        class="bx bx-user fs-5"></i><span>Profile</span></a>
+                    @endif
+
                     </li>
                     <li>
                         <div class="dropdown-divider mb-0"></div>

@@ -63,6 +63,9 @@ Auth::routes();
 Route::get('verify-account', function () {
     return view('auth.verify');
 });
+Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
+Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
+
 
 Route::middleware('auth')->group(function () {
 
@@ -139,8 +142,6 @@ Route::get('pilih-role', function () {
 });
 Route::get('detail-lowongan-company/{job_vacancy}', [JobVacancyController::class, 'detail'])->name('detail.job-vacancy.company');
 
-Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
-Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
 
 Route::get('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
 
@@ -177,10 +178,11 @@ Route::get('job-applicant', [ApplyJobVacancyController::class, 'companyApplyJobV
 Route::patch('accept-job-vacancy/{apply_job_vacancies}', [ApplyJobVacancyController::class, 'accept'])->name('accept-job-vacancy');
 Route::patch('reject-job-vacancy/{apply_job_vacancies}', [ApplyJobVacancyController::class, 'reject'])->name('reject-job-vacancy');
 Route::get('profile-company', [UserController::class, 'company'])->name('profile-company');
+Route::get('profile', [UserController::class, 'profile'])->name('profile');
+Route::put('update-profile/{user}',[UserController::class,'updateProfile'])->name('update.profile');
 Route::put('update-company-profile/{user}', [UserController::class, 'updateCompany'])->name('update-company-profile');
-Route::patch('update-profile', [UserController::class, 'updateProfile'])->name('update-profile');
+Route::patch('update-photo-profile', [UserController::class, 'updatePhotoProfile'])->name('update-profile');
 Route::patch('update-password', [UserController::class, 'updatePassword'])->name('update-password');
-
 
 Route::prefix('alumni')->name('alumni.')->group(function () {
     Route::get('survei', [SurveyController::class, 'survey'])->name('job.survey');
