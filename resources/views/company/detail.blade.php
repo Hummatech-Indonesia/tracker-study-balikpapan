@@ -85,7 +85,7 @@
                                 <h5 class="text-primary mb-0 text-center" style="font-weight:500">
                                     Rp. {{ number_format($jobVacancy->basic_salary, 0, ',', '.') }}
                                 </h5>
-                            </div>
+                            </div>k
                             <p class="fs-6 mb-2" style="font-weight: 600">
                                 Data Pelamar
                             </p>

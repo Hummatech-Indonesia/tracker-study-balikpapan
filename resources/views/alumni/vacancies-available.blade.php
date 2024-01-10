@@ -12,15 +12,15 @@
                     <div class="card-top p-4 d-flex justify-content-center align-items-center">
                         @if ($jobVacancy->company->user->photo)
                             <img src="{{ asset('storage/'.$jobVacancy->company->user->photo) }}"
-                                class="rounded-circle" style="object-fit: cover;width: 5.2rem; height:5.2rem;">
+                                class="rounded-circle" style="object-fit: cover;width: 7rem; height:7rem;">
                         @else
-                            <div class="rounded-circle bg-secondary" style="object-fit: cover;width: 5.2rem; height:5.2rem;">
+                            <div class="rounded-circle bg-secondary" style="object-fit: cover;width: 7rem; height:7rem;">
                                 <img src="{{ asset('default.jpg') }}"
-                                class="rounded-circle" style="object-fit: cover;width: 5.2rem; height:5.2rem;">
+                                class="rounded-circle" style="object-fit: cover;width: 7rem; height:7rem;">
                             </div>
                         @endif
                     </div>
-                    
+
                     <div class="bg-primary p-2 text-white d-flex justify-content-center"
                         style="font-weight: 600; font-size:12px; font-style: normal;">{{ $jobVacancy->job_title }}</div>
                     <p class="d-flex text-black d-flex justify-content-center px-2 pt-2"
