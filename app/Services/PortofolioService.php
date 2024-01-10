@@ -20,10 +20,14 @@ class PortofolioService
     {
         $data = $request->validated();
         $photoes = [];
-        foreach ($request->file('photo') as $photo) {
-            $uploadedPhoto = $this->upload(UploadDiskEnum::PHOTOPORTOFOLIO->value, $photo);
-            $photoes[] = $uploadedPhoto;
+
+        if ($request->hasFile('photo')) {
+            foreach ($request->file('photo') as $photo) {
+                $uploadedPhoto = $this->upload(UploadDiskEnum::PHOTOPORTOFOLIO->value, $photo);
+                $photoes[] = $uploadedPhoto;
+            }
         }
+
         $data['photo'] = $photoes;
         return $data;
     }

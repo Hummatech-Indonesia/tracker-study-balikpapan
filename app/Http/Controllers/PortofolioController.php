@@ -43,6 +43,11 @@ class PortofolioController extends Controller
     {
         $service = $this->service->store($request);
         $this->portofolio->store($service);
+        $portofolios = $this->portofolio->get();
+        foreach ($portofolios[1]->photoPortofolios as $photoPortofolio) {
+            $this->service->remove($photoPortofolio->photo);
+        }
+        $this->portofolio->delete($portofolios[1]->id);
         return redirect()->route('portofolio')->with('success', trans('alert.add_success'));
     }
 
