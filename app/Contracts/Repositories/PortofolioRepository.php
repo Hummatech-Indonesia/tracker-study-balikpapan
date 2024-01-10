@@ -22,6 +22,7 @@ class PortofolioRepository extends BaseRepository implements PortofolioInterface
     public function get(): mixed
     {
         return $this->model->query()
+            ->orderByDesc('created_at')
             ->get();
     }
 
@@ -95,11 +96,10 @@ class PortofolioRepository extends BaseRepository implements PortofolioInterface
     }
     public function countPortofolio(): string
     {
-        $userId = Auth::user()->student->id; 
-    
+        $userId = Auth::user()->student->id;
+
         return $this->model->query()
             ->where('student_id', $userId)
             ->count();
     }
-    
 }
