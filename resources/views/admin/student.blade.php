@@ -135,7 +135,8 @@
                     </h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="form-import" action="{{ route('import.student') }}" method="POST" enctype="multipart/form-data">
+                <form id="form-import" action="{{ route('import.student') }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <!--begin::Alert-->
@@ -176,7 +177,7 @@
                                         Format pengisian file excel seperti dibawah ini.
                                     </li>
                                 </ul>
-                                
+
                                 <!--end::Content-->
 
                             </div>
@@ -345,14 +346,19 @@
     <div class="card">
         <div class="card-body">
             @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    @php
+                        $errorReplaced = str_replace('There was an error on row', 'Terjadi kesalahan pada baris', $error);
+                    @endphp
+                    <li>
+                        {{ $errorReplaced }}
+                    </li>
+                @endforeach
+                </ul>
+            </div>
+        @endif        
             <div class="table-responsive">
                 <table class="table">
                     <thead>
