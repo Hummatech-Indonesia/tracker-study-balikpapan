@@ -160,7 +160,7 @@
                             <div class="col-4">
                                 <div class="bg-light-info">
                                     <p class="text-center py-2 rounded fs-5 mb-1" style="color: #5D87FF; font-weight:700">
-                                        20
+                                        {{ $jobVacancy->applyJobVacancy->count() }}
                                     </p>
                                 </div>
                                 <p class="text-center" style="font-weight: 400">
@@ -170,7 +170,7 @@
                             <div class="col-4">
                                 <div class="bg-light-success">
                                     <p class="text-center py-2 rounded fs-5 mb-1" style="color: #1D9375; font-weight:700">
-                                        20
+                                        {{ $jobVacancy->applyJobVacancy->where('status','accepted')->count() }}
                                     </p>
                                 </div>
                                 <p class="text-center" style="font-weight: 400">
@@ -180,7 +180,7 @@
                             <div class="col-4">
                                 <div class="bg-light-danger">
                                     <p class="text-center py-2 rounded fs-5 mb-1" style="color: #FA896B; font-weight:700">
-                                        20
+                                        {{ $jobVacancy->applyJobVacancy->where('status','rejected')->count() }}
                                     </p>
                                 </div>
                                 <p class="text-center" style="font-weight: 400">

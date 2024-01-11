@@ -19,8 +19,7 @@ class Portofolio extends Model implements HasPhotoPortofolios
         'id',
         'name',
         'student_id',
-        'start_at',
-        'end_at',
+        'year',
         'description',
         'student_id'
     ];

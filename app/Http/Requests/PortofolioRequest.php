@@ -15,11 +15,27 @@ class PortofolioRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'start_at' => 'required|date',
-            'end_at' => 'required|date',
+            'year'=>'required|max:4',
             'description' => 'required',
             // 'photo' => 'required|array',
             // 'photo.*' => 'required'
+        ];
+    }
+
+     /**
+     * Custom Validation Messages
+     *
+     * @return array<string, mixed>
+     */
+
+     public function messages(): array
+     {
+         return [
+             'year.required' => 'Tahun Wajib Diisi',
+             'year.max' => 'Tahun Maksimal 4 Karakter',
+             'name.required' => 'Nama Wajib Diisi',
+             'name.max' => 'Nama Tidak Boleh Lebih Dari 225 Karakter',
+             'description.required' => 'Deskripsi Wajib Diisi'
         ];
     }
 }

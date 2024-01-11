@@ -15,13 +15,12 @@
                 <a href="{{ route('portofolio') }}" class="btn btn-warning text-white">
                     Kembali
                 </a>
-
             </div>
         </div>
 
         <div class="card form-body">
             <div class="card-body row g-3">
-                <div class="col-12">
+                <div class="col-6">
                     <label for="">Judul</label>
                     <input type="text" name="name" class="form-control mt-2" value="{{ old('name') }}">
                     @error('name')
@@ -30,17 +29,9 @@
                     @enderror
                 </div>
                 <div class="col-6">
-                    <label for="" class="mt-2">Tanggal Mulai</label>
-                    <input type="date" name="start_at" class="form-control mt-2" value="{{ old('start_at') }}">
-                    @error('start_at')
-                        <div class="text-danger">{{ $message }}
-                        </div>
-                    @enderror
-                </div>
-                <div class="col-6">
-                    <label for="" class="mt-2">Tanggal Berakhir</label>
-                    <input type="date" name="end_at" class="form-control mt-2" value="{{ old('end_at') }}">
-                    @error('end_at')
+                    <label for="">Tahun</label>
+                    <input type="number" name="year" class="form-control mt-2" value="{{ old('year') }}">
+                    @error('year')
                         <div class="text-danger">{{ $message }}
                         </div>
                     @enderror

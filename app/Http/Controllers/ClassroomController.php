@@ -47,7 +47,7 @@ class ClassroomController extends Controller
     public function store(ClassroomRequest $request)
     {
         $this->classroom->store($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('success', trans('alert.add_success'));
     }
 
     /**
@@ -72,7 +72,7 @@ class ClassroomController extends Controller
     public function update(ClassroomRequest $request, Classroom $classroom)
     {
         $this->classroom->update($classroom->id, $request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('success',trans('alert.update_success'));
     }
 
     /**
@@ -81,6 +81,6 @@ class ClassroomController extends Controller
     public function destroy(Classroom $classroom)
     {
         $this->classroom->delete($classroom->id);
-        return redirect()->back();
+        return redirect()->back()->with('success',trans('alert.delete_success'));
     }
 }
