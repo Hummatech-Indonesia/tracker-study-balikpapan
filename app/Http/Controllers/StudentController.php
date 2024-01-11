@@ -12,8 +12,10 @@ use App\Http\Requests\UpdateStudentRequest;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\Auth\RegisterInterface;
+use App\Contracts\Interfaces\MajorInterface;
 use App\Helpers\ResponseHelper;
 use App\Http\Requests\ImportRequest;
+use App\Http\Resources\ChartAlumniResource;
 use App\Imports\StudentImport;
 use App\Services\StudentService;
 use Maatwebsite\Excel\Facades\Excel;
@@ -24,14 +26,16 @@ class StudentController extends Controller
     private StudentService $service;
     private RegisterInterface $register;
     private ClassroomInterface $classroom;
+    private MajorInterface $major;
 
     /**
      * __construct
      *
      * @return void
      */
-    public function __construct(StudentInterface $student, StudentService $service, RegisterInterface $register, ClassroomInterface $classroom)
+    public function __construct(StudentInterface $student, StudentService $service, RegisterInterface $register, ClassroomInterface $classroom, MajorInterface $major)
     {
+        $this->major = $major;
         $this->student = $student;
         $this->service = $service;
         $this->register = $register;
@@ -156,5 +160,17 @@ class StudentController extends Controller
         $data = $request->validated();
         Excel::import(new StudentImport, $data['import']);
         return redirect()->back()->with('success', trans('alert.add_success'));
+    }
+
+    /**
+     * chartAlumni
+     *
+     * @return void
+     */
+    public function chartAlumni()
+    {
+        $majors = $this->major->get();
+        $chart = ChartAlumniResource::collection($majors);
+        return ResponseHelper::success($chart);
     }
 }
