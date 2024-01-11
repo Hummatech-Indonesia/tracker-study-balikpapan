@@ -24,7 +24,7 @@
             <thead>
                 <tr>
                     <td>
-                        <input type="checkbox" name="checkbox" id="select-all" class="form-check-input">
+                        <input type="checkbox" name="checkbox" id="select-all" class="select-all form-check-input">
                     </td>
                     <td>
                         No
@@ -169,7 +169,7 @@
 
     <script>
         $(document).ready(function() {
-            var selectedValues = []; // Pindahkan variabel ke tingkat atas agar dapat diakses oleh kedua fungsi
+            var selectedValues = [];
 
             $(".select").change(function() {
                 selectedValues = [];
@@ -196,6 +196,7 @@
                     }
                 });
             });
+
             $("#btn-select-change-student").click(function() {
                 $.ajax({
                     url: '{{ route('change.student.select') }}',
@@ -213,16 +214,10 @@
                     }
                 });
             });
-        });
-    </script>
 
-
-
-
-    <script>
-        $(document).ready(function() {
+            // Trigger change event of individual checkboxes when "Select All" is clicked
             $("#select-all").change(function() {
-                $(".select").prop("checked", $(this).prop("checked"));
+                $(".select").prop("checked", $(this).prop("checked")).change();
             });
 
             $(".select").change(function() {
@@ -231,12 +226,14 @@
                 }
             });
         });
+
         $('.btn-student').click(function() {
             id = $(this).data('id')
             var actionUrl = `/change-student/${id}`;
             $('#form-student').attr('action', actionUrl);
             $('#modal-student').modal('show')
         })
+
         $('.btn-alumni').click(function() {
             id = $(this).data('id')
             var actionUrl = `/change-alumni/${id}`;

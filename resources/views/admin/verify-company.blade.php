@@ -9,6 +9,11 @@
             <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
         </div>
     </div>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="row">
         @forelse ($companies as $company)
             <div class="col-12 col-lg-4 col-xxl-3">

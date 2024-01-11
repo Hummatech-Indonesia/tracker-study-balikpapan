@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use App\Enums\RoleEnum;
 use App\Contracts\Interfaces\JobVacancyInterface;
 use App\Contracts\Interfaces\PortofolioInterface;
+use App\Contracts\Interfaces\StudentInterface;
 
 class HomeController extends Controller
 {
 
     private PortofolioInterface $portofolio;
     private JobVacancyInterface $jobVacancy;
+    private StudentInterface $student;
 
-    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy)
+    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student)
     {
         $this->portofolio = $portofolio;
+        $this->student = $student;
         $this->jobVacancy = $jobVacancy;
     }
 
@@ -39,7 +42,8 @@ class HomeController extends Controller
 
         switch ($role) {
             case RoleEnum::ADMIN->value:
-                return view('admin.index');
+                $countAlumni = $this->student->countAlumni(null);
+                return view('admin.index', compact('countAlumni'));
                 break;
             case RoleEnum::STUDENT->value:
                 $countPortofolio = $this->portofolio->countPortofolio();

@@ -34,8 +34,8 @@
                 <div class="card border-primary border-bottom border-3 border-0">
                     <div class="card-body">
                         <div class="d-flex justify-content-center mt-2 mb-4">
-                            <img src="{{ asset($student->user->photo == null ? 'default.jpg' : 'storage/'. $student->user->photo) }}" width="100px"
-                                class="user-circle" alt="user">
+                            <img src="{{ asset($student->user->photo == null ? 'default.jpg' : 'storage/' . $student->user->photo) }}"
+                                width="100px" class="user-circle" alt="user">
                         </div>
                         <h5 class="card-title text-dark text-center" style="font-weight: 700">
                             {{ $student->user->name }}</h5>
@@ -55,12 +55,12 @@
             <x-confirm-approve-modal-component />
             <x-confirm-reject-modal-component />
         @empty
-        <div class="d-flex justify-content-center">
-            <div>
-                <img src="{{ asset('showNoData.png') }}" alt="">
-                <h5 class="text-center">Semua Data Sudah Di Verifikasi!!</h5>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <img src="{{ asset('showNoData.png') }}" alt="">
+                    <h5 class="text-center">Semua Data Sudah Di Verifikasi!!</h5>
+                </div>
             </div>
-        </div>
         @endforelse
     </div>
 @endsection

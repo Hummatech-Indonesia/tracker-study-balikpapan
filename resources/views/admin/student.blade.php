@@ -43,6 +43,11 @@
                 style="background-color: #1D9375">Tambah Siswa</button>
         </div>
     </div>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <!-- Modal -->
     <div class="modal fade" id="exampleLargeModal" tabindex="-1" aria-hidden="true">
         <form action="{{ route('students.store') }}" method="post">

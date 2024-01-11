@@ -145,10 +145,21 @@ class StudentRepository extends BaseRepository implements StudentInterface
      */
     public function updateSelect(array $data, array $select): mixed
     {
-        return $this->model->query()
+        $student = $this->model->query()
             ->whereIn('id', $select)
-            ->update($data);
+            ->update(['is_graduate' => $data['is_graduate']]);
+
+        $students = $this->model->query()
+            ->whereIn('id', $select)
+            ->get();
+
+        foreach ($students as $student) {
+            $student->user->syncRoles($data['role']);
+        }
+
+        return $student;
     }
+
 
     /**
      * show
