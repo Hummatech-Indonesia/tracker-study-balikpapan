@@ -73,7 +73,7 @@ class SurveyController extends Controller
     }
 
     /**
-     * survei
+     * survey
      *
      * @return View
      */
@@ -84,6 +84,23 @@ class SurveyController extends Controller
         return view('alumni.job-survey',compact('survey'));
     }
 
+    /**
+     * surveyResults
+     *
+     * @return View
+     */
+    public function surveyResults() : View
+    {
+        return view('admin.survey-results');
+    }
+
+    /**
+     * submit
+     *
+     * @param  mixed $survey
+     * @param  mixed $request
+     * @return RedirectResponse
+     */
     public function submit(Survey $survey,SubmitSurveyRequest $request) : RedirectResponse
     {
         $data = $request->validated();

@@ -80,7 +80,6 @@ Route::middleware('auth')->group(function () {
         Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
         Route::patch('reject-verify-company/{company}', [CompanyController::class, 'reject'])->name('reject.verify.company');
 
-
         Route::resources([
             'school-years' => SchoolYearController::class,
             'majors' => MajorController::class,
@@ -90,6 +89,7 @@ Route::middleware('auth')->group(function () {
             'users' => AccountController::class
         ]);
 
+        Route::get('survey-results', [SurveyController::class, 'surveyResults'])->name('survey-results');
 
         Route::patch('change-alumni-select', [StudentStatusController::class, 'selectChangeAlumni'])->name('change.alumni.select');
         Route::patch('change-student-select', [StudentStatusController::class, 'selectChangeStudent'])->name('change.student.select');
@@ -186,14 +186,6 @@ Route::put('update-profile/{user}', [UserController::class, 'updateProfile'])->n
 Route::put('update-company-profile/{user}', [UserController::class, 'updateCompany'])->name('update-company-profile');
 Route::patch('update-photo-profile', [UserController::class, 'updatePhotoProfile'])->name('update-profile');
 Route::patch('update-password', [UserController::class, 'updatePassword'])->name('update-password');
-
-Route::prefix('alumni')->name('alumni.')->group(function () {
-    Route::get('survei', [SurveyController::class, 'survey'])->name('job.survey');
-    Route::get('detail-lowongan-tersedia/{job_vacancy}', [JobVacancyController::class, 'show'])->name('detail.lowongan.tersedia');
-    Route::post('detail-lowongan-tersedia/{jobVacancy}', [ApplyJobVacancyController::class, 'store'])->name('send.cv');
-    Route::get('lowongan-tersedia', [JobVacancyController::class, 'jobvacancy'])->name('vacancies.available');
-    Route::get('lowongan', [ApplyJobVacancyController::class, 'index'])->name('job.vacancy.page');
-});
 
 Route::get('province', [ProvinceController::class, 'index'])->name('province');
 Route::get('regency', [RegencyController::class, 'index'])->name('regency');
