@@ -13,18 +13,15 @@
             </form>
         </div>
     </div>
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+
     <div class="row">
         @forelse ($companies as $company)
             <div class="col-12 col-lg-4 col-xxl-3">
                 <div class="card border-primary border-bottom border-3 border-0">
                     <div class="card-body">
                         <div class="d-flex justify-content-center mt-2 mb-4">
-                            <img src="{{ asset('kai.png') }}" width="100px" class="user-circle" alt="user">
+                            <img src="{{ asset(auth()->user()->photo == null ? 'default.jpg' : 'storage/' . auth()->user()->photo) }}"
+                                width="100px" height="100px" class="user-circle" alt="user">
                         </div>
                         <h5 class="card-title text-dark text-center" style="font-weight: 700">{{ $company->user->name }}
                         </h5>
@@ -40,7 +37,6 @@
                                 data-bs-toggle="modal">Tolak</button>
 
                         </div>
-                        <button class="btn btn-warning w-100 text-white">Detail</button>
                     </div>
                 </div>
             </div>
@@ -57,6 +53,15 @@
     <x-confirm-reject-modal-component />
 @endsection
 @section('script')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
     <script>
         $('.btn-approve').click(function() {
             id = $(this).data('id')
