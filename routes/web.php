@@ -74,6 +74,8 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware('role:admin')->group(function () {
+        Route::get('chart-alumni', [StudentController::class, 'chartAlumni'])->name('chart.alumni');
+
         Route::post('import-student', [StudentController::class, 'import'])->name('import.student');
 
         Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');

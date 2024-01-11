@@ -180,3 +180,69 @@
         </div>
     </div>
 @endsection
+@section('script')
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        $.ajax({
+            url: "{{ route('chart.alumni') }}",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                chartAlumni(data)
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+
+        function chartAlumni(data) {
+            var students = data.data;
+            "use strict";
+            Highcharts.chart('chart10', {
+                chart: {
+                    type: 'column',
+                    styledMode: true
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: ''
+                },
+                accessibility: {
+                    announceNewData: {
+                        enabled: true
+                    }
+                },
+                xAxis: {
+                    type: 'Kategori'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Total Alumni'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{y}'
+                        }
+                    }
+                },
+                series: [{
+                    name: "Jurusan",
+                    colorByPoint: true,
+                    data: $.each(students, function(indexInArray, student) {
+                        console.log(student.user_id)
+                    })
+                }],
+            });
+        }
+    </script>
+@endsection
