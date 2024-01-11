@@ -154,7 +154,7 @@ class StudentController extends Controller
     public function import(ImportRequest $request)
     {
         $data = $request->validated();
-        $test = Excel::import(new StudentImport, $data['import']);
+        Excel::import(new StudentImport, $data['import']);
         return redirect()->back()->with('success', trans('alert.add_success'));
     }
 }

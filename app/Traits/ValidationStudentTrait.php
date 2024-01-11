@@ -27,7 +27,6 @@ trait ValidationStudentTrait
             'nomor_hp' => 'required',
             'nisn' => [
                 'required',
-                'national_student_id',
                 'max:255',
                 Rule::unique('students', 'national_student_id'),
             ],
