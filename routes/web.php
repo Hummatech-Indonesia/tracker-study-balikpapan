@@ -1,29 +1,31 @@
 <?php
 
-use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\RegencyController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\JobVacancyController;
+use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\GalleryAlumniController;
+use App\Http\Controllers\StudentStatusController;
 use App\Http\Controllers\TeacherGalleryController;
+use App\Http\Controllers\ApplyJobVacancyController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AlumniVideoGalleryController;
-use App\Http\Controllers\ApplyJobVacancyController;
 use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\SliderGalleryAlumniController;
-use App\Http\Controllers\StudentStatusController;
 use App\Http\Controllers\TeacherVideoGalleryController;
 
 /*
@@ -192,3 +194,6 @@ Route::prefix('alumni')->name('alumni.')->group(function () {
     Route::get('lowongan-tersedia', [JobVacancyController::class, 'jobvacancy'])->name('vacancies.available');
     Route::get('lowongan', [ApplyJobVacancyController::class, 'index'])->name('job.vacancy.page');
 });
+
+Route::get('province', [ProvinceController::class, 'index'])->name('province');
+Route::get('regency', [RegencyController::class, 'index'])->name('regency');
