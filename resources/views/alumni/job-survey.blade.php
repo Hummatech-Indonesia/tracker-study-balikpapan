@@ -96,13 +96,14 @@
                     <div class="col-lg-4 col-sm-12 mb-3">
                         <div class="mb-3">
                             <label for="single-select-field" class="form-label">Provinsi</label>
-                            <select class="form-select" id="province" data-placeholder="Choose one thing">
+                            <select class="form-select small-bootstrap-class-single-field" id="small-bootstrap-class-single-field" data-placeholder="Choose one thing">
                             </select>
+                            
                             <ul class="error-text"></ul>
                         </div>
                         <div class="mb-3">
                             <label for="single-select-field" class="form-label">Kabupaten/Kota</label>
-                            <select class="form-select" id="regency" data-placeholder="Choose one thing">
+                            <select class="form-select" id="large-bootstrap-class-single-field" data-placeholder="Choose one thing">
                             </select>
                             <ul class="error-text"></ul>
                         </div>
@@ -141,7 +142,7 @@
 
             getProvinces();
 
-            $('#province').change(function() {
+            $('#small-bootstrap-class-single-field').change(function() {
                 getRegencies();
             });
 
@@ -153,7 +154,7 @@
                         $.each(response, function(index, item) {
                             var option = '<option value="' + item.id + '">' + item.name +
                                 '</option>';
-                            $('#province').append(option);
+                            $('#small-bootstrap-class-single-field').append(option);
                         });
                         getRegencies();
                     }
@@ -165,14 +166,14 @@
                     url: "{{ route('regency') }}",
                     type: 'GET',
                     data: {
-                        province: $('#province').val()
+                        province: $('#small-bootstrap-class-single-field').val()
                     },
                     success: function(response) {
-                        $('#regency').html('');
+                        $('#large-bootstrap-class-single-field').html('');
                         $.each(response, function(index, item) {
                             var option = '<option value="' + item.id + '">' + item.name +
                                 '</option>';
-                            $('#regency').append(option);
+                            $('#large-bootstrap-class-single-field').append(option);
                         });
                     }
                 });
