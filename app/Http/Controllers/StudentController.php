@@ -125,7 +125,7 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, User $user)
     {
         $this->register->update($user->id, $this->service->update($request));
-        $this->student->update($user->student->id, $request->validated());
+        $this->student->updateBasic($user->student->id, $request->validated());
         if ($request->is('api/*')) {
             return ResponseHelper::success(null, trans('alert.update_success'));
         } else {

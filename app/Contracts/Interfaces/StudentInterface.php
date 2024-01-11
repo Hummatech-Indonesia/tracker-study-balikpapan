@@ -55,4 +55,14 @@ interface StudentInterface extends CustomPaginationInterface, StoreInterface, Up
      * @return mixed
      */
     public function updateSelect(array $data, array $select): mixed;
+
+   
+    /**
+     * updateBasic
+     *
+     * @param  mixed $id
+     * @param  mixed $data
+     * @return mixed
+     */
+    public function updateBasic(mixed $id, array $data): mixed;
 }
