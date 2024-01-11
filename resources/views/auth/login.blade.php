@@ -106,7 +106,7 @@
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-end">
-                                <a href="{{ route('register.company') }}">
+                                <a href="{{ route('register.company.view') }}">
                                     <img width="100%" class="rounded-3" src="{{ asset('perusahaan.png') }}" alt=""
                                         srcset="">
                                     <h6 class="text-center mb-5 mt-2">Perusahaan</h6>

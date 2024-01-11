@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Enums\RoleEnum;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Requests\AccountRequest;
 use App\Contracts\Interfaces\UserInterface;
 use App\Http\Requests\AccountUpdateRequest;
+use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
@@ -17,8 +17,7 @@ class AccountController extends Controller
 
     public function __construct(
         UserInterface $user
-    )
-    {
+    ) {
         $this->user = $user;
     }
 
@@ -26,11 +25,11 @@ class AccountController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() : View
+    public function index(Request $request): View
     {
-        $accounts = $this->user->getByRole(RoleEnum::ADMIN->value);
+        $accounts = $this->user->getByRole(RoleEnum::ADMIN->value, $request);
 
-        return view('admin.add-account',compact('accounts'));
+        return view('admin.add-account', compact('accounts'));
     }
 
     /**
@@ -41,7 +40,7 @@ class AccountController extends Controller
         $user = $this->user->store($request->validated());
         $user->assignRole(RoleEnum::ADMIN->value);
 
-        return redirect()->back()->with('success',trans('alert.add_success'));
+        return redirect()->back()->with('success', trans('alert.add_success'));
     }
 
 
@@ -52,9 +51,9 @@ class AccountController extends Controller
     {
         $data = $request->validated();
         $data['password'] ? '' : $data['password'] = $user->password;
-        $this->user->update($user->id,$data);
-        
-        return redirect()->back()->with('success',trans('alert.update_success'));
+        $this->user->update($user->id, $data);
+
+        return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
     /**
@@ -64,6 +63,6 @@ class AccountController extends Controller
     {
         $this->user->delete($user->id);
 
-        return redirect()->back()->with('success',trans('alert.delete_success'));
+        return redirect()->back()->with('success', trans('alert.delete_success'));
     }
 }

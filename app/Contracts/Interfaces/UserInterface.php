@@ -9,6 +9,7 @@ use App\Contracts\Interfaces\Eloquent\DeleteInterface;
 use App\Contracts\Interfaces\Eloquent\GetWhereInterface;
 use App\Contracts\Interfaces\Eloquent\SearchInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
+use Illuminate\Http\Request;
 
 interface UserInterface extends GetInterface, StoreInterface, SearchInterface, DeleteInterface, UpdateInterface, ShowInterface, GetWhereInterface
 {
@@ -18,6 +19,5 @@ interface UserInterface extends GetInterface, StoreInterface, SearchInterface, D
      * @param  mixed $role
      * @return mixed
      */
-    public function getByRole(string $role) : mixed;
-    
+    public function getByRole(string $role, Request $request): mixed;
 }

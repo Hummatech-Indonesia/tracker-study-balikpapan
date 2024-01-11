@@ -16,6 +16,15 @@
             </button>
         </div>
     </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="row mt-4">
         @forelse ($survies as $survey)
             <div class="col-12 col-lg-5 col-xxl-4">
@@ -187,7 +196,7 @@
                                 <tr>
                                     <td>Kegiatan Saat Ini</td>
                                     <td>:</td>
-                                    <td >(Contoh) Bekerja di Pt Rekayasa Perangkat Lunak dan menjadi staff programmer</td>
+                                    <td>(Contoh) Bekerja di Pt Rekayasa Perangkat Lunak dan menjadi staff programmer</td>
                                 </tr>
                                 <tr>
                                     <td>Tempat Tinggal Sekarang</td>
@@ -209,7 +218,7 @@
                                     <td>:</td>
                                     <td>(Contoh) https//:LoremIpsum</td>
                                 </tr>
-                            </table>                            
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -223,15 +232,15 @@
     <x-delete-modal-component />
 @endsection
 @section('script')
-@if (session('success'))
-<script>
-    Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: '{{ session('success') }}',
-    });
-</script>
-@endif
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))

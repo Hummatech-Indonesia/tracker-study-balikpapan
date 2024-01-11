@@ -4,18 +4,14 @@
         Tambah Kelas
     </h4>
     <div class="d-flex justify-content-between mb-2">
-        <div class="d-flex justify-content-header gap-3">
+        <div class="d-flex justify-content-header gap-2">
             <div class="position-relative mb-3 col-lg-8">
-                <input type="text" class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
-                <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
-            </div>
-            <div class="col-lg-4">
-                <select name="" id="" class="form-select py-2">
-                    <option value="">Filter Kelas</option>
-                    @foreach ($classrooms as $classroom)
-                        <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
-                    @endforeach
-                </select>
+                <form action="{{ route('classrooms.index') }}" method="get">
+                    <input type="text" name="name" class="form-control search-chat py-2 ps-5" id="search-name"
+                        placeholder="Search">
+                    <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                    <button type="submit" style="display: none"></button>
+                </form>
             </div>
         </div>
         <div class="">
@@ -57,12 +53,12 @@
                 </div>
             </div>
         @empty
-        <div class="d-flex justify-content-center">
-            <div>
-                <img src="{{ asset('showNoData.png') }}" alt="">
-                <h5 class="text-center">Data Kelas Kosong!!</h5>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <img src="{{ asset('showNoData.png') }}" alt="">
+                    <h5 class="text-center">Data Kelas Kosong!!</h5>
+                </div>
             </div>
-        </div>
         @endforelse
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
@@ -162,15 +158,15 @@
     <x-delete-modal-component />
 @endsection
 @section('script')
-@if (session('success'))
-<script>
-    Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: '{{ session('success') }}',
-    });
-</script>
-@endif
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))

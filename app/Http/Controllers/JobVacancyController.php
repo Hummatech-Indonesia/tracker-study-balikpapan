@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ApplyJobVacancyInterface;
 use App\Models\JobVacancy;
-use Illuminate\Http\Request;
 use App\Services\JobVacancyService;
 use App\Http\Requests\JobVacancyRequest;
 use App\Contracts\Interfaces\JobVacancyInterface;
-use Illuminate\Contracts\View\View;
 
 class JobVacancyController extends Controller
 {
@@ -102,6 +100,6 @@ class JobVacancyController extends Controller
         //
     }
     public function getJob() {
-        
+
     }
 }

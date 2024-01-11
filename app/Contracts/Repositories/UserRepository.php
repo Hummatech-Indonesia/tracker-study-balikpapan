@@ -82,9 +82,7 @@ class UserRepository extends BaseRepository implements UserInterface
     public function search(Request $request): mixed
     {
         return $this->model->query()
-            ->when($request->name, function ($query) use ($request) {
-                $query->where('name', 'LIKE', '%' . $request->name . '%');
-            })
+
             ->get();
     }
 
@@ -94,10 +92,13 @@ class UserRepository extends BaseRepository implements UserInterface
      * @param  mixed $role
      * @return mixed
      */
-    public function getByRole(string $role): mixed
+    public function getByRole(string $role, Request $request): mixed
     {
         return $this->model->query()
             ->role($role)
+            ->when($request->name, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->name . '%');
+            })
             ->whereNot('email', 'admin@gmail.com')
             ->get();
     }

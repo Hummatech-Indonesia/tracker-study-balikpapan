@@ -63,7 +63,7 @@ Auth::routes();
 Route::get('verify-account', function () {
     return view('auth.verify');
 });
-Route::get('register-company', [RegisterController::class, 'registerCompanyView']);
+Route::get('register-company', [RegisterController::class, 'registerCompanyView'])->name('register.company.view');
 Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
 
 
@@ -180,7 +180,7 @@ Route::patch('accept-job-vacancy/{apply_job_vacancies}', [ApplyJobVacancyControl
 Route::patch('reject-job-vacancy/{apply_job_vacancies}', [ApplyJobVacancyController::class, 'reject'])->name('reject-job-vacancy');
 Route::get('profile-company', [UserController::class, 'company'])->name('profile-company');
 Route::get('profile', [UserController::class, 'profile'])->name('profile');
-Route::put('update-profile/{user}',[UserController::class,'updateProfile'])->name('update.profile');
+Route::put('update-profile/{user}', [UserController::class, 'updateProfile'])->name('update.profile');
 Route::put('update-company-profile/{user}', [UserController::class, 'updateCompany'])->name('update-company-profile');
 Route::patch('update-photo-profile', [UserController::class, 'updatePhotoProfile'])->name('update-profile');
 Route::patch('update-password', [UserController::class, 'updatePassword'])->name('update-password');

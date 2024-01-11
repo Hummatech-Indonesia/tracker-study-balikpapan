@@ -1,12 +1,16 @@
 @extends('layouts.app')
 @section('content')
     <h4 class="mb-3">
-        Data Alumni
+        Data Perusahaan
     </h4>
     <div class="d-flex justify-content-between">
         <div class="position-relative mb-3 col-lg-3">
-            <input type="text" class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
-            <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+            <form action="{{ route('verify.company') }}" method="get">
+                <input type="text" name="name" class="form-control search-chat py-2 ps-5" id="search-name"
+                    placeholder="Search">
+                <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                <button type="submit" style="display: none"></button>
+            </form>
         </div>
     </div>
     @if (session('success'))
