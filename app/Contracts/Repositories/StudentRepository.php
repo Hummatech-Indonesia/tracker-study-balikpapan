@@ -43,6 +43,19 @@ class StudentRepository extends BaseRepository implements StudentInterface
     }
 
     /**
+     * updateBasic
+     *
+     * @param  mixed $id
+     * @param  mixed $data
+     * @return mixed
+     */
+    public function updateBasic(mixed $id, array $data): mixed
+    {
+        $student = $this->show($id);
+        $student->update($data);
+        return $student;
+    }
+    /**
      * customPaginate
      *
      * @param  mixed $request
