@@ -6,6 +6,7 @@ use App\Enums\RoleEnum;
 use App\Contracts\Interfaces\JobVacancyInterface;
 use App\Contracts\Interfaces\PortofolioInterface;
 use App\Contracts\Interfaces\StudentInterface;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -35,7 +36,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function dashboard()
+    public function dashboard(Request $request)
     {
 
         $role = auth()->user()->roles[0]->name;
@@ -53,7 +54,8 @@ class HomeController extends Controller
                 return view('alumni.index');
                 break;
             case RoleEnum::COMPANY->value:
-                return view('company.index');
+                $jobVacancys = $this->jobVacancy->customPaginate($request, 6);
+                return view('company.index', compact('jobVacancys'));
                 break;
         }
     }
