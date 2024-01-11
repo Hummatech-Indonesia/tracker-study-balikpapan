@@ -37,17 +37,12 @@
             </div>
         </form>
         <div class="">
-            <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#importStudent"
+            <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#modal-import"
                 style="background-color: #1D9375">Import Siswa</button>
             <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
                 style="background-color: #1D9375">Tambah Siswa</button>
         </div>
     </div>
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     <!-- Modal -->
     <div class="modal fade" id="exampleLargeModal" tabindex="-1" aria-hidden="true">
         <form action="{{ route('students.store') }}" method="post">
@@ -131,24 +126,88 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="importStudent" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+    <div id="modal-import" class="modal fade" tabindex="-1" aria-labelledby="bs-example-modal-md" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
-                <p class="text-left ms-3 fs-5 mt-3" style="font-weight:800">
-                    Tambah Siswa
-                </p>
-                <form action="{{ route('import.student') }}" method="post" enctype="multipart/form-data">
+                <div class="modal-header d-flex align-items-center">
+                    <h4 class="modal-title" id="myModalLabel">
+                        Import Siswa
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="form-import" action="{{ route('import.student') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <input type="file" name="import" id="">
+                        <!--begin::Alert-->
+                        <div class="alert alert-warning d-flex align-items-center p-4">
+                            <!--begin::Icon-->
+                            <span class="svg-icon svg-icon-2hx svg-icon-primary me-3">
+                                <span class="svg-icon svg-icon-2hx svg-icon-warning me-4"><svg width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                            d="M20.5543 4.37824L12.1798 2.02473C12.0626 1.99176 11.9376 1.99176 11.8203 2.02473L3.44572 4.37824C3.18118 4.45258 3 4.6807 3 4.93945V13.569C3 14.6914 3.48509 15.8404 4.4417 16.984C5.17231 17.8575 6.18314 18.7345 7.446 19.5909C9.56752 21.0295 11.6566 21.912 11.7445 21.9488C11.8258 21.9829 11.9129 22 12.0001 22C12.0872 22 12.1744 21.983 12.2557 21.9488C12.3435 21.912 14.4326 21.0295 16.5541 19.5909C17.8169 18.7345 18.8277 17.8575 19.5584 16.984C20.515 15.8404 21 14.6914 21 13.569V4.93945C21 4.6807 20.8189 4.45258 20.5543 4.37824Z"
+                                            fill="currentColor"></path>
+                                        <path
+                                            d="M10.5606 11.3042L9.57283 10.3018C9.28174 10.0065 8.80522 10.0065 8.51412 10.3018C8.22897 10.5912 8.22897 11.0559 8.51412 11.3452L10.4182 13.2773C10.8099 13.6747 11.451 13.6747 11.8427 13.2773L15.4859 9.58051C15.771 9.29117 15.771 8.82648 15.4859 8.53714C15.1948 8.24176 14.7183 8.24176 14.4272 8.53714L11.7002 11.3042C11.3869 11.6221 10.874 11.6221 10.5606 11.3042Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <!--end::Icon-->
+
+                            <!--begin::Wrapper-->
+                            <div class="d-flex flex-column">
+                                <!--begin::Title-->
+                                <h4 class="mb-1 text-dark">Informasi</h4>
+                                <!--end::Title-->
+                                <!--begin::Content-->
+                                <ul>
+                                    <li class="mb-1">
+                                        Jika siswa tidak terimport maka kemungkinan email siswa tersebut telah digunakan.
+                                    </li>
+                                    <li class="mb-1">
+                                        File yang dapat diunggah berupa file excel berekstensi xls, xlsx.
+                                    </li>
+                                    <li class="mb-1">
+                                        Password siswa secara default adalah <b>password</b>
+                                    </li>
+                                    <li class="mb-1">
+                                        Format pengisian file excel seperti dibawah ini.
+                                    </li>
+                                </ul>
+                                
+                                <!--end::Content-->
+
+                            </div>
+                            <!--end::Wrapper-->
+                        </div>
+                        <!--end::Alert-->
+
+                        <div class="col-12">
+                            <div class="div mb-3">
+                                <a href="{{ asset('format-import-student.xlsx') }}" class="btn btn-success"><i
+                                        class="fas fa-file-excel"></i> Download
+                                    Format Excel
+                                </a>
+                            </div>
+                            <label class="form-label" for="">File Excel <span
+                                    class="text-danger">*</span></label>
+                            <input type="file" class="form-control mt-3" id="import-import" name="import">
+                            <ul class="error-text"></ul>
+
+                        </div>
                     </div>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                        <button type="submit" class="btn text-white" style="background-color: #1D9375">Tambah</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary" id="save-button">Simpan</button>
                     </div>
                 </form>
             </div>
+            <!-- /.modal-content -->
         </div>
+        <!-- /.modal-dialog -->
     </div>
 
     <div class="modal fade" id="modal-detail" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
