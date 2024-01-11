@@ -63,7 +63,7 @@
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
                                 <input name="email" placeholder="Masukkan Email" value="{{ old('email') }}"
-                                    class="form-control"></input>
+                                    class="form-control">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Password</label>
@@ -73,7 +73,7 @@
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">NISN</label>
                                 <input type="text" placeholder="Masukkan NISN" value="{{ old('nisn') }}"
-                                    name="national_student_id" class="form-control"></input>
+                                    name="national_student_id" class="form-control">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Tanggal Lahir</label>
@@ -175,7 +175,7 @@
                                     <li class="list-group-item" style="font-weight: bold;">NISN: <span
                                             id="detail-national_student_id" style="font-weight: normal;"></span></li>
                                     <li class="list-group-item" style="font-weight: bold;">Tanggal Lahir: <span
-                                            id="detail-date_birth" style="font-weight: normal;"></span></li>
+                                            id="detail-birth_date" style="font-weight: normal;"></span></li>
                                 </ul>
                             </div>
                             <div class="col">
@@ -222,7 +222,7 @@
                             </div>
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" class="form-control"></input>
+                                <input name="email" class="form-control">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Password</label>
@@ -230,7 +230,7 @@
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">NISN</label>
-                                <input type="text" name="national_student_id" class="form-control"></input>
+                                <input type="text" name="national_student_id" class="form-control">
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Tanggal Lahir</label>
@@ -309,12 +309,6 @@
                                 Kelas
                             </td>
                             <td>
-                                No Telepon
-                            </td>
-                            <td>
-                                Jenis Kelamin
-                            </td>
-                            <td>
                                 Aksi
                             </td>
                         </tr>
@@ -348,16 +342,6 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <p class="mb-0 fw-normal mt-2">
-                                        {{ $student->user->phone_number }}
-                                    </p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 fw-normal mt-2">
-                                        {{ $student->gender == 'male' ? 'Laki - Laki' : 'Perempuan' }}
-                                    </p>
-                                </td>
-                                <td>
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
                                             <a data-id="{{ $student->user->id }}"
@@ -366,7 +350,7 @@
                                                 data-email="{{ $student->user->email }}"
                                                 data-national_student_id={{ $student->national_student_id }}
                                                 data-gender="{{ $student->gender }}"
-                                                data-birth_date="{{ $student->birth_date }}"
+                                                data-birth_date="{{ \Carbon\Carbon::parse($student->birth_date)->locale('id_ID')->isoFormat('DD MMMM Y') }}"
                                                 data-phone_number="{{ $student->user->phone_number }}"
                                                 data-classroom="{{ $student->classroom->name }}"
                                                 data-major = "{{ $student->classroom->major->name }}"
@@ -390,7 +374,7 @@
                                                 data-name="{{ $student->user->name }}"
                                                 data-email="{{ $student->user->email }}"
                                                 data-national_student_id={{ $student->national_student_id }}
-                                                data-gender="{{ $student->gender }}"
+                                                data-gender="{{ $student->gender == 'male' ? 'Laki - Laki' : 'Perempuan' }}"
                                                 data-birth_date="{{ $student->birth_date }}"
                                                 data-phone_number="{{ $student->user->phone_number }}"
                                                 data-classroom_id="{{ $student->classroom->id }}"

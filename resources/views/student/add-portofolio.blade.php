@@ -15,7 +15,6 @@
                 <a href="{{ route('portofolio') }}" class="btn btn-warning text-white">
                     Kembali
                 </a>
-
             </div>
         </div>
 
