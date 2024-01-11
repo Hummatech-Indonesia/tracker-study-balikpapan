@@ -15,8 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('student_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
-            $table->date('start_at');
-            $table->date('end_at');
+            $table->integer('year');
             $table->text('description');
             $table->timestamps();
         });

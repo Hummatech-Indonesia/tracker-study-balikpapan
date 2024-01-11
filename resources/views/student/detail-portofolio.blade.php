@@ -19,15 +19,17 @@
 </div>
 <div class="card mt-4">
     <div class="card-body">
-        <h4 class="mb-3">
-            {{ $portofolio->name }}
-        </h4>
-        <h4 class="mb-3 mt-5">
-            Waktu Pengerjaan
-        </h4>
-        <h6 class="text-primary">
-            {{ \Carbon\Carbon::parse($portofolio->start_at)->locale('id_ID')->isoFormat('DD MMMM Y') }} - {{ \Carbon\Carbon::parse($portofolio->end_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
-        </h6>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h4 class="mb-3">
+                    {{ $portofolio->name }}
+                </h4>
+            </div>
+            <div class="me-4">
+                <h4>{{ $portofolio->year }}</h4>
+            </div>
+        </div>
+       
         <h4 class="mb-3 mt-5">
             Foto Foto Project
         </h4>

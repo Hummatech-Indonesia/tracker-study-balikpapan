@@ -101,9 +101,9 @@
                 </div>
                 <div class="col-md-9">
                     <div class="card-body">
-                        <p class="text-primary text-end ">
-                            {{ \Carbon\Carbon::parse($portofolio->start_at)->locale('id_ID')->isoFormat('DD MMMM Y') }} - {{ \Carbon\Carbon::parse($portofolio->end_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}
-                        </p>
+                        <h5 class="text-primary text-end ">
+                            {{ $portofolio->year }}
+                        </h5>
                         <h5 class="card-title">{{ $portofolio->name }}</h5>
                         <p class="card-text">{{ Illuminate\Support\Str::limit($portofolio->description, $limit = 325, $end = '...') }}</p>
                     </div>
