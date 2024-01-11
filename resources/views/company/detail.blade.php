@@ -63,13 +63,13 @@
                             </p>
                             <p>
                                 @if ($jobVacancy->work_system == 'contract')
-                                - Kontrak
+                                    - Kontrak
                                 @elseif ($jobVacancy->work_system == 'permanentwork')
-                                - Kerja Tetap
+                                    - Kerja Tetap
                                 @elseif ($jobVacancy->work_system == 'workingparttime')
-                                - Kerja Paruh Waktu
+                                    - Kerja Paruh Waktu
                                 @else
-                                - Freelance
+                                    - Freelance
                                 @endif
                             </p>
                             <p class="fs-6 mb-2 mt-3" style="font-weight: 600">
@@ -184,8 +184,8 @@
                                 <td>
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
-                                            <img src="{{ asset('assets-admin/images/avatars/avatar-2.png') }}"
-                                                class="user-img" alt="user avatar">
+                                            <img src="{{ asset(auth()->user()->photo == null ? 'default.jpg' : 'storage/' . auth()->user()->photo) }}"
+                                                class="user-img" alt="user avatar" style="object-fit: cover">
                                         </div>
                                         <p class="mt-2" style="font-weight:500">
                                             {{ $applyJobVacancy->student->user->name }}
@@ -227,15 +227,19 @@
                                 <td>
                                     <div class="d-flex justify-content-header gap-2">
                                         @if ($applyJobVacancy->status == 'pending')
-                                        <div class="">
-                                            <button class="btn btn-sm btn-success btn-accept" id="btn-edit-{{ $applyJobVacancy->id }}" data-id="{{ $applyJobVacancy->id }}">Terima</button>
-                                        </div>
-                                        <div class="">
-                                            <button class="btn btn-sm btn-danger btn-reject" id="btn-edit-{{ $applyJobVacancy->id }}" data-id="{{ $applyJobVacancy->id }}" >Tolak</button>
-                                        </div>
-                                        <div class="">
-                                            <button class="btn text-white btn-sm btn-info">Detail</button>
-                                        </div>
+                                            <div class="">
+                                                <button class="btn btn-sm btn-success btn-accept"
+                                                    id="btn-edit-{{ $applyJobVacancy->id }}"
+                                                    data-id="{{ $applyJobVacancy->id }}">Terima</button>
+                                            </div>
+                                            <div class="">
+                                                <button class="btn btn-sm btn-danger btn-reject"
+                                                    id="btn-edit-{{ $applyJobVacancy->id }}"
+                                                    data-id="{{ $applyJobVacancy->id }}">Tolak</button>
+                                            </div>
+                                            <div class="">
+                                                <button class="btn text-white btn-sm btn-info">Detail</button>
+                                            </div>
                                         @else
                                             <div class="">
                                                 <button class="btn text-white btn-sm btn-info">Detail</button>
