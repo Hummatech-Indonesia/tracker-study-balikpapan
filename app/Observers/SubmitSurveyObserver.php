@@ -2,16 +2,15 @@
 
 namespace App\Observers;
 
-use App\Models\Survey;
 use Faker\Provider\Uuid;
+use App\Models\SubmitSurvey;
 
-
-class SurveyObserver
+class SubmitSurveyObserver
 {
     /**
      * Handle the Student "created" event.
      */
-    public function creating(Survey $survey): void
+    public function creating(SubmitSurvey $survey): void
     {
         $survey->id = Uuid::uuid();
     }

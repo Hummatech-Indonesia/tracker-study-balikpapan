@@ -2,14 +2,14 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Models\News;
+use App\Models\SubmitSurvey;
 use App\Contracts\Interfaces\SubmitSurveyInterface;
 
 class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInterface
 {
-    public function __construct(News $news)
+    public function __construct(SubmitSurvey $submitSurvey)
     {
-        $this->model = $news;
+        $this->model = $submitSurvey;
     }
 
     /**

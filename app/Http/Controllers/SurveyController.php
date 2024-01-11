@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\SurveyInterface;
-use App\Http\Requests\SubmitSurveyRequest;
-use App\Http\Requests\SurveyRequest;
 use App\Models\Survey;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Requests\SurveyRequest;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\SubmitSurveyRequest;
+use App\Contracts\Interfaces\SurveyInterface;
 
 class SurveyController extends Controller
 {
@@ -52,7 +52,7 @@ class SurveyController extends Controller
         //
     }
 
-  
+
     /**
      * Update the specified resource in storage.
      */
@@ -71,7 +71,7 @@ class SurveyController extends Controller
         $this->survey->delete($survey->id);
         return redirect()->back()->with('success', trans('alert.delete_success'));
     }
-    
+
     /**
      * survei
      *
@@ -80,7 +80,7 @@ class SurveyController extends Controller
     public function survey() : View
     {
         $survey = $this->survey->getLatest();
-        
+
         return view('alumni.job-survey',compact('survey'));
     }
 

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('survey_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignUuid('student_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->char('regency_id', 20);
+            $table->foreign('regency_id')->references('id')->on('regencies')->cascadeOnDelete()->cascadeOnUpdate();
             $table->char('graduation_year',4);
             $table->text('activity');
             $table->text('url_address');
@@ -24,7 +26,6 @@ return new class extends Migration
             $table->string('email');
             $table->string('facebook');
             $table->boolean('alumni_gathering');
-            $table->string('city');
             $table->enum('current_activity',[ActivityStatusEnum::STUDY->value,ActivityStatusEnum::WORK->value,ActivityStatusEnum::NOTWORK->value,ActivityStatusEnum::BUSSINESS->value]);
             $table->timestamps();
         });

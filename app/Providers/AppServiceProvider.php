@@ -8,38 +8,42 @@ use App\Contracts\Interfaces\UserInterface;
 use App\Contracts\Interfaces\MajorInterface;
 use App\Contracts\Interfaces\SurveyInterface;
 use App\Contracts\Interfaces\CompanyInterface;
+use App\Contracts\Interfaces\RegencyInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\UserRepository;
+use App\Contracts\Interfaces\ProvinceInterface;
 use App\Contracts\Repositories\MajorRepository;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Repositories\SurveyRepository;
 use App\Contracts\Interfaces\JobVacancyInterface;
+use App\Contracts\Interfaces\PortofolioInterface;
 use App\Contracts\Interfaces\SchoolYearInterface;
 use App\Contracts\Repositories\CompanyRepository;
+use App\Contracts\Repositories\RegencyRepository;
 use App\Contracts\Repositories\StudentRepository;
+use App\Contracts\Repositories\ProvinceRepository;
 use App\Contracts\Repositories\RegisterRepository;
+use App\Contracts\Interfaces\SubmitSurveyInterface;
 use App\Contracts\Repositories\ClassroomRepository;
 use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Contracts\Interfaces\GalleryAlumniInterface;
 use App\Contracts\Repositories\JobVacancyRepository;
+use App\Contracts\Repositories\PortofolioRepository;
 use App\Contracts\Repositories\SchoolYearRepository;
 use App\Contracts\Interfaces\TeacherGalleryInterface;
 use App\Contracts\Interfaces\ApplyJobVacancyInterface;
+use App\Contracts\Interfaces\PhotoPortofolioInterface;
+use App\Contracts\Repositories\SubmitSurveyRepository;
 use App\Contracts\Repositories\GalleryAlumniRepository;
 use App\Contracts\Repositories\TeacherGalleryRepository;
 use App\Contracts\Interfaces\AlumniVideoGalleryInterface;
-use App\Contracts\Interfaces\PhotoPortofolioInterface;
-use App\Contracts\Interfaces\PortofolioInterface;
 use App\Contracts\Repositories\ApplyJobVacancyRepository;
+use App\Contracts\Repositories\PhotoPortofolioRepository;
 use App\Contracts\Interfaces\SliderGalleryAlumniInterface;
-use App\Contracts\Interfaces\SubmitSurveyInterface;
 use App\Contracts\Interfaces\TeacherVideoGalleryInterface;
 use App\Contracts\Repositories\AlumniVideoGalleryRepository;
-use App\Contracts\Repositories\PhotoPortofolioRepository;
-use App\Contracts\Repositories\PortofolioRepository;
 use App\Contracts\Repositories\SliderGalleryAlumniRepository;
-use App\Contracts\Repositories\SubmitSurveyRepository;
 use App\Contracts\Repositories\TeacherVideoGalleryRepository;
 
 class AppServiceProvider extends ServiceProvider
@@ -63,7 +67,9 @@ class AppServiceProvider extends ServiceProvider
         ApplyJobVacancyInterface::class => ApplyJobVacancyRepository::class,
         PortofolioInterface::class => PortofolioRepository::class,
         PhotoPortofolioInterface::class => PhotoPortofolioRepository::class,
-        SubmitSurveyInterface::class => SubmitSurveyRepository::class
+        SubmitSurveyInterface::class => SubmitSurveyRepository::class,
+        ProvinceInterface::class => ProvinceRepository::class,
+        RegencyInterface::class => RegencyRepository::class
     ];
 
     /**

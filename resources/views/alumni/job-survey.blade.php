@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@section('style')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+@endsection
 @section('content')
     @php
         use Carbon\Carbon;
@@ -46,7 +51,8 @@
                         <div>
                             <div>
                                 <input type="radio" name="current_activity" id="kerja" value="kerja"
-                                    class="form-check-input"> <label class="form-check-label" style="margin-right:10%" for="kerja">
+                                    class="form-check-input"> <label class="form-check-label" style="margin-right:14%"
+                                    for="kerja">
                                     Kerja
                                 </label>
                                 <input type="radio" name="current_activity" id="kuliah" value="kuliah"
@@ -56,7 +62,8 @@
                             </div>
                             <div>
                                 <input type="radio" name="current_activity" id="Wirausaha" value="Wirausaha"
-                                    class="form-check-input"> <label style="margin-right:3%" class="form-check-label" for="Wirausaha">
+                                    class="form-check-input"> <label style="margin-right:3%" class="form-check-label"
+                                    for="Wirausaha">
                                     Wirausaha
                                 </label>
 
@@ -87,8 +94,18 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-12 mb-3">
-                        <label for="create-tahun-lulus" class="form-label">Tempat Tinggal Saat Ini</label>
-                        <input type="text" name="city" class="form-control" id="">
+                        <div class="mb-3">
+                            <label for="single-select-field" class="form-label">Provinsi</label>
+                            <select class="form-select" id="province" data-placeholder="Choose one thing">
+                            </select>
+                            <ul class="error-text"></ul>
+                        </div>
+                        <div class="mb-3">
+                            <label for="single-select-field" class="form-label">Kabupaten/Kota</label>
+                            <select class="form-select" id="regency" data-placeholder="Choose one thing">
+                            </select>
+                            <ul class="error-text"></ul>
+                        </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="create-name" class="form-label">Email</label>
@@ -114,4 +131,53 @@
             </div>
         </div>
     @endif
+@endsection
+@section('script')
+    <script src="{{ asset('assets-admin/plugins/select2/js/select2-custom.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            getProvinces();
+
+            $('#province').change(function() {
+                getRegencies();
+            });
+
+            function getProvinces() {
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('province') }}",
+                    success: function(response) {
+                        $.each(response, function(index, item) {
+                            var option = '<option value="' + item.id + '">' + item.name +
+                                '</option>';
+                            $('#province').append(option);
+                        });
+                        getRegencies();
+                    }
+                });
+            }
+
+            function getRegencies() {
+                $.ajax({
+                    url: "{{ route('regency') }}",
+                    type: 'GET',
+                    data: {
+                        province: $('#province').val()
+                    },
+                    success: function(response) {
+                        $('#regency').html('');
+                        $.each(response, function(index, item) {
+                            var option = '<option value="' + item.id + '">' + item.name +
+                                '</option>';
+                            $('#regency').append(option);
+                        });
+                    }
+                });
+            }
+
+        });
+    </script>
 @endsection
