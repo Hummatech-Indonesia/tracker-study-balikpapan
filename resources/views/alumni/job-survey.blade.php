@@ -17,13 +17,14 @@
                     {{ Carbon::parse($survey->end_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}</h5>
             </div>
         </div>
-        <form action="{{ Route('alumni.submit.survey', ['survey' => $survey->id]) }}" method="POST" class="card">
+        <form action="{{ route('alumni.submit-survey', ['survey' => $survey->id]) }}" method="POST" class="card">
             @csrf
+            @method('POST')
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-6 col-sm-12 mb-3">
                         <label for="graduation_year" class="form-label">Nama ( dengan gelar jika ada )</label>
-                        <input type="text" name="name" id="graduation_year" placeholder="Ex : 2023"
+                        <input type="text" value="{{ auth()->user()->name }}" name="name" id="graduation_year" placeholder="Ex : 2023"
                             class="form-control">
                     </div>
                     <div class="col-lg-6 col-sm-12 mb-3">
@@ -50,24 +51,24 @@
                         <label for="create-tahun-lulus" class="form-check-label">Status Saat Ini</label>
                         <div>
                             <div>
-                                <input type="radio" name="current_activity" id="kerja" value="kerja"
+                                <input type="radio" name="current_activity" id="kerja" value="work"
                                     class="form-check-input"> <label class="form-check-label" style="margin-right:14%"
                                     for="kerja">
                                     Kerja
                                 </label>
-                                <input type="radio" name="current_activity" id="kuliah" value="kuliah"
+                                <input type="radio" name="current_activity" id="kuliah" value="study"
                                     class="form-check-input"> <label class="form-check-label" for="kuliah">
                                     Kuliah
                                 </label>
                             </div>
                             <div>
-                                <input type="radio" name="current_activity" id="Wirausaha" value="Wirausaha"
+                                <input type="radio" name="current_activity" id="Wirausaha" value="bussiness"
                                     class="form-check-input"> <label style="margin-right:3%" class="form-check-label"
                                     for="Wirausaha">
                                     Wirausaha
                                 </label>
 
-                                <input type="radio" name="current_activity" id="tidak bekerja" value="tidak bekerja"
+                                <input type="radio" name="current_activity" id="tidak bekerja" value="notwork"
                                     class="form-check-input"> <label class="form-check-label" for="tidak bekerja">
                                     Tidak Bekerja
                                 </label>
@@ -98,12 +99,12 @@
                             <label for="single-select-field" class="form-label">Provinsi</label>
                             <select class="form-select small-bootstrap-class-single-field" id="small-bootstrap-class-single-field" data-placeholder="Choose one thing">
                             </select>
-                            
+
                             <ul class="error-text"></ul>
                         </div>
                         <div class="mb-3">
                             <label for="single-select-field" class="form-label">Kabupaten/Kota</label>
-                            <select class="form-select" id="large-bootstrap-class-single-field" data-placeholder="Choose one thing">
+                            <select class="form-select" name="regency_id" id="large-bootstrap-class-single-field" data-placeholder="Choose one thing">
                             </select>
                             <ul class="error-text"></ul>
                         </div>

@@ -101,8 +101,9 @@ class SurveyController extends Controller
      * @param  mixed $request
      * @return RedirectResponse
      */
-    public function submit(Survey $survey,SubmitSurveyRequest $request) : RedirectResponse
+    public function submit(SubmitSurveyRequest $request,Survey $survey) : RedirectResponse
     {
+        dd($request);
         $data = $request->validated();
         $data['survey_id'] = $survey->id;
 
