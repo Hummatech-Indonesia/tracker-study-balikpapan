@@ -40,8 +40,9 @@
                                         src="{{ asset('storage/' . $news->thumbnail) }}" alt="" srcset=""></td>
                                 <td class="">
                                     <div class="d-flex d-flex justify-content-center gap-2 text-center">
-                                        <button class="btn btn-primary btn-sm btn-detail" id="btn-detail-{{ $news->id }}"
-                                            data-title="{{ $news->title }}" data-content="{{ $news->content }}"
+                                        <button class="btn btn-primary btn-sm btn-detail"
+                                            id="btn-detail-{{ $news->id }}" data-title="{{ $news->title }}"
+                                            data-content="{{ $news->content }}"
                                             data-thumbnail="{{ asset('storage/' . $news->thumbnail) }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 24 24">
@@ -84,7 +85,7 @@
                     </tbody>
                 </table>
             </div>
-            
+
         </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
@@ -108,14 +109,13 @@
                                 <label for="formFile" class="form-label">Foto Berita</label>
                                 <input type="file" class="form-control" name="thumbnail" id="">
                             </div>
-                            <div class="col-12 mb-5 ">
+                            <div class="col-12">
                                 <label for="formFile" class="form-label">Deskripsi Berita</label>
-                                <div id="editor" class="editor"></div>
-                                <textarea name="content" id="content" class="content" style="display: none;"></textarea>
+                                <textarea name="content" id="ckeditor"></textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer mt-5">
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
                         <button type="submit" class="btn btn-primary text-white">Tambah</button>
                     </div>
@@ -144,14 +144,14 @@
                                 <label for="formFile" class="form-label">Foto Berita</label>
                                 <input type="file" class="form-control" name="thumbnail" id="">
                             </div>
-                            <div class="col-12 mb-5">
+                            <div class="col-12">
                                 <label for="formFile" class="form-label">Deskripsi Berita</label>
-                                <div id="editor_create" class="editor_create"></div>
-                                <textarea name="content" id="content" class="content" style="display: none;"></textarea>
+                                <textarea name="content" id="ckeditor_edit"></textarea>
+
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer mt-5">
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
                         <button type="submit" class="btn btn-primary text-white">Edit</button>
                     </div>
@@ -186,29 +186,10 @@
     <x-delete-modal-component />
 @endsection
 @section('script')
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script>
-        var quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-
-        // Mengupdate nilai textarea saat konten Quill berubah
-        quill.on('text-change', function() {
-            var content = quill.root.innerHTML;
-            document.getElementById('content').value = content;
-        });
-    </script>
-    <script>
-        var quill = new Quill('#editor_create', {
-            theme: 'snow'
-        });
-
-        // Mengupdate nilai textarea saat konten Quill berubah
-        quill.on('text-change', function() {
-            var content = quill.root.innerHTML;
-            document.getElementById('content').value = content;
-        });
+      CKEDITOR.replace('ckeditor');
+      CKEDITOR.replace('ckeditor_edit');
     </script>
     <script>
         $('.btn-detail').click(function() {
