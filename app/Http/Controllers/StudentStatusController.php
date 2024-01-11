@@ -84,8 +84,10 @@ class StudentStatusController extends Controller
      */
     public function selectChangeAlumni(SelectChangeUpdateRequest $request)
     {
-        $data = $request->validated();
-        $this->student->updateSelect(['is_graduate' => 1], $data['select']);
+        $data['is_graduate'] = 1;
+        $data['role'] = RoleEnum::ALUMNI->value;
+        $select = $request->validated();
+        $this->student->updateSelect($data, $select['select']);
         return ResponseHelper::success(null, trans('alert.update_success'));
     }
 
@@ -97,8 +99,10 @@ class StudentStatusController extends Controller
      */
     public function selectChangeStudent(SelectChangeUpdateRequest $request)
     {
-        $data = $request->validated();
-        $this->student->updateSelect(['is_graduate' => 0], $data['select']);
+        $data['is_graduate'] = 0;
+        $data['role'] = RoleEnum::STUDENT->value;
+        $select = $request->validated();
+        $this->student->updateSelect($data, $select['select']);
         return ResponseHelper::success(null, trans('alert.update_success'));
     }
 }

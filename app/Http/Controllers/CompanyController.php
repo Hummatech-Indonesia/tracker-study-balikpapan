@@ -25,7 +25,7 @@ class CompanyController extends Controller
     public function approve(Company $company)
     {
         $this->company->update($company->id, ['status' => StatusEnum::ACTIVE->value]);
-        return redirect()->back()->with('success', trans('alert.update_success'));
+        return redirect()->back()->with('success', 'Berhasil Menyetujui Perusahaan ' . $company->user->name);
     }
 
     /**
@@ -37,7 +37,7 @@ class CompanyController extends Controller
     public function reject(Company $company)
     {
         $this->company->update($company->id, ['status' => StatusEnum::REJECT->value]);
-        return redirect()->back()->with('success', trans('alert.update_success'));
+        return redirect()->back()->with('success', 'Berhasil Menolak Perusahaan ' . $company->user->name);
     }
 
     /**

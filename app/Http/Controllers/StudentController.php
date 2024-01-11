@@ -46,8 +46,8 @@ class StudentController extends Controller
      */
     public function verificationStudent(Student $student)
     {
-        $this->student->update($student->id, ['status' => StatusEnum::ACTIVE->value]);
-        return redirect()->back()->with('success', trans('alert.update_success'));
+        $this->student->updateBasic($student->id, ['status' => StatusEnum::ACTIVE->value]);
+        return redirect()->back()->with('success', 'Berhasil Menyetujui ' . $student->user->name);
     }
 
     /**
@@ -58,8 +58,8 @@ class StudentController extends Controller
      */
     public function rejectVerificationStudent(Student $student)
     {
-        $this->student->update($student->id, ['status' => StatusEnum::REJECT->value]);
-        return redirect()->back()->with('success', trans('alert.update_success'));
+        $this->student->updateBasic($student->id, ['status' => StatusEnum::REJECT->value]);
+        return redirect()->back()->with('success', 'Berhasil Menolak ' . $student->user->name);
     }
 
     /**
