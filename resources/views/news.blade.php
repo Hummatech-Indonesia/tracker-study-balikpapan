@@ -15,6 +15,14 @@
             z-index: 1;
         }
     </style>
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 @endsection
 @section('content')
     @php
@@ -95,27 +103,26 @@
             </div>
             <div class="row">
                 @if ($latestNews == null)
-                <div class="col-12 col-md-3 col-lg-12">
-                    <div class="d-flex justify-content-center">
-                        <div>
-                            <img src="{{ asset('showNoData.png') }}" alt="">
-                            <h4 class="text-center">Tidak ada Berita</h4>
+                    <div class="col-12 col-md-3 col-lg-12">
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <img src="{{ asset('showNoData.png') }}" alt="">
+                                <h4 class="text-center">Tidak ada Berita</h4>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @else
-                <div class="col-12 col-md-3 col-lg-7">
-                    <div class="card">
-                        <img src="{{ asset('storage/' . $latestNews->thumbnail) }}"
-                            alt="">
+                    <div class="col-12 col-md-3 col-lg-7">
+                        <div class="card">
+                            <img src="{{ asset('storage/' . $latestNews->thumbnail) }}" alt="">
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-7 col-lg-5">
-                    <div class="welcome-intro">
-                        <h3 class="text-black fs-3 text-center">{{$latestNews->title }}</h3>
-                        <p class="text-black my-4">{{$latestNews->content }}</p>
+                    <div class="col-12 col-md-7 col-lg-5">
+                        <div class="welcome-intro">
+                            <h3 class="text-black fs-3 text-center">{{ $latestNews->title }}</h3>
+                            <p class="text-black my-4">{{ $latestNews->content }}</p>
+                        </div>
                     </div>
-                </div>
                 @endif
             </div>
         </div>
@@ -147,7 +154,8 @@
                                 <p class="blog-btn">
                                     {{ Carbon::parse($new->created_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}</p>
                                 <!-- Blog Title -->
-                                <h5 style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap" class="blog-title my-3">{{ $new->title }}</h5>
+                                <h5 style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap"
+                                    class="blog-title my-3">{{ $new->title }}</h5>
 
                                 <p style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap"
                                     class="blog">{{ $new->content }}</p>
@@ -170,4 +178,11 @@
     </section>
 
     <div class="height-emulator d-none d-lg-block"></div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.summernote').summernote();
+        });
+    </script>
 @endsection
