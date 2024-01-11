@@ -9,14 +9,17 @@ use App\Http\Requests\SurveyRequest;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\SubmitSurveyRequest;
 use App\Contracts\Interfaces\SurveyInterface;
+use App\Contracts\Interfaces\SubmitSurveyInterface;
 
 class SurveyController extends Controller
 {
     private SurveyInterface $survey;
+    private SubmitSurveyInterface $submitSurvey;
 
-    public function __construct(SurveyInterface $survey)
+    public function __construct(SurveyInterface $survey, SubmitSurveyInterface $submitSurvey)
     {
         $this->survey = $survey;
+        $this->submitSurvey = $submitSurvey;
     }
     /**
      * Display a listing of the resource.
@@ -103,11 +106,10 @@ class SurveyController extends Controller
      */
     public function submit(SubmitSurveyRequest $request,Survey $survey) : RedirectResponse
     {
-        dd($request);
         $data = $request->validated();
+        $data['student_id'] = auth()->user()->student->id;
         $data['survey_id'] = $survey->id;
-
-        $this->survey->store($data);
+        $this->submitSurvey->store($data);
 
         return redirect()->back()->with('success',trans('alert.add_success'));
     }

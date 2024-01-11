@@ -80,13 +80,13 @@
                             ?</label>
                         <div class="gap-3">
                             <div>
-                                <input type="radio" name="alumni_gathering" id="Ya" value="Ya"
+                                <input type="radio" name="alumni_gathering" id="Ya" value="1"
                                     class="form-check-input"> <label class="form-check-label" for="Ya">
                                     Ya
                                 </label>
                             </div>
                             <div>
-                                <input type="radio" name="alumni_gathering" id="Tidak " value="Tidak "
+                                <input type="radio" name="alumni_gathering" id="Tidak " value="0"
                                     class="form-check-input"> <label class="form-check-label" for="Tidak ">
                                     Tidak
                                 </label>
