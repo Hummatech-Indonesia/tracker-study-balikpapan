@@ -33,7 +33,7 @@ trait ValidationStudentTrait
             ],
             'tanggal_lahir' => 'required',
             'jenis_kelamin' => ['required', new GenderImportEnum],
-            'alamat' => 'reqiored'
+            'alamat' => 'required'
         ];
     }
 
