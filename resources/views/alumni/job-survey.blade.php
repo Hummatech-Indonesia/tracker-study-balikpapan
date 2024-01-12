@@ -108,7 +108,6 @@
                             <label for="single-select-field" class="form-label">Provinsi</label>
                             <select class="form-select small-bootstrap-class-single-field" id="small-bootstrap-class-single-field" data-placeholder="Choose one thing">
                             </select>
-
                             <ul class="error-text"></ul>
                         </div>
                         <div class="mb-3">
@@ -159,13 +158,12 @@
 
     <script>
         $(document).ready(function() {
-
             getProvinces();
-
+    
             $('#small-bootstrap-class-single-field').change(function() {
                 getRegencies();
             });
-
+    
             function getProvinces() {
                 $.ajax({
                     method: 'GET',
@@ -176,29 +174,31 @@
                                 '</option>';
                             $('#small-bootstrap-class-single-field').append(option);
                         });
+                        var provinceId = "{{ $submitSurvey->regency->province_id }}";
+                        $('#small-bootstrap-class-single-field').val(provinceId);
                         getRegencies();
                     }
                 });
             }
-
+    
             function getRegencies() {
+                var provinceId = $('#small-bootstrap-class-single-field').val();
                 $.ajax({
                     url: "{{ route('regency') }}",
                     type: 'GET',
                     data: {
-                        province: $('#small-bootstrap-class-single-field').val()
+                        province: provinceId
                     },
                     success: function(response) {
                         $('#large-bootstrap-class-single-field').html('');
                         $.each(response, function(index, item) {
-                            var option = '<option value="' + item.id + '">' + item.name +
-                                '</option>';
+                            var selected = (item.id == "{{ $submitSurvey->regency_id }}") ? 'selected' : '';
+                            var option = '<option value="' + item.id + '"' + selected + '>' + item.name + '</option>';
                             $('#large-bootstrap-class-single-field').append(option);
                         });
                     }
                 });
             }
-
         });
     </script>
 @endsection
