@@ -2,8 +2,9 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\SubmitSurveyInterface;
 use App\Models\SubmitSurvey;
+use App\Enums\ActivityStatusEnum;
+use App\Contracts\Interfaces\SubmitSurveyInterface;
 
 class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInterface
 {
@@ -112,7 +113,7 @@ class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInter
     {
         return $this->model->query()
         ->where('survey_id', $surveyId)
-        ->where('current_activity', 'work')
+        ->where('current_activity', [ActivityStatusEnum::WORK->value])
         ->count();
     }
 
@@ -126,7 +127,7 @@ class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInter
     {
         return $this->model->query()
         ->where('survey_id', $surveyId)
-        ->where('current_activity', 'bussiness')
+        ->where('current_activity', [ActivityStatusEnum::BUSSINESS->value])
         ->count();
     }
 
@@ -140,7 +141,8 @@ class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInter
     {
         return $this->model->query()
         ->where('survey_id', $surveyId)
-        ->where('current_activity', 'notwork')
+        ->where('current_activity', [ActivityStatusEnum::NOTWORK->value])
         ->count();
     }
+
 }
