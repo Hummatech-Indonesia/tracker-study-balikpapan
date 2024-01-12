@@ -36,9 +36,10 @@
         .user-circle {
             border-radius: 50%;
         }
+
         .border-custom {
-                border: 7px solid #5D87FF !important;
-            }
+            border: 7px solid #5D87FF !important;
+        }
     </style>
 </head>
 
@@ -100,6 +101,8 @@
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+
+
         // Ambil elemen input pencarian
         var searchInput = document.querySelector('#SearchModal input[type="search"]');
 
