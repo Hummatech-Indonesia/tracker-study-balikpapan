@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Enums\RoleEnum;
+use Illuminate\Http\Request;
+use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\JobVacancyInterface;
 use App\Contracts\Interfaces\PortofolioInterface;
-use App\Contracts\Interfaces\StudentInterface;
-use Illuminate\Http\Request;
+use App\Contracts\Interfaces\SubmitSurveyInterface;
 
 class HomeController extends Controller
 {
@@ -14,12 +15,14 @@ class HomeController extends Controller
     private PortofolioInterface $portofolio;
     private JobVacancyInterface $jobVacancy;
     private StudentInterface $student;
+    private SubmitSurveyInterface $submitSurvey;
 
-    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student)
+    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student, SubmitSurveyInterface $submitSurvey)
     {
         $this->portofolio = $portofolio;
         $this->student = $student;
         $this->jobVacancy = $jobVacancy;
+        $this->submitSurvey = $submitSurvey;
     }
 
     /**
@@ -45,9 +48,15 @@ class HomeController extends Controller
         switch ($role) {
             case RoleEnum::ADMIN->value:
                 $countAlumni = $this->student->countAlumni(null);
+                $countStudent = $this->student->countStudent(null);
                 $countAlumniSubmitSurvey = $this->student->countAlumniSubmitSurvey(null);
                 $countAlumniNotSubmitSurvey = $this->student->countAlumniNotSubmitSurvey(null);
-                return view('admin.index', compact('countAlumni', 'countAlumniSubmitSurvey', 'countAlumniNotSubmitSurvey'));
+                $countAlumniWork = $this->submitSurvey->countAllWork(null);
+                $countAlumniBussiness = $this->submitSurvey->countAllBussiness(null);
+                $countAlumniNotWork = $this->submitSurvey->countAllNotWork(null);
+                $countAlumniStudy = $this->submitSurvey->countAllStudy(null);
+
+                return view('admin.index', compact('countAlumni', 'countAlumniSubmitSurvey', 'countAlumniNotSubmitSurvey','countAlumniWork', 'countAlumniNotWork', 'countAlumniBussiness','countStudent','countAlumniStudy'));
                 break;
             case RoleEnum::STUDENT->value:
                 $countPortofolio = $this->portofolio->countPortofolio();

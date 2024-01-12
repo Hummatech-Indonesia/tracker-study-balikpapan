@@ -49,4 +49,36 @@ interface SubmitSurveyInterface extends GetInterface,StoreInterface, UpdateInter
      */
     public function countBussiness(mixed $surveyId) : mixed;
 
+    /**
+     * countAllWork
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAllWork(?array $data) : int;
+
+    /**
+     * countAllBussiness
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAllBussiness(?array $data) : int;
+
+    /**
+     * countAllNotWork
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAllNotWork(?array $data) : int;
+
+    /**
+     * countAllStudy
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAllStudy(?array $data) : int;
+
 }
