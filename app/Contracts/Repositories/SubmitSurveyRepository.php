@@ -2,8 +2,8 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Models\SubmitSurvey;
 use App\Contracts\Interfaces\SubmitSurveyInterface;
+use App\Models\SubmitSurvey;
 
 class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInterface
 {
@@ -34,8 +34,8 @@ class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInter
         return $this->model->query()
             ->updateOrCreate([
                 'student_id' => $data['student_id'],
-                'survey_id' => $data['survey_id']
-            ],$data);
+                'survey_id' => $data['survey_id'],
+            ], $data);
     }
 
     /**
@@ -73,5 +73,18 @@ class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInter
     {
         return $this->show($id)
             ->delete();
+    }
+
+    /**
+     * getByStudent
+     *
+     * @param  mixed $studentId
+     * @return mixed
+     */
+    public function getByStudent(mixed $studentId): mixed
+    {
+        return $this->model->query()
+            ->where('student_id',$studentId)
+            ->first();
     }
 }

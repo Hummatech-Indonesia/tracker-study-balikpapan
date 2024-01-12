@@ -9,5 +9,5 @@ use App\Contracts\Interfaces\Eloquent\GetInterface;
 
 interface SubmitSurveyInterface extends GetInterface,StoreInterface, UpdateInterface,DeleteInterface
 {
-    
+    public function getByStudent($studentId) :mixed;
 }

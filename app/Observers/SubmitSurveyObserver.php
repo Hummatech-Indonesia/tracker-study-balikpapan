@@ -10,8 +10,8 @@ class SubmitSurveyObserver
     /**
      * Handle the Student "created" event.
      */
-    public function creating(SubmitSurvey $survey): void
+    public function creating(SubmitSurvey $submitSurvey): void
     {
-        $survey->id = Uuid::uuid();
+        $submitSurvey->id = Uuid::uuid();
     }
 }

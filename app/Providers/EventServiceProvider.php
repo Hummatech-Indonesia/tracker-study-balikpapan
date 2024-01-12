@@ -10,29 +10,31 @@ use App\Models\Company;
 use App\Models\Student;
 use App\Models\Classroom;
 use App\Models\JobVacancy;
+use App\Models\Portofolio;
+use App\Models\SubmitSurvey;
 use App\Models\GalleryAlumni;
 use App\Models\TeacherGallery;
 use App\Models\ApplyJobVacancy;
+use App\Models\PhotoPortofolio;
 use App\Observers\NewsObserver;
 use App\Observers\UserObserver;
 use App\Observers\MajorObserver;
 use App\Observers\SurveyObserver;
 use App\Models\AlumniVideoGallery;
-use App\Models\PhotoPortofolio;
-use App\Models\Portofolio;
 use App\Observers\CompanyObserver;
 use App\Observers\StudentObserver;
 use App\Models\SliderGalleryAlumni;
 use App\Models\TeacherVideoGallery;
 use App\Observers\ClassroomObserver;
 use App\Observers\JobVacancyObserver;
+use App\Observers\PortofolioObserver;
 use Illuminate\Auth\Events\Registered;
+use App\Observers\SubmitSurveyObserver;
 use App\Observers\GalleryAlumniObserver;
 use App\Observers\TeacherGalleryObserver;
 use App\Observers\ApplyJobVacancyObserver;
-use App\Observers\AlumniVideoGalleryObserver;
 use App\Observers\PhotoPortofolioObserver;
-use App\Observers\PortofolioObserver;
+use App\Observers\AlumniVideoGalleryObserver;
 use App\Observers\SliderGalleryAlumniObserver;
 use App\Observers\TeacherVideoGalleryObserver;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -72,6 +74,7 @@ class EventServiceProvider extends ServiceProvider
         ApplyJobVacancy::observe(ApplyJobVacancyObserver::class);
         Portofolio::observe(PortofolioObserver::class);
         PhotoPortofolio::observe(PhotoPortofolioObserver::class);
+        SubmitSurvey::observe(SubmitSurveyObserver::class);
     }
 
     /**
