@@ -65,7 +65,7 @@
                         </p>
                         <div class="d-flex justify-content-end gap-2">
                             <div class="">
-                                <a href="{{ route('survey-results') }}" class="btn text-white" style="background-color: #1D9375">Hasil Survei</a>
+                                <a href="{{ route('survey-results', ['survey' => $survey->id]) }}" class="btn text-white" style="background-color: #1D9375">Hasil Survei</a>
 
                             </div>
                             <div class="">

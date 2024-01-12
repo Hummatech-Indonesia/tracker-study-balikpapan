@@ -91,7 +91,7 @@ Route::middleware('auth')->group(function () {
             'users' => AccountController::class
         ]);
 
-        Route::get('survey-results', [SurveyController::class, 'surveyResults'])->name('survey-results');
+        Route::get('survey-results/{survey}', [SurveyController::class, 'surveyResults'])->name('survey-results');
 
         Route::patch('change-alumni-select', [StudentStatusController::class, 'selectChangeAlumni'])->name('change.alumni.select');
         Route::patch('change-student-select', [StudentStatusController::class, 'selectChangeStudent'])->name('change.student.select');
