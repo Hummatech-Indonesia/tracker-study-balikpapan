@@ -122,7 +122,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware('role:alumni')->prefix('alumni')->name('alumni.')->group(function () {
         Route::get('survei', [SurveyController::class, 'survey'])->name('job.survey');
-        Route::post('submit-survey/{survey}', [SurveyController::class, 'submit'])->name('submit-survey');
+        Route::post('submit-survey/{survey}', [SurveyController::class, 'submit'])->name('submit.survey');
 
         Route::get('detail-lowongan-tersedia/{job_vacancy}', [JobVacancyController::class, 'show'])->name('detail.lowongan.tersedia');
         Route::post('detail-lowongan-tersedia/{jobVacancy}', [ApplyJobVacancyController::class, 'store'])->name('send.cv');

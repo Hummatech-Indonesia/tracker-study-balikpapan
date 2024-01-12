@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Contracts\Interfaces\UserInterface;
 use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -15,10 +16,12 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     private LoginService $loginService;
+    private UserInterface $user;
 
-    public function __construct(LoginService $loginService)
+    public function __construct(LoginService $loginService, UserInterface $user)
     {
         $this->loginService = $loginService;
+        $this->user = $user;
     }
 
     /**
@@ -31,7 +34,7 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        return $this->loginService->handleLogin($request);
+        return $this->loginService->handleLogin($request, $this->user);
     }
 
     /**
