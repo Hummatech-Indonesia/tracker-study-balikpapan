@@ -31,4 +31,8 @@ class SubmitSurvey extends Model
         'alumni_gathering',
         'current_activity',
     ];
+    public function regency()
+    {
+        return $this->belongsTo(Regency::class ,'regency_id');
+    }
 }
