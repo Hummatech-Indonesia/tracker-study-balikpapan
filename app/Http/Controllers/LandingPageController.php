@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\CompanyInterface;
 use App\Models\News;
 use App\Models\JobVacancy;
 use Illuminate\Http\Request;
@@ -17,9 +18,11 @@ class LandingPageController extends Controller
     private SliderGalleryAlumni $slidergaleryalumni;
     private GalleryAlumniInterface $galleryAlumni;
     private JobVacancyInterface $jobVacancy;
+    private CompanyInterface $company;
 
-    public function __construct(NewsInterface $news , SliderGalleryAlumni $slidergaleryalumni , GalleryAlumniInterface $galleryAlumni, JobVacancyInterface $jobVacancy)
+    public function __construct(NewsInterface $news, SliderGalleryAlumni $slidergaleryalumni, GalleryAlumniInterface $galleryAlumni, JobVacancyInterface $jobVacancy, CompanyInterface $company)
     {
+        $this->company = $company;
         $this->news = $news;
         $this->slidergaleryalumni = $slidergaleryalumni;
         $this->galleryAlumni = $galleryAlumni;
@@ -31,7 +34,7 @@ class LandingPageController extends Controller
      *
      * @return view
      */
-    public function news() : view
+    public function news(): view
     {
         $news = $this->news->getByMonthNow();
         $latestNews = $this->news->getOneLatest();
@@ -47,7 +50,7 @@ class LandingPageController extends Controller
     {
         $galleryAlumnis = $this->galleryAlumni->get();
         $slidergaleryalumnis = $this->slidergaleryalumni->get();
-        return view('galery-alumni' , ['slidergaleryalumnis' => $slidergaleryalumnis , 'galleryAlumnis'=>$galleryAlumnis]);
+        return view('galery-alumni', ['slidergaleryalumnis' => $slidergaleryalumnis, 'galleryAlumnis' => $galleryAlumnis]);
     }
 
     /**
@@ -59,7 +62,8 @@ class LandingPageController extends Controller
     public function jobVacancy(Request $request)
     {
         $jobVacancys = $this->jobVacancy->customPaginate($request, 10);
-        return view('lowongan', compact('jobVacancys'));
+        $companies = $this->company->get();
+        return view('lowongan', compact('jobVacancys', 'companies'));
     }
 
 
@@ -80,7 +84,7 @@ class LandingPageController extends Controller
      * @param  mixed $news
      * @return view
      */
-    public function detailNews(News $news) : view
+    public function detailNews(News $news): view
     {
         $newsDetail = $this->news->show($news->id);
         $latestNews = $this->news->getByLatest();

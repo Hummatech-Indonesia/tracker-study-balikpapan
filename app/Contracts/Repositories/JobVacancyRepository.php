@@ -87,6 +87,9 @@ class JobVacancyRepository extends BaseRepository implements JobVacancyInterface
             ->when($request->job_title, function ($query) use ($request) {
                 $query->where('job_title', 'LIKE', '%' . $request->job_title . '%');
             })
+            ->when($request->company_id, function ($query) use ($request) {
+                $query->where('company_id', $request->company_id);
+            })
             ->latest()
             ->fastPaginate($pagination);
     }
