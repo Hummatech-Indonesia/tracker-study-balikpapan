@@ -7,6 +7,7 @@ use App\Contracts\Interfaces\PortofolioInterface;
 use App\Http\Requests\PortofolioRequest;
 use App\Http\Requests\PortofolioUpdateRequest;
 use App\Models\Portofolio;
+use App\Models\Student;
 use App\Services\PortofolioService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -111,5 +112,10 @@ class PortofolioController extends Controller
         }
         $this->portofolio->delete($portofolio->id);
         return redirect()->back()->with('success', trans('alert.delete_success'));
+    }
+
+    public function detail(Student $student){
+        $portofolios = $this->portofolio->getPortofolioByStudent($student->id);
+        return view('company.portofolio',compact('portofolios'));
     }
 }
