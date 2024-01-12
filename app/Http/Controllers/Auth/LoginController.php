@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Helpers\ResponseHelper;
+use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Http\Requests\LoginRequest as RequestsLoginRequest;
 use App\Providers\RouteServiceProvider;
 use App\Services\Auth\LoginService;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +29,7 @@ class LoginController extends Controller
      * @param \App\Http\Requests\Auth\LoginRequest $request The incoming login request.
      * @return \Illuminate\Http\JsonResponse Returns a JSON response.
      */
-    public function login(RequestsLoginRequest $request)
+    public function login(LoginRequest $request)
     {
         return $this->loginService->handleLogin($request);
     }
