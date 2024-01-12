@@ -28,6 +28,7 @@ class RegisterRequest extends FormRequest
             'gender' => ['required', new GenderRule],
             'role' => ['required', new RoleRule],
             'phone_number' => 'required',
+            'checked' => 'required',
         ];
     }
 
@@ -58,6 +59,8 @@ class RegisterRequest extends FormRequest
             'phone_number.required' => 'Kolom nomor telepon harus diisi.',
 
             'role.required' => 'Role wajib diisi',
+
+            'checked.required' => 'Anda harus menyetujui Kebijakan Privasi'
         ];
     }
 }

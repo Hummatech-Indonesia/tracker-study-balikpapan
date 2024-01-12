@@ -50,7 +50,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="phone_number" class="form-label">No Telepon</label>
                         <input type="text" name="phone_number"
-                            value="{{ $submitSurvey ? $submitSurvey->phone_number : '' }}" placeholder="Ex : 086754...."
+                            value="{{ auth()->user()->phone_number != null ? auth()->user()->phone_number : '' }}" placeholder="Ex : 086754...."
                             class="form-control" id="phone_number">
                     </div>
                     <div class="col-12 mb-3">
@@ -174,11 +174,11 @@
     <script>
         $(document).ready(function() {
             getProvinces();
-    
+
             $('#small-bootstrap-class-single-field').change(function() {
                 getRegencies();
             });
-    
+
             function getProvinces() {
                 $.ajax({
                     method: 'GET',
@@ -195,7 +195,7 @@
                     }
                 });
             }
-    
+
             function getRegencies() {
                 var provinceId = $('#small-bootstrap-class-single-field').val();
                 $.ajax({

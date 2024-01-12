@@ -19,7 +19,8 @@ class RegisterCompanyRequest extends FormRequest
             'password' => 'required|min:8|same:password_confirmation',
             'password_confirmation' => 'required',
             'phone_number' => 'required|numeric',
-            'description' => 'required'
+            'description' => 'required',
+            'checked' => 'required'
         ];
     }
 }
