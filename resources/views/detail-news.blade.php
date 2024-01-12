@@ -73,7 +73,7 @@ use Carbon\Carbon;
                                     <div>{{ $newsDetail->title }}</div>
                                 </h3>
                                 <div class="mb-2" style="color: #5D87FF">{{ Carbon::parse($newsDetail->created_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}</div>
-                                <p class="d-none d-sm-block">{{ $newsDetail->content }}</p>
+                                <p class="d-none d-sm-block">{!! $newsDetail->content !!}</p>
                             </div>
                         </div>
                     </article>
