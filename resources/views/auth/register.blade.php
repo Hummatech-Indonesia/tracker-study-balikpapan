@@ -158,7 +158,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox"
+                                                <input class="form-check-input" name="checked" value="1" type="checkbox"
                                                     id="flexSwitchCheckChecked">
                                                 <a class="form-check-label" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal" style="cursor: pointer; color:black"
