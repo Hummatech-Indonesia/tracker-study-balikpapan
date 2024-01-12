@@ -1,6 +1,6 @@
     <header class="navbar navbar-sticky navbar-expand-lg navbar-dark">
         <div class="container position-relative">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="javascript:void(0)">
                 <img class="navbar-brand-regular" width="8%" src="{{ asset('LOGO SMKN 2.png') }}" alt="brand-logo">
                 <img class="navbar-brand-sticky" width="8%" src="{{ asset('LOGO SMKN 2.png') }}" alt="sticky brand-logo">
             </a>
