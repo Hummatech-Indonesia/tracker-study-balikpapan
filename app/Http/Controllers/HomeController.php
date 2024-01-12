@@ -17,15 +17,13 @@ class HomeController extends Controller
     private JobVacancyInterface $jobVacancy;
     private StudentInterface $student;
     private CompanyInterface $company;
-    private SubmitSurveyInterface $submitSurvey;
 
-    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student, CompanyInterface $company, SubmitSurveyInterface $submitSurvey)
+    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student, CompanyInterface $company)
     {
         $this->company = $company;
         $this->portofolio = $portofolio;
         $this->student = $student;
         $this->jobVacancy = $jobVacancy;
-        $this->submitSurvey = $submitSurvey;
     }
 
     /**
@@ -60,10 +58,10 @@ class HomeController extends Controller
                 $countStudent = $this->student->countStudent(null);
                 $countAlumniSubmitSurvey = $this->student->countAlumniSubmitSurvey(null);
                 $countAlumniNotSubmitSurvey = $this->student->countAlumniNotSubmitSurvey(null);
-                $countAlumniWork = $this->submitSurvey->countAllWork(null);
-                $countAlumniBussiness = $this->submitSurvey->countAllBussiness(null);
-                $countAlumniNotWork = $this->submitSurvey->countAllNotWork(null);
-                $countAlumniStudy = $this->submitSurvey->countAllStudy(null);
+                $countAlumniStudy = $this->student->countAlumniStudy(null);
+                $countAlumniNotWork = $this->student->countAlumniNotWork(null);
+                $countAlumniWork = $this->student->countAlumniWork(null);
+                $countAlumniBussiness = $this->student->countAlumniBusinnes(null);
 
                 return view('admin.index', compact('countAlumni', 'countAlumniSubmitSurvey', 'countAlumniNotSubmitSurvey', 'countAlumniWork', 'countAlumniNotWork', 'countAlumniBussiness', 'countStudent', 'countAlumniStudy'));
                 break;
