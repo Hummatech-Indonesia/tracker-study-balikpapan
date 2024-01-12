@@ -104,10 +104,16 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox"
+                                                <input name="checked" class="form-check-input" type="checkbox"
                                                     id="flexSwitchCheckChecked">
-                                                <label class="form-check-label" for="flexSwitchCheckChecked">Kebijakan
-                                                    Privasi</label>
+                                                <a class="form-check-label" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal" style="cursor: pointer; color:black"
+                                                    for="flexSwitchCheckChecked">Kebijakan
+                                                    Privasi</a>
+                                                @error('checked')
+                                                    <div class="text-danger">{{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -129,6 +135,62 @@
 
             </div>
             <!--end row-->
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p style="font-size:24px;color:black;text-align:center;line-height:normal;font-weight:500;">
+                            Kebijakan Privasi</p>
+                        <p>Kebijakan Privasi Tracker Study</p>
+                        <p>Terakhir Diperbarui: 12 Januari 2024</p>
+                        <div>
+                            <ol
+                                style="
+                         padding-left: 0px;
+                         margin-left: 18px;
+                     ">
+                                <li>
+                                    <p style="margin: 0">Informasi yang kami kumpulkan:</p>
+                                    <ul>
+                                        <li>Kami mengumpulkan informasi pribadi dan otomatis untuk menyediakan dan
+                                            meningkatkan
+                                            layanan. </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p style="margin: 0">Penggunaan Informasi:</p>
+                                    <ul>
+                                        <li>Informasi digunakan untuk menyampaikan layanan, pembaruan, dan keperluan
+                                            analisis internal. </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p style="margin: 0">Pemberian Informasi kepada Pihak Ketiga:</p>
+                                    <ul>
+                                        <li>Informasi pribadi tidak akan dijual atau disewakan kepada pihak ketiga tanpa
+                                            persetujuan, kecuali jika diperlukan oleh hukum. </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p style="margin: 0">Keamanan Informasi:</p>
+                                    <ul>
+                                        <li> Kami menerapkan langkah-langkah keamanan untuk melindungi informasi yang
+                                            dikumpulkan. </li>
+                                    </ul>
+                                </li>
+                            </ol>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="display:flex; justify-content:center">
+                        <button type="button" class="btn px-5" style="background-color: #5D87FF; color:white;"
+                            data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
