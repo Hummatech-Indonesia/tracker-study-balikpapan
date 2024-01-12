@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\StatusEnum;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,7 +17,7 @@ class ChartAlumniResource extends JsonResource
     {
         $count = 0;
         foreach ($this->classrooms as $classroom) {
-            $count += $classroom->students->count();
+            $count += $classroom->students->where('is_graduate', 0)->where('status', StatusEnum::ACTIVE->value)->count();
         }
         return [
             'name' => $this->name,

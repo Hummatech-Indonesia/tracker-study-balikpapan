@@ -28,7 +28,8 @@ class HomeController extends Controller
     public function index()
     {
         $jobVacancys = $this->jobVacancy->get();
-        return view('index', compact('jobVacancys'));
+        $countAlumni = $this->student->countAlumni(null);
+        return view('index', compact('jobVacancys', 'countAlumni'));
     }
 
     /**
@@ -44,7 +45,9 @@ class HomeController extends Controller
         switch ($role) {
             case RoleEnum::ADMIN->value:
                 $countAlumni = $this->student->countAlumni(null);
-                return view('admin.index', compact('countAlumni'));
+                $countAlumniSubmitSurvey = $this->student->countAlumniSubmitSurvey(null);
+                $countAlumniNotSubmitSurvey = $this->student->countAlumniNotSubmitSurvey(null);
+                return view('admin.index', compact('countAlumni', 'countAlumniSubmitSurvey', 'countAlumniNotSubmitSurvey'));
                 break;
             case RoleEnum::STUDENT->value:
                 $countPortofolio = $this->portofolio->countPortofolio();

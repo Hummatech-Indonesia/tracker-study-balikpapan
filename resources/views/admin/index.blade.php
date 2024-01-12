@@ -85,7 +85,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Alumni Yang Mengisi Survei</p>
-                            <h4 class="my-1 mb-4" style="color:#8D1C6D;">200</h4>
+                            <h4 class="my-1 mb-4" style="color:#8D1C6D;">{{ $countAlumniSubmitSurvey }}</h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle text-white ms-auto" style="background-color: #FBD9F2;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 58 58"
@@ -141,7 +141,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">ALumni Tidak Mengisi Survei</p>
-                            <h4 class="my-1 mb-4" style="color: #8D441C;">84</h4>
+                            <h4 class="my-1 mb-4" style="color: #8D441C;">{{ $countAlumniNotSubmitSurvey }}</h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle text-white ms-auto" style="background-color: #FFEDE3;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 44 44"
