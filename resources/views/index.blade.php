@@ -60,7 +60,16 @@
                     <div class="counter-inner p-3 p-md-0">
                         <!-- Counter Item -->
                         <div class="counter-item d-inline-block mb-3">
-                            <span class="counter fw-7">120</span>
+                            <span class="counter fw-7">{{ $countAlumniSubmitSurvey }}</span>
+                        </div>
+                        <h5>Alumni Mengisi Survey</h5>
+                    </div>
+                </div>
+                <div class="col-5 col-sm-2 single-counter text-center">
+                    <div class="counter-inner p-3 p-md-0">
+                        <!-- Counter Item -->
+                        <div class="counter-item d-inline-block mb-3">
+                            <span class="counter fw-7">{{ $countAlumniStudy }}</span>
                         </div>
                         <h5>Kuliah</h5>
                     </div>
@@ -69,7 +78,7 @@
                     <div class="counter-inner p-3 p-md-0">
                         <!-- Counter Item -->
                         <div class="counter-item d-inline-block mb-3">
-                            <span class="counter fw-7">10</span>
+                            <span class="counter fw-7">{{ $countAlumniBusinnes }}</span>
                         </div>
                         <h5>Berwirausaha</h5>
                     </div>
@@ -78,7 +87,7 @@
                     <div class="counter-inner p-3 p-md-0">
                         <!-- Counter Item -->
                         <div class="counter-item d-inline-block mb-3">
-                            <span class="counter fw-7">120</span>
+                            <span class="counter fw-7">{{ $countAlumniWork }}</span>
                         </div>
                         <h5>Pekerja</h5>
                     </div>
@@ -87,7 +96,7 @@
                     <div class="counter-inner p-3 p-md-0">
                         <!-- Counter Item -->
                         <div class="counter-item d-inline-block mb-3">
-                            <span class="counter fw-7">130</span>
+                            <span class="counter fw-7">{{ $countAlumniNotWork }}</span>
                         </div>
                         <h5>Menganggur</h5>
                     </div>

@@ -5,6 +5,7 @@ namespace App\Contracts\Repositories;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Contracts\Interfaces\StudentInterface;
+use App\Enums\ActivityStatusEnum;
 use App\Enums\StatusEnum;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -210,6 +211,62 @@ class StudentRepository extends BaseRepository implements StudentInterface
         return $this->model->query()
             ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
             ->whereDoesntHave('submitSurvey')
+            ->count();
+    }
+
+    /**
+     * countAlumniStudy
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniStudy(?array $data): int
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
+            ->whereRelation('submitSurvey', 'current_activity', ActivityStatusEnum::STUDY->value)
+            ->count();
+    }
+
+    /**
+     * countAlumniBusinnes
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniBusinnes(?array $data): int
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
+            ->whereRelation('submitSurvey', 'current_activity', ActivityStatusEnum::BUSSINESS->value)
+            ->count();
+    }
+
+    /**
+     * countAlumniNotWork
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniNotWork(?array $data): int
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
+            ->whereRelation('submitSurvey', 'current_activity', ActivityStatusEnum::NOTWORK->value)
+            ->count();
+    }
+
+    /**
+     * countAlumniWork
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniWork(?array $data): int
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
+            ->whereRelation('submitSurvey', 'current_activity', ActivityStatusEnum::WORK->value)
             ->count();
     }
 }

@@ -29,7 +29,12 @@ class HomeController extends Controller
     {
         $jobVacancys = $this->jobVacancy->get();
         $countAlumni = $this->student->countAlumni(null);
-        return view('index', compact('jobVacancys', 'countAlumni'));
+        $countAlumniStudy = $this->student->countAlumniStudy(null);
+        $countAlumniNotWork = $this->student->countAlumniNotWork(null);
+        $countAlumniWork = $this->student->countAlumniWork(null);
+        $countAlumniBusinnes = $this->student->countAlumniBusinnes(null);
+        $countAlumniSubmitSurvey = $this->student->countAlumniSubmitSurvey(null);
+        return view('index', compact('jobVacancys', 'countAlumni', 'countAlumniStudy', 'countAlumniNotWork', 'countAlumniWork', 'countAlumniBusinnes', 'countAlumniSubmitSurvey'));
     }
 
     /**
