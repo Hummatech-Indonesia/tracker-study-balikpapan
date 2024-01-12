@@ -24,7 +24,6 @@
                         <tr>
                             <th scope="col" class="text-center">No</th>
                             <th scope="col">Judul</th>
-                            <th scope="col">Deskripsi</th>
                             <th scope="col" class="text-center">Gambar</th>
                             <th class="text-center">Aksi</th>
                         </tr>
@@ -34,8 +33,6 @@
                             <tr>
                                 <th class="text-center" scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $news->title }}</td>
-                                <td style="text-overflow: ellipsis;overflow: hidden ;max-width: 250px ;white-space: nowrap">
-                                    {!! $news->content !!}</td>
                                 <td width="30%" class="text-center"><img width="50%"
                                         src="{{ asset('storage/' . $news->thumbnail) }}" alt="" srcset=""></td>
                                 <td class="">

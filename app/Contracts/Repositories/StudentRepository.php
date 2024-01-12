@@ -181,7 +181,35 @@ class StudentRepository extends BaseRepository implements StudentInterface
     public function chartAlumni(): mixed
     {
         return $this->model->query()
-            ->where('is_graduate', 1)
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
             ->get();
+    }
+
+    /**
+     * countAlumniSubmitSurvey
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniSubmitSurvey(?array $data): int
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
+            ->whereHas('submitSurvey')
+            ->count();
+    }
+
+    /**
+     * countAlumniNotSubmitSurvey
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniNotSubmitSurvey(?array $data): int
+    {
+        return $this->model->query()
+            ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
+            ->whereDoesntHave('submitSurvey')
+            ->count();
     }
 }

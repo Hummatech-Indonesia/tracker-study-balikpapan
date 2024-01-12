@@ -14,7 +14,8 @@
                             perkembangan mereka setelah meninggalkan lembaga pendidikan.</p>
                     </div>
                     <div class="">
-                        <a href="/pilih-role" class="btn text-white py-2 py-1"  style="background-color:#FFAE1F; width:25% ; height:25%">
+                        <a href="/pilih-role" class="btn text-white py-2 py-1"
+                            style="background-color:#FFAE1F; width:25% ; height:25%">
                             Daftar
                         </a>
                     </div>
@@ -50,7 +51,7 @@
                     <div class="counter-inner p-3 p-md-0">
                         <!-- Counter Item -->
                         <div class="counter-item d-inline-block mb-3">
-                            <span class="counter fw-7">10</span>
+                            <span class="counter fw-7">{{ $countAlumni }}</span>
                         </div>
                         <h5>Jumlah Alumni</h5>
                     </div>
@@ -192,55 +193,64 @@
             </div>
             <div class="row justify-content-center">
                 @forelse ($jobVacancys as $jobVacancy)
-                <div class="col-12 col-md-6 col-lg-3 res-margin my-4">
-                    <!-- Single Price Plan -->
-                    <div class="single-price-plan text-center py-3 wow fadeInLeft" data-aos-duration="2s"
-                        data-wow-delay="0.4s">
+                    <div class="col-12 col-md-6 col-lg-3 res-margin my-4">
+                        <!-- Single Price Plan -->
+                        <div class="single-price-plan text-center py-3 wow fadeInLeft" data-aos-duration="2s"
+                            data-wow-delay="0.4s">
 
-                        <div class="card-top p-4 d-flex justify-content-center align-items-center">
-                            <img class="rounded-circle bg-secondary" style="width: 8rem; height:8rem;border:#5D87FF solid;" src="{{ asset($jobVacancy->company->user->photo == null ? 'default.jpg' : 'storage/'. $jobVacancy->company->user->photo) }}" alt="">
-                        </div>
-                        <div class="bg-primary p-2 text-white d-flex justify-content-center"
-                            style="font-weight: 600; font-size:12px; font-style: normal;">{{ $jobVacancy->company->user->name }}</div>
-                        <p class="d-flex text-black d-flex justify-content-center px-2 pt-2"
-                            style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Menerima Lowongan
-                        </p>
-                        <div style="background-color: #ECF2FF;" class="p-2 mx-4 d-flex justify-content-center mt-3">
-                            <p style="color: #5D87FF; font-weight:600">{{ $jobVacancy->job_title }}</p>
-                        </div>
-                        <p class="d-flex text-black d-flex justify-content-center p-2"
-                            style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Dengan Gaji
-                        </p>
-                        <p style="color: #5D87FF; font-weight:600" class="d-flex justify-content-center">{{ 'Rp. ' . number_format($jobVacancy->basic_salary, 2, ',', '.') }}/bln
-                        </p>
-                        <p class="d-flex text-black d-flex justify-content-center p-2"
-                            style="font-weight: bold; color:black; font-size:14px; font-style: normal;">Deskripsi Lowongan
-                        </p>
-                        <p class="d-flex text-black d-flex justify-content-center p-3 text-center mb-3"
-                        style="font-weight: 500; color: black; font-size: 12px; font-style: normal;">
-                        {{ Str::limit($jobVacancy->description_working_system, 100, '...') }}
-                     </p>
+                            <div class="card-top p-4 d-flex justify-content-center align-items-center">
+                                <img class="rounded-circle bg-secondary"
+                                    style="width: 8rem; height:8rem;border:#5D87FF solid;"
+                                    src="{{ asset($jobVacancy->company->user->photo == null ? 'default.jpg' : 'storage/' . $jobVacancy->company->user->photo) }}"
+                                    alt="">
+                            </div>
+                            <div class="bg-primary p-2 text-white d-flex justify-content-center"
+                                style="font-weight: 600; font-size:12px; font-style: normal;">
+                                {{ $jobVacancy->company->user->name }}</div>
+                            <p class="d-flex text-black d-flex justify-content-center px-2 pt-2"
+                                style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Menerima
+                                Lowongan
+                            </p>
+                            <div style="background-color: #ECF2FF;" class="p-2 mx-4 d-flex justify-content-center mt-3">
+                                <p style="color: #5D87FF; font-weight:600">{{ $jobVacancy->job_title }}</p>
+                            </div>
+                            <p class="d-flex text-black d-flex justify-content-center p-2"
+                                style="font-weight: 500; color:black; font-size:14px; font-style: normal;">Dengan Gaji
+                            </p>
+                            <p style="color: #5D87FF; font-weight:600" class="d-flex justify-content-center">
+                                {{ 'Rp. ' . number_format($jobVacancy->basic_salary, 2, ',', '.') }}/bln
+                            </p>
+                            <p class="d-flex text-black d-flex justify-content-center p-2"
+                                style="font-weight: bold; color:black; font-size:14px; font-style: normal;">Deskripsi
+                                Lowongan
+                            </p>
+                            <p class="d-flex text-black d-flex justify-content-center p-3 text-center mb-3"
+                                style="font-weight: 500; color: black; font-size: 12px; font-style: normal;">
+                                {{ Str::limit($jobVacancy->description_working_system, 100, '...') }}
+                            </p>
 
 
-                        <!-- Plan Button -->
-                        <div class="plan-button">
-                            <a href="{{ route('detail-lowongan',['jobVacancy' => $jobVacancy->id]) }}" class="p-2 rounded text-white"
-                                style="margin-top: -1rem; font-weight:450;background-color:#FFAE1F">Selengkapnya</a>
+                            <!-- Plan Button -->
+                            <div class="plan-button">
+                                <a href="{{ route('detail-lowongan', ['jobVacancy' => $jobVacancy->id]) }}"
+                                    class="p-2 rounded text-white"
+                                    style="margin-top: -1rem; font-weight:450;background-color:#FFAE1F">Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @empty
-                <div class="d-flex mb-4" style="min-height:16rem">
-                    <div class="my-auto">
-                        <img src="{{ asset('showNoData.png') }}" width="350" height="350" />
-                        <h4 class="text-center mt-4">Data Lowongan Pekerjaan Kosong!!</h4>
+                    <div class="d-flex mb-4" style="min-height:16rem">
+                        <div class="my-auto">
+                            <img src="{{ asset('showNoData.png') }}" width="350" height="350" />
+                            <h4 class="text-center mt-4">Data Lowongan Pekerjaan Kosong!!</h4>
+                        </div>
                     </div>
-                </div>
                 @endforelse
             </div>
             @if ($jobVacancys)
-            <div class="row justify-content-center">
-                <a href="{{ route('lowongan') }}" style="font-size: 1rem;
+                <div class="row justify-content-center">
+                    <a href="{{ route('lowongan') }}"
+                        style="font-size: 1rem;
                 font-weight: 500;
                 color: #fff;
                 line-height: 1;
@@ -249,10 +259,10 @@
                 border-radius: 6px;
                 outline: 0 none;
                 position: relative;
-                z-index: 1;margin-top:40px;margin-bottom:40px;">Lowongan Lainnya</a>
-            </div>
+                z-index: 1;margin-top:40px;margin-bottom:40px;">Lowongan
+                        Lainnya</a>
+                </div>
             @else
-
             @endif
 
         </div>

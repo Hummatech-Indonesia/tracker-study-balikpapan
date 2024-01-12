@@ -15,14 +15,7 @@
             z-index: 1;
         }
     </style>
-    <!-- include libraries(jQuery, bootstrap) -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+ 
 @endsection
 @section('content')
     @php
@@ -120,7 +113,7 @@
                     <div class="col-12 col-md-7 col-lg-5">
                         <div class="welcome-intro">
                             <h3 class="text-black fs-3 text-center">{{ $latestNews->title }}</h3>
-                            <p class="text-black my-4">{{ $latestNews->content }}</p>
+                            <p class="text-black my-4">{!! $latestNews->content !!}</p>
                         </div>
                     </div>
                 @endif
@@ -158,7 +151,7 @@
                                     class="blog-title my-3">{{ $new->title }}</h5>
 
                                 <p style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap"
-                                    class="blog">{{ $new->content }}</p>
+                                    class="blog">{!! $new->content !!}</p>
                                 <a href="{{ route('detail-news', ['news' => $new->id]) }}">
                                     <div class="button mt-3">Lihat Selengkapnya</div>
                                 </a>
