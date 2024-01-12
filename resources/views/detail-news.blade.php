@@ -42,7 +42,7 @@ use Carbon\Carbon;
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-2">
-                    <div class="button text-center mb-3">
+                    <div class="button text-center mb-3" style="cursor: pointer" onclick="history.back()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16"
                             fill="none">
                             <path
@@ -53,7 +53,7 @@ use Carbon\Carbon;
                 </div>
                 <div class="col-4">
                     <div class="button text-center mb-3">
-                        Latest News
+                        Berita Terbaru
                     </div>
                 </div>
             </div>
