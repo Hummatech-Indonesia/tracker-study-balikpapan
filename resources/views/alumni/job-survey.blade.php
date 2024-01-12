@@ -50,8 +50,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="phone_number" class="form-label">No Telepon</label>
                         <input type="text" name="phone_number"
-                            value="{{ auth()->user()->phone_number != null ? auth()->user()->phone_number : '' }}" placeholder="Ex : 086754...."
-                            class="form-control" id="phone_number">
+                            value="{{ auth()->user()->phone_number != null ? auth()->user()->phone_number : '' }}"
+                            placeholder="Ex : 086754...." class="form-control" id="phone_number">
                     </div>
                     <div class="col-12 mb-3">
                         <label for="" class="form-label">Sebutkan dan Jelaskan Kegiatan Anda ( Jelaskan Secara Rinci
@@ -189,7 +189,8 @@
                                 '</option>';
                             $('#small-bootstrap-class-single-field').append(option);
                         });
-                        var provinceId = "{{ $submitSurvey->regency->province_id }}";
+                        var provinceId =
+                            "{{ $submitSurvey ? $submitSurvey->regency?->province_id : null }}";
                         $('#small-bootstrap-class-single-field').val(provinceId);
                         getRegencies();
                     }
@@ -207,8 +208,10 @@
                     success: function(response) {
                         $('#large-bootstrap-class-single-field').html('');
                         $.each(response, function(index, item) {
-                            var selected = (item.id == "{{ $submitSurvey->regency_id }}") ? 'selected' : '';
-                            var option = '<option value="' + item.id + '"' + selected + '>' + item.name + '</option>';
+                            var selected = (item.id == "{{ $submitSurvey ? $submitSurvey->regency_id : '' }}") ?
+                                'selected' : '';
+                            var option = '<option value="' + item.id + '"' + selected + '>' +
+                                item.name + '</option>';
                             $('#large-bootstrap-class-single-field').append(option);
                         });
                     }
