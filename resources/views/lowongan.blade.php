@@ -54,7 +54,7 @@
                             </div>
                             <div class="">
                                 <select class="form-select" name="company_id" aria-label="Default select example">
-                                    <option selected>Pilih Perusahaan</option>
+                                    <option selected value="">Pilih Perusahaan</option>
                                     @foreach ($companies as $company)
                                         <option value="{{ $company->id }}">{{ $company->user->name }}</option>
                                     @endforeach
@@ -109,9 +109,14 @@
 
                             <!-- Plan Button -->
                             <div class="plan-button">
-                                <a href="{{ route('detail-lowongan', ['jobVacancy' => $jobVacancy->id]) }}"
+                                {{-- <a href="{{ route('detail-lowongan', ['jobVacancy' => $jobVacancy->id]) }}"
                                     class="p-2 rounded text-white"
-                                    style="margin-top: -1rem; font-weight:450;background-color:#FFAE1F">Selengkapnya</a>
+                                    style="margin-top: -1rem; font-weight:450;background-color:#FFAE1F">Selengkapnya</a> --}}
+                                <a href="{{ route('detail-lowongan', ['jobVacancy' => $jobVacancy->id]) }}"
+                                    class="btn btn-md text-white"
+                                    style="background-color: #FFAE1F; color:white; padding-right:2rem; padding-left:2rem">
+                                    Selengkapnya
+                                </a>
                             </div>
                         </div>
                     </div>
