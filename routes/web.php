@@ -74,6 +74,8 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware('role:admin')->group(function () {
+        Route::get('chart-alumni', [StudentController::class, 'chartAlumni'])->name('chart.alumni');
+
         Route::post('import-student', [StudentController::class, 'import'])->name('import.student');
 
         Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
@@ -119,8 +121,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:student')->group(function () {
     });
     Route::middleware('role:alumni')->prefix('alumni')->name('alumni.')->group(function () {
-        Route::get('survei', [SurveyController::class, 'survei'])->name('job.survey');
-        Route::post('submit-survei/{survey}', [SurveyController::class, 'submit'])->name('submit.survey');
+        Route::get('survei', [SurveyController::class, 'survey'])->name('job.survey');
+        Route::post('submit-survey/{survey}', [SurveyController::class, 'submit'])->name('submit-survey');
 
         Route::get('detail-lowongan-tersedia/{job_vacancy}', [JobVacancyController::class, 'show'])->name('detail.lowongan.tersedia');
         Route::post('detail-lowongan-tersedia/{jobVacancy}', [ApplyJobVacancyController::class, 'store'])->name('send.cv');

@@ -9,14 +9,20 @@ use App\Http\Requests\SurveyRequest;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\SubmitSurveyRequest;
 use App\Contracts\Interfaces\SurveyInterface;
+use App\Contracts\Interfaces\SubmitSurveyInterface;
+use App\Contracts\Interfaces\Auth\RegisterInterface;
 
 class SurveyController extends Controller
 {
     private SurveyInterface $survey;
+    private SubmitSurveyInterface $submitSurvey;
+    private RegisterInterface $user;
 
-    public function __construct(SurveyInterface $survey)
+    public function __construct(SurveyInterface $survey, SubmitSurveyInterface $submitSurvey, RegisterInterface $user)
     {
         $this->survey = $survey;
+        $this->submitSurvey = $submitSurvey;
+        $this->user = $user;
     }
     /**
      * Display a listing of the resource.
@@ -80,8 +86,9 @@ class SurveyController extends Controller
     public function survey() : View
     {
         $survey = $this->survey->getLatest();
+        $submitSurvey = $this->submitSurvey->getByStudent(auth()->user()->student->id);
 
-        return view('alumni.job-survey',compact('survey'));
+        return view('alumni.job-survey',compact('survey','submitSurvey'));
     }
 
     /**
@@ -101,13 +108,15 @@ class SurveyController extends Controller
      * @param  mixed $request
      * @return RedirectResponse
      */
-    public function submit(Survey $survey,SubmitSurveyRequest $request) : RedirectResponse
+    public function submit(SubmitSurveyRequest $request, Survey $survey) : RedirectResponse
     {
         $data = $request->validated();
+        $data['student_id'] = auth()->user()->student->id;
         $data['survey_id'] = $survey->id;
 
-        $this->survey->store($data);
+        $this->user->update(auth()->user()->id, $data);
+        $this->submitSurvey->store($data);
 
-        return redirect()->back()->with('success',trans('alert.add_success'));
+        return redirect()->back()->with('success',trans('alert.update_success'));
     }
 }

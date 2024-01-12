@@ -14,10 +14,10 @@ class RegencyController extends Controller
         $this->regency = $regency;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         if (request()->ajax()) {
-            return $this->regency->get();
+            return $this->regency->search($request);
         }
     }
 }

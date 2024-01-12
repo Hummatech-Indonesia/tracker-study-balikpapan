@@ -172,4 +172,16 @@ class StudentRepository extends BaseRepository implements StudentInterface
         return $this->model->query()
             ->findOrFail($id);
     }
+
+    /**
+     * chartAlumni
+     *
+     * @return mixed
+     */
+    public function chartAlumni(): mixed
+    {
+        return $this->model->query()
+            ->where('is_graduate', 1)
+            ->get();
+    }
 }

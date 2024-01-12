@@ -17,57 +17,71 @@
                     {{ Carbon::parse($survey->end_at)->locale('id_ID')->isoFormat('DD MMMM Y') }}</h5>
             </div>
         </div>
-        <form action="{{ Route('alumni.submit.survey', ['survey' => $survey->id]) }}" method="POST" class="card">
+        @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        <form action="{{ route('alumni.submit-survey', ['survey' => $survey->id]) }}" method="POST" class="card">
             @csrf
+            @method('POST')
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-6 col-sm-12 mb-3">
                         <label for="graduation_year" class="form-label">Nama ( dengan gelar jika ada )</label>
-                        <input type="text" name="name" id="graduation_year" placeholder="Ex : 2023"
+                        <input type="text" value="{{ auth()->user()->name }}" name="name" id="graduation_year" placeholder="Ex : 2023"
+                            class="form-control">
+                    </div>
+                    <div class="col-lg-6 col-sm-12 mb-3">
+                        <label for="create-name" class="form-label">Email</label>
+                        <input type="email" name="email" disabled value="{{ auth()->user()->email }}" id="create-name" placeholder="Masukan Email"
                             class="form-control">
                     </div>
                     <div class="col-lg-6 col-sm-12 mb-3">
                         <label for="graduation_year" class="form-label">Tahun Lulus</label>
-                        <input type="number" name="graduation_year" id="graduation_year" placeholder="Ex : 2023"
+                        <input type="number" name="graduation_year" value="{{ $submitSurvey->graduation_year }}" id="graduation_year" placeholder="Ex : 2023"
                             class="form-control">
-                    </div>
-                    <div class="col-lg-6 col-sm-12 mb-3">
-                        <label for="phone_number" class="form-label">No Telepon</label>
-                        <input type="text" name="phone_number" placeholder="Ex : 086754...." class="form-control"
-                            id="phone_number">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-                        <label for="create-name" class="form-label">Alamat Link/ URL ( Link Website atau Lainya )</label>
-                        <input type="text" name="url_address" id="create-name" placeholder="Masukan Link"
-                            class="form-control">
+                        <label for="phone_number" class="form-label">No Telepon</label>
+                        <input type="text" name="phone_number" value="{{ $submitSurvey->phone_number }}" placeholder="Ex : 086754...." class="form-control"
+                            id="phone_number">
                     </div>
                     <div class="col-12 mb-3">
                         <label for="" class="form-label">Sebutkan dan Jelaskan Kegiatan Anda ( Jelaskan Secara Rinci
                             )</label>
-                        <textarea name="activity" class="form-control" placeholder="Deskripsi.." id="" cols="30" rows="10"></textarea>
+                        <textarea name="activity" class="form-control" placeholder="Deskripsi.." id="" cols="30" rows="10">{{ $submitSurvey->activity }}</textarea>
                     </div>
                     <div class="col-lg-4 col-sm-12 mb-3">
                         <label for="create-tahun-lulus" class="form-check-label">Status Saat Ini</label>
                         <div>
                             <div>
-                                <input type="radio" name="current_activity" id="kerja" value="kerja"
+                                <input type="radio" {{ $submitSurvey->current_activity == 'work' ?
+                            'checked' : '' }} name="current_activity" id="kerja" value="work"
                                     class="form-check-input"> <label class="form-check-label" style="margin-right:14%"
                                     for="kerja">
                                     Kerja
                                 </label>
-                                <input type="radio" name="current_activity" id="kuliah" value="kuliah"
+                                <input type="radio" {{ $submitSurvey->current_activity == 'study' ?
+                                'checked' : '' }}  name="current_activity" id="kuliah" value="study"
                                     class="form-check-input"> <label class="form-check-label" for="kuliah">
                                     Kuliah
                                 </label>
                             </div>
                             <div>
-                                <input type="radio" name="current_activity" id="Wirausaha" value="Wirausaha"
+                                <input type="radio" {{ $submitSurvey->current_activity == 'bussiness' ?
+                                'checked' : '' }}  name="current_activity" id="Wirausaha" value="bussiness"
                                     class="form-check-input"> <label style="margin-right:3%" class="form-check-label"
                                     for="Wirausaha">
                                     Wirausaha
                                 </label>
 
-                                <input type="radio" name="current_activity" id="tidak bekerja" value="tidak bekerja"
+                                <input type="radio" {{ $submitSurvey->current_activity == 'notwork' ?
+                                'checked' : '' }} name="current_activity" id="tidak bekerja" value="notwork"
                                     class="form-check-input"> <label class="form-check-label" for="tidak bekerja">
                                     Tidak Bekerja
                                 </label>
@@ -79,13 +93,15 @@
                             ?</label>
                         <div class="gap-3">
                             <div>
-                                <input type="radio" name="alumni_gathering" id="Ya" value="Ya"
+                                <input type="radio" {{ $submitSurvey->alumni_gathering == '1' ?
+                                'checked' : '' }} name="alumni_gathering" id="Ya" value="1"
                                     class="form-check-input"> <label class="form-check-label" for="Ya">
                                     Ya
                                 </label>
                             </div>
                             <div>
-                                <input type="radio" name="alumni_gathering" id="Tidak " value="Tidak "
+                                <input type="radio" {{ $submitSurvey->alumni_gathering == '0' ?
+                                'checked' : '' }} name="alumni_gathering" id="Tidak " value="0"
                                     class="form-check-input"> <label class="form-check-label" for="Tidak ">
                                     Tidak
                                 </label>
@@ -98,24 +114,24 @@
                             <label for="single-select-field" class="form-label">Provinsi</label>
                             <select class="form-select small-bootstrap-class-single-field" id="small-bootstrap-class-single-field" data-placeholder="Choose one thing">
                             </select>
-                            
+
                             <ul class="error-text"></ul>
                         </div>
                         <div class="mb-3">
                             <label for="single-select-field" class="form-label">Kabupaten/Kota</label>
-                            <select class="form-select" id="large-bootstrap-class-single-field" data-placeholder="Choose one thing">
+                            <select class="form-select" name="regency_id" id="large-bootstrap-class-single-field" data-placeholder="Choose one thing">
                             </select>
                             <ul class="error-text"></ul>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-                        <label for="create-name" class="form-label">Email</label>
-                        <input type="email" name="email" id="create-name" placeholder="Masukan Email"
+                        <label for="create-name" class="form-label">Alamat Link/ URL ( Link Website atau Lainya )</label>
+                        <input type="text" value="{{ $submitSurvey->url_address }}" name="url_address" id="create-name" placeholder="Masukan Link"
                             class="form-control">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="create-email" class="form-label">Akun Facebook </label>
-                        <input type="text" name="facebook" id="create-email" placeholder="Masukan Akun Facebook"
+                        <input type="text" name="facebook" id="create-email" value="{{ $submitSurvey->facebook }}" placeholder="Masukan Akun Facebook"
                             class="form-control">
                     </div>
                 </div>
@@ -134,6 +150,16 @@
     @endif
 @endsection
 @section('script')
+@if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
     <script src="{{ asset('assets-admin/plugins/select2/js/select2-custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 

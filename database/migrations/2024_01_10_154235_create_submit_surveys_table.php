@@ -23,7 +23,6 @@ return new class extends Migration
             $table->text('activity');
             $table->text('url_address');
             $table->char('phone_number',15);
-            $table->string('email');
             $table->string('facebook');
             $table->boolean('alumni_gathering');
             $table->enum('current_activity',[ActivityStatusEnum::STUDY->value,ActivityStatusEnum::WORK->value,ActivityStatusEnum::NOTWORK->value,ActivityStatusEnum::BUSSINESS->value]);

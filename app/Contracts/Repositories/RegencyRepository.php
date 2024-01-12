@@ -2,9 +2,10 @@
 
 namespace App\Contracts\Repositories;
 
+use App\Models\Regency;
+use Illuminate\Http\Request;
 use App\Contracts\Interfaces\RegencyInterface;
 use App\Contracts\Repositories\BaseRepository;
-use App\Models\Regency;
 
 class RegencyRepository extends BaseRepository implements RegencyInterface
 {
@@ -14,14 +15,17 @@ class RegencyRepository extends BaseRepository implements RegencyInterface
     }
 
     /**
-     * Handle the Get all data event from models.
+     * Handle get data from models.
+     *
+     * @param request $request
      *
      * @return mixed
      */
-
-    public function get(): mixed
+    public function search(Request $request) : mixed
     {
         return $this->model->query()
-            ->get();
+        ->when($request->province,function($query) use ($request){
+            $query->where('province_id',$request->province);
+        })->get();
     }
 }
