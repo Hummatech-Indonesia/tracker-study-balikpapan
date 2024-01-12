@@ -53,4 +53,17 @@ class CompanyRepository extends BaseRepository implements CompanyInterface
             })
             ->get();
     }
+
+    /**
+     * getThree
+     *
+     * @return mixed
+     */
+    public function getThree(): mixed
+    {
+        return $this->model->query()
+            ->where('status', StatusEnum::ACTIVE->value)
+            ->take(3)
+            ->get();
+    }
 }

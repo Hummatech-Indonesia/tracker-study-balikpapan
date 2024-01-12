@@ -24,6 +24,7 @@ use App\Http\Controllers\TeacherGalleryController;
 use App\Http\Controllers\ApplyJobVacancyController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AlumniVideoGalleryController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\SliderGalleryAlumniController;
 use App\Http\Controllers\TeacherVideoGalleryController;
@@ -65,8 +66,15 @@ Auth::routes();
 Route::get('verify-account', function () {
     return view('auth.verify');
 });
-Route::get('register-company', [RegisterController::class, 'registerCompanyView'])->name('register.company.view');
-Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::get('register-company', [RegisterController::class, 'registerCompanyView'])->name('register.company.view');
+    Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
+    Route::get('pilih-role', function () {
+        return view('auth.choice-of-roles');
+    });
+});
 
 
 Route::middleware('auth')->group(function () {
@@ -139,9 +147,7 @@ Route::resources([
     'job-vacancy' => JobVacancyController::class,
 ]);
 
-Route::get('pilih-role', function () {
-    return view('auth.choice-of-roles');
-});
+
 Route::get('detail-lowongan-company/{job_vacancy}', [JobVacancyController::class, 'detail'])->name('detail.job-vacancy.company');
 
 

@@ -54,7 +54,7 @@ interface StudentInterface extends CustomPaginationInterface, StoreInterface, Up
      * @return int
      */
     public function countAlumniSubmitSurvey(?array $data): int;
-    
+
     /**
      * countAlumniNotSubmitSurvey
      *
@@ -88,4 +88,36 @@ interface StudentInterface extends CustomPaginationInterface, StoreInterface, Up
      * @return mixed
      */
     public function chartAlumni(): mixed;
+
+    /**
+     * countAlumniKuliah
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniStudy(?array $data): int;
+
+    /**
+     * countAlumniBusinnes
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniBusinnes(?array $data): int;
+
+    /**
+     * countAlumniWork
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniWork(?array $data): int;
+
+    /**
+     * countAlumniNotWork
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniNotWork(?array $data): int;
 }
