@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\CompanyInterface;
 use App\Enums\RoleEnum;
 use App\Contracts\Interfaces\JobVacancyInterface;
 use App\Contracts\Interfaces\PortofolioInterface;
@@ -14,9 +15,11 @@ class HomeController extends Controller
     private PortofolioInterface $portofolio;
     private JobVacancyInterface $jobVacancy;
     private StudentInterface $student;
+    private CompanyInterface $company;
 
-    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student)
+    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student, CompanyInterface $company)
     {
+        $this->company = $company;
         $this->portofolio = $portofolio;
         $this->student = $student;
         $this->jobVacancy = $jobVacancy;
@@ -34,7 +37,8 @@ class HomeController extends Controller
         $countAlumniWork = $this->student->countAlumniWork(null);
         $countAlumniBusinnes = $this->student->countAlumniBusinnes(null);
         $countAlumniSubmitSurvey = $this->student->countAlumniSubmitSurvey(null);
-        return view('index', compact('jobVacancys', 'countAlumni', 'countAlumniStudy', 'countAlumniNotWork', 'countAlumniWork', 'countAlumniBusinnes', 'countAlumniSubmitSurvey'));
+        $companies = $this->company->getThree();
+        return view('index', compact('jobVacancys', 'countAlumni', 'countAlumniStudy', 'countAlumniNotWork', 'countAlumniWork', 'countAlumniBusinnes', 'countAlumniSubmitSurvey', 'companies'));
     }
 
     /**

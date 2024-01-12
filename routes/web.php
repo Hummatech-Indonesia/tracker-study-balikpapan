@@ -71,6 +71,9 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login', [LoginController::class, 'login']);
     Route::get('register-company', [RegisterController::class, 'registerCompanyView'])->name('register.company.view');
     Route::post('register-company', [RegisterController::class, 'registerCompany'])->name('register.company');
+    Route::get('pilih-role', function () {
+        return view('auth.choice-of-roles');
+    });
 });
 
 
@@ -144,9 +147,7 @@ Route::resources([
     'job-vacancy' => JobVacancyController::class,
 ]);
 
-Route::get('pilih-role', function () {
-    return view('auth.choice-of-roles');
-});
+
 Route::get('detail-lowongan-company/{job_vacancy}', [JobVacancyController::class, 'detail'])->name('detail.job-vacancy.company');
 
 

@@ -114,7 +114,7 @@
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="mb-5">
-                        <h3 class="text-center my-4">SMKN 2 KEPANJEN</h3>
+                        <h3 class="text-center my-4">SMKN 2 PENAJAM</h3>
                         <p style="font-size: 16px; color:black; ">Lorem Ipsum Dolor Sit AmetLorem Ipsum Dolor Sit AmetLorem
                             Ipsum Dolor Sit AmetLorem Ipsum Dolor
                             Sit AmetLorem Ipsum Dolor Sit AmetLorem Ipsum Dolor Sit AmetLorem Ipsum Dolor Sit AmetLorem
@@ -137,52 +137,32 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4" style="margin-bottom: 4rem">
-                    <!-- Image Box -->
-                    <div class="image-box text-center icon-1 p-5 wow fadeInLeft" data-wow-delay="0.4s">
-                        <!-- Featured Image -->
-                        <div class="featured-img mb-3">
-                            <img class="avatar-sm" src="assets/img/icon/featured-img/layers.png" alt="">
-                        </div>
-                        <!-- Icon Text -->
-                        <div class="icon-text">
-                            <h3 class="mb-2">Pocary Sweet Indonesia</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis culpa expedita
-                                dignissimos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 res-margin">
-                    <!-- Image Box -->
-                    <div class="image-box text-center icon-1 p-5 wow fadeInUp" data-wow-delay="0.2s">
-                        <!-- Featured Image -->
-                        <div class="featured-img mb-3">
-                            <img class="avatar-sm" src="assets/img/icon/featured-img/speak.png" alt="">
-                        </div>
-                        <!-- Icon Text -->
-                        <div class="icon-text">
-                            <h3 class="mb-2">BUMN</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis culpa expedita
-                                dignissimos.</p>
+            <div class="row justify-content-center">
+                @forelse ($companies as $company)
+                    <div class="col-12 col-md-6 col-lg-4" style="margin-bottom: 4rem">
+                        <!-- Image Box -->
+                        <div class="image-box text-center icon-1 p-5 wow fadeInLeft" data-wow-delay="0.4s">
+                            <!-- Featured Image -->
+                            <div class="featured-img mb-3">
+                                <img class="rounded-circle" style="height:6rem;width:6rem;"
+                                    src="{{ asset($company->user->photo == null ? 'default.jpg' : 'storage/' . $company->user->photo) }}"
+                                    alt="">
+                            </div>
+                            <!-- Icon Text -->
+                            <div class="icon-text">
+                                <h3 class="mb-2">{{ $company->user->name }}</h3>
+                                <p>{{ $company->description }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <!-- Image Box -->
-                    <div class="image-box text-center icon-1 p-5 wow fadeInRight" data-wow-delay="0.4s">
-                        <!-- Featured Image -->
-                        <div class="featured-img mb-3">
-                            <img class="avatar-sm" src="assets/img/icon/featured-img/lock.png" alt="">
-                        </div>
-                        <!-- Icon Text -->
-                        <div class="icon-text">
-                            <h3 class="mb-2">Batalion II KORPS MARINIR</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis culpa expedita
-                                dignissimos.</p>
+                @empty
+                    <div class="d-flex mb-4" style="min-height:16rem">
+                        <div class="my-auto">
+                            <img src="{{ asset('showNoData.png') }}" width="350" height="350" />
+                            <h4 class="text-center mt-4">Data Perusahaan Kosong!!</h4>
                         </div>
                     </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>
@@ -202,7 +182,7 @@
             </div>
             <div class="row justify-content-center">
                 @forelse ($jobVacancys as $jobVacancy)
-                    <div class="col-12 col-md-6 col-lg-3 res-margin my-4">
+                    <div class="col-12 col-md-6 col-lg-4 res-margin my-4">
                         <!-- Single Price Plan -->
                         <div class="single-price-plan text-center py-3 wow fadeInLeft" data-aos-duration="2s"
                             data-wow-delay="0.4s">
