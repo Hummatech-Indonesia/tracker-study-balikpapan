@@ -10,8 +10,8 @@
                     <p class="card-subtitle mb-7"></p>
                     <div class="position-relative">
                         <div class="d-flex justify-content-center">
-                            <img src="{{ asset(Auth::user()->photo ?? 'default.jpg') }}"
-                                class="rounded-circle user-profile mb-2" id="detail-photo" width="150" alt="photo-siswa"
+                            <img src="{{ asset(Auth::user()->photo ? 'storage/'.Auth::user()->photo :'default.jpg') }}"
+                                class="rounded-circle user-profile mb-2" style="object-fit: cover" id="detail-photo" width="150" alt="photo-siswa"
                                 height="150" />
                         </div>
                         <div class="text-center">
