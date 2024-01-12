@@ -110,6 +110,7 @@ class SurveyController extends Controller
             ['name' => 'Tidak ada Kegiatan', 'y' => $notWork, 'drilldown' => 'Tidak ada Kegiatan'],
         ];
 
+
         $chartDataJson = json_encode($chartData);
 
         return view('admin.survey-results', ['study' => $study, 'work' => $work, 'bussiness' => $bussiness, 'notWork' => $notWork, 'survey' => $survey, 'chartDataJson' => $chartDataJson]);

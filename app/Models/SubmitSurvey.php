@@ -25,13 +25,18 @@ class SubmitSurvey extends Model
         'graduation_year',
         'activity',
         'url_address',
-        'phone_number',
         'email',
         'facebook',
         'alumni_gathering',
         'current_activity',
     ];
-    public function regency()
+
+    /**
+     * regency
+     *
+     * @return BelongsTo
+     */
+    public function regency() : BelongsTo
     {
         return $this->belongsTo(Regency::class ,'regency_id');
     }
