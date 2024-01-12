@@ -17,7 +17,7 @@ class LoginService
     {
         $data['email'] = $request->email;
         $user = $user->getWhere($data);
-        if ($user->email_verified_at != null) {
+        if ($user->email_verified_at) {
             if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
                 return redirect()->route('dashboard')->with('success', 'Berhasil Login.');
             } else {

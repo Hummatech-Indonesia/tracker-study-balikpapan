@@ -15,12 +15,12 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
+            'email' => 'required|email|exists:users,email',
             'password' => 'required'
         ];
     }
 
-     /**
+    /**
      * Custom Validation Messages
      *
      * @return array<string, mixed>
@@ -29,6 +29,7 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'email.exists' => 'Email yang anda inputkan belum terdaftar',
             'email.required' => 'Email Wajib Diisi!',
             'email.email' => 'Email Tidak Valid!',
             'password.required' => 'Password Wajib Diisi!'
