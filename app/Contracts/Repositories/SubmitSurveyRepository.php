@@ -84,7 +84,63 @@ class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInter
     public function getByStudent(mixed $studentId): mixed
     {
         return $this->model->query()
-            ->where('student_id',$studentId)
+            ->where('student_id', $studentId)
             ->first();
+    }
+
+    /**
+     * countStudy
+     *
+     * @param  mixed $surveyId
+     * @return mixed
+     */
+    public function countStudy(mixed $surveyId): mixed
+    {
+        return $this->model->query()
+            ->where('survey_id', $surveyId)
+            ->where('current_activity', 'study')
+            ->count();
+    }
+
+    /**
+     * countWork
+     *
+     * @param  mixed $surveyId
+     * @return mixed
+     */
+    public function countWork(mixed $surveyId): mixed
+    {
+        return $this->model->query()
+        ->where('survey_id', $surveyId)
+        ->where('current_activity', 'work')
+        ->count();
+    }
+
+    /**
+     * countBussiness
+     *
+     * @param  mixed $surveyId
+     * @return mixed
+     */
+    public function countBussiness(mixed $surveyId): mixed
+    {
+        return $this->model->query()
+        ->where('survey_id', $surveyId)
+        ->where('current_activity', 'bussiness')
+        ->count();
+    }
+
+    /**
+     * countNotWork
+     *
+     * @param  mixed $surveyId
+     * @return mixed
+     */
+    public function countNotWork(mixed $surveyId): mixed
+    {
+        return $this->model->query()
+        ->where('survey_id', $surveyId)
+        ->where('current_activity', 'notwork')
+        ->count();
     }
 }

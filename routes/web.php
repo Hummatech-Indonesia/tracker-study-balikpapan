@@ -91,7 +91,7 @@ Route::middleware('auth')->group(function () {
             'users' => AccountController::class
         ]);
 
-        Route::get('survey-results', [SurveyController::class, 'surveyResults'])->name('survey-results');
+        Route::get('survey-results/{survey}', [SurveyController::class, 'surveyResults'])->name('survey-results');
 
         Route::patch('change-alumni-select', [StudentStatusController::class, 'selectChangeAlumni'])->name('change.alumni.select');
         Route::patch('change-student-select', [StudentStatusController::class, 'selectChangeStudent'])->name('change.student.select');
@@ -122,7 +122,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware('role:alumni')->prefix('alumni')->name('alumni.')->group(function () {
         Route::get('survei', [SurveyController::class, 'survey'])->name('job.survey');
-        Route::post('submit-survey/{survey}', [SurveyController::class, 'submit'])->name('submit-survey');
+        Route::post('submit-survey/{survey}', [SurveyController::class, 'submit'])->name('submit.survey');
 
         Route::get('detail-lowongan-tersedia/{job_vacancy}', [JobVacancyController::class, 'show'])->name('detail.lowongan.tersedia');
         Route::post('detail-lowongan-tersedia/{jobVacancy}', [ApplyJobVacancyController::class, 'store'])->name('send.cv');

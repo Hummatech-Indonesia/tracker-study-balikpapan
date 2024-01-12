@@ -96,9 +96,23 @@ class SurveyController extends Controller
      *
      * @return View
      */
-    public function surveyResults() : View
+    public function surveyResults(Survey $survey) : View
     {
-        return view('admin.survey-results');
+        $bussiness = $this->submitSurvey->countBussiness($survey->id);
+        $work = $this->submitSurvey->countWork($survey->id);
+        $study = $this->submitSurvey->countStudy($survey->id);
+        $notWork = $this->submitSurvey->countNotWork($survey->id);
+
+        $chartData = [
+            ['name' => 'Membuat Wirausaha', 'y' => $bussiness, 'drilldown' => 'Membuat Wirausaha'],
+            ['name' => 'Bekerja', 'y' => $work, 'drilldown' => 'Bekerja'],
+            ['name' => 'Kuliah', 'y' => $study, 'drilldown' => 'Kuliah'],
+            ['name' => 'Tidak ada Kegiatan', 'y' => $notWork, 'drilldown' => 'Tidak ada Kegiatan'],
+        ];
+
+        $chartDataJson = json_encode($chartData);
+
+        return view('admin.survey-results', ['study' => $study, 'work' => $work, 'bussiness' => $bussiness, 'notWork' => $notWork, 'survey' => $survey, 'chartDataJson' => $chartDataJson]);
     }
 
     /**
