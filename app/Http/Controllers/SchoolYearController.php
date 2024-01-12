@@ -38,7 +38,7 @@ class SchoolYearController extends Controller
     public function store(SchoolYearRequest $request)
     {
         $this->schoolYear->store($request->validated());
-        return redirect()->back()->with('success', trans('alert.add_success'));
+        return redirect()->back()->with('success',trans('alert.add_success'));
     }
 
     /**
@@ -72,6 +72,6 @@ class SchoolYearController extends Controller
     public function destroy(SchoolYear $schoolYear)
     {
         $this->schoolYear->delete($schoolYear->id);
-        return redirect()->back()->with('success', trans('alert.delete_success'));
+        return redirect()->back()->with('success',trans('alert.delete_success'));
     }
 }
