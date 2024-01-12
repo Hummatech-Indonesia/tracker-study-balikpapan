@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-6 col-xxl-6 col-12">
-            <div class="card radius-10 w-100">
+            <div class="card radius-10 mb-3 w-100">
                 <div class="card-header">
                     <div class="d-flex justify-content-center mt-2 mb-2">
                         <div>
@@ -31,8 +31,8 @@
                 </ul>
             </div>
         </div>
-        <div class="col-3">
-            <div class="card radius-10 border-start border-0 border-4 border-primary">
+        <div class="col-12 col-lg-3">
+            <div class="card radius-10 mb-3 border-start border-0 border-4 border-primary">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card radius-10 border-start border-0 border-4 border-warning">
+            <div class="card radius-10 mb-3 border-start border-0 border-4 border-warning">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card radius-10 border-start border-0 border-4" style="border-color: #8D1C6D !important;">
+            <div class="card radius-10 mb-3 border-start border-0 border-4" style="border-color: #8D1C6D !important;">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -99,8 +99,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-3">
-            <div class="card radius-10 border-start border-0 border-4" style="border-color: #1D9375 !important;">
+        <div class="col-12 col-md-12 col-lg-3">
+            <div class="card radius-10 mb-3 border-start border-0 border-4" style="border-color: #1D9375 !important;">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card radius-10 border-start border-0 border-4" style="border-color: #FA896B !important;">
+            <div class="card radius-10 mb-3 border-start border-0 border-4" style="border-color: #FA896B !important;">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -136,7 +136,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card radius-10 border-start border-0 border-4" style="border-color: #8D441C !important;">
+            <div class="card radius-10 mb-3 border-start border-0 border-4" style="border-color: #8D441C !important;">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -163,7 +163,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 col-xxl-7 col-12">
+        <div class="col-lg-12 col-xxl-12 col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="text-center mt-2">
