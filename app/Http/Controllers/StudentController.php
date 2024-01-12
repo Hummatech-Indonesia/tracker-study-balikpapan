@@ -173,4 +173,8 @@ class StudentController extends Controller
         $chart = ChartAlumniResource::collection($majors);
         return ResponseHelper::success($chart);
     }
+
+    public function detailApplicant() :View {
+        return view('company.detail-applicant');
+    }
 }
