@@ -48,6 +48,22 @@ interface StudentInterface extends CustomPaginationInterface, StoreInterface, Up
     public function countAlumni(?array $data): int;
 
     /**
+     * countAlumniSubmitSurvey
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniSubmitSurvey(?array $data): int;
+    
+    /**
+     * countAlumniNotSubmitSurvey
+     *
+     * @param  mixed $data
+     * @return int
+     */
+    public function countAlumniNotSubmitSurvey(?array $data): int;
+
+    /**
      * updateSelect
      *
      * @param  mixed $data
