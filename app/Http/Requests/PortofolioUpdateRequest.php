@@ -20,8 +20,7 @@ class PortofolioUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'start_at' => 'required|date',
-            'end_at' => 'required|date',
+            'year'=>'required',
             'description' => 'required',
             'photo' => 'nullable|array',
             'photo.*' => 'nullable|mimes:png,jpg,jpeg'
