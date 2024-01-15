@@ -119,7 +119,7 @@
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="name" class="form-label">Nama</label>
-                                <input type="text" placeholder="Masukkan Nama Guru"
+                                <input type="text" placeholder="Masukkan Nama Guru" value="{{ old('name') }}"
                                     class="form-control @error('name') is-invalid @enderror" name="name" id="name">
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -127,7 +127,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="photo" class="form-label">Upload Foto</label>
-                                <input type="file" class="form-control @error('photo') is-invalid @enderror"
+                                <input type="file" value="{{ old('photo') }}" class="form-control @error('photo') is-invalid @enderror"
                                     name="photo" id="photo">
                                 @error('photo')
                                     <div class="invalid-feedback">{{ $message }}</div>
