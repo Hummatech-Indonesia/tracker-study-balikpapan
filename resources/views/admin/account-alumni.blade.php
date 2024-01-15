@@ -35,7 +35,14 @@
                         <p class="card-text mt-2 text-center mb-5">Tahun Ajaran {{ $student->classroom->schoolYear->name }}.
                         </p>
                         <div class="d-flex align-items-center gap-2 mb-2">
-                            <button class="btn btn-warning w-100 text-white">Detail</button>
+                            {{-- <button class="btn btn-detail btn-warning w-100 text-white" data-id="{{ $student->id }}"
+                                data-bs-toggle="modal">Detail</button> --}}
+                            <button data-id="{{ $student->user->id }}" id="btn-detail-{{ $student->user->id }}"
+                                data-name="{{ $student->user->name }}" data-email="{{ $student->user->email }}"
+                                data-school_year ="{{ $student->classroom->schoolYear->name }}"
+                                class="btn btn-detail btn-warning w-100 text-white">
+                                Detail
+                            </button>
 
                             <button data-id="{{ $student->id }}" data-bs-toggle="modal"
                                 class="btn btn-inverse-danger w-100 btn-reject">Tolak</button>
@@ -44,6 +51,56 @@
                             data-bs-toggle="modal" style="background-color: #1D9375">Terima</button>
                     </div>
                 </div>
+            </div>
+            <div class="modal fade" id="modal-detail" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex align-items-center">
+                            <h4 class="modal-title" id="myModalLabel">
+                                Detail Siswa
+                            </h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="name">
+                                    Nama
+                                </div>
+                                <div class="name"
+                                    style="border-bottom: 2px solid solid #00000033; padding-left:10px; padding-top:0.5rem; padding-bottom:0.5rem"
+                                    id="detail-name">
+                                </div>
+                            </div>
+                            <div class="" style="display: flex; justify-content:space-between">
+                                <div class="container-fluid">
+                                    <div class="email">
+                                        Email
+                                    </div>
+                                    <div class="name"
+                                        style="border-bottom: 2px solid solid #00000033; padding-left:10px; padding-top:0.5rem; padding-bottom:0.5rem"
+                                        id="detail-email">
+                                    </div>
+                                </div>
+                                <div class="container-fluid">
+                                    <div class="lulusan_tahun _ajaran">
+                                        Lulusan Tahun Ajaran
+                                    </div>
+                                    <div class="name"
+                                        style="border-bottom: 2px solid solid #00000033; padding-left:10px; padding-top:0.5rem; padding-bottom:0.5rem"
+                                        id="detail-school_year">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger font-medium waves-effect"
+                                data-bs-dismiss="modal">Tutup</button>
+                        </div>
+
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
             </div>
             <x-confirm-approve-modal-component />
             <x-confirm-reject-modal-component />
@@ -73,6 +130,11 @@
             var actionUrl = `verification-student/${id}`;
             $('#form-approve').attr('action', actionUrl);
             $('#modal-approve').modal('show')
+        })
+        $('.btn-detail').click(function() {
+            const data = getDataAttributes($(this).attr('id'))
+            handleDetail(data)
+            $('#modal-detail').modal('show')
         })
         $('.btn-reject').click(function() {
             id = $(this).data('id')

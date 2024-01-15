@@ -225,6 +225,7 @@
                         <img src="" class="rounded-circle mb-2" id="detail-photo" width="150"
                             alt="photo-siswa" height="150" />
                     </div>
+                    
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col">
