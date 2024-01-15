@@ -26,22 +26,22 @@
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar Slide</h6>
     <div class="card">
         <div class="card-body">
-        <form action="{{ route('slider.gallery.alumni') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('slider.gallery.alumni') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
-            <div id="repeater">
-                <!-- Repeater Heading -->
-                <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h6 class="mb-0">File</h6>
-                    <button type="button" class="btn btn-primary repeater-add-btn px-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 19 19"
-                            fill="none">
-                            <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
-                            <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                        </svg>
-                        Tambah
-                    </button>
-                </div>
+                <div id="repeater">
+                    <!-- Repeater Heading -->
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h6 class="mb-0">File</h6>
+                        <button type="button" class="btn btn-primary repeater-add-btn px-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 19 19"
+                                fill="none">
+                                <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
+                                <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            </svg>
+                            Tambah
+                        </button>
+                    </div>
                     <!-- Repeater Items -->
                     <div class="items mt-2">
                         <!-- Repeater Content -->
@@ -62,11 +62,11 @@
                             </button>
                         </div>
                     </div>
-            </div>
-            <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
-    </form>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar</h6>
@@ -77,7 +77,8 @@
                     <div style="position: relative; display: flex; justify-content: end; width: 200px; height: 200px;">
                         <img src="{{ asset('storage/' . $sliderGalleryAlumni->photo) }}" style="object-fit: cover"
                             width="200px" alt="">
-                        <button style="position: absolute; border-radius: 50%;" data-id="{{ $sliderGalleryAlumni->id }}" id="{{ $sliderGalleryAlumni->id }}" class="btn btn-delete-slider btn-sm mt-2 btn-danger">
+                        <button style="position: absolute; border-radius: 50%;" data-id="{{ $sliderGalleryAlumni->id }}"
+                            id="{{ $sliderGalleryAlumni->id }}" class="btn btn-delete-slider btn-sm mt-2 btn-danger">
                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 18 18"
                                 fill="none">
                                 <path d="M13.1562 4.6709L4.67097 13.1562" stroke="white" stroke-width="2.5"
@@ -87,15 +88,15 @@
                             </svg>
                         </button>
                     </div>
-                    @empty
+                @empty
                     <div class="d-flex justify-content-center">
                         <div>
                             <img src="{{ asset('showNoData.png') }}" alt="">
                             <h5 class="text-center">Data Masih Kosong!!</h5>
                         </div>
                     </div>
-                    @endforelse
-                </div>
+                @endforelse
+            </div>
         </div>
     </div>
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar Dengan Deskripsi</h6>
@@ -332,6 +333,15 @@
     <x-delete-modal-component />
 @endsection
 @section('script')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))

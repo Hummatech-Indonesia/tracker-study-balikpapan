@@ -10,9 +10,9 @@
                     <p class="card-subtitle mb-7"></p>
                     <div class="position-relative">
                         <div class="d-flex justify-content-center">
-                            <img src="{{ asset(Auth::user()->photo ? 'storage/'.Auth::user()->photo :'default.jpg') }}"
-                                class="rounded-circle user-profile mb-2" style="object-fit: cover" id="detail-photo" width="150" alt="photo-siswa"
-                                height="150" />
+                            <img src="{{ asset(Auth::user()->photo ? 'storage/' . Auth::user()->photo : 'default.jpg') }}"
+                                class="rounded-circle user-profile mb-2" style="object-fit: cover" id="detail-photo"
+                                width="150" alt="photo-siswa" height="150" />
                         </div>
                         <div class="text-center">
                             <h3 class="username">{{ Auth::user()->name }}</h3>
@@ -40,7 +40,9 @@
                                     </tr>
                                     <tr>
                                         <td><strong>Tanggal Lahir :</strong></td>
-                                        <td><span class="religion">{{ Auth::user()->student->birth_date }}</span></td>
+                                        <td><span class="religion">
+                                                {{ \Carbon\Carbon::parse(Auth::user()->student->birth_date)->locale('id_ID')->isoFormat('DD MMMM Y') }}</span>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

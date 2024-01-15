@@ -9,9 +9,6 @@
             });
         </script>
     @endif
-    <h4 class="mb-3">
-        Data Alumni
-    </h4>
     <div class="d-flex justify-content-between">
         <div class="">
             <h4 class="mb-3">
