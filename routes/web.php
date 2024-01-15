@@ -82,6 +82,8 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware('role:admin')->group(function () {
+        Route::get('pie-chart', [HomeController::class, 'pieChart'])->name('pie.chart');
+
         Route::get('chart-alumni', [StudentController::class, 'chartAlumni'])->name('chart.alumni');
 
         Route::post('import-student', [StudentController::class, 'import'])->name('import.student');
@@ -176,9 +178,10 @@ Route::get('detail-job-vacancy', function () {
 
 Route::get('portofolio', [PortofolioController::class, 'index'])->name('portofolio');
 
-Route::get('detail-applicant/{apply_job_vacancies}',[StudentController::class,'detailApplicant'])->name('detail.applicant');
+Route::get('detail-applicant/{apply_job_vacancies}', [StudentController::class, 'detailApplicant'])->name('detail.applicant');
 
-Route::get('detail-applicant-portofolio/{student}',[PortofolioController::class,'detail'])->name('detail.applicant.portofolio');
+Route::get('detail-applicant-portofolio/{student}', [PortofolioController::class, 'detail'])->name('detail.applicant.portofolio');
+Route::get('detail-applicant', [StudentController::class, 'detailApplicant'])->name('detail.applicant');
 
 Route::get('add-portofolio', function () {
     return view('student.add-portofolio');

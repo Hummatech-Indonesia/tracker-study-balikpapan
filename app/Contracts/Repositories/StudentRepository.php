@@ -67,7 +67,7 @@ class StudentRepository extends BaseRepository implements StudentInterface
     {
         // dd($request);
         return $this->model->query()
-            ->where('is_graduate', 0)
+            ->where(['is_graduate' => 0, 'status' => StatusEnum::ACTIVE])
             ->when($request->name, function ($query) use ($request) {
                 $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
             })
@@ -268,5 +268,17 @@ class StudentRepository extends BaseRepository implements StudentInterface
             ->where(['status' => StatusEnum::ACTIVE->value, 'is_graduate' => 1])
             ->whereRelation('submitSurvey', 'current_activity', ActivityStatusEnum::WORK->value)
             ->count();
+    }
+
+    /**
+     * get
+     *
+     * @return mixed
+     */
+    public function get(): mixed
+    {
+        return $this->model->query()
+            ->where('status', StatusEnum::ACTIVE->value)
+            ->get();
     }
 }
