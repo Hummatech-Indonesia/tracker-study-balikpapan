@@ -444,7 +444,7 @@
                                                 data-name="{{ $student->user->name }}"
                                                 data-email="{{ $student->user->email }}"
                                                 data-national_student_id={{ $student->national_student_id }}
-                                                data-gender="{{ $student->gender == 'male' ? 'Laki - Laki' : 'Perempuan' }}"
+                                                data-gender="{{ $student->gender}}"
                                                 data-birth_date="{{ $student->birth_date }}"
                                                 data-phone_number="{{ $student->user->phone_number }}"
                                                 data-classroom_id="{{ $student->classroom->id }}"
