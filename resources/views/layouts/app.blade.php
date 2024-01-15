@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{ asset('assets-admin/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets-admin/css/header-colors.css') }}" />
     <link href="{{ asset('assets-admin/plugins/highcharts/css/highcharts.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('tidak di pakai/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/js/sweetalert2/dist/sweetalert2.min.css') }}">
     @yield('style')
     <title>Tracker Study</title>
     <style>
@@ -231,7 +231,7 @@
     <script src="{{ asset('assets-admin/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('assets-admin/plugins/chartjs/js/chart.js') }}"></script>
     <script src="{{ asset('assets-admin/js/index.js') }}"></script>
-    <script src="{{ asset('tidak di pakai/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sweetalert2/dist/sweetalert2.min.js') }}"></script>
     <!--app JS-->
     <script src="{{ asset('assets-admin/plugins/highcharts/js/highcharts.js') }}"></script>
     <script src="{{ asset('assets-admin/plugins/highcharts/js/highcharts-more.js') }}"></script>
