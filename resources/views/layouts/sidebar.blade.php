@@ -180,7 +180,7 @@
                                 fill="#currentColor" />
                         </svg></i>
                     </div>
-                    <div class="menu-title mt-1">Lowongan</div>
+                    <div class="menu-title mt-1">Lwongan</div>
                 </a>
             </li>
         @elseif (auth()->user()->roles[0]->name == 'student')
