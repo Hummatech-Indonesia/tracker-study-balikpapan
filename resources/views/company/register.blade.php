@@ -37,7 +37,7 @@
                                 <div class="form-body">
                                     <form action="{{ route('register.company') }}" method="POST" class="row g-3">
                                         @csrf
-                                        <div class="col-6">
+                                        <div class="col-12 col-md-6 col-lg-6">
                                             <label for="inputUsername" class="form-label">Nama</label>
                                             <input type="text" name="name" class="form-control" id="inputUsername"
                                                 value="{{ old('name') }}" placeholder="Inputkan Nama">
@@ -46,7 +46,7 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-12 col-md-6 col-lg-6">
                                             <label for="inputEmailAddress" class="form-label">Alamat Email</label>
                                             <input type="email" name="email" class="form-control"
                                                 value="{{ old('email') }}" id="inputEmailAddress"
@@ -56,7 +56,7 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-12 col-md-6 col-lg-6">
                                             <label for="inputChoosePassword" class="form-label">Password</label>
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" name="password" class="form-control border-end-0"
@@ -70,7 +70,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-12 col-md-6 col-lg-6">
                                             <label for="inputChoosePassword" class="form-label">Konfirmasi Password</label>
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" name="password_confirmation"
