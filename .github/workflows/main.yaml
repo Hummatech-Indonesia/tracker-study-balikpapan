@@ -22,11 +22,11 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.1
       with:
         # ftp server
-        server: tracer-study.mischool.online
+        server: tracer-study.trialdy.me
         # ftp username
-        username: tracer@tracer-study.mischool.online
+        username: u252398510.tracer
         # ftp password
-        password: Bismillahlaunching
+        password: Bismillahlaunching1!
         # Server port to connect to (read your web hosts docs)
         port: 21
         # protocol to deploy with - ftp, ftps, or ftps-legacy

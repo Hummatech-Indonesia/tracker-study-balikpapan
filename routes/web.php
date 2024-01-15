@@ -176,7 +176,9 @@ Route::get('detail-job-vacancy', function () {
 
 Route::get('portofolio', [PortofolioController::class, 'index'])->name('portofolio');
 
-Route::get('detail-applicant',[StudentController::class,'detailApplicant'])->name('detail.applicant');
+Route::get('detail-applicant/{applyJobVacancy}',[StudentController::class,'detailApplicant'])->name('detail.applicant');
+
+Route::get('detail-applicant-portofolio/{student}',[PortofolioController::class,'detail'])->name('detail.applicant.portofolio');
 
 Route::get('add-portofolio', function () {
     return view('student.add-portofolio');

@@ -2,7 +2,6 @@
 <html lang="en">
 
 
-<!-- Mirrored from codervent.com/rocker/demo/vertical/auth-cover-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 11:11:10 GMT -->
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -22,7 +21,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
 	<link href="{{ asset('assets-admin/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('assets-admin/css/icons.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="{{ asset('tidak di pakai/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/js/sweetalert2/dist/sweetalert2.min.css') }}">
 
 	<title>Tracker Study</title>
   @yield('style')
@@ -40,7 +39,7 @@
 	<script src="{{ asset('assets-admin/plugins/simplebar/js/simplebar.min.js') }}"></script>
 	<script src="{{ asset('assets-admin/plugins/metismenu/js/metisMenu.min.js') }}"></script>
 	<script src="{{ asset('assets-admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-	<script src="{{ asset('tidak di pakai/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+	<script src="{{ asset('assets/js/sweetalert2/dist/sweetalert2.min.js') }}"></script>
 
 	<!--Password show & hide js -->
 	<script>
@@ -63,7 +62,4 @@
 	<!--app JS-->
 	<script src="{{ asset('assets-admin/js/app.js') }}"></script>
 </body>
-
-
-<!-- Mirrored from codervent.com/rocker/demo/vertical/auth-cover-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 11:11:10 GMT -->
 </html>

@@ -358,7 +358,7 @@
                 @endforeach
                 </ul>
             </div>
-        @endif        
+        @endif
             <div class="table-responsive">
                 <table class="table">
                     <thead>

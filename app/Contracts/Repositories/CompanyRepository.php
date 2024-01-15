@@ -66,4 +66,15 @@ class CompanyRepository extends BaseRepository implements CompanyInterface
             ->take(3)
             ->get();
     }
+
+    /**
+     * get
+     *
+     * @return mixed
+     */
+    public function get(): mixed
+    {
+        return $this->model->query()
+            ->get();
+    }
 }
