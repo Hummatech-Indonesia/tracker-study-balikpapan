@@ -75,7 +75,9 @@ class HomeController extends Controller
                 return view('student.dashboard', compact('countPortofolio','countStudent','portofolios'));
                 break;
             case RoleEnum::ALUMNI->value:
-                return view('alumni.index');
+                $portofolios = $this->portofolio->getLatestPortofolio(auth()->user()->student->id);
+                $jobVacancys = $this->jobVacancy->getLatestJobVacancy();
+                return view('alumni.index', compact('portofolios','jobVacancys'));
                 break;
             case RoleEnum::COMPANY->value:
                 $jobVacancys = $this->jobVacancy->customPaginate($request, 6);
