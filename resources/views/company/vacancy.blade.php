@@ -69,7 +69,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                        <button type="submit" class="btn text-white" style="background-color: #1D9375">Tambah</button>
+                        <button type="submit" class="btn text-white" style="background-color: #1D9375">Edit</button>
                     </div>
                 </div>
             </form>
@@ -107,7 +107,11 @@
                                     <option value="freelance">Freelance</option>
                                 </select>
                             </div>
-                            <div class="col-6">
+                            <div class="col-6 mb-3">
+                                <label for="" class="form-label">Posisi</label>
+                                <input type="text" name="position" class="form-control">
+                            </div>
+                            <div class="col-12">
                                 <label for="formFile" class="form-label">Deskripsi Sistem Kerja</label>
                                 <textarea placeholder="Masukkan Deskripsi Sistem Kerja" name="description_working_system" id=""
                                     class="form-control"></textarea>
@@ -134,7 +138,8 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-center mt-2 mb-4">
                             <img src="{{ asset($jobVacancy->company->user->photo == null ? 'default.jpg' : 'storage/' . $jobVacancy->company->user->photo) }}"
-                            style="border: solid 4px #5D87FF;object-fit:cover" height="100px" width="100px"  class="user-circle" alt="user">
+                                style="border: solid 4px #5D87FF;object-fit:cover" height="100px" width="100px"
+                                class="user-circle" alt="user">
                         </div>
                     </div>
                     <div style="background-color: #5D87FF" class="mb-0">
@@ -170,7 +175,7 @@
                             <div class="col-4">
                                 <div class="bg-light-success">
                                     <p class="text-center py-2 rounded fs-5 mb-1" style="color: #1D9375; font-weight:700">
-                                        {{ $jobVacancy->applyJobVacancy->where('status','accepted')->count() }}
+                                        {{ $jobVacancy->applyJobVacancy->where('status', 'accepted')->count() }}
                                     </p>
                                 </div>
                                 <p class="text-center" style="font-weight: 400">
@@ -180,7 +185,7 @@
                             <div class="col-4">
                                 <div class="bg-light-danger">
                                     <p class="text-center py-2 rounded fs-5 mb-1" style="color: #FA896B; font-weight:700">
-                                        {{ $jobVacancy->applyJobVacancy->where('status','rejected')->count() }}
+                                        {{ $jobVacancy->applyJobVacancy->where('status', 'rejected')->count() }}
                                     </p>
                                 </div>
                                 <p class="text-center" style="font-weight: 400">
@@ -195,7 +200,7 @@
                                 data-basic_salary="{{ $jobVacancy->basic_salary }}"
                                 data-work_system="{{ $jobVacancy->work_system }}"
                                 data-description_working_system="{{ $jobVacancy->description_working_system }}"
-                                data-qualifications="{{ $jobVacancy->qualifications }}">
+                                data-qualifications="{{ $jobVacancy->qualifications }}"data-position="{{ $jobVacancy->position }}">
                                 Edit
                             </button>
                             <a class="btn btn-warning text-white text-center w-100"
@@ -217,6 +222,15 @@
     </div>
 @endsection
 @section('script')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))

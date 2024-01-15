@@ -1,21 +1,12 @@
 @extends('layouts.app')
 @section('content')
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ session('success') }}',
-            });
-        </script>
-    @endif
     <h4 class="mb-3">
         Data Alumni
     </h4>
     <div class="d-flex justify-content-between">
         <div class="">
             <h4 class="mb-3">
-                Verifikasi Siswa
+                Verifikasi Alumni
             </h4>
         </div>
 
@@ -67,6 +58,15 @@
     </div>
 @endsection
 @section('script')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        </script>
+    @endif
     <script>
         $('.btn-approve').click(function() {
             id = $(this).data('id')
