@@ -86,7 +86,7 @@
         </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog modal-lg">
             <form action="{{ route('news.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
@@ -97,12 +97,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-12 mb-3">
+                            <div class="col-12 col-md-6 mb-3">
                                 <label for="formFile" class="form-label">Judul Berita</label>
                                 <input type="text" placeholder="Masukkan Berita" class="form-control" name="title"
                                     id="">
                             </div>
-                            <div class="col-12 mb-3">
+                            <div class="col-12 col-md-6 mb-3">
                                 <label for="formFile" class="form-label">Foto Berita</label>
                                 <input type="file" class="form-control" name="thumbnail" id="">
                             </div>
@@ -121,7 +121,7 @@
         </div>
     </div>
     <div class="modal fade" id="modal-update" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog modal-lg">
             <form id="form-update" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -132,12 +132,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-12 mb-3">
+                            <div class="col-12 col-md-6 mb-3">
                                 <label for="formFile" class="form-label">Judul Berita</label>
                                 <input type="text" placeholder="Masukkan Berita" class="form-control" name="title"
                                     id="">
                             </div>
-                            <div class="col-12 mb-3">
+                            <div class="col-12 col-md-6 mb-3">
                                 <label for="formFile" class="form-label">Foto Berita</label>
                                 <input type="file" class="form-control" name="thumbnail" id="">
                             </div>
