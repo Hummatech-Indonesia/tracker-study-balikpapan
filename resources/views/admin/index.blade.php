@@ -221,6 +221,21 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center mt-2">
+                    <h5 style="font-weight: 700">
+                        5 Kota Dengan Sebaran Alumni Terbanyak
+                    </h5>
+                    <p>
+                        Klik Untuk Melihat Presentase persen
+                    </p>
+                </div>
+                <div id="chartCity" class="mt-4"></div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
@@ -317,5 +332,80 @@
             chartLine.render();
 
         };
+
+        var options = {
+          series: [{
+          name: 'Inflation',
+          data: [10,20,50,20,30]
+        }],
+          chart: {
+          height: 350,
+          type: 'bar',
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 10,
+            dataLabels: {
+              position: 'top', // top, center, bottom
+            },
+          }
+        },
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return val + "%";
+          },
+          offsetY: -20,
+          style: {
+            fontSize: '12px',
+            colors: ["#304758"]
+          }
+        },
+        
+        xaxis: {
+          categories: ["Balikpapan","Penajam","Tenggarong",'Bontang',"Samarinda"],
+          position: 'bottom',
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false
+          },
+          crosshairs: {
+            fill: {
+              type: 'gradient',
+              gradient: {
+                colorFrom: '#D8E3F0',
+                colorTo: '#BED1E6',
+                stops: [0, 100],
+                opacityFrom: 0.4,
+                opacityTo: 0.5,
+              }
+            }
+          },
+          tooltip: {
+            enabled: true,
+          }
+        },
+        yaxis: {
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false,
+          },
+          labels: {
+            show: false,
+            formatter: function (val) {
+              return val + "%";
+            }
+          }
+        
+        },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chartCity"), options);
+        chart.render();
+
     </script>
 @endsection
