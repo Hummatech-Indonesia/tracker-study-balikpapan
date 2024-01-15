@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\ApplyJobVacancyInterface;
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Contracts\Interfaces\JobVacancyInterface;
 use App\Contracts\Interfaces\PortofolioInterface;
+use App\Contracts\Interfaces\RegencyInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\SubmitSurveyInterface;
 use App\Enums\RoleEnum;
@@ -23,9 +24,11 @@ class HomeController extends Controller
     private StudentInterface $student;
     private CompanyInterface $company;
     private ApplyJobVacancyInterface $applyJobVacancy;
+    private RegencyInterface $regency;
 
-    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student, CompanyInterface $company,ApplyJobVacancyInterface $applyJobVacancy)
+    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student, CompanyInterface $company,ApplyJobVacancyInterface $applyJobVacancy, RegencyInterface $regencyInterface)
     {
+        $this->regency = $regencyInterface;
         $this->company = $company;
         $this->portofolio = $portofolio;
         $this->student = $student;
@@ -117,5 +120,19 @@ class HomeController extends Controller
         $company = auth()->user()->company;
         $dashboard = DashboardCompanyResource::make($company);
         return ResponseHelper::success($dashboard);
+    }
+
+    /**
+     * dashboardAdmin
+     *
+     * @return View
+     */
+    public function dashboardAdmin(): View
+    {
+        $topFive = $this->regency->percentageOfAlumni();
+        foreach ($topFive as $item) {
+            $topFive->percentage = ((int) $item->nonactive_count / (int) $item->all_count) * (100/100);
+        }
+        return view('', compact('topFive'));
     }
 }
