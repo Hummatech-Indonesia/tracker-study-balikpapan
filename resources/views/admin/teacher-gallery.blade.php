@@ -118,16 +118,23 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12 mb-3">
-                                <label for="major" class="form-label">Nama</label>
-                                <input type="text" placeholder="Masukkan Nama Guru" class="form-control" name="name"
-                                    id="">
+                                <label for="name" class="form-label">Nama</label>
+                                <input type="text" placeholder="Masukkan Nama Guru"
+                                    class="form-control @error('name') is-invalid @enderror" name="name" id="name">
+                                @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-12">
-                                <label for="major" class="form-label">Upload Foto</label>
-                                <input type="file" placeholder="Masukkan Nama Guru" class="form-control" name="photo"
-                                    id="">
+                                <label for="photo" class="form-label">Upload Foto</label>
+                                <input type="file" class="form-control @error('photo') is-invalid @enderror"
+                                    name="photo" id="photo">
+                                @error('photo')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
