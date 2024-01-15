@@ -261,7 +261,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light-danger text-danger font-medium waves-effect"
+                    <button type="button" class="btn btn-danger font-medium waves-effect"
                         data-bs-dismiss="modal">Tutup</button>
                 </div>
 
