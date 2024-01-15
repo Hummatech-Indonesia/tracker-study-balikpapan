@@ -21,7 +21,7 @@
                 </h5>
             </div>
             <div class="">
-                <button onclick="history.back()" class="btn btn-warning text-white">
+                <button type="button" onclick="history.back()" class="btn btn-warning text-white">
                     Kembali
                 </button>
                 <button type="submit" class="btn btn-primary text-white">
