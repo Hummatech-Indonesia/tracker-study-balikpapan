@@ -10,7 +10,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-dark" style="font-weight: 600">Lowongan Dibuat</p>
-                            <h4 class="my-1 text-success mb-4">4805</h4>
+                            <h4 class="my-1 text-success mb-4" id="jobVacancyCreated">4805</h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i
                                 class='bx bxs-cart'></i>
@@ -25,7 +25,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-dark" style="font-weight: 600">Jumlah Pelamar</p>
-                            <h4 class="my-1 text-warning mb-4">5</h4>
+                            <h4 class="my-1 text-warning mb-4" id="totalApplicant"></h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto">
                             <i class='bx bxs-wallet'></i>
@@ -40,7 +40,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-dark" style="font-weight: 600">Pelamar Yang Diterima</p>
-                            <h4 class="my-1 text-success mb-4">3</h4>
+                            <h4 class="my-1 text-success mb-4" id="applicantApprove"></h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto">
                             <i class='bx bxs-bar-chart-alt-2'></i>
@@ -55,7 +55,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-dark" style="font-weight: 600">Pelamar Yang Ditolak</p>
-                            <h4 class="my-1 text-danger mb-4">8</h4>
+                            <h4 class="my-1 text-danger mb-4" id="applicantRejected"></h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-burning text-white ms-auto"><i
                                 class='bx bxs-group'></i>
@@ -75,7 +75,8 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-center mt-2 mb-4">
                             <img src="{{ asset($jobVacancy->company->user->photo == null ? 'default.jpg' : 'storage/' . $jobVacancy->company->user->photo) }}"
-                                style="border: solid 4px #5D87FF;object-fit:cover" height="100px" width="100px" class="user-circle" alt="user">
+                                style="border: solid 4px #5D87FF;object-fit:cover" height="100px" width="100px"
+                                class="user-circle" alt="user">
                         </div>
                     </div>
                     <div style="background-color: #5D87FF" class="mb-0">
@@ -157,4 +158,22 @@
         @endforelse
 
     </div>
+@endsection
+@section('script')
+    <script>
+        $.ajax({
+            url: "{{ route('dashboard.company') }}",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                $("#jobVacancyCreated").text(data.data.lowongan_dibuat);
+                $("#totalApplicant").text(data.data.jumlah_pelamar);
+                $("#applicantRejected").text(data.data.pelamar_ditolak);
+                $("#applicantApprove").text(data.data.pelamar_diterima);
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+    </script>
 @endsection

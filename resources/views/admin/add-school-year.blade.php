@@ -57,7 +57,7 @@
                             </div>
                             <div class="modal-body">
                                 <label for="" class="form-label">Tahun Ajaran</label>
-                                <input type="number" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

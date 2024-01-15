@@ -175,7 +175,8 @@ class StudentController extends Controller
         return ResponseHelper::success($chart);
     }
 
-    public function detailApplicant(ApplyJobVacancy $applyJobVacancy) :View {
+    public function detailApplicant(ApplyJobVacancy $apply_job_vacancies) {
+        $applyJobVacancy = $apply_job_vacancies;
         return view('company.detail-applicant',compact('applyJobVacancy'));
     }
 }

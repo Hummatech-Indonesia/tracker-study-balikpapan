@@ -4,12 +4,28 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\TeacherGalleryInterface;
 use App\Models\TeacherGallery;
+use Illuminate\Http\Request;
 
 class TeacherGalleryRepository extends BaseRepository implements TeacherGalleryInterface
 {
     public function __construct(TeacherGallery $teacherGallery)
     {
         $this->model = $teacherGallery;
+    }
+
+    /**
+     * search
+     *
+     * @param  mixed $request
+     * @return mixed
+     */
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+            ->when($request->name, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->name . '%');
+            })
+            ->get();
     }
 
     /**

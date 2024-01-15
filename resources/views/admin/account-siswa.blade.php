@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-center mt-2 mb-4">
                             <img src="{{ asset($student->user->photo == null ? 'default.jpg' : 'storage/' . $student->user->photo) }}"
-                                width="100px" class="user-circle" alt="user">
+                                width="100px" height="100px" style="object-fit: cover" class="user-circle" alt="user">
                         </div>
                         <h5 class="card-title text-dark text-center" style="font-weight: 700">
                             {{ $student->user->name }}</h5>

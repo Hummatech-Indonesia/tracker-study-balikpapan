@@ -35,9 +35,9 @@ class TeacherGalleryController extends Controller
      *
      * @return View
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $data = $this->teacherGallery->get();
+        $data = $this->teacherGallery->search($request);
         return view('admin.teacher-gallery', compact('data'));
     }
 
@@ -46,7 +46,7 @@ class TeacherGalleryController extends Controller
         $teachers = $this->teacherGallery->get();
         $news = $this->news->getByLatest();
         $videoTeacher = $this->teacherVideo->getFirst();
-        return view('galery-teacher', compact('teachers','news','videoTeacher'));
+        return view('galery-teacher', compact('teachers', 'news', 'videoTeacher'));
     }
 
     /**

@@ -8,6 +8,9 @@ use App\Contracts\Interfaces\PortofolioInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\SubmitSurveyInterface;
 use App\Enums\RoleEnum;
+use App\Helpers\ResponseHelper;
+use App\Http\Resources\DashboardCompanyResource;
+use App\Http\Resources\PieChartResource;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -74,8 +77,33 @@ class HomeController extends Controller
                 break;
             case RoleEnum::COMPANY->value:
                 $jobVacancys = $this->jobVacancy->customPaginate($request, 6);
+
                 return view('company.index', compact('jobVacancys'));
                 break;
         }
+    }
+
+    /**
+     * pieChart
+     *
+     * @return void
+     */
+    public function pieChart()
+    {
+        $students = $this->student->get();
+        $pieCharts = PieChartResource::collection($students);
+        return ResponseHelper::success($pieCharts);
+    }
+
+    /**
+     * dashboardCompany
+     *
+     * @return void
+     */
+    public function dashboardCompany()
+    {
+        $company = auth()->user()->company;
+        $dashboard = DashboardCompanyResource::make($company);
+        return ResponseHelper::success($dashboard);
     }
 }

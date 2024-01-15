@@ -261,7 +261,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light-danger text-danger font-medium waves-effect"
+                    <button type="button" class="btn btn-danger font-medium waves-effect"
                         data-bs-dismiss="modal">Tutup</button>
                 </div>
 
@@ -444,7 +444,7 @@
                                                 data-name="{{ $student->user->name }}"
                                                 data-email="{{ $student->user->email }}"
                                                 data-national_student_id={{ $student->national_student_id }}
-                                                data-gender="{{ $student->gender == 'male' ? 'Laki - Laki' : 'Perempuan' }}"
+                                                data-gender="{{ $student->gender}}"
                                                 data-birth_date="{{ $student->birth_date }}"
                                                 data-phone_number="{{ $student->user->phone_number }}"
                                                 data-classroom_id="{{ $student->classroom->id }}"
