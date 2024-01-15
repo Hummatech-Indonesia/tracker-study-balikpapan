@@ -93,6 +93,9 @@ class PortofolioRepository extends BaseRepository implements PortofolioInterface
             ->when($request->name, function ($query) use ($request) {
                 $query->where('name', 'LIKE', '%' . $request->name . '%');
             })
+            ->when($request->userId, function ($query) use ($request) {
+                $query->where('student_id', $request->userId);
+            })
             ->get();
     }
     public function countPortofolio(): string
@@ -113,7 +116,7 @@ class PortofolioRepository extends BaseRepository implements PortofolioInterface
     public function getPortofolioByStudent(mixed $id): mixed
     {
         return $this->model->query()
-            ->where('student_id',$id)
+            ->where('student_id', $id)
             ->get();
     }
 

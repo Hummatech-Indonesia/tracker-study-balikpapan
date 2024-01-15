@@ -30,6 +30,7 @@ class PortofolioController extends Controller
      */
     public function index(Request $request)
     {
+        $request->merge(['userId' => auth()->user()->student->id]);
         $portofolios = $this->portofolio->search($request);
         return view('student.portofolio', ['portofolios' => $portofolios]);
     }
@@ -114,8 +115,9 @@ class PortofolioController extends Controller
         return redirect()->back()->with('success', trans('alert.delete_success'));
     }
 
-    public function detail(Student $student){
+    public function detail(Student $student)
+    {
         $portofolios = $this->portofolio->getPortofolioByStudent($student->id);
-        return view('company.portofolio',compact('portofolios'));
+        return view('company.portofolio', compact('portofolios'));
     }
 }
