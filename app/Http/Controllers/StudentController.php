@@ -17,6 +17,7 @@ use App\Helpers\ResponseHelper;
 use App\Http\Requests\ImportRequest;
 use App\Http\Resources\ChartAlumniResource;
 use App\Imports\StudentImport;
+use App\Models\ApplyJobVacancy;
 use App\Services\StudentService;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -174,7 +175,7 @@ class StudentController extends Controller
         return ResponseHelper::success($chart);
     }
 
-    public function detailApplicant() :View {
-        return view('company.detail-applicant');
+    public function detailApplicant(ApplyJobVacancy $applyJobVacancy) :View {
+        return view('company.detail-applicant',compact('applyJobVacancy'));
     }
 }

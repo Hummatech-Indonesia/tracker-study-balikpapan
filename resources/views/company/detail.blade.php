@@ -238,11 +238,17 @@
                                                     data-id="{{ $applyJobVacancy->id }}">Tolak</button>
                                             </div>
                                             <div class="">
-                                                <button class="btn text-white btn-sm btn-info">Detail</button>
+                                                <a
+                                                    href="{{ route('detail.applicant', ['applyJobVacancy' => $appplyJobVacancy->id]) }}">
+                                                    <button class="btn text-white btn-sm btn-info">Detail</button>
+                                                </a>
                                             </div>
                                         @else
                                             <div class="">
-                                                <button class="btn text-white btn-sm btn-info">Detail</button>
+                                                <a
+                                                    href="{{ route('detail.applicant', ['applyJobVacancy' => $applyJobVacancy->id]) }}">
+                                                    <button class="btn text-white btn-sm btn-info">Detail</button>
+                                                </a>
                                             </div>
                                         @endif
                                     </div>
