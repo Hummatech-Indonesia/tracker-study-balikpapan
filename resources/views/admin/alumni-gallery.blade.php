@@ -264,8 +264,7 @@
                                             <button class="btn btn-primary btn-sm btn-detail"
                                                 data-id="{{ $galleryAlumni->id }}" id="{{ $galleryAlumni->id }}"
                                                 data-title="{{ $galleryAlumni->title }}"
-                                                data-created_at="{{ $galleryAlumni->created_at }}"
-                                                data-photo="{{ $galleryAlumni->photo }}">
+                                                data-created_at="{{ $galleryAlumni->created_at }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                     viewBox="0 0 34 34" fill="none">
                                                     <path
@@ -348,6 +347,7 @@
             var actionUrl = `/alumni-gallery-update/${formData['id']}`;
             $('#form-update').attr('action', actionUrl);
             setFormValues('form-update', formData)
+            
             $('#form-update').data('id', formData['id'])
             $('#form-update').attr('action', );
             $('#modal-update').modal('show')
