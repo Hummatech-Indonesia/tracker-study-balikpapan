@@ -8,6 +8,8 @@ use App\Contracts\Interfaces\PortofolioInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\SubmitSurveyInterface;
 use App\Enums\RoleEnum;
+use App\Helpers\ResponseHelper;
+use App\Http\Resources\PieChartResource;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -77,5 +79,17 @@ class HomeController extends Controller
                 return view('company.index', compact('jobVacancys'));
                 break;
         }
+    }
+
+    /**
+     * pieChart
+     *
+     * @return void
+     */
+    public function pieChart()
+    {
+        $students = $this->student->get();
+        $pieCharts = PieChartResource::collection($students);
+        return ResponseHelper::success($pieCharts);
     }
 }
