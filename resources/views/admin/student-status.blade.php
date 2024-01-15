@@ -114,7 +114,7 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                @endforelse
             </tbody>
         </table>
     </div>
