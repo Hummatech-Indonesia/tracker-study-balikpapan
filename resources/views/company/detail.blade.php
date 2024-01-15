@@ -246,7 +246,7 @@
                                         @else
                                             <div class="">
                                                 <a
-                                                    href="{{ route('detail.applicant', ['applyJobVacancy' => $applyJobVacancy->id]) }}">
+                                                    href="{{ route('detail.applicant',['applyJobVacancy' => $applyJobVacancy->id]) }}">
                                                     <button class="btn text-white btn-sm btn-info">Detail</button>
                                                 </a>
                                             </div>
