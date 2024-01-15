@@ -106,4 +106,10 @@ class JobVacancyRepository extends BaseRepository implements JobVacancyInterface
             ->take(3)
             ->get();
     }
+
+    public function countVacancy(): mixed
+    {
+        return $this->model->query()
+        ->count();
+    }
 }

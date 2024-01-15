@@ -102,4 +102,11 @@ class ApplyJobVacancyRepository extends BaseRepository implements ApplyJobVacanc
             ->where('job_vacancy_id', $id)
             ->get();
     }
+
+    public function countApplyJobVacancy(mixed $id): mixed
+    {
+        return $this->model->query()
+        ->where('student_id',$id)
+        ->count();
+    }
 }

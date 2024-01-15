@@ -17,4 +17,11 @@ interface JobVacancyInterface extends GetInterface, StoreInterface, UpdateInterf
      * @return mixed
      */
     public function getLatestJobVacancy(): mixed;
+
+    /**
+     * getPortofolioByStudent
+     *
+     * @return mixed
+     */
+    public function countVacancy(): mixed;
 }

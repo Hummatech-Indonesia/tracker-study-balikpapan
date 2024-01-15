@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\ApplyJobVacancyInterface;
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Contracts\Interfaces\JobVacancyInterface;
 use App\Contracts\Interfaces\PortofolioInterface;
@@ -12,6 +13,7 @@ use App\Helpers\ResponseHelper;
 use App\Http\Resources\DashboardCompanyResource;
 use App\Http\Resources\PieChartResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -20,13 +22,15 @@ class HomeController extends Controller
     private JobVacancyInterface $jobVacancy;
     private StudentInterface $student;
     private CompanyInterface $company;
+    private ApplyJobVacancyInterface $applyJobVacancy;
 
-    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student, CompanyInterface $company)
+    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student, CompanyInterface $company,ApplyJobVacancyInterface $applyJobVacancy)
     {
         $this->company = $company;
         $this->portofolio = $portofolio;
         $this->student = $student;
         $this->jobVacancy = $jobVacancy;
+        $this->applyJobVacancy = $applyJobVacancy;
     }
 
     /**
@@ -77,7 +81,11 @@ class HomeController extends Controller
             case RoleEnum::ALUMNI->value:
                 $portofolios = $this->portofolio->getLatestPortofolio(auth()->user()->student->id);
                 $jobVacancys = $this->jobVacancy->getLatestJobVacancy();
-                return view('alumni.index', compact('portofolios','jobVacancys'));
+                $countPortofolio = $this->portofolio->countPortofolio();
+                $countVacancy = $this->jobVacancy->countVacancy();
+                $countApplyJobVacancy = $this->applyJobVacancy->countApplyJobVacancy(auth()->user()->student->id);
+
+                return view('alumni.index', compact('portofolios','jobVacancys','countPortofolio','countVacancy','countApplyJobVacancy'));
                 break;
             case RoleEnum::COMPANY->value:
                 $jobVacancys = $this->jobVacancy->customPaginate($request, 6);

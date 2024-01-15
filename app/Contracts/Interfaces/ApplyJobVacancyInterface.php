@@ -49,4 +49,14 @@ interface ApplyJobVacancyInterface extends StoreInterface,ShowInterface, UpdateI
      * @return mixed
      */
     public function getByCompany(mixed $id): mixed;
+
+    /**
+     * getByCompany
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function countApplyJobVacancy(mixed $id): mixed;
+
+
 }
