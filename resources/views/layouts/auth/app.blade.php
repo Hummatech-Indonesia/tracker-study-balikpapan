@@ -2,7 +2,6 @@
 <html lang="en">
 
 
-<!-- Mirrored from codervent.com/rocker/demo/vertical/auth-cover-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 11:11:10 GMT -->
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -63,7 +62,4 @@
 	<!--app JS-->
 	<script src="{{ asset('assets-admin/js/app.js') }}"></script>
 </body>
-
-
-<!-- Mirrored from codervent.com/rocker/demo/vertical/auth-cover-signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 11:11:10 GMT -->
 </html>
