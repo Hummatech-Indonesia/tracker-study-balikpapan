@@ -35,8 +35,6 @@
                         <p class="card-text mt-2 text-center mb-5">Tahun Ajaran {{ $student->classroom->schoolYear->name }}.
                         </p>
                         <div class="d-flex align-items-center gap-2 mb-2">
-                            {{-- <button class="btn btn-detail btn-warning w-100 text-white" data-id="{{ $student->id }}"
-                                data-bs-toggle="modal">Detail</button> --}}
                             <button data-id="{{ $student->user->id }}" id="btn-detail-{{ $student->user->id }}"
                                 data-name="{{ $student->user->name }}" data-email="{{ $student->user->email }}"
                                 data-school_year ="{{ $student->classroom->schoolYear->name }}"
