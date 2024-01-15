@@ -15,7 +15,6 @@
             z-index: 1;
         }
     </style>
- 
 @endsection
 @section('content')
     @php
@@ -113,7 +112,16 @@
                     <div class="col-12 col-md-7 col-lg-5">
                         <div class="welcome-intro">
                             <h3 class="text-black fs-3 text-center">{{ $latestNews->title }}</h3>
-                            <p class="text-black my-4">{!! $latestNews->content !!}</p>
+                            <p class="text-black my-4">
+                                @if (strlen(strip_tags($latestNews->content)) > 500)
+                                    {{ substr(strip_tags($latestNews->content), 0, 500) }}...
+                                    <a href="{{ route('detail-news', ['news' => $latestNews->id]) }}">
+                                        <div class=" btn-outline-primary mt-3 button">Lihat Selengkapnya</div>
+                                    </a>
+                                @else
+                                    {!! $latestNews->content !!}
+                                @endif
+                            </p>
                         </div>
                     </div>
                 @endif
@@ -151,9 +159,9 @@
                                     class="blog-title my-3">{{ $new->title }}</h5>
 
                                 <p style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap"
-                                    class="blog">{!! $new->content !!}</p>
+                                    class="blog">{!! Illuminate\Support\Str::limit($new->content, 150, $end='...') !!}</p>
                                 <a href="{{ route('detail-news', ['news' => $new->id]) }}">
-                                    <div class="button mt-3">Lihat Selengkapnya</div>
+                                    <div class="button btn-outline-primary mt-3">Lihat Selengkapnya</div>
                                 </a>
                             </div>
                         </div>
