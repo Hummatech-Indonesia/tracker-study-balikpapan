@@ -140,6 +140,7 @@ Route::middleware('auth')->group(function () {
         Route::get('lowongan', [ApplyJobVacancyController::class, 'index'])->name('job.vacancy.page');
     });
     Route::middleware('role:company')->group(function () {
+        Route::get('dashboard-company', [HomeController::class, 'dashboardCompany'])->name('dashboard.company');
     });
     Route::middleware('role:student|alumni')->group(function () {
     });

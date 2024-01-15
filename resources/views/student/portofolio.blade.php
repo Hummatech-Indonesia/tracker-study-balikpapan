@@ -90,12 +90,13 @@
         </div>
     </div>
     @forelse ($portofolios as $portofolio)
-    <div class="card">
+        <div class="card">
             <div class="row g-0">
                 <div class="col-md-3">
                     <div class="photo-stack mt-4">
                         @foreach ($portofolio->photoPortofolios as $photoPortofolio)
-                            <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="250" height="250" style="object-fit: cover"/>
+                            <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="250" height="250"
+                                style="object-fit: cover" />
                         @endforeach
                     </div>
                 </div>
@@ -105,7 +106,8 @@
                             {{ $portofolio->year }}
                         </h5>
                         <h5 class="card-title">{{ $portofolio->name }}</h5>
-                        <p class="card-text">{{ Illuminate\Support\Str::limit($portofolio->description, $limit = 325, $end = '...') }}</p>
+                        <p class="card-text">
+                            {{ Illuminate\Support\Str::limit($portofolio->description, $limit = 325, $end = '...') }}</p>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mb-4 gap-3 px-4">
@@ -139,9 +141,9 @@
                         </a>
                     </div>
                     <div class="">
-                        <a href="{{ route('detail.portofolio',['portofolio'=>$portofolio->id]) }}" class="btn btn-primary"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 38 38"
-                                fill="none">
+                        <a href="{{ route('detail.portofolio', ['portofolio' => $portofolio->id]) }}"
+                            class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 38 38" fill="none">
                                 <path
                                     d="M19.0968 23.579C21.6964 23.579 23.8037 21.4716 23.8037 18.872C23.8037 16.2724 21.6964 14.165 19.0968 14.165C16.4972 14.165 14.3898 16.2724 14.3898 18.872C14.3898 21.4716 16.4972 23.579 19.0968 23.579Z"
                                     fill="white" />
@@ -156,14 +158,14 @@
             </div>
         </div>
 
-        @empty
+    @empty
         <div class="d-flex justify-content-center">
             <div>
                 <img src="{{ asset('showNoData.png') }}" alt="">
                 <h5 class="text-center">Portofolio Anda Masih Kosong!!</h5>
             </div>
         </div>
-        @endforelse
+    @endforelse
     <x-delete-modal-component />
 
 @endsection
