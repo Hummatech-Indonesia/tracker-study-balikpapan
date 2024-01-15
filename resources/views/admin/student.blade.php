@@ -419,7 +419,7 @@
                                                 data-name="{{ $student->user->name }}"
                                                 data-email="{{ $student->user->email }}"
                                                 data-national_student_id={{ $student->national_student_id }}
-                                                data-gender="{{ $student->gender }}"
+                                                data-gender="{{ $student->gender == 'male' ? 'Laki - Laki' : 'Perempuan' }}"
                                                 data-birth_date="{{ \Carbon\Carbon::parse($student->birth_date)->locale('id_ID')->isoFormat('DD MMMM Y') }}"
                                                 data-phone_number="{{ $student->user->phone_number }}"
                                                 data-classroom="{{ $student->classroom->name }}"

@@ -70,7 +70,9 @@ class HomeController extends Controller
                 break;
             case RoleEnum::STUDENT->value:
                 $countPortofolio = $this->portofolio->countPortofolio();
-                return view('student.dashboard', compact('countPortofolio'));
+                $countStudent = $this->student->countStudent(null);
+                $portofolios = $this->portofolio->getLatestPortofolio(auth()->user()->student->id);
+                return view('student.dashboard', compact('countPortofolio','countStudent','portofolios'));
                 break;
             case RoleEnum::ALUMNI->value:
                 return view('alumni.index');
