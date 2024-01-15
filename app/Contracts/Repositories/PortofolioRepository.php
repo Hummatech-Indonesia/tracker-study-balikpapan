@@ -103,10 +103,25 @@ class PortofolioRepository extends BaseRepository implements PortofolioInterface
             ->count();
     }
 
+    /**
+     * getPortofolioByStudent
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
     public function getPortofolioByStudent(mixed $id): mixed
     {
         return $this->model->query()
             ->where('student_id',$id)
             ->get();
+    }
+
+    public function getLatestPortofolio(mixed $id): mixed
+    {
+        return $this->model->query()
+        ->where('student_id',$id)
+        ->latest()
+        ->take(2)
+        ->get();
     }
 }

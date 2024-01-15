@@ -19,11 +19,19 @@ interface PortofolioInterface extends StoreInterface, SearchInterface, DeleteInt
      */
     public function countPortofolio(): string;
 
-        /**
-     * getByCompany
+    /**
+     * getPortofolioByStudent
      *
      * @param  mixed $id
      * @return mixed
      */
     public function getPortofolioByStudent(mixed $id): mixed;
+
+    /**
+     * getLatestPortofolio
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function getLatestPortofolio(mixed $id): mixed;
 }
