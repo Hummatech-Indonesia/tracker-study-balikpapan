@@ -1,4 +1,52 @@
 @extends('layouts.app')
+@section('content')
+    <div class="row">
+        <div class="col-6">
+            <div class="card w-100">
+                <div class="card-header bg-primary">
+                    <h4 class="mb-0 text-white card-title">Informasi Data Diri</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-subtitle mb-7"></p>
+                    <div class="position-relative">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset(Auth::user()->photo ? 'storage/' . Auth::user()->photo : 'default.jpg') }}"
+                                class="rounded-circle user-profile mb-2" style="object-fit: cover" id="detail-photo"
+                                width="150" alt="photo-siswa" height="150" />
+                        </div>
+                        <div class="text-center">
+                            <h3 class="username">{{ Auth::user()->name }}</h3>
+                        </div>
+                        <div class="ps-auto">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>NISN:</strong></td>
+                                        <td>{{ Auth::user()->student->national_student_id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Jurusan :</strong></td>
+                                        <td><span
+                                                class="religion">{{ Auth::user()->student->classroom->major->name }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Kelas:</strong></td>
+                                        <td><span class="classroom">{{ Auth::user()->student->classroom->name }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Jenis Kelamin:</strong></td>
+                                        <td><span class="gender">{{ Auth::user()->student->gender }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tanggal Lahir :</strong></td>
+                                        <td><span class="religion">
+                                                {{ \Carbon\Carbon::parse(Auth::user()->student->birth_date)->locale('id_ID')->isoFormat('DD MMMM Y') }}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 @section('style')
     <style>
         .photo-stack {
