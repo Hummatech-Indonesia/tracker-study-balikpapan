@@ -89,6 +89,7 @@ class PortofolioRepository extends BaseRepository implements PortofolioInterface
     public function search(Request $request): mixed
     {
         return $this->model->query()
+            ->where('student_id', auth()->user()->student->id)
             ->when($request->name, function ($query) use ($request) {
                 $query->where('name', 'LIKE', '%' . $request->name . '%');
             })
