@@ -13,6 +13,8 @@ use App\Enums\RoleEnum;
 use App\Helpers\ResponseHelper;
 use App\Http\Resources\DashboardCompanyResource;
 use App\Http\Resources\PieChartResource;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -125,14 +127,14 @@ class HomeController extends Controller
     /**
      * dashboardAdmin
      *
-     * @return View
+     * @return JsonResponse
      */
-    public function dashboardAdmin(): View
+    public function dashboardAdmin(): JsonResponse
     {
         $topFive = $this->regency->percentageOfAlumni();
         foreach ($topFive as $item) {
             $topFive->percentage = ((int) $item->nonactive_count / (int) $item->all_count) * (100/100);
         }
-        return view('', compact('topFive'));
+        return ResponseHelper::success($topFive);
     }
 }
