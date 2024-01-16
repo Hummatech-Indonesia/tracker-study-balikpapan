@@ -41,14 +41,14 @@
         </div>
     </div>
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
     @endif
+
     <h4>
         Galery Guru
     </h4>
@@ -127,8 +127,9 @@
                             </div>
                             <div class="col-12">
                                 <label for="photo" class="form-label">Upload Foto</label>
-                                <input type="file" value="{{ old('photo') }}" class="form-control @error('photo') is-invalid @enderror"
-                                    name="photo" id="photo">
+                                <input type="file" value="{{ old('photo') }}"
+                                    class="form-control @error('photo') is-invalid @enderror" name="photo"
+                                    id="photo">
                                 @error('photo')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

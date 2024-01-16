@@ -18,14 +18,14 @@
             </div>
         </div>
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                    {{ $error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endforeach
         @endif
+
         <form action="{{ route('alumni.submit.survey', ['survey' => $survey->id]) }}" method="POST" class="card">
             @csrf
             @method('POST')
@@ -99,8 +99,8 @@
                             <div>
                                 <input type="radio"
                                     {{ $submitSurvey ? ($submitSurvey->alumni_gathering == '1' ? 'checked' : '') : '' }}
-                                    name="alumni_gathering" id="Ya" value="1" class="form-check-input"> <label
-                                    class="form-check-label" for="Ya">
+                                    name="alumni_gathering" id="Ya" value="1" class="form-check-input">
+                                <label class="form-check-label" for="Ya">
                                     Ya
                                 </label>
                             </div>
@@ -208,7 +208,8 @@
                     success: function(response) {
                         $('#large-bootstrap-class-single-field').html('');
                         $.each(response, function(index, item) {
-                            var selected = (item.id == "{{ $submitSurvey ? $submitSurvey->regency_id : '' }}") ?
+                            var selected = (item.id ==
+                                    "{{ $submitSurvey ? $submitSurvey->regency_id : '' }}") ?
                                 'selected' : '';
                             var option = '<option value="' + item.id + '"' + selected + '>' +
                                 item.name + '</option>';

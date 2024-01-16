@@ -8,6 +8,7 @@
             </div>
         @endforeach
     @endif
+
     <div class="d-flex justify-content-between">
         <div class="">
             <h5 class="text-dark" style="font-weight: 500">
@@ -239,14 +240,14 @@
                                             </div>
                                             <div class="">
                                                 <a
-                                                    href="{{ route('detail.applicant',['apply_job_vacancies'=>$applyJobVacancy->id]) }}">
+                                                    href="{{ route('detail.applicant', ['apply_job_vacancies' => $applyJobVacancy->id]) }}">
                                                     <button class="btn text-white btn-sm btn-info">Detail</button>
                                                 </a>
                                             </div>
                                         @else
                                             <div class="">
                                                 <a
-                                                    href="{{ route('detail.applicant',['apply_job_vacancies'=>$applyJobVacancy->id]) }}">
+                                                    href="{{ route('detail.applicant', ['apply_job_vacancies' => $applyJobVacancy->id]) }}">
                                                     <button class="btn text-white btn-sm btn-info">Detail</button>
                                                 </a>
                                             </div>

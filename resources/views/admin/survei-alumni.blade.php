@@ -17,14 +17,14 @@
         </div>
     </div>
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
     @endif
+
     <div class="row mt-4">
         @forelse ($survies as $survey)
             <div class="col-12 col-lg-5 col-xxl-4">
@@ -65,7 +65,8 @@
                         </p>
                         <div class="d-flex justify-content-end gap-2">
                             <div class="">
-                                <a href="{{ route('survey-results', ['survey' => $survey->id]) }}" class="btn text-white" style="background-color: #1D9375">Hasil Survei</a>
+                                <a href="{{ route('survey-results', ['survey' => $survey->id]) }}" class="btn text-white"
+                                    style="background-color: #1D9375">Hasil Survei</a>
 
                             </div>
                             <div class="">
@@ -114,8 +115,8 @@
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="major" class="form-label">Tanggal Selesai</label>
-                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control" name="end_at"
-                                    id="">
+                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
+                                    name="end_at" id="">
                             </div>
                             <div class="col-12">
                                 <label for="major" class="form-label">Deskripsi</label>
@@ -224,7 +225,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                    </div>
+                </div>
             </div>
         </div>
     </div>

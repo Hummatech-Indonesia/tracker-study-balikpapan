@@ -69,12 +69,15 @@
             </div>
         </div>
     </div>
-    @if ($errors->has('name'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ $errors->first('name') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
     @endif
+
     <div class="row">
         @forelse ($schoolYear as $schoolYears)
             <div class="col-lg-4 col-xxl-3 col-12">

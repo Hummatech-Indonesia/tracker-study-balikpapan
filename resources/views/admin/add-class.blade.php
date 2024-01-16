@@ -24,6 +24,15 @@
                 Tambah Kelas</button>
         </div>
     </div>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
+    @endif
+
     <div class="row">
         @forelse ($classrooms as $index => $classroom)
             <div class="col-6 col-lg-3 col-xxl-3">

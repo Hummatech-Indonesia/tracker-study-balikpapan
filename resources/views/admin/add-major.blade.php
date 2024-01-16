@@ -22,12 +22,15 @@
         </div>
     </div>
     <div class="row">
-        @if ($errors->has('name'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ $errors->first('name') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                    {{ $error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endforeach
         @endif
+
         @forelse ($majors as $index => $major)
             <div class="col-6 col-lg-3">
                 <div class="card border-primary border-bottom border-3 border-0">

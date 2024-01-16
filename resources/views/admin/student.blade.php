@@ -225,7 +225,7 @@
                         <img src="" class="rounded-circle mb-2" id="detail-photo" width="150"
                             alt="photo-siswa" height="150" />
                     </div>
-                    
+
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col">
@@ -347,19 +347,17 @@
     <div class="card">
         <div class="card-body">
             @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
+                @foreach ($errors->all() as $error)
                     @php
                         $errorReplaced = str_replace('There was an error on row', 'Terjadi kesalahan pada baris', $error);
                     @endphp
-                    <li>
+                    <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
                         {{ $errorReplaced }}
-                    </li>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 @endforeach
-                </ul>
-            </div>
-        @endif
+            @endif
+
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -445,7 +443,7 @@
                                                 data-name="{{ $student->user->name }}"
                                                 data-email="{{ $student->user->email }}"
                                                 data-national_student_id={{ $student->national_student_id }}
-                                                data-gender="{{ $student->gender}}"
+                                                data-gender="{{ $student->gender }}"
                                                 data-birth_date="{{ $student->birth_date }}"
                                                 data-phone_number="{{ $student->user->phone_number }}"
                                                 data-classroom_id="{{ $student->classroom->id }}"
