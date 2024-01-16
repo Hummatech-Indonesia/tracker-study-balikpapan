@@ -239,6 +239,32 @@
 @endsection
 @section('script')
     <script>
+        get()
+
+        function get() {
+            $.ajax({
+                url: "{{ route('dashboardCity') }}",
+                type: 'GET',
+                DataType: 'JSON',
+                success: function(response) {
+                    const data = response.data;
+                    const chartData = [];
+
+                    for (const name in data) {
+                        if (data.hasOwnProperty(name)) {
+                            const jumlah = data[name];
+                            chartData.push({
+                                name,
+                                jumlah
+                            });
+                        }
+                    }
+                    getChart(chartData)
+
+                }
+            })
+        }
+
         $.ajax({
             url: "{{ route('chart.alumni') }}",
             type: "GET",
@@ -333,79 +359,59 @@
 
         };
 
-        var options = {
-          series: [{
-          name: 'Inflation',
-          data: [10,20,50,20,30]
-        }],
-          chart: {
-          height: 350,
-          type: 'bar',
-        },
-        plotOptions: {
-          bar: {
-            borderRadius: 10,
-            dataLabels: {
-              position: 'top', // top, center, bottom
-            },
-          }
-        },
-        dataLabels: {
-          enabled: true,
-          formatter: function (val) {
-            return val + "%";
-          },
-          offsetY: -20,
-          style: {
-            fontSize: '12px',
-            colors: ["#304758"]
-          }
-        },
-        
-        xaxis: {
-          categories: ["Balikpapan","Penajam","Tenggarong",'Bontang',"Samarinda"],
-          position: 'bottom',
-          axisBorder: {
-            show: false
-          },
-          axisTicks: {
-            show: false
-          },
-          crosshairs: {
-            fill: {
-              type: 'gradient',
-              gradient: {
-                colorFrom: '#D8E3F0',
-                colorTo: '#BED1E6',
-                stops: [0, 100],
-                opacityFrom: 0.4,
-                opacityTo: 0.5,
-              }
-            }
-          },
-          tooltip: {
-            enabled: true,
-          }
-        },
-        yaxis: {
-          axisBorder: {
-            show: false
-          },
-          axisTicks: {
-            show: false,
-          },
-          labels: {
-            show: false,
-            formatter: function (val) {
-              return val + "%";
-            }
-          }
-        
-        },
-        };
+        function getChart(data) {
+            var options = {
+                series: [{
+                    data: data.map(item => item.jumlah),
+                    name: 'Jumlah',
+                }],
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: 10,
+                        dataLabels: {
+                            position: 'top',
+                        },
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    offsetY: -20,
+                    style: {
+                        fontSize: '12px',
+                        colors: ["#304758"]
+                    }
+                },
+                xaxis: {
+                    categories: data.map(item => item.name),
+                    labels: {
+                        rotate: -45, 
+                    },
+                },
+                yaxis: {
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
+                    labels: {
+                        show: false,
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    x: {
+                        show: true,
+                    },
+                },
+            };
 
-        var chart = new ApexCharts(document.querySelector("#chartCity"), options);
-        chart.render();
-
+            var chart = new ApexCharts(document.querySelector("#chartCity"), options);
+            chart.render();
+        }
     </script>
 @endsection

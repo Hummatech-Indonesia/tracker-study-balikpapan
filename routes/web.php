@@ -82,7 +82,7 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware('role:admin')->group(function () {
-        Route::get('dashboard-admin', [HomeController::class, 'dashboardAdmin']);
+        Route::get('dashboard-admin', [HomeController::class, 'dashboardAdmin'])->name('dashboardCity');
         Route::get('pie-chart', [HomeController::class, 'pieChart'])->name('pie.chart');
 
         Route::get('chart-alumni', [StudentController::class, 'chartAlumni'])->name('chart.alumni');
