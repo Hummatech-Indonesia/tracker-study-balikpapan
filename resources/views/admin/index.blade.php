@@ -31,7 +31,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-12 col-lg-3">
+        <div class="col-12 col-md-6 col-lg-3">
             <div class="card radius-10 mb-3 border-start border-0 border-4 border-primary">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -120,7 +120,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-12 col-lg-3">
+        <div class="col-12 col-md-6 col-lg-3">
             <div class="card radius-10 mb-3 border-start border-0 border-4" style="border-color: #FF701F !important;">
                 <div class="card-body">
                     <div class="d-flex align-items-center">

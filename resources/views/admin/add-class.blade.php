@@ -20,8 +20,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
                     <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                     <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                </svg>
-                Tambah Kelas</button>
+                </svg> Kelas</button>
         </div>
     </div>
     @if ($errors->any())
@@ -50,13 +49,17 @@
                         <h5 class="card-title text-dark" style="font-weight: 700">{{ $classroom->major->name }}</h5>
                         <p class="card-text mt-2 mb-2">Tahun Ajaran {{ $classroom->schoolYear->name }}.</p>
                         <hr>
-                        <div class="d-flex align-items-center gap-2">
-                            <a class="btn btn-danger btn-delete text-white w-100" data-id="{{ $classroom->id }}"
-                                data-bs-toggle="modal" data-bs-target="#modal-delete">Hapus</a>
-                            <a class="btn btn-warning text-white w-100 btn-edit" id="btn-edit-{{ $classroom->id }}"
-                                data-id="{{ $classroom->id }}" data-name="{{ $classroom->name }}"
-                                data-major_id="{{ $classroom->major_id }}"
-                                data-school_year_id={{ $classroom->school_year_id }}>Edit</a>
+                        <div class="row">
+                            <div class="col mb-2">
+                                <a class="btn btn-danger btn-delete text-white w-100" data-id="{{ $classroom->id }}"
+                                    data-bs-toggle="modal" data-bs-target="#modal-delete">Hapus</a>
+                            </div>
+                            <div class="col">
+                                <a class="btn btn-warning text-white w-100 btn-edit" id="btn-edit-{{ $classroom->id }}"
+                                    data-id="{{ $classroom->id }}" data-name="{{ $classroom->name }}"
+                                    data-major_id="{{ $classroom->major_id }}"
+                                    data-school_year_id={{ $classroom->school_year_id }}>Edit</a>
+                            </div>
                         </div>
                     </div>
                 </div>

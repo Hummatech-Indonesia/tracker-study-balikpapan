@@ -12,35 +12,39 @@
     <h4 style="font-weight: 800">
         Tambah Siswa
     </h4>
-    <div class="d-flex justify-content-between">
-        <form action="" method="get">
-            <div class="d-flex justify-content-header gap-3">
-                <div class="position-relative mb-3 col-lg-6">
-                    <input type="text" name="name" value="{{ request()->name }}"
-                        class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
-                    <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+    <div class="row">
+        <div class="col-12 col-md-9">
+            <form action="" method="get">
+                <div class="d-flex justify-content-header gap-3">
+                    <div class="position-relative mb-3 col-lg-6">
+                        <input type="text" name="name" value="{{ request()->name }}"
+                            class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
+                        <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                    </div>
+                    <div class="col-lg-4">
+                        <select name="classroom" id="" class="form-select py-2">
+                            <option value="">Filter Kelas</option>
+                            @foreach ($classrooms as $classroom)
+                                <option {{ request()->classroom == $classroom->id ? 'selected' : '' }}
+                                    value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <button type="submit" class="btn btn-primary btn-md">
+                            Cari
+                        </button>
+                    </div>
                 </div>
-                <div class="col-lg-4">
-                    <select name="classroom" id="" class="form-select py-2">
-                        <option value="">Filter Kelas</option>
-                        @foreach ($classrooms as $classroom)
-                            <option {{ request()->classroom == $classroom->id ? 'selected' : '' }}
-                                value="{{ $classroom->id }}">{{ $classroom->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-lg-2">
-                    <button type="submit" class="btn btn-primary btn-md">
-                        Cari
-                    </button>
-                </div>
+            </form>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="d-flex gap-2 justify-content-end mb-3">
+                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#modal-import"
+                    style="background-color: #1D9375">Import Siswa</button>
+                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
+                    style="background-color: #1D9375">Tambah Siswa</button>
             </div>
-        </form>
-        <div class="">
-            <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#modal-import"
-                style="background-color: #1D9375">Import Siswa</button>
-            <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
-                style="background-color: #1D9375">Tambah Siswa</button>
         </div>
     </div>
     <!-- Modal -->

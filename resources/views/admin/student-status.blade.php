@@ -3,9 +3,9 @@
     <h3>
         Status Siswa & Alumni
     </h3>
-    <div class="d-flex justify-content-between mb-2">
-        <div class="d-flex justify-content-header gap-3">
-            <div class="position-relative mb-3 col-lg-8">
+    <div class="row">
+        <div class=" col-12 col-md-9 ">
+            <div class="position-relative mb-3 col-12 col-md-4 col-lg-4">
                 <form action="{{ route('student.classroom.status', $classroom->id) }}" method="get">
                     <input type="text" name="name" value="{{ Request::get('name') }}"
                         class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
@@ -14,9 +14,15 @@
                 </form>
             </div>
         </div>
-        <div class="">
-            <button id="btn-select-change-alumni" class="btn text-white btn-primary">Jadikan Alumni</button>
-            <button id="btn-select-change-student" class="btn text-white btn-warning">Jadikan Siswa</button>
+        <div class=" col-12 col-md-3 mb-3">
+            <div class="d-flex justify-content-end gap-3">
+                <div class="">
+                    <button id="btn-select-change-alumni" class="btn text-white btn-primary">Jadikan Alumni</button>
+                </div>
+                <div class="">
+                    <button id="btn-select-change-student" class="btn text-white btn-warning">Jadikan Siswa</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="table-responsive">
@@ -105,7 +111,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7" class="text-center">
+                        <td colspan="10" class="text-center">
                             <div class="d-flex justify-content-center" style="min-height:16rem">
                                 <div class="my-auto">
                                     <img src="{{ asset('showNoData.png') }}" width="300" height="300" />

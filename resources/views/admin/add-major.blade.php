@@ -3,7 +3,7 @@
     <h4 class="mb-3">
         Tambah Jurusan
     </h4>
-    <div class="d-flex justify-content-between mb-2">
+    <div class="d-flex justify-content-between mb-3">
         <div class="position-relative mb-3 col-lg-3">
             <form action="">
                 <input type="text" name="name" value="{{ request()->name }}" class="form-control search-chat py-2 ps-5"
@@ -17,8 +17,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
                     <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                     <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                </svg>
-                Tambah Jurusan</button>
+                </svg> Jurusan</button>
         </div>
     </div>
     <div class="row">
@@ -43,13 +42,17 @@
                     <div class="card-body">
                         <h5 class="card-title text-dark" style="font-weight: 700">{{ $major->name }}</h5>
                         <hr>
-                        <div class="d-flex align-items-center gap-2">
-                            <button type="button" class="btn btn-danger btn-delete text-white w-100"
-                                data-id="{{ $major->id }}" data-bs-toggle="modal"
-                                data-bs-target="#modal-delete">Hapus</button>
-                            <button type="button" id="btn-edit-{{ $major->id }}" data-id="{{ $major->id }}"
-                                data-name="{{ $major->name }}"
-                                class="btn-edit btn btn-warning text-white w-100">Edit</button>
+                        <div class="row">
+                            <div class="col mb-2">
+                                <button type="button" class="btn btn-danger btn-delete text-white w-100"
+                                    data-id="{{ $major->id }}" data-bs-toggle="modal"
+                                    data-bs-target="#modal-delete">Hapus</button>
+                            </div>
+                                <div class="col">
+                                    <button type="button" id="btn-edit-{{ $major->id }}" data-id="{{ $major->id }}"
+                                        data-name="{{ $major->name }}"
+                                        class="btn-edit btn btn-warning text-white w-100">Edit</button>
+                                </div>
                         </div>
                     </div>
                 </div>

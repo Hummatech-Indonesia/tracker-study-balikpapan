@@ -11,8 +11,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 19 19" fill="none">
                     <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                     <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                </svg>
-                Tambah Survey
+                </svg> Survey
             </button>
         </div>
     </div>

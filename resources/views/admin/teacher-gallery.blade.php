@@ -50,7 +50,7 @@
     @endif
 
     <h4>
-        Galery Guru
+        Galeri Guru
     </h4>
     <div class="d-flex justify-content-between mb-2">
         <div class="position-relative mb-3 col-lg-3">
@@ -66,8 +66,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
                     <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                     <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                </svg>
-                Tambah Gallery Guru</button>
+                </svg> Galleri Guru</button>
         </div>
     </div>
     <div class="row">
@@ -100,7 +99,7 @@
             <div class="d-flex justify-content-center">
                 <div>
                     <img src="{{ asset('showNoData.png') }}" alt="">
-                    <h6>Data Kosong, Tambah Gallery Guru Untuk Menampilkan Data!!</h6>
+                    <h6>Data Kosong, Tambah Galleri Guru Untuk Menampilkan Data!!</h6>
                 </div>
             </div>
         @endforelse
@@ -112,7 +111,7 @@
                 @method('POST')
                 <div class="modal-content">
                     <div class="modal-header text-center">
-                        <h5 class="modal-title" id="exampleModalLabel">Tambah Gallery Guru</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Galleri Guru</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
