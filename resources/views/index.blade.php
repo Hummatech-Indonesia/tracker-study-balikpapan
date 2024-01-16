@@ -1,11 +1,26 @@
 @extends('layouts.landing-page.app-landing')
+@section('style')
+    <style>
+         @media only screen and (max-width: 768px) {
+            img {
+                display: none
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            img {
+                display: none
+            }
+        }
+    </style>
+@endsection
 @section('content')
     <!-- ***** Welcome Area Start ***** -->
     <section id="home" class="section welcome-area bg-overlay overflow-hidden d-flex align-items-center">
         <div class="container">
             <div class="row align-items-center">
                 <!-- Welcome Intro Start -->
-                <div class="col-12 col-md-7 col-lg-6">
+                <div class="col-12 col-md-12 col-lg-6">
                     <div class="welcome-intro">
                         <h2 class="text-white fs-6">SELAMAT DATANG DI TRACKER STUDY SMK 2 PENAJAM</h2>
                         <p class="text-white my-4">Nikmati pengalaman eksklusif melalui situs web kami, Tracer Study, yang
@@ -21,7 +36,7 @@
                     </div>
                 </div>
                 <div class="col-0 col-md-0 col-lg-1"></div>
-                <div class="col-12 col-md-3 col-lg-4"><img src="logo-welcome.png" alt=""></div>
+                <div class="col-12 col-md-3 col-lg-4 img"><img src="logo-welcome.png" alt=""></div>
             </div>
         </div>
         <!-- Shape Bottom -->
