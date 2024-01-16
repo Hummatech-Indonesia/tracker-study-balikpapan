@@ -9,6 +9,7 @@ use App\Contracts\Interfaces\PortofolioInterface;
 use App\Contracts\Interfaces\RegencyInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\SubmitSurveyInterface;
+use App\Contracts\Interfaces\SurveyInterface;
 use App\Enums\RoleEnum;
 use App\Helpers\ResponseHelper;
 use App\Http\Resources\DashboardCompanyResource;
@@ -26,11 +27,13 @@ class HomeController extends Controller
     private StudentInterface $student;
     private CompanyInterface $company;
     private ApplyJobVacancyInterface $applyJobVacancy;
-    private RegencyInterface $regency;
+    private SurveyInterface $survey;
+    private SubmitSurveyInterface $submitSurvey;
 
-    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student, CompanyInterface $company,ApplyJobVacancyInterface $applyJobVacancy, RegencyInterface $regencyInterface)
+    public function __construct(PortofolioInterface $portofolio, JobVacancyInterface $jobVacancy, StudentInterface $student, CompanyInterface $company,ApplyJobVacancyInterface $applyJobVacancy, SubmitSurveyInterface $submitSurveyInterface, SurveyInterface $surveyInterface)
     {
-        $this->regency = $regencyInterface;
+        $this->survey = $surveyInterface;
+        $this->submitSurvey = $submitSurveyInterface;
         $this->company = $company;
         $this->portofolio = $portofolio;
         $this->student = $student;
@@ -131,10 +134,21 @@ class HomeController extends Controller
      */
     public function dashboardAdmin(): JsonResponse
     {
-        $topFive = $this->regency->percentageOfAlumni();
-        foreach ($topFive as $item) {
-            $topFive->percentage = ((int) $item->nonactive_count / (int) $item->all_count) * (100/100);
+        $total = $this->submitSurvey->percentageOfAlumni($this->survey->getLatest()->id);
+        $result = array();
+        $currentRegency = "";
+        $totalTemp = 0;
+        foreach ($total as $item) {
+            if (count($result) > 5) break;
+            if ($currentRegency == $item->regency->name) {
+                $totalTemp++;
+            }
+            else {
+                $currentRegency = $item->regency->name;
+                $totalTemp = 1;
+            }
+            $result[$currentRegency] = $totalTemp;
         }
-        return ResponseHelper::success($topFive);
+        return ResponseHelper::success($result);
     }
 }

@@ -14,6 +14,21 @@ class SubmitSurveyRepository extends BaseRepository implements SubmitSurveyInter
     }
 
     /**
+     * percentageOfAlumni
+     *
+     * @param  mixed $surveyId
+     * @return mixed
+     */
+    public function percentageOfAlumni(mixed $surveyId): mixed
+    {
+        return $this->model->query()
+            ->with('regency')
+            ->orderByDesc('regency_id')
+            ->where('survey_id', $surveyId)
+            ->get();
+    }
+
+    /**
      * get
      *
      * @return mixed
