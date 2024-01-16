@@ -37,7 +37,7 @@ class ApplyJobVacancyController extends Controller
         $data = $request->validated();
         $data['status'] = ApplicantStatusEnum::ACCEPTED->value;
         $this->applyJobVacancy->update($apply_job_vacancies->id, $data);
-        $this->service->sendMailAccept(['email' => $apply_job_vacancies->student->user->email, 'message' => $data['message']]);
+        $this->service->sendMailAccept(['name' => $apply_job_vacancies->student->user->name, 'email' => $apply_job_vacancies->student->user->email, 'message' => $data['message']]);
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
@@ -53,7 +53,7 @@ class ApplyJobVacancyController extends Controller
         $data = $request->validated();
         $data['status'] = ApplicantStatusEnum::REJECTED->value;
         $this->applyJobVacancy->update($apply_job_vacancies->id, $data);
-        $this->service->sendMailReject(['email' => $apply_job_vacancies->student->user->email, 'message' => $data['message']]);
+        $this->service->sendMailReject(['name' => $apply_job_vacancies->student->user->name, 'email' => $apply_job_vacancies->student->user->email, 'message' => $data['message']]);
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
 

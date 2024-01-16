@@ -290,17 +290,24 @@
                                   color: #4f545c;
                                   letter-spacing: 0.27px;
                                 ">
-                                                            Halo [Nama Pelamar],
+                                                            Halo {{ $data['name'] }},
                                                         </h2>
                                                         <p>
-                                                            Terima kasih atas minat Anda dalam melamar posisi di perusahaan kami. Setelah melalui proses seleksi, kami ingin memberitahukan bahwa kami tidak dapat melanjutkan pelamaran Anda untuk posisi yang Anda lamar.</span>
-                                                      </p>
-                                                      <p>
-                                                        Kami menghargai waktu dan usaha yang Anda habiskan untuk melamar, dan kami mengucapkan terima kasih atas minat Anda dalam perusahaan kami. Namun, setelah mempertimbangkan berbagai faktor, termasuk kualifikasi dan kebutuhan spesifik perusahaan, kami harus membuat keputusan ini.
-                                                      </p>
-                                                      <p style="font-weight: 700; color: #282727;">
-                                                        Alasan penolakan : [Alasan]
-                                                      </p>
+                                                            Terima kasih atas minat Anda dalam melamar posisi di
+                                                            perusahaan kami. Setelah melalui proses seleksi, kami ingin
+                                                            memberitahukan bahwa kami tidak dapat melanjutkan pelamaran
+                                                            Anda untuk posisi yang Anda lamar.</span>
+                                                        </p>
+                                                        <p>
+                                                            Kami menghargai waktu dan usaha yang Anda habiskan untuk
+                                                            melamar, dan kami mengucapkan terima kasih atas minat Anda
+                                                            dalam perusahaan kami. Namun, setelah mempertimbangkan
+                                                            berbagai faktor, termasuk kualifikasi dan kebutuhan spesifik
+                                                            perusahaan, kami harus membuat keputusan ini.
+                                                        </p>
+                                                        <p style="font-weight: 700; color: #282727;">
+                                                            Alasan penolakan : {{ $data['message'] }}
+                                                        </p>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -314,7 +321,7 @@
                                                     <table role="presentation" cellpadding="0" cellspacing="0"
                                                         style="border-collapse: separate" align="center"
                                                         border="0">
-                                                        
+
                                                     </table>
                                                 </td>
                                             </tr>

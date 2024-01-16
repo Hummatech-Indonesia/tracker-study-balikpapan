@@ -290,56 +290,16 @@
                                   color: #4f545c;
                                   letter-spacing: 0.27px;
                                 ">
-                                                            Halo [Nama Pelamar],
+                                                            Halo {{ $data['name'] }},
                                                         </h2>
                                                         <p>
-                                                            Kami senang memberitahu Anda bahwa Anda telah berhasil lolos dalam proses seleksi dan kami dengan senang hati menerima lamaran Anda untuk posisi [Posisi Pekerjaan] di perusahaan kami.
+                                                            Kami senang memberitahu Anda bahwa Anda telah berhasil lolos
+                                                            dalam proses seleksi dan kami dengan senang hati menerima
+                                                            lamaran anda di perusahaan
+                                                            kami.
                                                         </p>
-                                                      
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="
-                              word-break: break-word;
-                              font-size: 0px;
-                              padding: 10px 25px;
-                            "
-                                                    align="center">
-                                                    <table role="presentation" cellpadding="0" cellspacing="0"
-                                                        style="border-collapse: separate" align="center"
-                                                        border="0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="
-                                      border: none;
-                                      border-radius: 3px;
-                                      color: white;
-                                      cursor: auto;
-                                      padding: 15px 19px;
-                                    "
-                                                                    align="center" valign="middle" bgcolor="#1b613d">
-                                                                    <a href="javascript:void(0)"
-                                                                        target="_blank" rel="noopener noreferrer"
-                                                                        style="
-                                        text-decoration: none;
-                                        line-height: 100%;
-                                        background: #1b613d;
-                                        color: white;
-                                        font-family: Ubuntu, Helvetica, Arial,
-                                          sans-serif;
-                                        font-size: 15px;
-                                        font-weight: normal;
-                                        text-transform: none;
-                                        margin: 0px;
-                                      ">
-                                                                        Login
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
 
-                                                        </tbody>
-                                                    </table>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </tbody>
