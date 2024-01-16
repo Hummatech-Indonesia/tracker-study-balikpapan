@@ -15,7 +15,7 @@ class AccountUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,' . $this->user->id,
             'password' => 'nullable|min:6'
         ];
     }
