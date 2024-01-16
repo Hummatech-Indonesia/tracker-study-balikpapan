@@ -40,7 +40,8 @@ class StudentImport implements ToModel, WithHeadingRow, WithValidation
             'gender' => $gender,
             'is_graduate' => 0,
             'address' => $row['alamat'],
-            'classroom_id' => $classroom->id
+            'classroom_id' => $classroom->id,
+            'email_verified_at' => now()
         ]);
     }
 

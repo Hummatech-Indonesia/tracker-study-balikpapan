@@ -74,16 +74,15 @@ class ApplyJobVacancyController extends Controller
      *
      * @return View
      */
-    public function index() : View
+    public function index(): View
     {
         $applyJobVacancies = $this->applyJobVacancy->getJob();
-        return view('alumni.job-vacancy-page',compact('applyJobVacancies'));
+        return view('alumni.job-vacancy-page', compact('applyJobVacancies'));
     }
 
-    public function companyApplyJobVacancy() : View
+    public function companyApplyJobVacancy(): View
     {
         $applyJobVacancies = $this->applyJobVacancy->getByCompany(auth()->user()->company->id);
         return view('company.job-applicant', compact('applyJobVacancies'));
     }
-
 }
