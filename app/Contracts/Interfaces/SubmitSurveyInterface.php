@@ -9,6 +9,15 @@ use App\Contracts\Interfaces\Eloquent\GetInterface;
 
 interface SubmitSurveyInterface extends GetInterface,StoreInterface, UpdateInterface,DeleteInterface
 {
+
+    /**
+     * percentageOfAlumni
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function percentageOfAlumni(mixed $id): mixed;
+
     /**
      * getByStudent
      *

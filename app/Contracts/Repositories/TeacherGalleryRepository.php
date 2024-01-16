@@ -87,4 +87,15 @@ class TeacherGalleryRepository extends BaseRepository implements TeacherGalleryI
         return $this->show($id)
             ->delete();
     }
+
+     /**
+     * getFirst
+     *
+     * @return mixed
+     */
+    public function getFirst(): mixed
+    {
+        return $this->model->query()
+            ->first();
+    }
 }

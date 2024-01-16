@@ -3,8 +3,8 @@
     <h4 class="mb-3">
         Tahun Ajaran
     </h4>
-    <div class="d-flex justify-content-between">
-        <div class="position-relative mb-3 col-lg-3">
+    <div class="d-flex justify-content-between mb-3">
+        <div class="position-relative mb-3 col-sm-2">
             <form action="{{ route('school-years.index') }}" method="get">
                 <input type="text" name="name" value="{{ request()->name }}" class="form-control search-chat py-2 ps-5"
                     id="search-name" placeholder="Search">
@@ -19,7 +19,7 @@
                     <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                     <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
                 </svg>
-                Tambah Tahun Ajaran</button>
+                Tahun Ajaran</button>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <form action="{{ route('school-years.store') }}" method="post">
@@ -69,12 +69,15 @@
             </div>
         </div>
     </div>
-    @if ($errors->has('name'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ $errors->first('name') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
     @endif
+
     <div class="row">
         @forelse ($schoolYear as $schoolYears)
             <div class="col-lg-4 col-xxl-3 col-12">

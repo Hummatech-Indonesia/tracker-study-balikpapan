@@ -12,35 +12,39 @@
     <h4 style="font-weight: 800">
         Tambah Siswa
     </h4>
-    <div class="d-flex justify-content-between">
-        <form action="" method="get">
-            <div class="d-flex justify-content-header gap-3">
-                <div class="position-relative mb-3 col-lg-6">
-                    <input type="text" name="name" value="{{ request()->name }}"
-                        class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
-                    <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+    <div class="row">
+        <div class="col-12 col-md-9">
+            <form action="" method="get">
+                <div class="d-flex justify-content-header gap-3">
+                    <div class="position-relative mb-3 col-lg-6">
+                        <input type="text" name="name" value="{{ request()->name }}"
+                            class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
+                        <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                    </div>
+                    <div class="col-lg-4">
+                        <select name="classroom" id="" class="form-select py-2">
+                            <option value="">Filter Kelas</option>
+                            @foreach ($classrooms as $classroom)
+                                <option {{ request()->classroom == $classroom->id ? 'selected' : '' }}
+                                    value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <button type="submit" class="btn btn-primary btn-md">
+                            Cari
+                        </button>
+                    </div>
                 </div>
-                <div class="col-lg-4">
-                    <select name="classroom" id="" class="form-select py-2">
-                        <option value="">Filter Kelas</option>
-                        @foreach ($classrooms as $classroom)
-                            <option {{ request()->classroom == $classroom->id ? 'selected' : '' }}
-                                value="{{ $classroom->id }}">{{ $classroom->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-lg-2">
-                    <button type="submit" class="btn btn-primary btn-md">
-                        Cari
-                    </button>
-                </div>
+            </form>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="d-flex gap-2 justify-content-end mb-3">
+                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#modal-import"
+                    style="background-color: #1D9375">Import Siswa</button>
+                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
+                    style="background-color: #1D9375">Tambah Siswa</button>
             </div>
-        </form>
-        <div class="">
-            <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#modal-import"
-                style="background-color: #1D9375">Import Siswa</button>
-            <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
-                style="background-color: #1D9375">Tambah Siswa</button>
         </div>
     </div>
     <!-- Modal -->
@@ -225,7 +229,7 @@
                         <img src="" class="rounded-circle mb-2" id="detail-photo" width="150"
                             alt="photo-siswa" height="150" />
                     </div>
-                    
+
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col">
@@ -347,19 +351,17 @@
     <div class="card">
         <div class="card-body">
             @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
+                @foreach ($errors->all() as $error)
                     @php
                         $errorReplaced = str_replace('There was an error on row', 'Terjadi kesalahan pada baris', $error);
                     @endphp
-                    <li>
+                    <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
                         {{ $errorReplaced }}
-                    </li>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 @endforeach
-                </ul>
-            </div>
-        @endif
+            @endif
+
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -445,7 +447,7 @@
                                                 data-name="{{ $student->user->name }}"
                                                 data-email="{{ $student->user->email }}"
                                                 data-national_student_id={{ $student->national_student_id }}
-                                                data-gender="{{ $student->gender}}"
+                                                data-gender="{{ $student->gender }}"
                                                 data-birth_date="{{ $student->birth_date }}"
                                                 data-phone_number="{{ $student->user->phone_number }}"
                                                 data-classroom_id="{{ $student->classroom->id }}"

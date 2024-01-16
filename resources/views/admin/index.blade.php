@@ -31,7 +31,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-12 col-lg-3">
+        <div class="col-12 col-md-6 col-lg-3">
             <div class="card radius-10 mb-3 border-start border-0 border-4 border-primary">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -120,7 +120,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-12 col-lg-3">
+        <div class="col-12 col-md-6 col-lg-3">
             <div class="card radius-10 mb-3 border-start border-0 border-4" style="border-color: #FF701F !important;">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -221,9 +221,50 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center mt-2">
+                    <h5 style="font-weight: 700">
+                        5 Kota Dengan Sebaran Alumni Terbanyak
+                    </h5>
+                    <p>
+                        Klik Untuk Melihat Presentase persen
+                    </p>
+                </div>
+                <div id="chartCity" class="mt-4"></div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
+        get()
+
+        function get() {
+            $.ajax({
+                url: "{{ route('dashboardCity') }}",
+                type: 'GET',
+                DataType: 'JSON',
+                success: function(response) {
+                    const data = response.data;
+                    const chartData = [];
+
+                    for (const name in data) {
+                        if (data.hasOwnProperty(name)) {
+                            const jumlah = data[name];
+                            chartData.push({
+                                name,
+                                jumlah
+                            });
+                        }
+                    }
+                    getChart(chartData)
+
+                }
+            })
+        }
+
         $.ajax({
             url: "{{ route('chart.alumni') }}",
             type: "GET",
@@ -317,5 +358,60 @@
             chartLine.render();
 
         };
+
+        function getChart(data) {
+            var options = {
+                series: [{
+                    data: data.map(item => item.jumlah),
+                    name: 'Jumlah',
+                }],
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: 10,
+                        dataLabels: {
+                            position: 'top',
+                        },
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    offsetY: -20,
+                    style: {
+                        fontSize: '12px',
+                        colors: ["#304758"]
+                    }
+                },
+                xaxis: {
+                    categories: data.map(item => item.name),
+                    labels: {
+                        rotate: -45, 
+                    },
+                },
+                yaxis: {
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
+                    labels: {
+                        show: false,
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    x: {
+                        show: true,
+                    },
+                },
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chartCity"), options);
+            chart.render();
+        }
     </script>
 @endsection

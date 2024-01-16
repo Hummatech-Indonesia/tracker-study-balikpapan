@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\AlumniVideoGalleryInterface;
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Models\News;
 use App\Models\JobVacancy;
@@ -19,14 +20,16 @@ class LandingPageController extends Controller
     private GalleryAlumniInterface $galleryAlumni;
     private JobVacancyInterface $jobVacancy;
     private CompanyInterface $company;
+    private AlumniVideoGalleryInterface $alumniVidio;
 
-    public function __construct(NewsInterface $news, SliderGalleryAlumni $slidergaleryalumni, GalleryAlumniInterface $galleryAlumni, JobVacancyInterface $jobVacancy, CompanyInterface $company)
+    public function __construct(NewsInterface $news, SliderGalleryAlumni $slidergaleryalumni, GalleryAlumniInterface $galleryAlumni, JobVacancyInterface $jobVacancy, CompanyInterface $company,AlumniVideoGalleryInterface $alumniVidio)
     {
         $this->company = $company;
         $this->news = $news;
         $this->slidergaleryalumni = $slidergaleryalumni;
         $this->galleryAlumni = $galleryAlumni;
         $this->jobVacancy = $jobVacancy;
+        $this->alumniVidio = $alumniVidio;
     }
 
     /**
@@ -50,7 +53,9 @@ class LandingPageController extends Controller
     {
         $galleryAlumnis = $this->galleryAlumni->get();
         $slidergaleryalumnis = $this->slidergaleryalumni->get();
-        return view('galery-alumni', ['slidergaleryalumnis' => $slidergaleryalumnis, 'galleryAlumnis' => $galleryAlumnis]);
+        $alumniVidio = $this->alumniVidio->getFirst();
+
+        return view('galery-alumni', ['slidergaleryalumnis' => $slidergaleryalumnis, 'galleryAlumnis' => $galleryAlumnis,'alumniVidio' => $alumniVidio]);
     }
 
     /**

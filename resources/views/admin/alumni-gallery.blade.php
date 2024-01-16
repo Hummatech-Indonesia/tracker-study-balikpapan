@@ -110,8 +110,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 19 19" fill="none">
                     <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                     <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                </svg>
-                Tambah Gambar
+                </svg> Gambar
             </button>
 
             {{-- modal create gambar deskripsi  --}}
@@ -264,8 +263,7 @@
                                             <button class="btn btn-primary btn-sm btn-detail"
                                                 data-id="{{ $galleryAlumni->id }}" id="{{ $galleryAlumni->id }}"
                                                 data-title="{{ $galleryAlumni->title }}"
-                                                data-created_at="{{ $galleryAlumni->created_at }}"
-                                                data-photo="{{ $galleryAlumni->photo }}">
+                                                data-created_at="{{ $galleryAlumni->created_at }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                     viewBox="0 0 34 34" fill="none">
                                                     <path
@@ -348,6 +346,7 @@
             var actionUrl = `/alumni-gallery-update/${formData['id']}`;
             $('#form-update').attr('action', actionUrl);
             setFormValues('form-update', formData)
+            
             $('#form-update').data('id', formData['id'])
             $('#form-update').attr('action', );
             $('#modal-update').modal('show')

@@ -2,10 +2,10 @@
 
 namespace App\Contracts\Repositories;
 
+use App\Contracts\Interfaces\JobVacancyInterface;
 use App\Models\JobVacancy;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App\Contracts\Interfaces\JobVacancyInterface;
 
 class JobVacancyRepository extends BaseRepository implements JobVacancyInterface
 {
@@ -92,5 +92,24 @@ class JobVacancyRepository extends BaseRepository implements JobVacancyInterface
             })
             ->latest()
             ->fastPaginate($pagination);
+    }
+
+    /**
+     * getLatestJobVacancy
+     *
+     * @return mixed
+     */
+    public function getLatestJobVacancy(): mixed
+    {
+        return $this->model->query()
+            ->latest()
+            ->take(3)
+            ->get();
+    }
+
+    public function countVacancy(): mixed
+    {
+        return $this->model->query()
+        ->count();
     }
 }

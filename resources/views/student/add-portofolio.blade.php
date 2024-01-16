@@ -12,6 +12,9 @@
                 </h5>
             </div>
             <div class="">
+                    <button type="submit" class="btn btn-primary text-white">
+                        Kirim
+                    </button>
                 <a href="{{ route('portofolio') }}" class="btn btn-warning text-white">
                     Kembali
                 </a>
@@ -60,11 +63,6 @@
                     </div>
                 @enderror
             </div>
-        </div>
-        <div class="d-flex justify-content-end mt-4 mb-5">
-            <button type="submit" class="btn btn-primary text-white">
-                Kirim
-            </button>
         </div>
     </form>
 @endsection

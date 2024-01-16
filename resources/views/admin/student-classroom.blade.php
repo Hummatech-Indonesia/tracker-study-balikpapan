@@ -17,16 +17,20 @@
                     <div class="card-body">
                         <h5 class="card-title text-dark" style="font-weight: 700">{{ $classroom->name }}</h5>
                         <p class="card-text mt-2 mb-3">Tahun Ajaran {{ $classroom->schoolYear->name }}</p>
-                        <div class="d-flex justify-content-center gap-5">
-                            <div class="text-center me-3">
-                                <span
-                                    class="badge bg-light-primary text-primary fs-4">{{ $classroom->students->where('is_graduate', 1)->count() }}</span>
-                                <p class="m-0">Alumni</p>
+                        <div class="row mx-auto">
+                            <div class="col">
+                                <div class="text-center mb-2">
+                                    <span
+                                        class="badge bg-light-primary text-primary fs-4">{{ $classroom->students->where('is_graduate', 1)->count() }}</span>
+                                    <p class="m-0">Alumni</p>
+                                </div>
                             </div>
-                            <div class="text-center">
-                                <span
-                                    class="badge bg-light-warning text-warning fs-4">{{ $classroom->students->where('is_graduate', 0)->count() }}</span>
-                                <p class="m-0">Siswa</p>
+                            <div class="col">
+                                <div class="text-center">
+                                    <span
+                                        class="badge bg-light-warning text-warning fs-4">{{ $classroom->students->where('is_graduate', 0)->count() }}</span>
+                                    <p class="m-0">Siswa</p>
+                                </div>
                             </div>
                         </div>
 
