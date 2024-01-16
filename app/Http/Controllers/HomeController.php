@@ -134,20 +134,25 @@ class HomeController extends Controller
      */
     public function dashboardAdmin(): JsonResponse
     {
-        $total = $this->submitSurvey->percentageOfAlumni($this->survey->getLatest()->id);
-        $result = array();
-        $currentRegency = "";
-        $totalTemp = 0;
-        foreach ($total as $item) {
-            if (count($result) > 5) break;
-            if ($currentRegency == $item->regency->name) {
-                $totalTemp++;
+        if ($this->survey->getLatest()) {
+            $total = $this->submitSurvey->percentageOfAlumni($this->survey->getLatest()->id);
+            $result = array();
+            $currentRegency = "";
+            $totalTemp = 0;
+            foreach ($total as $item) {
+                if (count($result) > 5) break;
+                if ($currentRegency == $item->regency->name) {
+                    $totalTemp++;
+                }
+                else {
+                    $currentRegency = $item->regency->name;
+                    $totalTemp = 1;
+                }
+                $result[$currentRegency] = $totalTemp;
             }
-            else {
-                $currentRegency = $item->regency->name;
-                $totalTemp = 1;
-            }
-            $result[$currentRegency] = $totalTemp;
+        }
+        else {
+            $result = [];
         }
         return ResponseHelper::success($result);
     }
