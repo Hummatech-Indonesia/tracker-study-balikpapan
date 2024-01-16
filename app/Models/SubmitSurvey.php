@@ -27,7 +27,6 @@ class SubmitSurvey extends Model implements HasSurvey, HasRegency
         'regency_id',
         'graduation_year',
         'activity',
-        'phone_number',
         'url_address',
         'email',
         'facebook',
