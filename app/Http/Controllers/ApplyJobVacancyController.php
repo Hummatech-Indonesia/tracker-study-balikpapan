@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobVacancy;
-use Illuminate\Http\Request;
 use App\Services\ApplyJobVacancyService;
 use App\Http\Requests\ApplyJobVacancyRequest;
 use App\Contracts\Interfaces\ApplyJobVacancyInterface;
 use App\Enums\ApplicantStatusEnum;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\AcceptAndRejectApplyJobVancyRequest;
+use App\Mail\ApplyJobVacancyMail;
 use App\Models\ApplyJobVacancy;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -66,6 +67,7 @@ class ApplyJobVacancyController extends Controller
     public function store(ApplyJobVacancyRequest $request, JobVacancy $jobVacancy)
     {
         $this->applyJobVacancy->store($this->service->store($request, $jobVacancy));
+        Mail::to($request->email)->send(new ApplyJobVacancyMail(['auth_email' => auth()->user()->email, 'user_name' => auth()->user()->name]));
         return redirect()->back()->with('success', trans('alert.add_success'));
     }
 

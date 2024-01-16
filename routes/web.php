@@ -157,7 +157,9 @@ Route::get('detail-lowongan-company/{job_vacancy}', [JobVacancyController::class
 
 Route::get('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
 
-
+Route::get('apply-job-vacancy', function () {
+    return view('emails.apply-job-vacancy');
+});
 
 Route::get('account-siswa', [StudentController::class, 'viewVerificationStudent'])->name('account.siswa');
 Route::get('account-alumni', [StudentController::class, 'viewVerificationAlumni'])->name('account.alumni');
