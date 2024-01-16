@@ -17,7 +17,6 @@ class SubmitSurveyRequest extends FormRequest
     {
         return [
             'graduation_year' => 'required|numeric',
-            'phone_number' => 'required',
             'activity' => 'required',
             'name' => 'required',
             'current_activity' => ['required', new ActivityStatusRule],
