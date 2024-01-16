@@ -1,18 +1,13 @@
 @extends('layouts.landing-page.app-landing')
 @section('style')
-    <style>
-         @media only screen and (max-width: 768px) {
-            img {
-                display: none
-            }
+<style>
+    @media only screen and (min-width: 768px) and (max-width: 834px) {
+        .foto-welcome {
+            display: none;
         }
+    }
+</style>
 
-        @media only screen and (max-width: 480px) {
-            img {
-                display: none
-            }
-        }
-    </style>
 @endsection
 @section('content')
     <!-- ***** Welcome Area Start ***** -->
@@ -36,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col-0 col-md-0 col-lg-1"></div>
-                <div class="col-12 col-md-3 col-lg-4 img"><img src="logo-welcome.png" alt=""></div>
+                <div class="col-12 col-md-3 col-lg-4"><img class="foto-welcome" src="logo-welcome.png" alt=""></div>
             </div>
         </div>
         <!-- Shape Bottom -->

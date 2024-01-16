@@ -1,4 +1,25 @@
 @extends('layouts.landing-page.app-landing')
+@section('style')
+<style>
+    @media (max-width: 890px) {
+            #home>div.container>div>div.col-12.col-md-3.col-lg-6>iframe {
+                border: 4px solid #fff;
+                border-radius: 10px;
+                width: 100%;
+                height: 300px;
+            }
+        }
+
+        @media(min-width:1200px) {
+            #home>div.container>div>div.col-12.col-md-3.col-lg-6>iframe {
+                border: 4px solid #fff;
+                border-radius: 10px;
+                width: 600px;
+                height: 400px;
+            }
+        }
+</style>
+@endsection
 @section('content')
     <!-- ***** Welcome Area Start ***** -->
     <section id="home" class="section welcome-area bg-overlay overflow-hidden d-flex align-items-center">
