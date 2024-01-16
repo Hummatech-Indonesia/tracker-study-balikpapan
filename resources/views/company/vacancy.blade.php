@@ -69,7 +69,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                        <button type="submit" class="btn text-white" style="background-color: #1D9375">Edit</button>
+                        <button type="submit" class="btn text-white" style="background-color: #1D9375">Tambah</button>
                     </div>
                 </div>
             </form>
@@ -125,7 +125,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                        <button type="submit" class="btn text-white" style="background-color: #1D9375">Tambah</button>
+                        <button type="submit" class="btn text-white" style="background-color: #1D9375">Simpan</button>
                     </div>
                 </div>
             </form>
