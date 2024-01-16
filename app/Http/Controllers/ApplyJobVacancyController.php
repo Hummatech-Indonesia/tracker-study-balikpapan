@@ -67,7 +67,7 @@ class ApplyJobVacancyController extends Controller
     public function store(ApplyJobVacancyRequest $request, JobVacancy $jobVacancy)
     {
         $this->applyJobVacancy->store($this->service->store($request, $jobVacancy));
-        Mail::to($request->email)->send(new ApplyJobVacancyMail(['auth_email' => auth()->user()->email, 'user_name' => auth()->user()->name, 'job_vacancy' => $jobVacancy->job_title, 'company' => $jobVacancy->company->user->name]));
+        Mail::to($request->email)->send(new ApplyJobVacancyMail(['user_email' => auth()->user()->email, 'user_name' => auth()->user()->name, 'job_vacancy' => $jobVacancy->job_title, 'company' => $jobVacancy->company->user->name]));
         return redirect()->back()->with('success', trans('alert.add_success'));
     }
 

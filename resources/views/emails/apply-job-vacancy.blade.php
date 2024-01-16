@@ -290,57 +290,14 @@
                                   color: #4f545c;
                                   letter-spacing: 0.27px;
                                 ">
-                                                            Halo [Nama Pelamar],
+                                                            Halo {{ $data['company'] }},
                                                         </h2>
                                                         <p>
-                                                            Anda mendapatkan email lamaran pekerjaan dari ( nama ) pada
-                                                            lowongan dengan judul (judul lowongan)
+                                                            Anda mendapatkan email lamaran pekerjaan
+                                                            dari {{ $data['user_name'] }} pada
+                                                            lowongan dengan judul {{ $data['job_vacancy'] }}
                                                         </p>
-
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="
-                              word-break: break-word;
-                              font-size: 0px;
-                              padding: 10px 25px;
-                            "
-                                                    align="center">
-                                                    <table role="presentation" cellpadding="0" cellspacing="0"
-                                                        style="border-collapse: separate" align="center"
-                                                        border="0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="
-                                      border: none;
-                                      border-radius: 3px;
-                                      color: white;
-                                      cursor: auto;
-                                      padding: 15px 19px;
-                                    "
-                                                                    align="center" valign="middle" bgcolor="#1b613d">
-                                                                    <a href="javascript:void(0)" target="_blank"
-                                                                        rel="noopener noreferrer"
-                                                                        style="
-                                        text-decoration: none;
-                                        line-height: 100%;
-                                        background: #1b613d;
-                                        color: white;
-                                        font-family: Ubuntu, Helvetica, Arial,
-                                          sans-serif;
-                                        font-size: 15px;
-                                        font-weight: normal;
-                                        text-transform: none;
-                                        margin: 0px;
-                                      ">
-                                                                        Cek Lowongan Anda
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-
-                                                        </tbody>
-                                                    </table>
                                                 </td>
                                             </tr>
                                         </tbody>
