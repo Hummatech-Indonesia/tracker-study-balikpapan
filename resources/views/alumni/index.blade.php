@@ -4,8 +4,10 @@
         .photo-stack {
             position: relative;
             margin: auto;
-            width: 300px;
+            width: 200px;
             height: 200px;
+            z-index: 2;
+
         }
 
         .photo-stack>p {
@@ -15,7 +17,7 @@
             left: 0;
             text-align: center;
             font-weight: bold;
-            z-index: 1000;
+            z-index: 2;
         }
 
         .photo-stack img {
@@ -25,6 +27,8 @@
             border: 1px solid white;
             box-shadow: 0 1px 3px -2px rgba(0, 0, 0, .5);
             transition: all 0.3s ease-out;
+            z-index: 2;
+
         }
 
         .photo-stack img:nth-child(1) {
@@ -69,7 +73,7 @@
         Dashboard
     </h5>
     <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-12 col-xl-4">
             <div class="card radius-10 border-start border-warning">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -87,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-12 col-xl-4">
             <div class="card radius-10 border-start border-success">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -105,7 +109,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-12 col-xl-4">
             <div class="card radius-10 border-start border-danger">
                 <div class="card-body">
                     <div class="d-flex align-items-center">

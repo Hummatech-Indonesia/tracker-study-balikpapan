@@ -4,8 +4,10 @@
         .photo-stack {
             position: relative;
             margin: auto;
-            width: 300px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
+            z-index: 2;
+
         }
 
         .photo-stack>p {
@@ -15,7 +17,7 @@
             left: 0;
             text-align: center;
             font-weight: bold;
-            z-index: 1000;
+            z-index: 2;
         }
 
         .photo-stack img {
@@ -25,6 +27,8 @@
             border: 1px solid white;
             box-shadow: 0 1px 3px -2px rgba(0, 0, 0, .5);
             transition: all 0.3s ease-out;
+            z-index: 2;
+
         }
 
         .photo-stack img:nth-child(1) {
@@ -92,15 +96,15 @@
     @forelse ($portofolios as $portofolio)
         <div class="card">
             <div class="row g-0">
-                <div class="col-md-3">
+                <div class="col-12 col-mc-12 col-xl-3">
                     <div class="photo-stack mt-4">
                         @foreach ($portofolio->photoPortofolios as $photoPortofolio)
-                            <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="250" height="250"
+                            <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="200" height="200"
                                 style="object-fit: cover" />
                         @endforeach
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-12 col-mc-12 col-xl-9">
                     <div class="card-body">
                         <h5 class="text-primary text-end ">
                             {{ $portofolio->year }}
