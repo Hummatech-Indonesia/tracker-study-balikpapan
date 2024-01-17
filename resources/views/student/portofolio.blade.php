@@ -75,16 +75,18 @@
     <h4 class="mb-3">
         Pengalaman Project
     </h4>
-    <div class="d-flex justify-content-between mb-4">
-        <div class="">
-            <select name="" class="form-select" id="">
-                <option value="">Pilih Filter</option>
-                <option value="">Terbaru ke Terlama</option>
-                <option value="">Terlama ke Terbaru</option>
-            </select>
+    <div class="row">
+        <div class="col-12 col-lg-2 col-xl-10 mt-2 mb-3">
+            <div class="col-xl-2 col-12">
+                <select name="" class="form-select " id="">
+                    <option value="">Pilih Filter</option>
+                    <option value="">Terbaru ke Terlama</option>
+                    <option value="">Terlama ke Terbaru</option>
+                </select>
+            </div>
         </div>
-        <div class="">
-            <a href="{{ route('add.portofolio') }}" class="btn btn-primary text-white">
+        <div class="col-12 col-lg-2 col-xl-2 mt-2 mb-3">
+            <a href="{{ route('add.portofolio') }}" class="btn btn-primary text-white w-100">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 19 19" fill="none">
                     <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                     <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
