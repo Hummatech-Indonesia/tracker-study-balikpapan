@@ -42,8 +42,12 @@
             <div class="d-flex gap-2 justify-content-end mb-3">
                 <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#modal-import"
                     style="background-color: #1D9375">Import Siswa</button>
-                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
-                    style="background-color: #1D9375">Tambah Siswa</button>
+                    <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
+                    style="background-color: #5D87FF">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
+                        <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
+                        <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+                    </svg> Gambar</button>  
             </div>
         </div>
     </div>

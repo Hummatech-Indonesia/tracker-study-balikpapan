@@ -101,17 +101,26 @@
     </div>
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar Dengan Deskripsi</h6>
     <div class="d-flex justify-content-between">
-        <div class="position-relative mb-3 col-lg-3">
-            <input type="text" class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
-            <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
-        </div>
-        <div class="">
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 19 19" fill="none">
-                    <path d="M9.5 2L9.5 17" stroke="white" stroke-width="3" stroke-linecap="round" />
-                    <path d="M2 9.5L17 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                </svg> Gambar
-            </button>
+        <div class="row">
+            <div class="position-relative mb-3 col-md-9 col-sm-12">
+                <div class="col-md-7 col-lg-4 col-sm-12">
+                    <form action="">
+                        <input type="text" name="name" value="{{ request()->name }}" class="form-control search-chat py-2 ps-5"
+                            id="search-name" placeholder="Search">
+                        <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <div class="d-flex justify-content-end mb-3">
+                    <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        style="background-color: #5D87FF">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
+                            <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+                        </svg> Gambar</button>  
+                </div>
+            </div>
 
             {{-- modal create gambar deskripsi  --}}
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"

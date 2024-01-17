@@ -12,17 +12,26 @@
     <h4 style="font-weight: 800">
         Tambah Akun Admin
     </h4>
-    <div class="d-flex justify-content-between">
-        <div class="position-relative mb-3 col-lg-3">
-            <form action="" method="get">
-                <input type="text" value="{{ request()->name }}" name="name" class="form-control search-chat py-2 ps-5"
-                    id="search-name" placeholder="Search">
-                <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
-            </form>
+    <div class="row">
+        <div class="position-relative mb-3 col-md-9 col-sm-12">
+            <div class="col-md-7 col-lg-4 col-sm-12">
+                <form action="">
+                    <input type="text" name="name" value="{{ request()->name }}"
+                        class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
+                    <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                </form>
+            </div>
         </div>
-        <div class="">
-            <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
-                style="background-color: #1D9375">Tambah Akun</button>
+        <div class="col-md-3 col-sm-12">
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
+                    style="background-color: #5D87FF">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19"
+                        fill="none">
+                        <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
+                        <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+                    </svg> Akun</button>
+            </div>
         </div>
     </div>
     <!-- Modal -->
@@ -39,18 +48,18 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="formFile" class="form-label">Nama</label>
-                                <input type="text" placeholder="Masukkan Nama" class="form-control" value="{{ old('name') }}" name="name"
-                                    id="">
+                                <input type="text" placeholder="Masukkan Nama" class="form-control"
+                                    value="{{ old('name') }}" name="name" id="">
                             </div>
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" placeholder="Masukkan Email" id="" value="{{ old('email') }}"
-                                    class="form-control"></input>
+                                <input name="email" placeholder="Masukkan Email" id=""
+                                    value="{{ old('email') }}" class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Password</label>
-                                <input type="password" placeholder="Masukkan Password" value="{{ old('password') }}" class="form-control" name="password"
-                                    id="">
+                                <input type="password" placeholder="Masukkan Password" value="{{ old('password') }}"
+                                    class="form-control" name="password" id="">
                             </div>
                         </div>
                     </div>
@@ -98,14 +107,14 @@
     <div class="card">
         <div class="card-body">
             @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
-                    {{ $error }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endforeach
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                        {{ $error }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endforeach
             @endif
-            
+
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -146,8 +155,7 @@
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
                                             <button class="btn btn-warning btn-edit" data-id="{{ $account->id }}"
-                                                id="btn-edit-{{ $account->id }}"
-                                                data-name="{{ $account->name }}"
+                                                id="btn-edit-{{ $account->id }}" data-name="{{ $account->name }}"
                                                 data-email="{{ $account->email }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 34 35" fill="none">

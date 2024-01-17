@@ -3,24 +3,25 @@
     <h4 class="mb-3">
         Tambah Kelas
     </h4>
-    <div class="d-flex justify-content-between mb-2">
-        <div class="d-flex justify-content-header gap-2">
-            <div class="position-relative mb-3 col-lg-8">
-                <form action="{{ route('classrooms.index') }}" method="get">
-                    <input type="text" name="name" class="form-control search-chat py-2 ps-5" id="search-name"
-                        placeholder="Search">
+    <div class="row">
+        <div class="position-relative mb-3 col-md-9 col-sm-12">
+            <div class="col-md-7 col-lg-4 col-sm-12">
+                <form action="">
+                    <input type="text" name="name" value="{{ request()->name }}" class="form-control search-chat py-2 ps-5"
+                        id="search-name" placeholder="Search">
                     <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
-                    <button type="submit" style="display: none"></button>
                 </form>
             </div>
         </div>
-        <div class="">
-            <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                style="background-color: #5D87FF">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
-                    <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
-                    <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                </svg> Kelas</button>
+        <div class="col-md-3 col-sm-12">
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    style="background-color: #5D87FF">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
+                        <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
+                        <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+                    </svg> Kelas</button>  
+            </div>
         </div>
     </div>
     @if ($errors->any())

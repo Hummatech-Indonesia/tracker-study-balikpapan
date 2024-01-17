@@ -3,23 +3,28 @@
     <h4 class="mb-3">
         Tahun Ajaran
     </h4>
-    <div class="d-flex justify-content-between mb-3">
-        <div class="position-relative mb-3 col-sm-2">
-            <form action="{{ route('school-years.index') }}" method="get">
-                <input type="text" name="name" value="{{ request()->name }}" class="form-control search-chat py-2 ps-5"
-                    id="search-name" placeholder="Search">
-                <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
-                <button type="submit" style="display: none"></button>
-            </form>
+    <div class="row">
+        <div class="position-relative mb-3 col-sm-12 col-md-9">
+            <div class="col-md-6 col-lg-4 col-sm-12">
+                <form action="{{ route('school-years.index') }}" method="get">
+                    <input type="text" name="name" value="{{ request()->name }}" class="form-control search-chat py-2 ps-5"
+                        id="search-name" placeholder="Search">
+                    <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                    <button type="submit" style="display: none"></button>
+                </form>
+            </div>
         </div>
-        <div class="">
-            <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                style="background-color: #5D87FF">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
-                    <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
-                    <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                </svg>
-                Tahun Ajaran</button>
+        <div class="col-sm-12 col-md-3 mb-3">
+            <div class="d-flex justify-content-end">
+                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    style="background-color: #5D87FF">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19"
+                        fill="none">
+                        <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
+                        <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+                    </svg>
+                    Tahun Ajaran</button>
+            </div>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <form action="{{ route('school-years.store') }}" method="post">
