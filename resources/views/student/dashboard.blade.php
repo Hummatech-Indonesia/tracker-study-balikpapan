@@ -5,8 +5,10 @@
         .photo-stack {
             position: relative;
             margin: auto;
-            width: 300px;
+            width: 200px;
             height: 250px;
+            z-index: 2;
+
         }
 
         .photo-stack>p {
@@ -16,13 +18,15 @@
             left: 0;
             text-align: center;
             font-weight: bold;
-            z-index: 1000;
+            z-index: 2;
         }
 
         .photo-stack img {
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 2;
+
             border: 1px solid white;
             box-shadow: 0 1px 3px -2px rgba(0, 0, 0, .5);
             transition: all 0.3s ease-out;
@@ -141,10 +145,10 @@
                         <div class="card">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <div class="photo-stack mt-4">
+                                    <div class="photo-stack mt-4 d-flex jus">
                                         @foreach ($portofolio->photoPortofolios as $photoPortofolio)
-                                            <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="200"
-                                                height="200" style="object-fit: cover" />
+                                            <img src="{{ asset('storage/' . $photoPortofolio->photo) }}" width="200px"
+                                                height="200px" style="object-fit: cover" />
                                         @endforeach
                                     </div>
                                 </div>
@@ -157,12 +161,12 @@
                                         <p class="card-text">
                                             {{ Illuminate\Support\Str::limit($portofolio->description, $limit = 325, $end = '...') }}
                                         </p>
-                                        <div>
-                                            <a class="btn btn-primary justify-content-center d-flex" href="{{ route('detail.portofolio', ['portofolio' => $portofolio->id]) }}">
-                                                Lihat Project
-                                            </a>
-                                        </div>
                                     </div>
+                                </div>
+                                <div class="mb-4 px-5">
+                                    <a class="btn btn-primary justify-content-center d-flex" href="{{ route('detail.portofolio', ['portofolio' => $portofolio->id]) }}">
+                                        Lihat Project
+                                    </a>
                                 </div>
                             </div>
                         </div>
