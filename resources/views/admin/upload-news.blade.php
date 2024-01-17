@@ -15,6 +15,14 @@
                 </svg> Berita</button>
         </div>
     </div>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
+    @endif
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
@@ -99,15 +107,16 @@
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="formFile" class="form-label">Judul Berita</label>
                                 <input type="text" placeholder="Masukkan Berita" class="form-control" name="title"
-                                    id="">
+                                    value="{{ old('title') }}">
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="formFile" class="form-label">Foto Berita</label>
-                                <input type="file" class="form-control" name="thumbnail" id="">
+                                <input type="file" class="form-control" name="thumbnail"
+                                    value="{{ old('thumbnail') }}">
                             </div>
                             <div class="col-12">
                                 <label for="formFile" class="form-label">Deskripsi Berita</label>
-                                <textarea name="content" id="ckeditor"></textarea>
+                                <textarea name="content" id="ckeditor">{{ old('content') }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -184,8 +193,8 @@
 @section('script')
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script>
-      CKEDITOR.replace('ckeditor');
-      CKEDITOR.replace('ckeditor_edit');
+        CKEDITOR.replace('ckeditor');
+        CKEDITOR.replace('ckeditor_edit');
     </script>
     <script>
         $('.btn-detail').click(function() {
@@ -199,6 +208,9 @@
             const formData = getDataAttributes($(this).attr('id'))
             var actionUrl = `news/${formData['id']}`;
             $('#form-update').attr('action', actionUrl);
+            $('#ckeditor_edit').val(formData['content']);
+
+            CKEDITOR.instances.ckeditor_edit.setData(formData['content']);
 
             setFormValues('form-update', formData)
             $('#form-update').data('id', formData['id'])

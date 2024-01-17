@@ -38,7 +38,7 @@
                             </div>
                             <div class="modal-body">
                                 <label for="" class="form-label">Tahun Ajaran</label>
-                                <input type="text" placeholder="Masukkan Tahun Ajaran" name="name"
+                                <input type="text" value="{{ old('name') }}" placeholder="Masukkan Tahun Ajaran" name="name"
                                     class="form-control">
                             </div>
                             <div class="modal-footer">

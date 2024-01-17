@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="major" class="form-label">Tambah Jurusan</label>
-                                <input type="text" placeholder="Masukkan Jurusan" class="form-control" name="name"
+                                <input type="text" value="{{ old('name') }}" placeholder="Masukkan Jurusan" class="form-control" name="name"
                                     id="">
                             </div>
                         </div>

@@ -47,7 +47,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
                         <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                         <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                    </svg> Gambar</button>  
+                    </svg> Siswa</button>  
             </div>
         </div>
     </div>

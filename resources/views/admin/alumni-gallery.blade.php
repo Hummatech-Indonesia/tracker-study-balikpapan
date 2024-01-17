@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @section('content')
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Upload Video</h6>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible mt-3 fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
+    @endif
     <div class="card">
         <form action="{{ route('video.alumni') }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -100,26 +108,25 @@
         </div>
     </div>
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Gambar Dengan Deskripsi</h6>
-    <div class="d-flex justify-content-between">
-        <div class="row">
-            <div class="position-relative mb-3 col-md-9 col-sm-12">
-                <div class="col-md-7 col-lg-4 col-sm-12">
-                    <form action="">
-                        <input type="text" name="name" value="{{ request()->name }}" class="form-control search-chat py-2 ps-5"
-                            id="search-name" placeholder="Search">
-                        <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
-                    </form>
-                </div>
+    <div class="row">
+        <div class="position-relative mb-3 col-md-9 col-sm-12">
+            <div class="col-md-7 col-lg-4 col-sm-12">
+                <form action="">
+                    <input type="text" name="name" value="{{ request()->name }}"
+                        class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
+                    <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                </form>
             </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="d-flex justify-content-end mb-3">
-                    <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        style="background-color: #5D87FF">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
-                            <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
-                            <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                        </svg> Gambar</button>  
-                </div>
+        </div>
+        <div class="col-md-3 col-sm-12">
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    style="background-color: #5D87FF">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19"
+                        fill="none">
+                        <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
+                        <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+                    </svg> Gambar</button>
             </div>
 
             {{-- modal create gambar deskripsi  --}}
@@ -138,13 +145,13 @@
                                 @method('POST')
                                 <div class="form-group">
                                     <label for="name" class="form-label">Judul</label>
-                                    <input type="text" id="name" placeholder="Masukkan Tahun Ajaran"
-                                        name="title" class="form-control">
+                                    <input type="text" value="{{ old('title') }}" id="name"
+                                        placeholder="Masukkan Tahun Ajaran" name="title" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label mt-2 mb-1">File</label>
-                                    <input type="file" id="name" placeholder="Masukkan Tahun Ajaran"
-                                        name="photo" class="form-control">
+                                    <input type="file" value="{{ old('photo') }}"
+                                        placeholder="Masukkan Tahun Ajaran" name="photo" class="form-control">
                                 </div>
                         </div>
                         <div class="modal-footer">
@@ -355,7 +362,7 @@
             var actionUrl = `/alumni-gallery-update/${formData['id']}`;
             $('#form-update').attr('action', actionUrl);
             setFormValues('form-update', formData)
-            
+
             $('#form-update').data('id', formData['id'])
             $('#form-update').attr('action', );
             $('#modal-update').modal('show')

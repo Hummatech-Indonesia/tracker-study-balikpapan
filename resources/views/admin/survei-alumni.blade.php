@@ -105,21 +105,21 @@
                             <div class="col-12 mb-3">
                                 <label for="major" class="form-label">Judul Survei</label>
                                 <input type="text" placeholder="Masukkan Judul Survei" class="form-control"
-                                    name="name" id="">
+                                    name="name" value="{{ old('name') }}">
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="major" class="form-label">Tanggal Mulai</label>
                                 <input type="date" placeholder="Masukkan Nama Guru" class="form-control" name="start_at"
-                                    id="">
+                                 value="{{ old('start_at') }}">
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="major" class="form-label">Tanggal Selesai</label>
                                 <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
-                                    name="end_at" id="">
+                                    name="end_at" value="{{ old('end_at') }}">
                             </div>
                             <div class="col-12">
                                 <label for="major" class="form-label">Deskripsi</label>
-                                <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
+                                <textarea name="description" cols="30" rows="10" class="form-control">{{ old('description') }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                             <div class="col-12 mb-3">
                                 <label for="major" class="form-label">Judul Survei</label>
                                 <input type="text" placeholder="Masukkan Judul Survei" class="form-control"
-                                    name="name" id="">
+                                    name="name" value="{{ old('') }}">
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="major" class="form-label">Tanggal Mulai</label>
@@ -161,7 +161,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="major" class="form-label">Deskripsi</label>
-                                <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
+                                <textarea name="description" value="{{ old('') }}" cols="30" rows="10" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>

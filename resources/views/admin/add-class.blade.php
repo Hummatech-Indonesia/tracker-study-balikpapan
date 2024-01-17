@@ -88,8 +88,8 @@
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="formFile" class="form-label">Tambah Kelas</label>
-                                <input type="text" placeholder="Masukkan Kelas" class="form-control" name="name"
-                                    id="">
+                                <input type="text" value="{{ old('name') }}" placeholder="Masukkan Kelas" class="form-control" name="name"
+                                    >
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="formFile" class="form-label">Tahun Ajaran</label>
@@ -97,7 +97,7 @@
                                     aria-label="Default select example">
                                     <option>Pilih Tahun Ajaran</option>
                                     @foreach ($schoolYears as $schoolYear)
-                                        <option value="{{ $schoolYear->id }}">{{ $schoolYear->name }}</option>
+                                        <option value="{{ $schoolYear->id}}" {{ $schoolYear->id  == old('school_year_id') ? 'selected' : ''  }}>{{ $schoolYear->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -107,8 +107,10 @@
                                     aria-label="Default select example">
                                     <option>Pilih Jurusan</option>
                                     @foreach ($majors as $major)
-                                        <option value="{{ $major->id }}">{{ $major->name }}</option>
-                                    @endforeach
+                                    <option value="{{ $major->id }}" {{ $major->id == old('major_id') ? 'selected' : '' }}>
+                                        {{ $major->name }}
+                                    </option>
+                                @endforeach
                                 </select>
                             </div>
                         </div>
@@ -136,7 +138,7 @@
                             <div class="col-12 mb-3">
                                 <label for="formFile" class="form-label">Tambah Kelas</label>
                                 <input type="text" placeholder="Masukkan Kelas" class="form-control" name="name"
-                                    id="">
+                                    >
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="formFile" class="form-label">Tahun Ajaran</label>
