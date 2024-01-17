@@ -131,15 +131,6 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-center gap-2 mb-2">
-                            <button class="btn btn-info btn-edit text-white text-center w-100"
-                                data-id="{{ $jobVacancy->id }}" id="btn-edit-{{ $jobVacancy->id }}"
-                                data-job_title="{{ $jobVacancy->job_title }}"
-                                data-basic_salary="{{ $jobVacancy->basic_salary }}"
-                                data-work_system="{{ $jobVacancy->work_system }}"
-                                data-description_working_system="{{ $jobVacancy->description_working_system }}"
-                                data-qualifications="{{ $jobVacancy->qualifications }}">
-                                Edit
-                            </button>
                             <a class="btn btn-warning text-white text-center w-100"
                                 href="{{ route('detail.job-vacancy.company', ['job_vacancy' => $jobVacancy->id]) }}">
                                 Detail

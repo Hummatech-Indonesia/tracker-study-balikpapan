@@ -104,7 +104,7 @@
                 </div>
                 <div class="d-flex justify-content-end mb-4 gap-3 px-4">
                     <div class="">
-                        <a href="{{ route('detail.portofolio',['portofolio'=>$portofolio->id]) }}" class="btn btn-primary">
+                        <a href="{{ route('detail.portofolio', ['portofolio' => $portofolio->id]) }}" class="btn btn-primary">
                             Detail
                         </a>
                     </div>
@@ -125,6 +125,8 @@
 @endsection
 @section('script')
     <script>
+        $('#company').addClass('mm-active')
+
         $('.btn-delete').click(function() {
             id = $(this).data('id')
             var actionUrl = `portofolio/${id}`;

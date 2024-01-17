@@ -119,7 +119,7 @@
                     <div class="menu-title mt-1">Unggah Berita</div>
                 </a>
             </li>
-            <li>
+            <li id="survey-alumni">
                 <a href="{{ route('survey.index') }}">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 36 36" fill="currentColor">
@@ -134,7 +134,7 @@
                     <div class="menu-title mt-1">Survei Alumni</div>
                 </a>
             </li>
-            <li>
+            <li id="student-status">
                 <a href="{{ route('student.classroom') }}">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 36 36" fill="none">
@@ -168,7 +168,7 @@
                 </a>
             </li>
         @elseif(auth()->user()->roles[0]->name == 'company')
-            <li>
+            <li id="company">
                 <a href="{{ route('job-vacancy.index') }}">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                             viewBox="0 0 38 38" fill="currentColor">
@@ -184,7 +184,7 @@
                 </a>
             </li>
         @elseif (auth()->user()->roles[0]->name == 'student')
-            <li>
+            <li id="portofolio-student">
                 <a href="{{ route('portofolio') }}">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 38 38" fill="currentColor">
@@ -200,7 +200,7 @@
                 </a>
             </li>
         @elseif (auth()->user()->roles[0]->name == 'alumni')
-            <li>
+            <li id="portofolio-alumni">
                 <a href="{{ route('portofolio') }}">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 38 38" fill="currentColor">
@@ -247,8 +247,8 @@
                     </div>
                     <div class="menu-title mt-1">Lowongan Kerja</div>
                 </a>
-                <ul>
-                    <li> <a href="{{ route('alumni.vacancies.available') }}"><i
+                <ul id="vacancy">
+                    <li id="vacancy-available"> <a href="{{ route('alumni.vacancies.available') }}"><i
                                 class='bx bx-radio-circle'></i>Lowongan
                             Tersedia</a>
                     </li>

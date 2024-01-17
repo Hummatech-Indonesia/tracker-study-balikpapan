@@ -50,3 +50,9 @@
     </div>
 </div>
 @endsection
+@section('script')
+    <script>
+        $('#portofolio-alumni').addClass('mm-active')
+        $('#portofolio-student').addClass('mm-active')
+    </script>
+@endsection

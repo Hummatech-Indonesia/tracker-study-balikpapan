@@ -41,9 +41,11 @@
                         {{ $jobVacancy->company->user->name }}
                     </h5>
                     <div class="d-flex justify-content-center mb-5">
-                        <button type="button" class="btn btn-primary">
-                            Edit Profile
-                        </button>
+                        <a href="{{ route('profile-company') }}">
+                            <button type="button" class="btn btn-primary">
+                                Edit Profile
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -327,6 +329,7 @@
 @endsection
 @section('script')
     <script>
+        $('#company').addClass('mm-active')
         $('.btn-accept').click(function() {
             const formData = getDataAttributes($(this).attr('id'))
             var actionUrl = `/accept-job-vacancy/${formData['id']}`;

@@ -32,38 +32,45 @@
                         <div class="row">
                             <div class="col-6 mb-2">
                                 <label for="formFile" class="form-label">Judul Lowongan</label>
-                                <input type="text" placeholder="Masukkan Judul Lowongan" class="form-control"
-                                    name="job_title" id="">
+                                <input type="text" value="{{ old('job_title') }}" placeholder="Masukkan Judul Lowongan"
+                                    class="form-control" name="job_title" id="">
                             </div>
                             <div class="col-6 mb-2">
                                 <label for="formFile" class="form-label">Gaji Pokok</label>
-                                <input name="basic_salary" placeholder="Masukkan Gaji Pokok" type="number" id=""
-                                    class="form-control">
+                                <input name="basic_salary" value="{{ old('basic_salary') }}"
+                                    placeholder="Masukkan Gaji Pokok" type="number" id="" class="form-control">
                             </div>
                             <div class="col-6">
                                 <label for="formFile" class="form-label">Sistem Kerja</label>
                                 <select class="form-select form-select-md" name="work_system"
                                     aria-label="Default select example">
-                                    <option value="">Pilih Sistem Kerja</option>
-                                    <option value="contract">Kontrak</option>
-                                    <option value="permanentwork">Kerja Tetap</option>
-                                    <option value="workingparttime">Kerja Paruh Waktu</option>
-                                    <option value="freelance">Freelance</option>
+                                    <option value="" {{ old('work_system') == '' ? 'selected' : '' }}>Pilih Sistem
+                                        Kerja</option>
+                                    <option value="contract" {{ old('work_system') == 'contract' ? 'selected' : '' }}>
+                                        Kontrak</option>
+                                    <option value="permanentwork"
+                                        {{ old('work_system') == 'permanentwork' ? 'selected' : '' }}>Kerja Tetap</option>
+                                    <option value="workingparttime"
+                                        {{ old('work_system') == 'workingparttime' ? 'selected' : '' }}>Kerja Paruh Waktu
+                                    </option>
+                                    <option value="freelance" {{ old('work_system') == 'freelance' ? 'selected' : '' }}>
+                                        Freelance</option>
                                 </select>
                             </div>
+
                             <div class="col-6 mb-3">
                                 <label for="" class="form-label">Posisi</label>
-                                <input type="text" name="position" class="form-control">
+                                <input type="text" value="{{ old('position') }}" name="position" class="form-control">
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="formFile" class="form-label">Deskripsi Sistem Kerja</label>
                                 <textarea placeholder="Masukkan Deskripsi Sistem Kerja" name="description_working_system" id=""
-                                    class="form-control"></textarea>
+                                    class="form-control">{{ old('description_working_system') }}</textarea>
                             </div>
                             <div class="col-12">
                                 <label for="formFile" class="form-label">Kualifikasi / Syarat - Syarat</label>
                                 <textarea placeholder="Masukkan Kulifikasi / Syarat - Syarat" class="form-control" name="qualifications" id=""
-                                    cols="15" rows="5"></textarea>
+                                    cols="15" rows="5">{{ old('qualifications') }}</textarea>
                             </div>
                         </div>
                     </div>

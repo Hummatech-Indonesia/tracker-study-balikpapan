@@ -183,8 +183,7 @@
 @endsection
 @section('script')
     <script>
-
-
+        $('#student-status').addClass('mm-active')
         $(document).ready(function() {
             var selectedValues = [];
 
@@ -193,7 +192,6 @@
                 $(".select:checked").each(function() {
                     selectedValues.push($(this).val());
                 });
-                console.log(selectedValues);
             });
 
             $("#btn-select-change-alumni").click(function() {

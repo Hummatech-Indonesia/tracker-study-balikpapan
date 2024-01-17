@@ -128,6 +128,7 @@
 @endsection
 @section('script')
     <script>
+        $('#survey-alumni').addClass('mm-active')
         $(function() {
             "use strict";
             Highcharts.chart('chartSurvey', {

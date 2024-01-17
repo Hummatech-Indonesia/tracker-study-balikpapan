@@ -141,4 +141,8 @@
             });
         </script>
     @endif
+    <script>
+        $('#vacancy').addClass('mm-show mm-collapse')
+        $('#vacancy-available').addClass('mm-active')
+    </script>
 @endsection

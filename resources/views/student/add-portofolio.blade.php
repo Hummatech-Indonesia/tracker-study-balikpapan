@@ -69,6 +69,8 @@
 @section('script')
     <script src="{{ asset('assets-admin/plugins/Drag-And-Drop/dist/imageuploadify.min.js') }}"></script>
     <script>
+        $('#portofolio-alumni').addClass('mm-active')
+        $('#portofolio-student').addClass('mm-active')
         $(document).ready(function() {
             $('#image-uploadify').imageuploadify();
         })
