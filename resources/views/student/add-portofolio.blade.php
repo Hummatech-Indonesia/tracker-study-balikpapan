@@ -12,7 +12,7 @@
                 </h5>
             </div>
             <div class="">
-                    <button type="submit" class="btn btn-primary text-white">
+                    <button type="submit" class="btn btn-primary btn-send text-white">
                         Kirim
                     </button>
                 <a href="{{ route('portofolio') }}" class="btn btn-warning text-white">
