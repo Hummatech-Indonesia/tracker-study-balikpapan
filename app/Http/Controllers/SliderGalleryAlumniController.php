@@ -37,7 +37,7 @@ class SliderGalleryAlumniController extends Controller
     public function store(SliderGalleryAlumniRequest $request): RedirectResponse
     {
         $this->sliderGalleryAlumni->store($this->service->store($request));
-        return redirect()->back()->with('success', trans(''));
+        return redirect()->back()->with('success', trans('alert.add_success'));
     }
 
     /**
@@ -50,7 +50,7 @@ class SliderGalleryAlumniController extends Controller
     public function update(SliderGalleryAlumni $slider_gallery_alumni, SliderGalleryAlumniUpdateRequest $request): RedirectResponse
     {
         $this->sliderGalleryAlumni->update($slider_gallery_alumni->id, $this->service->update($slider_gallery_alumni, $request));
-        return redirect()->back()->with('success', trans(''));
+        return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
     /**
@@ -63,6 +63,6 @@ class SliderGalleryAlumniController extends Controller
     {
         $this->service->remove($slider_gallery_alumni->photo);
         $this->sliderGalleryAlumni->delete($slider_gallery_alumni->id);
-        return redirect()->back()->with('success', trans(''));
+        return redirect()->back()->with('success', trans('alert.delete_success'));
     }
 }

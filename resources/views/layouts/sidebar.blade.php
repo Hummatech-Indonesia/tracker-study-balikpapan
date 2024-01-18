@@ -103,7 +103,7 @@
                     <li> <a href="{{ route('teacher-gallery.index') }}"><i class='bx bx-radio-circle'></i>Galeri
                             Guru</a>
                     </li>
-                    <li> <a href="{{ route('alumni.gallery') }}"><i class='bx bx-radio-circle'></i>Galleri Alumni</a>
+                    <li> <a href="{{ route('alumni.gallery') }}"><i class='bx bx-radio-circle'></i>Galeri Alumni</a>
                     </li>
                 </ul>
             </li>

@@ -206,10 +206,10 @@
                         <div class="modal-body">
                             <div class="container">
                                 <div class="container">
-                                    <img src="" id="photo" alt="" class="img-fluid w-100">
+                                    <img src="" id="detail-photo" alt="" class="img-fluid w-100">
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
-                                            <p id="title" class="text-dark mt-1">
+                                            <p id="detail-title" class="text-dark mt-1 fs-6 fw-semibold">
 
                                             </p>
                                         </div>
@@ -219,7 +219,7 @@
                                             </p>
                                         </div>
                                         <div class="">
-                                            <p class="text-primary mt-1" id="tanggal"></p>
+                                            <p class="text-primary mt-1 fs-6" id="detail-created_at"></p>
                                         </div>
 
                                     </div>
@@ -279,7 +279,7 @@
                                             <button class="btn btn-primary btn-sm btn-detail"
                                                 data-id="{{ $galleryAlumni->id }}" id="{{ $galleryAlumni->id }}"
                                                 data-title="{{ $galleryAlumni->title }}"
-                                                data-created_at="{{ $galleryAlumni->created_at }}">
+                                                data-created_at="{{  \Carbon\Carbon::parse($galleryAlumni->created_at)->isoFormat('D MMMM Y')  }}" data-photo="{{ asset('storage/'. $galleryAlumni->photo) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                     viewBox="0 0 34 34" fill="none">
                                                     <path
@@ -368,19 +368,10 @@
             $('#modal-update').modal('show')
         });
         $('.btn-detail').click(function() {
-            const formData = getDataAttributes($(this).attr('id'))
-            var actionUrl = `/alumni-gallery-update/${formData['id']}`;
-            var photo = `${formData['photo']}`;
-            var title = `${formData['title']}`;
-            var created_at = new Date(formData['created_at']);
-            var tanggal = created_at.toLocaleDateString('id-ID', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-            });
-            $('#photo').attr('src', 'storage/' + photo);
-            $('#tanggal').text(tanggal)
-            $('#title').text(title)
+            const data = getDataAttributes($(this).attr('id'))
+            handleDetail(data)
+            const detailPhoto = document.getElementById("detail-photo");
+            detailPhoto.src = data['photo'];
             $('#modal-detail').modal('show')
         });
         $('.btn-delete').click(function() {
