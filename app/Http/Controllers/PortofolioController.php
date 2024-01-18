@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\PhotoPortofolioInterface;
 use App\Contracts\Interfaces\PortofolioInterface;
+use App\Helpers\ResponseHelper;
 use App\Http\Requests\PortofolioRequest;
 use App\Http\Requests\PortofolioUpdateRequest;
 use App\Models\Portofolio;
@@ -45,7 +46,7 @@ class PortofolioController extends Controller
     {
         $service = $this->service->store($request);
         $this->portofolio->store($service);
-        return redirect()->route('portofolio')->with('success', trans('alert.add_success'));
+        return ResponseHelper::success(null , trans('alert.add_success'));
     }
 
     /**
