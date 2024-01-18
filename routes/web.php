@@ -145,62 +145,60 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware('role:student|alumni')->group(function () {
     });
+    Route::get('portofolio', [PortofolioController::class, 'index'])->name('portofolio');
+
+    Route::get('detail-applicant/{apply_job_vacancies}', [StudentController::class, 'detailApplicant'])->name('detail.applicant');
+
+    Route::get('detail-applicant-portofolio/{student}', [PortofolioController::class, 'detail'])->name('detail.applicant.portofolio');
+    Route::get('add-portofolio', function () {
+        return view('student.add-portofolio');
+    })->name('add.portofolio');
+    Route::get('detail-portofolio/{portofolio}', [PortofolioController::class, 'show'])->name('detail.portofolio');
+
+    Route::get('edit-portofolio/{portofolio}', [PortofolioController::class, 'edit'])->name('edit.portofolio');
+
+    Route::get('job-applicant', [ApplyJobVacancyController::class, 'companyApplyJobVacancy'])->name('job-applicant');
+    Route::patch('accept-job-vacancy/{apply_job_vacancies}', [ApplyJobVacancyController::class, 'accept'])->name('accept-job-vacancy');
+    Route::patch('reject-job-vacancy/{apply_job_vacancies}', [ApplyJobVacancyController::class, 'reject'])->name('reject-job-vacancy');
+    Route::get('profile-company', [UserController::class, 'company'])->name('profile-company');
+    Route::get('profile', [UserController::class, 'profile'])->name('profile');
+    Route::put('update-profile/{user}', [UserController::class, 'updateProfile'])->name('update.profile');
+    Route::put('update-company-profile/{user}', [UserController::class, 'updateCompany'])->name('update-company-profile');
+    Route::patch('update-photo-profile', [UserController::class, 'updatePhotoProfile'])->name('update-profile');
+    Route::patch('update-password', [UserController::class, 'updatePassword'])->name('update-password');
+
+    Route::get('province', [ProvinceController::class, 'index'])->name('province');
+    Route::get('regency', [RegencyController::class, 'index'])->name('regency');
+    Route::resources([
+        'job-vacancy' => JobVacancyController::class,
+    ]);
+    
+    
+    Route::get('detail-lowongan-company/{job_vacancy}', [JobVacancyController::class, 'detail'])->name('detail.job-vacancy.company');
+    
+    
+    Route::get('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
+    
+    Route::get('apply-job-vacancy', function () {
+        return view('emails.apply-job-vacancy');
+    });
+    
+    Route::get('account-siswa', [StudentController::class, 'viewVerificationStudent'])->name('account.siswa');
+    Route::get('account-alumni', [StudentController::class, 'viewVerificationAlumni'])->name('account.alumni');
+    
+    Route::patch('verification-student/{student}', [StudentController::class, 'verificationStudent'])->name('verification.student');
+    Route::patch('reject-verification-student/{student}', [StudentController::class, 'rejectVerificationStudent'])->name('reject.verification.student');
+    Route::get('alumni-register', function () {
+        return view('admin.alumni-register');
+    })->name('alumni.register');
+    
+    Route::post('portofolio', [PortofolioController::class, 'store'])->name('portofolio.store');
+    Route::put('portofolio/{portofolio}', [PortofolioController::class, 'update'])->name('portofolio.update');
+    Route::delete('portofolio/{portofolio}', [PortofolioController::class, 'destroy'])->name('portofolio.destroy');
+    
+    Route::get('detail-job-vacancy', function () {
+        return view('admin.job-vacancy.detail');
+    })->name('detail.job.vacancy');
+    
 });
 
-Route::resources([
-    'job-vacancy' => JobVacancyController::class,
-]);
-
-
-Route::get('detail-lowongan-company/{job_vacancy}', [JobVacancyController::class, 'detail'])->name('detail.job-vacancy.company');
-
-
-Route::get('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
-
-Route::get('apply-job-vacancy', function () {
-    return view('emails.apply-job-vacancy');
-});
-
-Route::get('account-siswa', [StudentController::class, 'viewVerificationStudent'])->name('account.siswa');
-Route::get('account-alumni', [StudentController::class, 'viewVerificationAlumni'])->name('account.alumni');
-
-Route::patch('verification-student/{student}', [StudentController::class, 'verificationStudent'])->name('verification.student');
-Route::patch('reject-verification-student/{student}', [StudentController::class, 'rejectVerificationStudent'])->name('reject.verification.student');
-Route::get('alumni-register', function () {
-    return view('admin.alumni-register');
-})->name('alumni.register');
-
-Route::post('portofolio', [PortofolioController::class, 'store'])->name('portofolio.store');
-Route::put('portofolio/{portofolio}', [PortofolioController::class, 'update'])->name('portofolio.update');
-Route::delete('portofolio/{portofolio}', [PortofolioController::class, 'destroy'])->name('portofolio.destroy');
-
-Route::get('detail-job-vacancy', function () {
-    return view('admin.job-vacancy.detail');
-})->name('detail.job.vacancy');
-// siswa
-
-
-Route::get('portofolio', [PortofolioController::class, 'index'])->name('portofolio');
-
-Route::get('detail-applicant/{apply_job_vacancies}', [StudentController::class, 'detailApplicant'])->name('detail.applicant');
-
-Route::get('detail-applicant-portofolio/{student}', [PortofolioController::class, 'detail'])->name('detail.applicant.portofolio');
-Route::get('add-portofolio', function () {
-    return view('student.add-portofolio');
-})->name('add.portofolio');
-Route::get('detail-portofolio/{portofolio}', [PortofolioController::class, 'show'])->name('detail.portofolio');
-
-Route::get('edit-portofolio/{portofolio}', [PortofolioController::class, 'edit'])->name('edit.portofolio');
-
-Route::get('job-applicant', [ApplyJobVacancyController::class, 'companyApplyJobVacancy'])->name('job-applicant');
-Route::patch('accept-job-vacancy/{apply_job_vacancies}', [ApplyJobVacancyController::class, 'accept'])->name('accept-job-vacancy');
-Route::patch('reject-job-vacancy/{apply_job_vacancies}', [ApplyJobVacancyController::class, 'reject'])->name('reject-job-vacancy');
-Route::get('profile-company', [UserController::class, 'company'])->name('profile-company');
-Route::get('profile', [UserController::class, 'profile'])->name('profile');
-Route::put('update-profile/{user}', [UserController::class, 'updateProfile'])->name('update.profile');
-Route::put('update-company-profile/{user}', [UserController::class, 'updateCompany'])->name('update-company-profile');
-Route::patch('update-photo-profile', [UserController::class, 'updatePhotoProfile'])->name('update-profile');
-Route::patch('update-password', [UserController::class, 'updatePassword'])->name('update-password');
-
-Route::get('province', [ProvinceController::class, 'index'])->name('province');
-Route::get('regency', [RegencyController::class, 'index'])->name('regency');
