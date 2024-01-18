@@ -50,4 +50,16 @@ class CompanyController extends Controller
         $companies = $this->company->search($request);
         return view('admin.verify-company', ['companies' => $companies]);
     }
+
+    /**
+     * company
+     *
+     * @param  mixed $request
+     * @return View
+     */
+    public function company(Request $request): View
+    {
+        $companies = $this->company->customPaginate($request, 10);
+        return view('admin.company', ['companies' => $companies]);
+    }
 }

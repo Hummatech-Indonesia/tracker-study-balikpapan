@@ -16,12 +16,12 @@
         <div class="col-12 col-md-9">
             <form action="" method="get">
                 <div class="d-flex justify-content-header gap-3">
-                    <div class="position-relative mb-3 col-lg-6">
+                    <div class="position-relative mb-3 col-lg-5">
                         <input type="text" name="name" value="{{ request()->name }}"
                             class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
                         <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <select name="classroom" id="" class="form-select py-2">
                             <option value="">Filter Kelas</option>
                             @foreach ($classrooms as $classroom)
@@ -30,7 +30,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-4">
                         <button type="submit" class="btn btn-primary btn-md">
                             Cari
                         </button>
@@ -47,7 +47,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
                         <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                         <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                    </svg> Siswa</button>  
+                    </svg> Siswa</button>
             </div>
         </div>
     </div>

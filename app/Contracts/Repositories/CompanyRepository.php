@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\CompanyInterface;
 use App\Enums\StatusEnum;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class CompanyRepository extends BaseRepository implements CompanyInterface
 {
@@ -76,5 +77,25 @@ class CompanyRepository extends BaseRepository implements CompanyInterface
     {
         return $this->model->query()
             ->get();
+    }
+
+    /**
+     * customPaginate
+     *
+     * @param  mixed $request
+     * @param  mixed $pagination
+     * @return LengthAwarePaginator
+     */
+    public function customPaginate(Request $request, int $pagination = 10): LengthAwarePaginator
+    {
+        return $this->model->query()
+            ->when($request->name, function ($query) use ($request) {
+                $query->whereRelation('user','name', 'LIKE', '%' . $request->name . '%');
+            })
+            ->when($request->status, function ($query) use ($request) {
+                $query->where('status', $request->status);
+            })
+            ->latest()
+            ->fastPaginate($pagination);
     }
 }
