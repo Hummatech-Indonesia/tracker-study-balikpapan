@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <h4 class="mb-3">
-        Data Perusahaan
-    </h4>
-    <div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between">
+        <h4 class="mb-3">
+            Verifikasi Akun Perusahaan
+        </h4>
         <div class="position-relative mb-3 col-lg-3">
             <form action="{{ route('verify.company') }}" method="get">
                 <input type="text" name="name" class="form-control search-chat py-2 ps-5" id="search-name"

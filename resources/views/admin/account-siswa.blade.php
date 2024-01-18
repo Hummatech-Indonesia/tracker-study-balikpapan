@@ -3,13 +3,10 @@
     @php
         use Carbon\Carbon;
     @endphp
-    <h4 class="mb-3">
-        Data Siswa
-    </h4>
     <div class="d-flex justify-content-between">
         <div class="">
             <h4 class="mb-3">
-                Verifikasi Siswa
+                Verifikasi Akun Siswa
             </h4>
         </div>
         <div class="position-relative mb-3 col-lg-3">

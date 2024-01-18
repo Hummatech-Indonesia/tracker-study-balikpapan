@@ -1,12 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <h4 class="mb-3">
-        Data Alumni
-    </h4>
     <div class="d-flex justify-content-between">
         <div class="">
             <h4 class="mb-3">
-                Verifikasi Alumni
+                Verifikasi Akun Alumni
             </h4>
         </div>
 
