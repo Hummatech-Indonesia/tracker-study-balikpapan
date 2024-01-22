@@ -246,7 +246,7 @@
                     </div>
                 @endforelse
             </div>
-            @if ($jobVacancys)
+            @if (count($jobVacancys) >= 4 )
                 <div class="row justify-content-center">
                     <a href="{{ route('lowongan') }}"
                         style="font-size: 1rem;

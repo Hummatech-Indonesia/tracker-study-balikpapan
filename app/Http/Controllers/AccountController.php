@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Enums\RoleEnum;
-use Illuminate\View\View;
-use App\Http\Requests\AccountRequest;
 use App\Contracts\Interfaces\UserInterface;
+use App\Enums\RoleEnum;
+use App\Http\Requests\AccountRequest;
 use App\Http\Requests\AccountUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AccountController extends Controller
 {
@@ -20,7 +20,6 @@ class AccountController extends Controller
     ) {
         $this->user = $user;
     }
-
 
     /**
      * Display a listing of the resource.
@@ -37,12 +36,14 @@ class AccountController extends Controller
      */
     public function store(AccountRequest $request)
     {
-        $user = $this->user->store($request->validated());
+        $validated = $request->validated();
+        $validated['email_verified_at'] = now();
+
+        $user = $this->user->store($validated);
         $user->assignRole(RoleEnum::ADMIN->value);
 
         return redirect()->back()->with('success', trans('alert.add_success'));
     }
-
 
     /**
      * Update the specified resource in storage.
