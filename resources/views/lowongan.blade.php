@@ -13,6 +13,21 @@
             position: relative;
             z-index: 1;
         }
+
+        .select-option {
+            padding: 8px 15px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+            /* Sesuaikan lebar dropdown sesuai kebutuhan */
+        }
+
+        .select-option:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
     </style>
 @endsection
 @section('content')
@@ -38,13 +53,8 @@
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-2">
-                    <a href="{{ route('landing-page') }}" class="button text-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16"
-                            fill="none">
-                            <path
-                                d="M0.292892 7.29289C-0.0976315 7.68342 -0.0976314 8.31658 0.292893 8.w70711L6.65686 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928933C7.68054 0.538409 7.04738 0.538409 6.65685 0.928933L0.292892 7.29289ZM18 7L1 7L1 9L18 9L18 7Z"
-                                fill="white" />
-                        </svg> Kembali
+                    <a href="{{ route('landing-page') }}" class="button text-center px-4">
+                        Kembali
                     </a>
                 </div>
                 <div class="d-flex justify-content-between">
@@ -56,15 +66,21 @@
                                     aria-describedby="basic-addon1">
                             </div>
                             <div class="">
-                                <select class="form-select" name="company_id" aria-label="Default select example">
-                                    <option selected value="">Pilih Perusahaan</option>
+                                <select class="select-option" name="company_id" aria-label=""
+                                    style="box-shadow:0 1px 5px rgba(0, 0, 0, 0.1);border:none;margin-right:1rem;margin-left:1rem">
+                                    <option selected disabled value="">Pilih Perusahaan</option>
                                     @foreach ($companies as $company)
                                         <option value="{{ $company->id }}">{{ $company->user->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="">
-                                <button type="submit" class="btn btn-primary btn-md">
+                                <button type="submit" class="button text-center px-4"
+                                    style="
+                                    border: none;
+                                    padding-top:0.67rem;
+                                    padding-bottom:0.67rem;
+                                    ">
                                     Cari
                                 </button>
                             </div>
