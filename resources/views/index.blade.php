@@ -1,13 +1,12 @@
 @extends('layouts.landing-page.app-landing')
 @section('style')
-<style>
-    @media only screen and (min-width: 768px) and (max-width: 834px) {
-        .foto-welcome {
-            display: none;
+    <style>
+        @media only screen and (min-width: 768px) and (max-width: 834px) {
+            .foto-welcome {
+                display: none;
+            }
         }
-    }
-</style>
-
+    </style>
 @endsection
 @section('content')
     <!-- ***** Welcome Area Start ***** -->
@@ -125,13 +124,11 @@
                 <div class="col-12 col-lg-6">
                     <div class="mb-5">
                         <h3 class="text-center my-4">SMKN 2 PENAJAM</h3>
-                        <p style="font-size: 16px; color:black; ">Lorem Ipsum Dolor Sit AmetLorem Ipsum Dolor Sit AmetLorem
-                            Ipsum Dolor Sit AmetLorem Ipsum Dolor
-                            Sit AmetLorem Ipsum Dolor Sit AmetLorem Ipsum Dolor Sit AmetLorem Ipsum Dolor Sit AmetLorem
-                            Ipsum Dolor Sit AmetLorem Ipsum Dolor Sit AmetLorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit
-                            Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem
-                            Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit
-                            Amet Lorem Ipsum Dolor Sit Amet</p>
+                        <p style="font-size: 16px; color:black; ">SMK Negeri 2 Penajam Paser Utara sebagai lembaga
+                            pendidikan terus berupaya meningkatkan mutu dengan mengupayakan dan memanfaatkan setiap sarana
+                            dan prasana termasuk melalui layanan Online ini. Besar harapan, sarana ini dapat memberi manfaat
+                            bagi semua pihak yang ada dilingkup pendidikan dan bagi pemerhati pendidikan secara khusus bagi
+                            SMK Negeri 2 Penajam Paser Utara.</p>
                     </div>
                 </div>
             </div>
