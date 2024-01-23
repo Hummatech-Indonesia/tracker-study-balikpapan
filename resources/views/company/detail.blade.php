@@ -27,13 +27,18 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-center">
                         <div class="reviewer-thumb mt-3">
-                            <div class="border-custom"
-                                style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;">
-                                <div class="rounded-circle bg-secondary"
-                                    style="object-fit: cover; width: 100%; height: 100%;">
-                                    <img src="{{ asset('default.jpg') }}" class="rounded-circle"
+                            <div class=""
+                                style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;border:3px solid #5D87FF">
+                                @if ($jobVacancy->company->user->photo)
+                                    <img src="{{ asset('storage/' . $jobVacancy->company->user->photo) }}"
+                                        class="rounded-circle" style="object-fit: cover; width: 100%; height: 100%;">
+                                @else
+                                    <div class="rounded-circle bg-secondary"
                                         style="object-fit: cover; width: 100%; height: 100%;">
-                                </div>
+                                        <img src="{{ asset('default.jpg') }}" class="rounded-circle"
+                                            style="object-fit: cover; width: 100%; height: 100%;">
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

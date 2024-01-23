@@ -6,15 +6,15 @@
             <div class="row">
                 <div class="col-12 col-xl-2 col-lg-5">
                     <div class="d-flex justify-content-center">
-                        <img src="{{ asset('default.jpg') }}" height="200px" width="200px" style="object-fit: cover"
-                            alt="">
+                        <img src="{{ asset('default.jpg') }}" height="200px" width="200px" style="object-fit: cover;"
+                            alt="" id="img-student">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6 col- mt-3">
-                    <h1 class="text-dark mb-3" style="font-weight:500">
+                    <h1 class="text-student text-dark mb-3" style="font-weight:500; ">
                         {{ $applyJobVacancy->student->user->name }}
                     </h1>
-                    <div class="d-flex justify-content-header gap-2 mt-2">
+                    <div class="text-student d-flex justify-content-header gap-2 mt-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34"
                             fill="none">
                             <path
@@ -25,7 +25,7 @@
                             {{ $applyJobVacancy->student->user->email }}
                         </div>
                     </div>
-                    <div class="d-flex justify-content-header gap-2 mt-2">
+                    <div class="text-student d-flex justify-content-header gap-2 mt-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34"
                             fill="none">
                             <path
@@ -55,7 +55,7 @@
                 Pesan
             </p>
             <p>
-                Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit
+                {{ $applyJobVacancy->message ? $applyJobVacancy->message : 'Belum Anda Pesan' }}
             </p>
         </div>
     </div>
@@ -64,4 +64,21 @@
     <script>
         $('#company').addClass('mm-active')
     </script>
+@endsection
+@section('style')
+    <style>
+        @media only screen and (max-width: 600px) {}
+
+        @media only screen and (min-width: 601px) and (max-width: 1024px) {}
+
+        @media only screen and (min-width: 1025px) {
+            #img-student {
+                margin-left: 60px;
+            }
+
+            .text-student {
+                margin-left: 60px;
+            }
+        }
+    </style>
 @endsection
