@@ -31,7 +31,7 @@
     <link href="{{ asset('assets-admin/plugins/highcharts/css/highcharts.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/js/sweetalert2/dist/sweetalert2.min.css') }}">
     @yield('style')
-    <title>Tracker Study</title>
+    <title>Tracer Study</title>
     <style>
         .user-circle {
             border-radius: 50%;
@@ -66,7 +66,7 @@
         <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright © 2023. Team Study Tracker SMKN 2 PENAJAM.</p>
+            <p class="mb-0">Copyright © 2023. Team Study Tracer SMKN 2 PENAJAM.</p>
         </footer>
     </div>
     <!--end wrapper-->

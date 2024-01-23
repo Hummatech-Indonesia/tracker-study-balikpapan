@@ -28,7 +28,7 @@
                 <!-- Welcome Intro Start -->
                 <div class="col-12 col-md-7 col-lg-6">
                     <div class="welcome-intro">
-                        <h2 class="text-white fs-6">SELAMAT DATANG DI TRACKER STUDY SMK 2 PENAJAM</h2>
+                        <h2 class="text-white fs-6">SELAMAT DATANG DI TRACER STUDY SMK 2 PENAJAM</h2>
                         <p class="text-white my-4">Nikmati pengalaman eksklusif melalui situs web kami, Tracer Study, yang
                             dirancang khusus untuk membantu Anda melacak dan memahami perjalanan karir alumni kami.
                             Menyajikan informasi yang komprehensif, platform ini memungkinkan Anda menjelajahi prestasi dan

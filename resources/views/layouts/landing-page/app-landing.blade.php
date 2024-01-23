@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <!-- Title  -->
-    <title>Tracker Study</title>
+    <title>Tracer Study</title>
     <!-- Favicon  -->
     <link rel="icon" href="{{ asset('LOGO SMKN 2.png') }}">
     <!-- ***** All CSS Files ***** -->
@@ -21,7 +21,7 @@
         .border-custom {
             border: 7px solid #5D87FF !important;
         }
-    </style>    
+    </style>
 </head>
 
 <body>
@@ -55,7 +55,7 @@
 
     <!-- Active js -->
         <script src="{{ asset('assets/js/active.js') }}"></script>
-    @yield('scripts')   
+    @yield('scripts')
 </body>
 
 

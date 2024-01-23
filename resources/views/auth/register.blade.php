@@ -198,7 +198,7 @@
                     <div class="modal-body">
                         <p style="font-size:24px;color:black;text-align:center;line-height:normal;font-weight:500;">
                             Kebijakan Privasi</p>
-                        <p>Kebijakan Privasi Tracker Study</p>
+                        <p>Kebijakan Privasi Tracer Study</p>
                         <p>Terakhir Diperbarui: 12 Januari 2024</p>
                         <div>
                             <ol
