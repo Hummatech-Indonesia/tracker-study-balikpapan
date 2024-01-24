@@ -56,7 +56,7 @@
                                         </button>
                                         <button class="btn btn-warning btn-edit btn-sm" id="btn-edit-{{ $news->id }}"
                                             data-id="{{ $news->id }}" data-title="{{ $news->title }}"
-                                            data-content={{ $news->content }}>
+                                            data-content="{{ $news->content }}">    
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 24 24">
                                                 <path fill="white"
