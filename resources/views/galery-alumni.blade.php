@@ -1,11 +1,7 @@
 @extends('layouts.landing-page.app-landing')
 @section('style')
-    <style>
-        .titleGaleryAlumni:hover {
-            color: #444444;
-        }
-
-        @media (max-width: 890px) {
+<style>
+    @media (max-width: 890px) {
             #home>div.container>div>div.col-12.col-md-3.col-lg-6>iframe {
                 border: 4px solid #fff;
                 border-radius: 10px;
@@ -22,7 +18,7 @@
                 height: 400px;
             }
         }
-    </style>
+</style>
 @endsection
 @section('content')
     <!-- ***** Welcome Area Start ***** -->
@@ -44,8 +40,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="190" height="190"
-                                        viewBox="0 0 190 190" fill="none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="190" height="190" viewBox="0 0 190 190"
+                                        fill="none">
                                         <g clip-path="url(#clip0_168_607)">
                                             <path
                                                 d="M167.049 41.5497H52.6795C40.0661 41.5497 29.6787 51.7554 29.6787 64.3019V155.318C29.6787 167.865 40.0661 178.07 52.6795 178.07H166.941C179.555 178.07 189.942 168.358 189.942 155.812V64.3019C189.942 51.7554 179.673 41.5497 167.049 41.5497ZM138.428 64.3057C141.798 64.3262 145.088 65.3444 147.88 67.232C150.673 69.1196 152.844 71.7919 154.12 74.9119C155.395 78.0319 155.718 81.4598 155.048 84.7632C154.378 88.0666 152.745 91.0976 150.354 93.4738C147.963 95.85 144.923 97.465 141.615 98.1151C138.308 98.7652 134.882 98.4212 131.77 97.1266C128.657 95.832 125.998 93.6447 124.128 90.8407C122.257 88.0367 121.259 84.7414 121.259 81.3707C121.276 76.8319 123.094 72.4855 126.313 69.2854C129.532 66.0853 133.889 64.2931 138.428 64.3019V64.3057ZM52.5274 166.696C46.2207 166.696 41.4499 161.595 41.4499 155.322V131.271L75.0088 101.3C78.2895 98.4139 82.5424 96.8793 86.9099 97.0053C91.2774 97.1313 95.4348 98.9085 98.5437 101.979L121.782 125.02L79.8612 166.692L52.5274 166.696ZM178.071 155.318C178.07 156.813 177.775 158.294 177.202 159.675C176.629 161.056 175.79 162.31 174.732 163.366C173.674 164.423 172.418 165.26 171.036 165.831C169.654 166.402 168.173 166.694 166.678 166.692H96.0841L139.518 123.536C142.601 120.936 146.501 119.505 150.533 119.494C154.566 119.483 158.473 120.893 161.569 123.477L178.071 137.481V155.318Z"
@@ -148,8 +144,7 @@
                                     <div class="blog-content p-4">
                                         <!-- Blog Title -->
                                         <h5 style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap"
-                                            class="blog-title mb-2"><a href="#"
-                                                class="titleGaleryAlumni">{{ $galleryAlumni->title }}</a></h5>
+                                            class="blog-title mb-2"><a href="#">{{ $galleryAlumni->title }}</a></h5>
                                         <div class="blog-btn" style="font-size: 14px">
                                             {{ \Carbon\Carbon::parse($galleryAlumni->created_at)->locale('id')->isoFormat('LL') }}
                                         </div>
