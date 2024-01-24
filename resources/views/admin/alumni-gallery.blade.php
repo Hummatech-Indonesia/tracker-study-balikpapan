@@ -279,7 +279,8 @@
                                             <button class="btn btn-primary btn-sm btn-detail"
                                                 data-id="{{ $galleryAlumni->id }}" id="{{ $galleryAlumni->id }}"
                                                 data-title="{{ $galleryAlumni->title }}"
-                                                data-created_at="{{  \Carbon\Carbon::parse($galleryAlumni->created_at)->isoFormat('D MMMM Y')  }}" data-photo="{{ asset('storage/'. $galleryAlumni->photo) }}">
+                                                data-created_at="{{ \Carbon\Carbon::parse($galleryAlumni->created_at)->isoFormat('D MMMM Y') }}"
+                                                data-photo="{{ asset('storage/' . $galleryAlumni->photo) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                     viewBox="0 0 34 34" fill="none">
                                                     <path
@@ -291,7 +292,7 @@
                                                 </svg>
                                             </button>
                                         </div>
-                                        <div class="">
+                                        {{-- <div class="">
                                             <button class="btn btn-warning btn-sm btn-edit"
                                                 data-id="{{ $galleryAlumni->id }}" id="{{ $galleryAlumni->id }}"
                                                 data-title="{{ $galleryAlumni->title }}">
@@ -303,6 +304,24 @@
                                                     <path
                                                         d="M17.708 10.7625L21.958 7.9292L26.208 12.1792L23.3747 16.4292L17.708 10.7625Z"
                                                         stroke="white" stroke-width="2.5" />
+                                                </svg>
+                                            </button>
+                                        </div> --}}
+                                        <div class="">
+                                            <button class="btn btn-danger btn-sm btn-edit"
+                                                data-id="{{ $galleryAlumni->id }}" id="{{ $galleryAlumni->id }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                    viewBox="0 0 34 34" fill="none">
+                                                    <path d="M13.459 20.5417L13.459 16.2917" stroke="white"
+                                                        stroke-width="3" stroke-linecap="round" />
+                                                    <path d="M20.541 20.5417L20.541 16.2917" stroke="white"
+                                                        stroke-width="3" stroke-linecap="round" />
+                                                    <path
+                                                        d="M4.25 9.20825H29.75V9.20825C27.7603 9.20825 26.7655 9.20825 26.0509 9.68575C25.7415 9.89247 25.4759 10.1581 25.2692 10.4675C24.7917 11.1821 24.7917 12.1769 24.7917 14.1666V21.9583C24.7917 24.6295 24.7917 25.9652 23.9618 26.7951C23.1319 27.6249 21.7963 27.6249 19.125 27.6249H14.875C12.2037 27.6249 10.8681 27.6249 10.0382 26.7951C9.20833 25.9652 9.20833 24.6295 9.20833 21.9583V14.1666C9.20833 12.1769 9.20833 11.1821 8.73083 10.4675C8.52411 10.1581 8.25849 9.89247 7.94912 9.68575C7.23448 9.20825 6.23965 9.20825 4.25 9.20825V9.20825Z"
+                                                        stroke="white" stroke-width="3" stroke-linecap="round" />
+                                                    <path
+                                                        d="M13.4577 4.95876C13.4577 4.95876 14.166 3.54175 16.9993 3.54175C19.8327 3.54175 20.541 4.95841 20.541 4.95841"
+                                                        stroke="white" stroke-width="3" stroke-linecap="round" />
                                                 </svg>
                                             </button>
                                         </div>
@@ -357,16 +376,16 @@
         </script>
     @endif
     <script>
-        $('.btn-edit').click(function() {
-            const formData = getDataAttributes($(this).attr('id'))
-            var actionUrl = `/alumni-gallery-update/${formData['id']}`;
-            $('#form-update').attr('action', actionUrl);
-            setFormValues('form-update', formData)
+        // $('.btn-edit').click(function() {
+        //     const formData = getDataAttributes($(this).attr('id'))
+        //     var actionUrl = `/alumni-gallery-update/${formData['id']}`;
+        //     $('#form-update').attr('action', actionUrl);
+        //     setFormValues('form-update', formData)
 
-            $('#form-update').data('id', formData['id'])
-            $('#form-update').attr('action', );
-            $('#modal-update').modal('show')
-        });
+        //     $('#form-update').data('id', formData['id'])
+        //     $('#form-update').attr('action',);
+        //     $('#modal-update').modal('show')
+        // });
         $('.btn-detail').click(function() {
             const data = getDataAttributes($(this).attr('id'))
             handleDetail(data)
@@ -380,6 +399,15 @@
             $('#form-delete').attr('action', actionUrl);
             $('#modal-delete').modal('show')
         })
+
+        $('.btn-edit').click(function() {
+            id = $(this).data('id')
+            var actionUrl = `/alumni-gallery-delete/${id}`;
+            $('#form-delete').attr('action', actionUrl);
+            $('#modal-delete').modal('show')
+        })
+
+
         $('.btn-delete-slider').click(function() {
             id = $(this).data('id')
             var actionUrl = `/slider-gallery-delete/${id}`;
