@@ -1,5 +1,6 @@
 @extends('layouts.landing-page.app-landing')
 @section('style')
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
     <style>
         @media (max-width: 890px) {
             #home>div.container>div>div.col-12.col-md-3.col-lg-6>iframe {
@@ -16,6 +17,79 @@
                 border-radius: 10px;
                 width: 600px;
                 height: 400px;
+            }
+        }
+
+        .container__card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card__content {
+            margin-inline: 1.75rem;
+            border-radius: 1.25rem;
+            overflow: hidden;
+        }
+
+        .card__article {
+            width: 300px;
+            border-radius: 1.25rem;
+            overflow: hidden;
+        }
+
+        .card__image {
+            position: relative;
+            padding-top: 1.5rem;
+            margin-bottom: -.75rem;
+        }
+
+        .card__data {
+            background-color: greenyellow;
+            padding: 1.5rem 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card__img {
+            /* width: 180px; */
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+
+        }
+
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            content: '';
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: initial;
+            height: initial;
+            font-size: 3rem;
+            color: var(--second-color);
+            /* display: none; */
+        }
+
+        .swiper-button-prev {
+            left: 0;
+        }
+
+        .swiper-button-next {
+            right: 0;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: hsl(212, 32%, 40%)
+        }
+
+        @media screen and (max-width:320px) {
+            .card__data {
+                padding: 1rem;
             }
         }
     </style>
@@ -88,45 +162,14 @@
     </section>
     <!-- ***** Welcome Area End ***** -->
 
-    <section id="" class="section screenshots-area ptb_100">
-        {{-- <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8">
-                    <!-- Section Heading -->
-                    <div class="section-heading text-center">
-                        <h2 class="text-capitalize">Galery Alumni SMKN 2 Penajam</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <!-- App Screenshot Slider Area -->
-                    <div class="app-screenshots">
-                        @forelse ($slidergaleryalumnis->chunk(2) as $chunk)
-                            <div class="single-screenshot">
-                                @foreach ($chunk as $slidergaleryalumni)
-                                    <div class="reviewer-thumb mt-3">
-                                        <div class="border-custom"
-                                            style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden;">
-                                            <img style="object-fit: cover; width: 100%; height: 100%;"
-                                                src="{{ asset('storage/' . $slidergaleryalumni->photo) }}" alt="">
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @empty
-                            <div class="d-flex justify-content-center">
-                                <div>
-                                    <img src="{{ asset('showNoData.png') }}" alt="">
-                                    <h3 class="text-center">Data Masih Kosong</h3>
-                                </div>
-                            </div>
-                        @endforelse
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+    {{-- <section id="" class="section screenshots-area ptb_100">
         <div class="container">
+            <div class="">
+                <!-- Section Heading -->
+                <div class="section-heading text-center">
+                    <h2 class="text-capitalize">Galery Alumni SMKN 2 Penajam</h2>
+                </div>
+            </div>
             <div class="" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:1.4rem">
                 @forelse ($slidergaleryalumnis->chunk(2) as $chunk)
                     @foreach ($chunk as $slidergaleryalumni)
@@ -145,10 +188,68 @@
                 @endforelse
             </div>
         </div>
+        <!-- Slider main container -->
+    </section> --}}
+    <section class="container__card">
+        <div class="card__container swiper">
+            <div class="card__content">
+                <div class="swiper-wrapper">
+                    <article class="card__article swiper-slide">
+                        <div class="card_image">
+                            <img src="{{ asset('1.png') }}" alt="" class="card__img">
+                            <div class="card__shadow"></div>
+                        </div>
+                        <div class="card__data">
+                            <h3 class="card__name">Darwin Nunez</h3>
+                            <p class="class__description">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium, illum!
+                            </p>
+
+                            <a href="" class="card__button">View More</a>
+                        </div>
+                    </article>
+                    <article class="card__article swiper-slide">
+                        <div class="card_image">
+                            <img src="{{ asset('1.png') }}" alt="" class="card__img">
+                            <div class="card__shadow"></div>
+                        </div>
+                        <div class="card__data">
+                            <h3 class="card__name">Darwin Nunez</h3>
+                            <p class="class__description">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium, illum!
+                            </p>
+
+                            <a href="" class="card__button">View More</a>
+                        </div>
+                    </article>
+                    <article class="card__article swiper-slide">
+                        <div class="card_image">
+                            <img src="{{ asset('1.png') }}" alt="" class="card__img">
+                            <div class="card__shadow"></div>
+                        </div>
+                        <div class="card__data">
+                            <h3 class="card__name">Darwin Nunez</h3>
+                            <p class="class__description">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium, illum!
+                            </p>
+
+                            <a href="" class="card__button">View More</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+        </div>
     </section>
 
     <section id="" class="section screenshots-area blog-area">
-        <div class="container">
+        <div class="container2">
             <div class="row">
                 <div class="col-12">
                     <div class="app-screenshots">
@@ -188,4 +289,36 @@
     <!--====== Height Emulator Area Start ======-->
     <div class="height-emulator d-none d-lg-block"></div>
     <!--====== Height Emulator Area End ======-->
+@endsection
+@section('scripts')
+    <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+    <script>
+        let swiperCards = new Swiper('.card__content', {
+            loop: true,
+            spaceBetween: 32,
+            grabCursor: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            breakpoints: {
+                600: {
+                    slidePerView: 2,
+                },
+                968: {
+                    slidePerView: 3,
+                },
+            },
+        });
+    </script>
 @endsection
