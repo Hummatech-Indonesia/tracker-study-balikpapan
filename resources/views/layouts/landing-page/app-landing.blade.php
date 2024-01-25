@@ -52,7 +52,6 @@
     <!-- Plugins js -->
 
     <script src="{{ asset('assets/js/plugins/plugins.min.js') }}"></script>
-
     <!-- Active js -->
         <script src="{{ asset('assets/js/active.js') }}"></script>
     @yield('scripts')

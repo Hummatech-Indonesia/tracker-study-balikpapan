@@ -162,7 +162,7 @@
     </section>
     <!-- ***** Welcome Area End ***** -->
 
-    {{-- <section id="" class="section screenshots-area ptb_100">
+    <section id="" class="section screenshots-area ptb_100">
         <div class="container">
             <div class="">
                 <!-- Section Heading -->
@@ -189,64 +189,7 @@
             </div>
         </div>
         <!-- Slider main container -->
-    </section> --}}
-    <section class="container__card">
-        <div class="card__container swiper">
-            <div class="card__content">
-                <div class="swiper-wrapper">
-                    <article class="card__article swiper-slide">
-                        <div class="card_image">
-                            <img src="{{ asset('1.png') }}" alt="" class="card__img">
-                            <div class="card__shadow"></div>
-                        </div>
-                        <div class="card__data">
-                            <h3 class="card__name">Darwin Nunez</h3>
-                            <p class="class__description">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium, illum!
-                            </p>
-
-                            <a href="" class="card__button">View More</a>
-                        </div>
-                    </article>
-                    <article class="card__article swiper-slide">
-                        <div class="card_image">
-                            <img src="{{ asset('1.png') }}" alt="" class="card__img">
-                            <div class="card__shadow"></div>
-                        </div>
-                        <div class="card__data">
-                            <h3 class="card__name">Darwin Nunez</h3>
-                            <p class="class__description">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium, illum!
-                            </p>
-
-                            <a href="" class="card__button">View More</a>
-                        </div>
-                    </article>
-                    <article class="card__article swiper-slide">
-                        <div class="card_image">
-                            <img src="{{ asset('1.png') }}" alt="" class="card__img">
-                            <div class="card__shadow"></div>
-                        </div>
-                        <div class="card__data">
-                            <h3 class="card__name">Darwin Nunez</h3>
-                            <p class="class__description">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium, illum!
-                            </p>
-
-                            <a href="" class="card__button">View More</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
-
-        </div>
-    </section>
+    </section> 
 
     <section id="" class="section screenshots-area blog-area">
         <div class="container2">
