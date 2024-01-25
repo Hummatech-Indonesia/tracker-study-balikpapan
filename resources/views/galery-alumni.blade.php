@@ -20,72 +20,6 @@
             }
         }
 
-        .container__card {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card__content {
-            margin-inline: 1.75rem;
-            border-radius: 1.25rem;
-            overflow: hidden;
-        }
-
-        .card__article {
-            width: 300px;
-            border-radius: 1.25rem;
-            overflow: hidden;
-        }
-
-        .card__image {
-            position: relative;
-            padding-top: 1.5rem;
-            margin-bottom: -.75rem;
-        }
-
-        .card__data {
-            background-color: greenyellow;
-            padding: 1.5rem 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .card__img {
-            /* width: 180px; */
-            margin: 0 auto;
-            position: relative;
-            z-index: 5;
-
-        }
-
-        .swiper-button-prev::after,
-        .swiper-button-next::after {
-            content: '';
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            width: initial;
-            height: initial;
-            font-size: 3rem;
-            color: var(--second-color);
-            /* display: none; */
-        }
-
-        .swiper-button-prev {
-            left: 0;
-        }
-
-        .swiper-button-next {
-            right: 0;
-        }
-
-        .swiper-pagination-bullet {
-            background-color: hsl(212, 32%, 40%)
-        }
 
         @media screen and (max-width:320px) {
             .card__data {
@@ -164,32 +98,31 @@
 
     <section id="" class="section screenshots-area ptb_100">
         <div class="container">
-            <div class="">
-                <!-- Section Heading -->
-                <div class="section-heading text-center">
-                    <h2 class="text-capitalize">Galery Alumni SMKN 2 Penajam</h2>
-                </div>
-            </div>
-            <div class="" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:1.4rem">
-                @forelse ($slidergaleryalumnis->chunk(2) as $chunk)
-                    @foreach ($chunk as $slidergaleryalumni)
-                        <div class="" style="background-color: gray; border-radius: 0.375rem; height:350px">
-                            <img style="object-fit: cover; width: 100%; height: 100%; border-radius: 0.375rem;"
-                                src="{{ asset('storage/' . $slidergaleryalumni->photo) }}" alt="">
-                        </div>
-                    @endforeach
-                @empty
-                    <div class="d-flex justify-content-center">
-                        <div>
-                            <img src="{{ asset('showNoData.png') }}" alt="">
-                            <h3 class="text-center">Data Masih Kosong</h3>
-                        </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="app-screenshots">
+                        @forelse ($slidergaleryalumnis->chunk(2) as $chunk)
+                            @foreach ($chunk as $slidergaleryalumni)
+                                <div class=""
+                                    style="background-color: gray; border-radius: 0.375rem; height:350px; margin:1rem">
+                                    <img style="object-fit: cover; width: 100%; height: 100%; border-radius: 0.375rem;"
+                                        src="{{ asset('storage/' . $slidergaleryalumni->photo) }}" alt="">
+                                </div>
+                            @endforeach
+                        @empty
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    <img src="{{ asset('showNoData.png') }}" alt="">
+                                    <h3 class="text-center">Data Masih Kosong</h3>
+                                </div>
+                            </div>
+                        @endforelse
                     </div>
-                @endforelse
+                </div>
             </div>
         </div>
         <!-- Slider main container -->
-    </section> 
+    </section>
 
     <section id="" class="section screenshots-area blog-area">
         <div class="container2">
@@ -232,36 +165,4 @@
     <!--====== Height Emulator Area Start ======-->
     <div class="height-emulator d-none d-lg-block"></div>
     <!--====== Height Emulator Area End ======-->
-@endsection
-@section('scripts')
-    <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
-    <script>
-        let swiperCards = new Swiper('.card__content', {
-            loop: true,
-            spaceBetween: 32,
-            grabCursor: true,
-
-            // If we need pagination
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: true,
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-            breakpoints: {
-                600: {
-                    slidePerView: 2,
-                },
-                968: {
-                    slidePerView: 3,
-                },
-            },
-        });
-    </script>
 @endsection
