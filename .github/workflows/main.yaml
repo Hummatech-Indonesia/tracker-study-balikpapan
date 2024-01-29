@@ -22,9 +22,9 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.1
       with:
         # ftp server
-        server: tracer-study.mischool.online
+        server: tracerstudyskada.com
         # ftp username
-        username: tracer@tracer-study.mischool.online
+        username: tracer@tracerstudyskada.com
         # ftp password
         password: Bismillahlaunching
         # Server port to connect to (read your web hosts docs)
