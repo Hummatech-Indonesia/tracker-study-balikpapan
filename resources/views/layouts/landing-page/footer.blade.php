@@ -11,7 +11,11 @@
                         <a class="navbar-brand" href="#">
                             <img class="logo" src="{{ asset('logo.png') }}" alt="">
                         </a>
-                        <p class="mt-4 mb-3" style="font-size: 14px">SMK Negeri 2 Penajam Paser Utara berdiri sejak tahun 2006 telah memiliki banyak alumni yang telah diluluskan. Formulir online ini diharapkan bisa menjadi awal untuk melengkapi data alumni yang telah tersebar di berbagai pelosok Kalimantan Timur, bahkan Indonesia dan luar negeri. Silahkan isi data ini dengan jujur dan selengkap-lengkapnya.</p>
+                        <p class="mt-4 mb-3" style="font-size: 14px">SMK Negeri 2 Penajam Paser Utara berdiri sejak
+                            tahun 2006 telah memiliki banyak alumni yang telah diluluskan. Formulir online ini
+                            diharapkan bisa menjadi awal untuk melengkapi data alumni yang telah tersebar di berbagai
+                            pelosok Kalimantan Timur, bahkan Indonesia dan luar negeri. Silahkan isi data ini dengan
+                            jujur dan selengkap-lengkapnya.</p>
                         <!-- Social Icons -->
                         <div class="social-icons d-flex">
                             <div class="" style="margin-right: 1rem">
@@ -111,9 +115,9 @@
                     <div
                         class="copyright-area d-flex flex-wrap justify-content-center justify-content-sm-between text-center py-4">
                         <!-- Copyright Left -->
-                        <div class="copyright-left">2023 Hummatech All Rights Reseresed</div>
+                        <div class="copyright-left">2023 SMKN 2 Penajam Paser Utara All Rights Reserved</div>
                         <!-- Copyright Right -->
-                        <div class="copyright-right">&copy; Copyright By Hummatech</a></div>
+                        <div class="copyright-right">&copy; Copyright By SMKN 2 Penajam Paser Utara</a></div>
                     </div>
                 </div>
             </div>
