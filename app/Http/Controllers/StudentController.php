@@ -15,6 +15,7 @@ use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Contracts\Interfaces\MajorInterface;
 use App\Helpers\ResponseHelper;
 use App\Http\Requests\ImportRequest;
+use App\Http\Requests\StudentUpdateRequest;
 use App\Http\Resources\ChartAlumniResource;
 use App\Imports\StudentImport;
 use App\Models\ApplyJobVacancy;
@@ -127,9 +128,9 @@ class StudentController extends Controller
      * @param  mixed $user
      * @return void
      */
-    public function update(UpdateStudentRequest $request, User $user)
+    public function update(StudentUpdateRequest $request, User $user)
     {
-        $this->register->update($user->id, $this->service->update($request));
+        $this->register->update($user->id, $this->service->update($request, $user));
         $this->student->updateBasic($user->student->id, $request->validated());
         if ($request->is('api/*')) {
             return ResponseHelper::success(null, trans('alert.update_success'));
@@ -175,8 +176,9 @@ class StudentController extends Controller
         return ResponseHelper::success($chart);
     }
 
-    public function detailApplicant(ApplyJobVacancy $apply_job_vacancies) {
+    public function detailApplicant(ApplyJobVacancy $apply_job_vacancies)
+    {
         $applyJobVacancy = $apply_job_vacancies;
-        return view('company.detail-applicant',compact('applyJobVacancy'));
+        return view('company.detail-applicant', compact('applyJobVacancy'));
     }
 }

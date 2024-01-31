@@ -11,7 +11,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5>Apakah anda yakin ingin menyetujui verifikasi akun ini?</h5>
+                    <h6>Apakah anda yakin ingin menyetujui verifikasi akun ini?</h6>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger text-white font-medium waves-effect"
