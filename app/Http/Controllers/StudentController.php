@@ -21,10 +21,12 @@ use App\Http\Resources\StudentResource;
 use App\Imports\StudentImport;
 use App\Models\ApplyJobVacancy;
 use App\Services\StudentService;
+use App\Traits\PaginationTrait;
 use Maatwebsite\Excel\Facades\Excel;
 
 class StudentController extends Controller
 {
+    use PaginationTrait;
     private StudentInterface $student;
     private StudentService $service;
     private RegisterInterface $register;
