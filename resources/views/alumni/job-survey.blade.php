@@ -25,7 +25,12 @@
                 </div>
             @endforeach
         @endif
-
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
         <form action="{{ route('alumni.submit.survey', ['survey' => $survey->id]) }}" method="POST" class="card">
             @csrf
             @method('POST')
@@ -158,16 +163,6 @@
     @endif
 @endsection
 @section('script')
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ session('success') }}',
-            });
-        </script>
-    @endif
-
     <script src="{{ asset('assets-admin/plugins/select2/js/select2-custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 

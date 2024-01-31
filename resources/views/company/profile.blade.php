@@ -4,6 +4,12 @@
         Profil Perusahaan
     </h5>
     <div class="row">
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
         <div class="col-lg-4 col-xxl-4 col-12">
             <div class="card">
                 <div class="card-body">
@@ -196,15 +202,6 @@
     </div>
 @endsection
 @section('script')
-@if (session('success'))
-<script>
-    Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: '{{ session('success') }}',
-    })
-</script>
-@endif
     <script>
         document.getElementById('btn-upload').addEventListener('click', function(e) {
             e.preventDefault();
