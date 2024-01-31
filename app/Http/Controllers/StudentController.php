@@ -17,6 +17,7 @@ use App\Helpers\ResponseHelper;
 use App\Http\Requests\ImportRequest;
 use App\Http\Requests\StudentUpdateRequest;
 use App\Http\Resources\ChartAlumniResource;
+use App\Http\Resources\StudentResource;
 use App\Imports\StudentImport;
 use App\Models\ApplyJobVacancy;
 use App\Services\StudentService;
@@ -99,10 +100,11 @@ class StudentController extends Controller
 
     public function index(Request $request)
     {
-        $classrooms = $this->classroom->get();
         $students = $this->student->customPaginate($request, 10);
+        $data['paginate'] = $this->customPaginate($students->currentPage(), $students->lastPage());
+        $data['data'] = StudentResource::collection($students);
         $students->appends(['name' => $request->name]);
-        return ResponseHelper::success(['classrooms' => $classrooms, 'students' => $students]);
+        return ResponseHelper::success($data);
     }
 
     /**
