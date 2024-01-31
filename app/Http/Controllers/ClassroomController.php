@@ -10,6 +10,7 @@ use App\Http\Requests\ClassroomRequest;
 use App\Contracts\Interfaces\MajorInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\SchoolYearInterface;
+use App\Helpers\ResponseHelper;
 use Illuminate\Http\JsonResponse;
 
 class ClassroomController extends Controller
@@ -39,12 +40,10 @@ class ClassroomController extends Controller
         return ResponseHelper::success($classrooms);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function indexAjax(): JsonResponse
     {
-        //
+        $classrooms = $this->classroom->name;
+        return ResponseHelper::success();
     }
 
     /**
@@ -78,7 +77,7 @@ class ClassroomController extends Controller
     public function update(ClassroomRequest $request, Classroom $classroom)
     {
         $this->classroom->update($classroom->id, $request->validated());
-        return redirect()->back()->with('success',trans('alert.update_success'));
+        return redirect()->back()->with('success', trans('alert.update_success'));
     }
 
     /**
@@ -87,6 +86,6 @@ class ClassroomController extends Controller
     public function destroy(Classroom $classroom)
     {
         $this->classroom->delete($classroom->id);
-        return redirect()->back()->with('success',trans('alert.delete_success'));
+        return redirect()->back()->with('success', trans('alert.delete_success'));
     }
 }
