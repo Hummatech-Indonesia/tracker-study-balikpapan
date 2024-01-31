@@ -97,17 +97,12 @@ class StudentController extends Controller
         ]);
     }
 
-    /**
-     * index
-     *
-     * @return view
-     */
-    public function index(Request $request): view
+    public function index(Request $request)
     {
         $classrooms = $this->classroom->get();
         $students = $this->student->customPaginate($request, 10);
         $students->appends(['name' => $request->name]);
-        return view('admin.student', ['classrooms' => $classrooms, 'students' => $students]);
+        return ResponseHelper::success(['classrooms' => $classrooms, 'students' => $students]);
     }
 
     /**
