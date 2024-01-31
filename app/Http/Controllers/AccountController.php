@@ -26,7 +26,7 @@ class AccountController extends Controller
      */
     public function index(Request $request): View
     {
-        $accounts = $this->user->getByRole(RoleEnum::STAFF->value, $request);
+        $accounts = $this->user->getByRole([RoleEnum::STAFF->value, RoleEnum::ADMIN->value], $request);
 
         return view('admin.add-account', compact('accounts'));
     }
@@ -40,7 +40,7 @@ class AccountController extends Controller
         $validated['email_verified_at'] = now();
 
         $user = $this->user->store($validated);
-        $user->assignRole(RoleEnum::STAFF->value);
+        $user->assignRole($validated['role']);
 
         return redirect()->back()->with('success', trans('alert.add_success'));
     }

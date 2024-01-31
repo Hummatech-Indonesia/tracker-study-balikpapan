@@ -92,7 +92,7 @@ class UserRepository extends BaseRepository implements UserInterface
      * @param  mixed $role
      * @return mixed
      */
-    public function getByRole(string $role, Request $request): mixed
+    public function getByRole(array $role, Request $request): mixed
     {
         return $this->model->query()
             ->role($role)

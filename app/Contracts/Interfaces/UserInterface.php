@@ -19,5 +19,5 @@ interface UserInterface extends GetInterface, StoreInterface, SearchInterface, D
      * @param  mixed $role
      * @return mixed
      */
-    public function getByRole(string $role, Request $request): mixed;
+    public function getByRole(array $role, Request $request): mixed;
 }
