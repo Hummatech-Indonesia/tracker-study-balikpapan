@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Classroom;
 use Illuminate\Http\Request;
-use App\Helpers\ResponseHelper;
 use Illuminate\Contracts\View\View;
 use App\Http\Requests\ClassroomRequest;
 use App\Contracts\Interfaces\MajorInterface;
