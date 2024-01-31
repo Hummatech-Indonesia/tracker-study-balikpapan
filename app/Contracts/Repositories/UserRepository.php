@@ -99,6 +99,7 @@ class UserRepository extends BaseRepository implements UserInterface
             ->when($request->name, function ($query) use ($request) {
                 $query->where('name', 'LIKE', '%' . $request->name . '%');
             })
+            ->whereNot('email', 'staff@gmail.com')
             ->get();
     }
 
