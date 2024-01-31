@@ -101,6 +101,7 @@ class UserRepository extends BaseRepository implements UserInterface
             })
             ->whereNot('email', 'staff@gmail.com')
             ->whereNot('email', 'admin@gmail.com')
+            ->orderBy('created_at', 'desc')
             ->get();
     }
 
