@@ -393,6 +393,10 @@
             const form = $('#' + formId);
             for (const key in values) {
                 if (values.hasOwnProperty(key)) {
+                    if (key === 'photo') {
+                        continue; 
+                    }
+
                     const value = values[key];
                     const input = form.find('[name="' + key + '"]');
                     if (input.length > 0) {

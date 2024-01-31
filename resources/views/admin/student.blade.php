@@ -13,7 +13,7 @@
                         <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
                     </div>
                     <div class="col-lg-3">
-                        <select name="classroom" id="" class="form-select py-2">
+                        <select name="classroom" id="" class="form-select classroom py-2">
                             <option value="">Filter Kelas</option>
                             {{-- @foreach ($classrooms as $classroom)
                                 <option {{ request()->classroom == $classroom->id ? 'selected' : '' }}
@@ -322,7 +322,8 @@
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Tanggal Lahir <span
                                         style="color: red">*</span></label>
-                                <input type="date" required class="form-control" name="birth_date">
+                                <input type="date" id="update-birth_date" required class="form-control"
+                                    name="birth_date">
                             </div>
                             <div class="col-6 mt-2">
                                 <p>
@@ -416,6 +417,10 @@
 
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                    <nav id="pagination">
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
@@ -423,50 +428,129 @@
 @endsection
 @section('script')
     <script>
+         let debounceTimer;
+        $('#search-name').keyup(function() {
+            clearTimeout(debounceTimer);
+
+            debounceTimer = setTimeout(function() {
+                get(1)
+            }, 500);
+        });
         get(1)
 
-        function get() {
+        function get(page) {
             $.ajax({
-                url: 'get-student ',
+                url: 'get-student?page=' + page,
                 method: 'GET',
+                data: {
+                    classroom: $('#classroom').val(),
+                    name: $('#search-name').val()
+                },
                 dataType: 'JSON',
+                beforeSend: function() {
+                    $('#pagination').html('')
+                    $('#data').html('')
+                },
                 success: function(response) {
-                    response = response.data.students.data
-                    $.each(response, function(index, data) {
-                        $('#data').append(studentRow(data))
-                    })
-                    student = response
-                    $('.btn-edit').click(function() {
-                        var studentId = $(this).data('id');
-                        var data = student.find(student => student.id === studentId)
-                        var actionUrl = `students/${formData['id']}`;
-                        $('#form-update').attr('action', actionUrl);
+                    if (response.data.data.length > 0) {
+                        response = response.data.data
+                        $.each(response, function(index, data) {
+                            $('#data').append(studentRow(data))
+                        })
+                        $('#pagination').html(handlePaginate(response.data.paginate))
 
-                        setFormValues('form-update', data)
-                        $('#form-update').data('id', formData['id'])
-                        $('#form-update').attr('action', );
-                        $('#modal-update').modal('show')
-                    })
-                    $('.btn-detail').click(function() {
-                        handleDetail(data)
-                        const detailPhoto = document.getElementById("detail-photo");
-                        detailPhoto.src = data['photo'];
-                        $('#modal-detail').modal('show')
-                    })
-                    $('.btn-delete').click(function() {
-                        id = $(this).data('id')
-                        var actionUrl = `students/${id}`;
-                        $('#form-delete').attr('action', actionUrl);
-                        $('#modal-delete').modal('show')
-                    })
+                        student = response
+                        $('.btn-edit').click(function() {
+                            var studentId = $(this).data('id');
+                            var data = student.find(student => student.id === studentId)
+                            var actionUrl = `students/${data['id']}`;
+                            $('#form-update').attr('action', actionUrl);
+
+                            setFormValues('form-update', data)
+                            $('#form-update').data('id', data['id'])
+                            $('#form-update').attr('action', );
+                            $('#modal-update').modal('show')
+                        })
+                        $('.btn-detail').click(function() {
+                            var studentId = $(this).data('id');
+                            var data = student.find(student => student.id === studentId)
+                            cek = formatDate(data['birth_date'])
+                            handleDetail(data)
+                            $('#detail-birth_date').html(cek)
+                            const detailPhoto = document.getElementById("detail-photo");
+                            detailPhoto.src = data['photo'];
+                            $('#modal-detail').modal('show')
+                        })
+                        $('.btn-delete').click(function() {
+                            id = $(this).data('id')
+                            var actionUrl = `students/${id}`;
+                            $('#form-delete').attr('action', actionUrl);
+                            $('#modal-delete').modal('show')
+                        })
+                    } else {
+                        $('#data').html(`
+                        <tr>
+                            <td colspan="10">
+                        <div class="d-flex justify-content-center">
+                                            <div>
+                                                <img src="{{ asset('showNoData.png') }}" alt="">
+                                                <h5 class="text-center">Siswa Masih Kosong!!</h5>
+                                            </div>
+                                        </div>
+                                        </td>
+                        </tr>`)
+                    }
                 }
             })
         }
+        getClassroom()
+
+        function formatDate(dateString) {
+            const dateParts = dateString.split('-');
+            const day = dateParts[2];
+            const month = getMonthName(dateParts[1]);
+            const year = dateParts[0];
+            const formattedDate = `${day} ${month} ${year}`;
+            return formattedDate;
+        }
+
+        function getMonthName(monthNumber) {
+            const months = {
+                '01': 'Januari',
+                '02': 'Februari',
+                '03': 'Maret',
+                '04': 'April',
+                '05': 'Mei',
+                '06': 'Juni',
+                '07': 'Juli',
+                '08': 'Agustus',
+                '09': 'September',
+                '10': 'Oktober',
+                '11': 'November',
+                '12': 'Desember'
+            };
+            return months[monthNumber];
+        }
 
 
+        function getClassroom() {
+            $.ajax({
+                url: "get-classroom",
+                type: 'GET',
+                success: function(response) {
+                    $('.classroom').html('');
+                    $('.classroom').append('<option value="" selected>Semua Kelas</option>')
+                    $.each(response.data, function(index, item) {
+                        var option = $('<option>');
+                        option.val(item.id);
+                        option.text(item.name);
+                        $('.classroom').append(option);
+                    });
+                }
+            });
+        }
 
         function studentRow(data) {
-            console.log(data);
             return `     
                             <tr>
                                 <td>
@@ -492,7 +576,7 @@
                                 <td>
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
-                                            <a class="btn text-white btn-detail" style="background-color: #1D9375">
+                                            <a class="btn text-white btn-detail" data-id="${data.id}" style="background-color: #1D9375">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
                                                     <path fill="currentColor"
@@ -504,7 +588,7 @@
                                             </a>
                                         </div>
                                         <div class="">
-                                            <button class="btn btn-warning btn-edit">
+                                            <button data-id="${data.id}"  class="btn btn-warning btn-edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 34 35" fill="none">
                                                     <path
@@ -516,7 +600,7 @@
                                                 </svg> </button>
                                         </div>
                                         <div class="">
-                                            <button class="btn btn-danger btn-delete"
+                                            <button data-id="${data.id}"class="btn btn-danger btn-delete"
                                                 data-bs-toggle="modal" data-bs-target="#modal-delete">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 34 34" fill="none">

@@ -117,6 +117,7 @@ Route::middleware('auth')->group(function () {
             return view('admin.student');
         })->name('students.index');
         Route::get('get-student',[StudentController::class,'index']);
+        Route::get('get-classroom',[ClassroomController::class,'get']);
         Route::post('students', [StudentController::class, 'store'])->name('students.store');
         Route::put('students/{user}', [StudentController::class, 'update'])->name('students.update');
         Route::delete('students/{user}', [StudentController::class, 'destroy'])->name('students.destroy');

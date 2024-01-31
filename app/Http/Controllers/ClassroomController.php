@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use App\Helpers\ResponseHelper;
 use Illuminate\Contracts\View\View;
 use App\Http\Requests\ClassroomRequest;
 use App\Contracts\Interfaces\MajorInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\SchoolYearInterface;
+use Illuminate\Http\JsonResponse;
 
 class ClassroomController extends Controller
 {
@@ -31,6 +33,10 @@ class ClassroomController extends Controller
         $schoolYears = $this->schoolYear->get();
         $majors = $this->major->get();
         return view('admin.add-class', ['classrooms' => $classrooms, 'schoolYears' => $schoolYears, 'majors' => $majors]);
+    }
+    public function get() : JsonResponse {
+        $classrooms = $this->classroom->get();
+        return ResponseHelper::success($classrooms);
     }
 
     /**

@@ -16,15 +16,19 @@ class StudentResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->user_id,
+            'major' => $this->classroom->major->name,
+            'school_year' => $this->classroom->schoolYear->name,
             'name' => $this->user->name,
             'email' => $this->user->email,
             'classroom' => $this->classroom->name,
-            'nisn' => $this->national_student_id,
+            'classroom_id' => $this->classroom->id,
+            'national_student_id' => $this->national_student_id,
             'gender' => $this->gender,
-            'birth_date' => Carbon::parse($this->birth_date)->isoFormat('DD MMMM Y'),
+            'birth_date' => $this->birth_date,
             'status' => $this->status,
-            'phone_number' => $this->phone_number,
-            'address' => $this->address,
+            'phone_number' => $this->user->phone_number ? $this->user->phone_number : "-",
+            'address' => $this->user->address ? $this->user->address : "-",
             'photo' => isset($this->user->photo) ? asset('storage/' . $this->user->photo) : asset('default-male.png')
         ];
     }
