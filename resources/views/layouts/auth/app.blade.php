@@ -23,7 +23,7 @@
 	<link href="{{ asset('assets-admin/css/icons.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('assets/js/sweetalert2/dist/sweetalert2.min.css') }}">
 
-	<title>Tracer Study</title>
+	<title>Tracer Study SMKN 2 Penajam Paser Utara</title>
   @yield('style')
 </head>
 <body class="">

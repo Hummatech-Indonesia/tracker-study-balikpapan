@@ -31,7 +31,7 @@
     <link href="{{ asset('assets-admin/plugins/highcharts/css/highcharts.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/js/sweetalert2/dist/sweetalert2.min.css') }}">
     @yield('style')
-    <title>Tracer Study</title>
+    <title>Tracer Study SMKN 2 Penajam Paser Utara</title>
     <style>
         .user-circle {
             border-radius: 50%;
@@ -78,8 +78,6 @@
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-
-
         // Ambil elemen input pencarian
         var searchInput = document.querySelector('#SearchModal input[type="search"]');
 
