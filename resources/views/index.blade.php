@@ -17,10 +17,10 @@
                 <div class="col-12 col-md-12 col-lg-6">
                     <div class="welcome-intro">
                         <h2 class="text-white fs-6">SELAMAT DATANG DI TRACER STUDY SMK 2 PENAJAM</h2>
-                        <p class="text-white my-4">Nikmati pengalaman eksklusif melalui situs web kami, Tracer Study, yang
-                            dirancang khusus untuk membantu Anda melacak dan memahami perjalanan karir alumni kami.
-                            Menyajikan informasi yang komprehensif, platform ini memungkinkan Anda menjelajahi prestasi dan
-                            perkembangan mereka setelah meninggalkan lembaga pendidikan.</p>
+                        <p class="text-white my-4">Website Tracer Study ini merupakan website untuk pelacakan jejak dan
+                            perjalanan karir lulusan/ alumni SMKN 2 Penajam Paser Utara. Fitur yang ada di website ini yaitu
+                            profil alumni, aktivitas setelah lulus, serta data perusahaan pengguna lulusan. Pengguna dari
+                            website ini hanya dikhususkan oleh alumni SMKN 2 Penajam Paser Utara. </p>
                     </div>
                     <div class="">
                         <a href="/pilih-role" class="btn text-white py-2 py-1"
@@ -243,7 +243,7 @@
                     </div>
                 @endforelse
             </div>
-            @if (count($jobVacancys) >= 4 )
+            @if (count($jobVacancys) >= 4)
                 <div class="row justify-content-center">
                     <a href="{{ route('lowongan') }}"
                         style="font-size: 1rem;
