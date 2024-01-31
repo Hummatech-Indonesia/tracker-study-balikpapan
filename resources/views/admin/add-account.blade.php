@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h4 style="font-weight: 800">
-        Tambah Akun Admin
+        Tambah Akun Admin Atau Staff
     </h4>
     <div class="row">
         <div class="position-relative mb-3 col-md-9 col-sm-12">
@@ -106,10 +106,10 @@
                 @endforeach
             @endif
             @if (session('success'))
-            <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
+                <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             @endif
 
             <div class="table-responsive">
