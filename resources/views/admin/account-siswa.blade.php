@@ -20,6 +20,12 @@
         </div>
     </div>
     <div class="row">
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
         @forelse ($students as $student)
             <div class="col-12 col-lg-4 col-xxl-3">
                 <div class="card border-primary border-bottom border-3 border-0">
@@ -157,15 +163,6 @@
     </div>
 @endsection
 @section('script')
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ session('success') }}',
-            });
-        </script>
-    @endif
     <script>
         $('.btn-approve').click(function() {
             id = $(this).data('id')

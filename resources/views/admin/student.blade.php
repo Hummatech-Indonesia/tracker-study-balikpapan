@@ -1,14 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ session('success') }}',
-            });
-        </script>
-    @endif
     <h4 style="font-weight: 800">
         Tambah Siswa
     </h4>
@@ -365,7 +356,12 @@
                     </div>
                 @endforeach
             @endif
-
+            @if (session('success'))
+            <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            @endif
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -507,15 +503,6 @@
     <x-delete-modal-component />
 @endsection
 @section('script')
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ session('success') }}',
-            });
-        </script>
-    @endif
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))

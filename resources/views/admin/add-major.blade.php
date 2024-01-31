@@ -24,6 +24,12 @@
             </div>
         </div>
     </div>
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
     <div class="row">
         @if ($errors->any())
             @foreach ($errors->all() as $error)
@@ -127,15 +133,6 @@
     <x-delete-modal-component />
 @endsection
 @section('script')
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ session('success') }}',
-            });
-        </script>
-    @endif
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))
