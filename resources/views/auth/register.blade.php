@@ -87,7 +87,7 @@
                                         <div class="col-12 col-md-6 col-lg-6">
                                             <label for="inputChoosePassword" class="form-label">No Telephone</label>
                                             <input type="number" name="phone_number" class="form-control border-end-0"
-                                                value="{{ old('phone_number') }}" placeholder="Enter No telephone">
+                                                value="{{ old('phone_number') }}" placeholder="Masukkan No. HP Anda">
                                             @error('phone_number')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
@@ -97,7 +97,7 @@
                                             <label for="inputSelectCountry" class="form-label">NISN</label>
                                             <input type="number" name="national_student_id"
                                                 value="{{ old('national_student_id') }}" class="form-control border-end-0"
-                                                placeholder="Enter No telephone">
+                                                placeholder="Masukkan NISN Anda">
                                             @error('national_student_id')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
@@ -123,15 +123,26 @@
                                         <div class="col-12">
                                             <label for="inputSelectCountry" class="form-label">Jenis Kelamin</label><br>
                                             <input class="form-check-input me-1" type="radio" name="gender"
-                                                value="male" id="flexRadioDefault1">Laki Laki<br>
+                                                value="male" id="laki-laki">Laki Laki<br>
                                             <input class="form-check-input me-1" type="radio" name="gender"
-                                                value="female" id="flexRadioDefault1">Perempuan
+                                                value="female" id="perempuan">Perempuan
                                             @error('gender')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
                                         <div class="col-12">
+                                            <label for="inputSelectCountry" class="form-label">Pilih Role</label><br>
+                                            <input class="form-check-input me-1" type="radio" name="role"
+                                                value="student" id="flexRadioDefault2" onclick="handleRoleChange()">Siswa
+                                            <input class="form-check-input me-1" type="radio" name="role"
+                                                value="alumni" id="flexRadioDefault1"
+                                                onclick="handleRoleChange()">Alumni<br>
+                                            @error('role')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12" id="classroom" style="display: none;">
                                             <label class="form-check-label" for="flexSwitchCheckChecked">Kelas</label>
                                             <select name="classroom_id" class="form-select"
                                                 aria-label="Default select example">
@@ -141,25 +152,13 @@
                                                 @endforeach
                                             </select>
                                             @error('classroom_id')
-                                                <div class="text-danger">{{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="inputSelectCountry" class="form-label">Pilih Role</label><br>
-                                            <input class="form-check-input me-1" type="radio" name="role"
-                                                value="alumni" id="flexRadioDefault1">Alumni<br>
-                                            <input class="form-check-input me-1" type="radio" name="role"
-                                                value="student" id="flexRadioDefault1">Siswa
-                                            @error('role')
-                                                <div class="text-danger">{{ $message }}
-                                                </div>
+                                                <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="col-12">
                                             <div class="form-check">
-                                                <input class="form-check-input" name="checked" value="1" type="checkbox"
-                                                    id="flexSwitchCheckChecked">
+                                                <input class="form-check-input" name="checked" value="1"
+                                                    type="checkbox" id="flexSwitchCheckChecked">
                                                 <a class="form-check-label" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal" style="cursor: pointer; color:black"
                                                     for="flexSwitchCheckChecked">Kebijakan
@@ -249,12 +248,24 @@
     </div>
 @endsection
 @section('script')
+    <script>
+        function handleRoleChange() {
+            const alumniRadio = document.getElementById("flexRadioDefault1");
+            const classroomDiv = document.getElementById("classroom");
+
+            if (alumniRadio.checked) {
+                classroomDiv.style.display = "none";
+            } else {
+                classroomDiv.style.display = "block";
+            }
+        }
+    </script>
     @if (session('success'))
         <script>
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'Registrasi berhasil, tunggu email verifikasi untuk langkah selanjutnya. Pastikan untuk memeriksa kotak masuk Anda. Terima kasih!!',
+                text: 'Registrasi berhasil, tunggu email verifikasi untuk langkah selanjutnya. Pastikan untuk memeriksa inbox atau spam Anda. Terima kasih!!',
             }).then((result) => {
                 if (result.isConfirmed || result.isDismissed) {
                     window.location.href = '{{ route('login') }}';

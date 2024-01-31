@@ -40,21 +40,27 @@
                             <div class="col-6">
                                 <label for="formFile" class="form-label">Nama</label>
                                 <input type="text" placeholder="Masukkan Nama" class="form-control"
-                                    value="{{ old('name') }}" name="name" id="">
+                                    value="{{ old('name') }}" name="name">
                             </div>
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" placeholder="Masukkan Email" id=""
+                                <input name="email" placeholder="Masukkan Email"
                                     value="{{ old('email') }}" class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">Password</label>
-                                <input type="password" placeholder="Masukkan Password" value="{{ old('password') }}"
-                                    class="form-control" name="password" id="">
+                                    <p class="mb-0"><label for="formFile" class="form-label">Password <span
+                                                style="color: red">*</span></label></p>
+                                    <div class="input-group" id="show_hide_password">
+                                        <input type="password" required name="password"
+                                            class="form-control inputChoosePassword border-end-0"
+                                            placeholder="Masukkan Password">
+                                        <a href="javascript:;" class="input-group-text bg-transparent"><i
+                                                class="bx bx-hide"></i></a>
+                                    </div>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Role</label>
-                                <select name="role" class="form-select" id="">
+                                <select name="role" class="form-select">
                                     <option value="">Pilih Role</option>
                                     <option value="admin">Admin</option>
                                     <option value="staff">Staff</option>
@@ -83,19 +89,26 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="formFile" class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="name" id="">
+                                <input type="text" class="form-control" name="name">
                             </div>
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" id="" class="form-control"></input>
+                                <input name="email" class="form-control"></input>
                             </div>
-                            <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="password" id="">
-                            </div>
+                                <div class="col-6 mt-2">
+                                    <p class="mb-0"><label for="formFile" class="form-label">Password <span
+                                                style="color: red">*</span></label></p>
+                                    <div class="input-group" id="show_hide_password">
+                                        <input type="password" required name="password"
+                                            class="form-control inputChoosePassword border-end-0"
+                                            placeholder="Masukkan Password">
+                                        <a href="javascript:;" class="input-group-text bg-transparent"><i
+                                                class="bx bx-hide"></i></a>
+                                    </div>
+                                </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Role</label>
-                                <select name="role" class="form-select" id="">
+                                <select name="role" class="form-select">
                                     <option value="">Pilih Role</option>
                                     <option value="admin">Admin</option>
                                     <option value="staff">Staff</option>
@@ -246,5 +259,19 @@
             $('#form-delete').attr('action', actionUrl);
             $('#modal-delete').modal('show')
         })
+        $(document).ready(function() {
+            $("#show_hide_password a").on('click', function(event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("bx-hide");
+                    $('#show_hide_password i').removeClass("bx-show");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("bx-hide");
+                    $('#show_hide_password i').addClass("bx-show");
+                }
+            });
+        });
     </script>
 @endsection

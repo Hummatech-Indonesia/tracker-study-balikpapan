@@ -109,7 +109,7 @@
                             <div class="col d-flex justify-content-start">
                                 <a href="{{ route('register') }}">
                                     <img width="100%" src="{{ asset('siswa.png') }}" alt="" class="rounded-3">
-                                    <h6 class="text-center mb-5 mt-2">Siswa</h6>
+                                    <h6 class="text-center mb-5 mt-2">Siswa & Alumni</h6>
                                 </a>
                             </div>
                         </div>

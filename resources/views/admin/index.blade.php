@@ -182,7 +182,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">ALumni Tidak Mengisi Survei</p>
+                            <p class="mb-0 text-secondary">Alumni Tidak Mengisi Survei</p>
                             <h4 class="my-1 mb-4" style="color: #8D441C;">{{ $countAlumniNotSubmitSurvey }}</h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle text-white ms-auto" style="background-color: #FFEDE3;">

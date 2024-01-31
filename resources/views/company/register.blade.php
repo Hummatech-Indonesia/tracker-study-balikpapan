@@ -200,7 +200,7 @@
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'Registrasi berhasil, tunggu email verifikasi untuk langkah selanjutnya. Pastikan untuk memeriksa kotak masuk Anda. Terima kasih!!',
+                text: 'Registrasi berhasil, tunggu email verifikasi untuk langkah selanjutnya. Pastikan untuk memeriksa inbox atau spam Anda. Terima kasih!!',
             }).then((result) => {
                 if (result.isConfirmed || result.isDismissed) {
                     window.location.href = '{{ route('login') }}';
