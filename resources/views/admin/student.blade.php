@@ -33,9 +33,10 @@
             <div class="d-flex gap-2 justify-content-end mb-3">
                 <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#modal-import"
                     style="background-color: #1D9375">Import Siswa</button>
-                    <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
+                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
                     style="background-color: #5D87FF">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19"
+                        fill="none">
                         <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                         <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
                     </svg> Siswa</button>
@@ -44,7 +45,7 @@
     </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleLargeModal" tabindex="-1" aria-hidden="true">
-        <form action="{{ route('students.store') }}" method="post">
+        <form action="{{ route('students.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('POST')
             <div class="modal-dialog modal-lg">
@@ -55,62 +56,77 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-6">
-                                <label for="formFile" class="form-label">Nama</label>
-                                <input type="text" placeholder="Masukkan Nama" class="form-control"
+                                <label for="formFile" class="form-label">Nama <span style="color: red">*</span></label>
+                                <input type="text" required placeholder="Masukkan Nama" class="form-control"
                                     value="{{ old('name') }}" name="name">
                             </div>
                             <div class="col-6">
-                                <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" placeholder="Masukkan Email" value="{{ old('email') }}"
+                                <p class="mb-0"><label for="formFile" class="form-label">Email <span
+                                            style="color: red">*</span></label></p>
+                                <input name="email" required placeholder="Masukkan Email" value="{{ old('email') }}"
                                     class="form-control">
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">Password</label>
-                                <input type="password" placeholder="Masukkan Password" value="{{ old('password') }}"
-                                    class="form-control" name="password">
+                                <p class="mb-0"><label for="formFile" class="form-label">Password <span
+                                            style="color: red">*</span></label></p>
+                                <div class="input-group" id="show_hide_password">
+                                    <input type="password" required name="password" class="form-control border-end-0"
+                                        id="inputChoosePassword" placeholder="Masukkan Password">
+                                    <a href="javascript:;" class="input-group-text bg-transparent"><i
+                                            class="bx bx-hide"></i></a>
+                                </div>
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">NISN</label>
-                                <input type="text" placeholder="Masukkan NISN" value="{{ old('nisn') }}"
+                                <label for="formFile" class="form-label">NISN <span style="color: red">*</span></label>
+                                <input type="text" required placeholder="Masukkan NISN" value="{{ old('nisn') }}"
                                     name="national_student_id" class="form-control">
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">Tanggal Lahir</label>
+                                <label for="formFile" class="form-label">Tanggal Lahir <span
+                                        style="color: red">*</span></label>
                                 <input type="date" value="{{ old('birth_date') }}" class="form-control"
                                     name="birth_date">
                             </div>
                             <div class="col-6 mt-2">
                                 <p>
-                                    Jenis Kelamin
+                                    Jenis Kelamin <span style="color: red">*</span>
                                 </p>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="male">
+                                    <input required class="form-check-input" type="radio" name="gender"
+                                        value="male">
                                     <label class="form-check-label" for="inlineRadio1">Laki - Laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="female">
+                                    <input required class="form-check-input" type="radio" name="gender"
+                                        value="female">
                                     <label class="form-check-label" for="inlineRadio1">Perempuan</label>
                                 </div>
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">No Telepon</label>
-                                <input type="number" value="{{ old('phone_number') }}"
+                                <label for="formFile" class="form-label">No Telepon <span
+                                        style="color: red">*</span></label>
+                                <input required type="number" value="{{ old('phone_number') }}"
                                     placeholder="Masukkan No Telepon" class="form-control" name="phone_number">
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">Kelas</label>
-                                <select class="form-select mb-3" value="{{ old('classroom_id') }}" name="classroom_id"
-                                    aria-label="Default select example">
+                                <label for="formFile" class="form-label">Kelas <span style="color: red">*</span></label>
+                                <select required class="form-select mb-3" value="{{ old('classroom_id') }}"
+                                    name="classroom_id" aria-label="Default select example">
                                     <option>Pilih Kelas</option>
                                     @foreach ($classrooms as $classroom)
                                         <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-
                             <div class="col-12">
-                                <label for="formFile" class="form-label">Alamat</label>
-                                <textarea name="address" placeholder="Masukkan Alamat" class="form-control">{{ old('address') }}</textarea>
+                                <label for="formFile" class="form-label">Foto Profile <span
+                                        style="color: red">*</span></label>
+                                <input required type="file" placeholder="Masukkan Foto Profile Siswa"
+                                    class="form-control" name="photo">
+                            </div>
+                            <div class="col-12">
+                                <label for="formFile" class="form-label">Alamat <span style="color: red">*</span></label>
+                                <textarea required name="address" placeholder="Masukkan Alamat" class="form-control">{{ old('address') }}</textarea>
                             </div>
 
                         </div>
@@ -271,7 +287,7 @@
         <!-- /.modal-dialog -->
     </div>
     <div class="modal fade" id="modal-update" tabindex="-1" aria-hidden="true">
-        <form id="form-update" method="post">
+        <form id="form-update" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="modal-dialog modal-lg">
@@ -282,55 +298,70 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-6">
-                                <label for="formFile" class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="name">
+                                <label for="formFile" class="form-label">Nama <span style="color: red">*</span></label>
+                                <input type="text" required class="form-control" name="name">
                             </div>
                             <div class="col-6">
-                                <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" class="form-control">
+                                <p class="mb-0"><label for="formFile" class="form-label">Email <span
+                                            style="color: red">*</span></label></p>
+                                <input name="email" required class="form-control">
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="password">
+                                <p class="mb-0"><label for="formFile" class="form-label">Password</label></p>
+                                <div class="input-group" id="show_hide_password">
+                                    <input type="password" name="password" class="form-control border-end-0"
+                                        id="inputChoosePassword" placeholder="Masukkan Password">
+                                    <a href="javascript:;" class="input-group-text bg-transparent"><i
+                                            class="bx bx-hide"></i></a>
+                                </div>
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">NISN</label>
-                                <input type="text" name="national_student_id" class="form-control">
+                                <label for="formFile" class="form-label">NISN <span style="color: red">*</span></label>
+                                <input type="text" required name="national_student_id" class="form-control">
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="birth_date">
+                                <label for="formFile" class="form-label">Tanggal Lahir <span
+                                        style="color: red">*</span></label>
+                                <input type="date" required class="form-control" name="birth_date">
                             </div>
                             <div class="col-6 mt-2">
                                 <p>
-                                    Jenis Kelamin
+                                    Jenis Kelamin <span style="color: red">*</span>
                                 </p>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="male">
+                                    <input class="form-check-input" required type="radio" name="gender"
+                                        value="male">
                                     <label class="form-check-label" for="inlineRadio1">Laki - Laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="female">
+                                    <input class="form-check-input" required type="radio" name="gender"
+                                        value="female">
                                     <label class="form-check-label" for="inlineRadio1">Perempuan</label>
                                 </div>
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">No Telepon</label>
-                                <input type="number" class="form-control" name="phone_number">
+                                <label for="formFile" class="form-label">No Telepon <span
+                                        style="color: red">*</span></label>
+                                <input type="number" required class="form-control" name="phone_number">
                             </div>
                             <div class="col-6 mt-2">
-                                <label for="formFile" class="form-label">Kelas</label>
-                                <select class="form-select mb-3" name="classroom_id" aria-label="Default select example">
+                                <label for="formFile" class="form-label">Kelas <span style="color: red">*</span></label>
+                                <select class="form-select mb-3" required name="classroom_id"
+                                    aria-label="Default select example">
                                     <option>Pilih Kelas</option>
                                     @foreach ($classrooms as $classroom)
                                         <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-
                             <div class="col-12">
-                                <label for="formFile" class="form-label">Alamat</label>
-                                <textarea name="address" class="form-control"></textarea>
+                                <label for="formFile" class="form-label">Foto Profile</label>
+                                <input type="file" placeholder="Masukkan Foto Profile Siswa" class="form-control"
+                                    name="photo">
+                            </div>
+                            <div class="col-12">
+                                <label for="formFile" class="form-label">Alamat <span style="color: red">*</span></label>
+                                <textarea name="address" required class="form-control"></textarea>
                             </div>
 
                         </div>
@@ -527,5 +558,21 @@
             $('#form-delete').attr('action', actionUrl);
             $('#modal-delete').modal('show')
         })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#show_hide_password a").on('click', function(event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("bx-hide");
+                    $('#show_hide_password i').removeClass("bx-show");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("bx-hide");
+                    $('#show_hide_password i').addClass("bx-show");
+                }
+            });
+        });
     </script>
 @endsection

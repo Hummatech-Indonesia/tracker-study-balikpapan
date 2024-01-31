@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use App\Rules\GenderRule;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class UpdateStudentRequest extends FormRequest
+class StudentUpdateRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -23,6 +23,7 @@ class UpdateStudentRequest extends FormRequest
                 'max:255',
                 Rule::unique('users', 'email')->ignore($this->user),
             ],
+            'photo' => 'nullable|mimes:png,jpg,jpeg',
             'password' => 'nullable|min:6|max:16',
             'phone_number' => 'required|max:20',
             'national_student_id' => 'required|max:10',
@@ -47,7 +48,6 @@ class UpdateStudentRequest extends FormRequest
             'email.email' => 'Format email tidak valid.',
             'email.max' => 'Kolom email tidak boleh lebih dari :max karakter.',
             'email.unique' => 'Email sudah digunakan oleh pengguna lain.',
-            'password.required' => 'Kolom password wajib diisi.',
             'password.max' => 'Password tidak boleh lebih dari :max karakter.',
             'password.min' => 'Password tidak boleh kurang dari :min karakter.',
             'phone_number.required' => 'Kolom nomor telepon wajib diisi.',
@@ -62,7 +62,7 @@ class UpdateStudentRequest extends FormRequest
             'address.max' => 'Kolom alamat tidak boleh lebih dari :max karakter.',
             'classroom_id.required' => 'Kolom kelas wajib diisi.',
             'classroom_id.exists' => 'Kelas yang dipilih tidak valid.',
+            'photo.mimes' => 'Foto yang anda inputkan wajib berformat JPG,JPEG atau PNG'
         ];
     }
-
 }

@@ -9,7 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class StudentRequest extends FormRequest
 {
 
-        /**
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -24,6 +24,7 @@ class StudentRequest extends FormRequest
                 'max:255',
                 Rule::unique('users', 'email')->ignore($this->user),
             ],
+            'photo' => 'required|mimes:png,jpg,jpeg',
             'password' => 'required|min:6|max:16',
             'phone_number' => 'required|max:20',
             'national_student_id' => 'required|max:10',
@@ -63,7 +64,8 @@ class StudentRequest extends FormRequest
             'address.max' => 'Kolom alamat tidak boleh lebih dari :max karakter.',
             'classroom_id.required' => 'Kolom kelas wajib diisi.',
             'classroom_id.exists' => 'Kelas yang dipilih tidak valid.',
+            'photo.required' => 'Foto wajib diisi',
+            'photo.mimes' => 'Foto yang anda inputkan wajib berformat JPG,JPEG atau PNG'
         ];
     }
-
 }
