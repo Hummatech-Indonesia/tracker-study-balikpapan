@@ -15,10 +15,10 @@
                     <div class="col-lg-3">
                         <select name="classroom" id="" class="form-select py-2">
                             <option value="">Filter Kelas</option>
-                            @foreach ($classrooms as $classroom)
+                            {{-- @foreach ($classrooms as $classroom)
                                 <option {{ request()->classroom == $classroom->id ? 'selected' : '' }}
                                     value="{{ $classroom->id }}">{{ $classroom->name }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
                     <div class="col-lg-4">
@@ -70,8 +70,9 @@
                                 <p class="mb-0"><label for="formFile" class="form-label">Password <span
                                             style="color: red">*</span></label></p>
                                 <div class="input-group" id="show_hide_password">
-                                    <input type="password" required name="password" class="form-control border-end-0"
-                                        id="inputChoosePassword" placeholder="Masukkan Password">
+                                    <input type="password" required name="password"
+                                        class="form-control inputChoosePassword border-end-0"
+                                        placeholder="Masukkan Password">
                                     <a href="javascript:;" class="input-group-text bg-transparent"><i
                                             class="bx bx-hide"></i></a>
                                 </div>
@@ -110,12 +111,10 @@
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Kelas <span style="color: red">*</span></label>
-                                <select required class="form-select mb-3" value="{{ old('classroom_id') }}"
+                                <select required class="form-select classroom mb-3" value="{{ old('classroom_id') }}"
                                     name="classroom_id" aria-label="Default select example">
-                                    <option>Pilih Kelas</option>
-                                    @foreach ($classrooms as $classroom)
-                                        <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
-                                    @endforeach
+
+
                                 </select>
                             </div>
                             <div class="col-12">
@@ -309,8 +308,9 @@
                             <div class="col-6 mt-2">
                                 <p class="mb-0"><label for="formFile" class="form-label">Password</label></p>
                                 <div class="input-group" id="show_hide_password">
-                                    <input type="password" name="password" class="form-control border-end-0"
-                                        id="inputChoosePassword" placeholder="Masukkan Password">
+                                    <input type="password" name="password"
+                                        class="inputChoosePassword form-control border-end-0" id="inputChoosePassword"
+                                        placeholder="Masukkan Password">
                                     <a href="javascript:;" class="input-group-text bg-transparent"><i
                                             class="bx bx-hide"></i></a>
                                 </div>
@@ -346,12 +346,10 @@
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Kelas <span style="color: red">*</span></label>
-                                <select class="form-select mb-3" required name="classroom_id"
-                                    aria-label="Default select example">
-                                    <option>Pilih Kelas</option>
-                                    @foreach ($classrooms as $classroom)
-                                        <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
-                                    @endforeach
+                                <select required class="form-select classroom mb-3" value="{{ old('classroom_id') }}"
+                                    name="classroom_id" aria-label="Default select example">
+
+
                                 </select>
                             </div>
                             <div class="col-12">
@@ -388,18 +386,15 @@
                 @endforeach
             @endif
             @if (session('success'))
-            <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
+                <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             @endif
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <td>
-                                No
-                            </td>
                             <td>
                                 Nama Siswa
                             </td>
@@ -417,51 +412,87 @@
                             </td>
                         </tr>
                     </thead>
-                    <tbody>
-                        @forelse ($students as $student)
+                    <tbody id="data">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <x-delete-modal-component />
+@endsection
+@section('script')
+    <script>
+        get(1)
+
+        function get() {
+            $.ajax({
+                url: 'get-student ',
+                method: 'GET',
+                dataType: 'JSON',
+                success: function(response) {
+                    response = response.data.students.data
+                    $.each(response, function(index, data) {
+                        $('#data').append(studentRow(data))
+                    })
+                    student = response
+                    $('.btn-edit').click(function() {
+                        var studentId = $(this).data('id');
+                        var data = student.find(student => student.id === studentId)
+                        var actionUrl = `students/${formData['id']}`;
+                        $('#form-update').attr('action', actionUrl);
+
+                        setFormValues('form-update', data)
+                        $('#form-update').data('id', formData['id'])
+                        $('#form-update').attr('action', );
+                        $('#modal-update').modal('show')
+                    })
+                    $('.btn-detail').click(function() {
+                        handleDetail(data)
+                        const detailPhoto = document.getElementById("detail-photo");
+                        detailPhoto.src = data['photo'];
+                        $('#modal-detail').modal('show')
+                    })
+                    $('.btn-delete').click(function() {
+                        id = $(this).data('id')
+                        var actionUrl = `students/${id}`;
+                        $('#form-delete').attr('action', actionUrl);
+                        $('#modal-delete').modal('show')
+                    })
+                }
+            })
+        }
+
+
+
+        function studentRow(data) {
+            console.log(data);
+            return `     
                             <tr>
                                 <td>
                                     <p class="mb-0 fw-normal mt-2">
-                                        {{ $loop->iteration }}
+                                        ${data.name}
                                     </p>
                                 </td>
                                 <td>
                                     <p class="mb-0 fw-normal mt-2">
-                                        {{ $student->user->name }}
+                                        ${data.email}
                                     </p>
                                 </td>
                                 <td>
                                     <p class="mb-0 fw-normal mt-2">
-                                        {{ $student->user->email }}
+                                        ${data.national_student_id}
                                     </p>
                                 </td>
                                 <td>
                                     <p class="mb-0 fw-normal mt-2">
-                                        {{ $student->national_student_id }}
-                                    </p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 fw-normal mt-2">
-                                        {{ $student->classroom->name }}
+                                        ${data.classroom}
                                     </p>
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
-                                            <a data-id="{{ $student->user->id }}"
-                                                id="btn-detail-{{ $student->user->id }}"
-                                                data-name="{{ $student->user->name }}"
-                                                data-email="{{ $student->user->email }}"
-                                                data-national_student_id={{ $student->national_student_id }}
-                                                data-gender="{{ $student->gender == 'male' ? 'Laki - Laki' : 'Perempuan' }}"
-                                                data-birth_date="{{ \Carbon\Carbon::parse($student->birth_date)->locale('id_ID')->isoFormat('DD MMMM Y') }}"
-                                                data-phone_number="{{ $student->user->phone_number }}"
-                                                data-classroom="{{ $student->classroom->name }}"
-                                                data-major = "{{ $student->classroom->major->name }}"
-                                                data-school_year="{{ $student->classroom->schoolYear->name }}"
-                                                data-address="{{ $student->user->address }}"
-                                                data-photo="{{ $student->user->photo ? 'storage/' . $student->user->photo : 'default.jpg' }}"
-                                                class="btn text-white btn-detail" style="background-color: #1D9375">
+                                            <a class="btn text-white btn-detail" style="background-color: #1D9375">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 24 24">
                                                     <path fill="currentColor"
@@ -473,16 +504,7 @@
                                             </a>
                                         </div>
                                         <div class="">
-                                            <button class="btn btn-warning btn-edit" data-id="{{ $student->user->id }}"
-                                                id="btn-edit-{{ $student->user->id }}"
-                                                data-name="{{ $student->user->name }}"
-                                                data-email="{{ $student->user->email }}"
-                                                data-national_student_id={{ $student->national_student_id }}
-                                                data-gender="{{ $student->gender }}"
-                                                data-birth_date="{{ $student->birth_date }}"
-                                                data-phone_number="{{ $student->user->phone_number }}"
-                                                data-classroom_id="{{ $student->classroom->id }}"
-                                                data-address="{{ $student->user->address }}">
+                                            <button class="btn btn-warning btn-edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 34 35" fill="none">
                                                     <path
@@ -494,7 +516,7 @@
                                                 </svg> </button>
                                         </div>
                                         <div class="">
-                                            <button class="btn btn-danger btn-delete" data-id="{{ $student->user->id }}"
+                                            <button class="btn btn-danger btn-delete"
                                                 data-bs-toggle="modal" data-bs-target="#modal-delete">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 34 34" fill="none">
@@ -512,52 +534,8 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="7" class="text-center">
-                                    <div class="d-flex justify-content-center" style="min-height:16rem">
-                                        <div class="my-auto">
-                                            <img src="{{ asset('showNoData.png') }}" width="300" height="300" />
-                                            <h4 class="text-center mt-4">Data Siswa Kosong!!</h4>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-            {{ $students->links('pagination::bootstrap-5') }}
-        </div>
-    </div>
-    <x-delete-modal-component />
-@endsection
-@section('script')
-    <script>
-        $('.btn-edit').click(function() {
-            const formData = getDataAttributes($(this).attr('id'))
-            var actionUrl = `students/${formData['id']}`;
-            $('#form-update').attr('action', actionUrl);
-
-            setFormValues('form-update', formData)
-            $('#form-update').data('id', formData['id'])
-            $('#form-update').attr('action', );
-            $('#modal-update').modal('show')
-        })
-        $('.btn-detail').click(function() {
-            const data = getDataAttributes($(this).attr('id'))
-            handleDetail(data)
-            const detailPhoto = document.getElementById("detail-photo");
-            detailPhoto.src = data['photo'];
-            $('#modal-detail').modal('show')
-        })
-        $('.btn-delete').click(function() {
-            id = $(this).data('id')
-            var actionUrl = `students/${id}`;
-            $('#form-delete').attr('action', actionUrl);
-            $('#modal-delete').modal('show')
-        })
+                            </tr>`
+        }
     </script>
     <script>
         $(document).ready(function() {

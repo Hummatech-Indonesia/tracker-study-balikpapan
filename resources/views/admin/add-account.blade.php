@@ -52,6 +52,14 @@
                                 <input type="password" placeholder="Masukkan Password" value="{{ old('password') }}"
                                     class="form-control" name="password" id="">
                             </div>
+                            <div class="col-6 mt-2">
+                                <label for="formFile" class="form-label">Role</label>
+                                <select name="role" class="form-select" id="">
+                                    <option value="">Pilih Role</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="staff">Staff</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -84,6 +92,14 @@
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Password</label>
                                 <input type="password" class="form-control" name="password" id="">
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label for="formFile" class="form-label">Role</label>
+                                <select name="role" class="form-select" id="">
+                                    <option value="">Pilih Role</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="staff">Staff</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -126,6 +142,9 @@
                                 Email
                             </td>
                             <td>
+                                Role
+                            </td>
+                            <td>
                                 Aksi
                             </td>
                         </tr>
@@ -149,10 +168,16 @@
                                     </p>
                                 </td>
                                 <td>
+                                    <p class="mb-0 fw-normal mt-2">
+                                        {{ $account->roles->pluck('name')[0] }}
+                                    </p>
+                                </td>
+                                <td>
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
                                             <button class="btn btn-warning btn-edit" data-id="{{ $account->id }}"
                                                 id="btn-edit-{{ $account->id }}" data-name="{{ $account->name }}"
+                                                data-role={{ $account->roles->pluck('name')[0] }}
                                                 data-email="{{ $account->email }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 34 35" fill="none">
@@ -204,15 +229,6 @@
     <x-delete-modal-component />
 @endsection
 @section('script')
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ session('success') }}',
-            });
-        </script>
-    @endif
     <script>
         $('.btn-edit').click(function() {
             const formData = getDataAttributes($(this).attr('id'))

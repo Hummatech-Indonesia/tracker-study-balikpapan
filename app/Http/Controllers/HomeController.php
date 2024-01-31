@@ -80,6 +80,18 @@ class HomeController extends Controller
 
                 return view('admin.index', compact('countAlumni', 'countAlumniSubmitSurvey', 'countAlumniNotSubmitSurvey', 'countAlumniWork', 'countAlumniNotWork', 'countAlumniBussiness', 'countStudent', 'countAlumniStudy'));
                 break;
+            case RoleEnum::STAFF->value:
+                $countAlumni = $this->student->countAlumni(null);
+                $countStudent = $this->student->countStudent(null);
+                $countAlumniSubmitSurvey = $this->student->countAlumniSubmitSurvey(null);
+                $countAlumniNotSubmitSurvey = $this->student->countAlumniNotSubmitSurvey(null);
+                $countAlumniStudy = $this->student->countAlumniStudy(null);
+                $countAlumniNotWork = $this->student->countAlumniNotWork(null);
+                $countAlumniWork = $this->student->countAlumniWork(null);
+                $countAlumniBussiness = $this->student->countAlumniBusinnes(null);
+
+                return view('admin.index', compact('countAlumni', 'countAlumniSubmitSurvey', 'countAlumniNotSubmitSurvey', 'countAlumniWork', 'countAlumniNotWork', 'countAlumniBussiness', 'countStudent', 'countAlumniStudy'));
+                break;
             case RoleEnum::STUDENT->value:
                 $countPortofolio = $this->portofolio->countPortofolio();
                 $countStudent = $this->student->countStudent(null);

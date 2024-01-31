@@ -28,6 +28,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\SliderGalleryAlumniController;
 use App\Http\Controllers\TeacherVideoGalleryController;
+use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +82,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
-    Route::middleware('role:admin')->group(function () {
+    Route::middleware('role:admin|staff')->group(function () {
         Route::get('dashboard-admin', [HomeController::class, 'dashboardAdmin'])->name('dashboardCity');
         Route::get('pie-chart', [HomeController::class, 'pieChart'])->name('pie.chart');
 
@@ -112,7 +113,10 @@ Route::middleware('auth')->group(function () {
         Route::patch('change-alumni/{student}', [StudentStatusController::class, 'changeAlumni'])->name('change.alumni');
         Route::patch('change-student/{student}', [StudentStatusController::class, 'changeStudent'])->name('change.student');
 
-        Route::get('students', [StudentController::class, 'index'])->name('students.index');
+        Route::get('students', function(){
+            return view('admin.student');
+        })->name('students.index');
+        Route::get('get-student',[StudentController::class,'index']);
         Route::post('students', [StudentController::class, 'store'])->name('students.store');
         Route::put('students/{user}', [StudentController::class, 'update'])->name('students.update');
         Route::delete('students/{user}', [StudentController::class, 'destroy'])->name('students.destroy');
