@@ -144,7 +144,7 @@
                 <div class="card border-primary border-bottom border-3 border-0">
                     <div class="card-body">
                         <div class="d-flex justify-content-center mt-2 mb-4">
-                            <img src="{{ asset($jobVacancy->company->user->photo == null ? 'default.jpg' : 'storage/' . $jobVacancy->company->user->photo) }}"
+                            <img src="{{ asset($jobVacancy->company->user->photo == null ? 'default-male.png' : 'storage/' . $jobVacancy->company->user->photo) }}"
                                 style="border: solid 4px #5D87FF;object-fit:cover" height="100px" width="100px"
                                 class="user-circle" alt="user">
                         </div>

@@ -192,7 +192,7 @@
                                 <td>
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
-                                            <img src="{{ asset(auth()->user()->photo == null ? 'default.jpg' : 'storage/' . auth()->user()->photo) }}"
+                                            <img src="{{ asset(auth()->user()->photo == null ? 'default-male.png' : 'storage/' . auth()->user()->photo) }}"
                                                 class="user-img" alt="user avatar" style="object-fit: cover">
                                         </div>
                                         <p class="mt-2" style="font-weight:500">

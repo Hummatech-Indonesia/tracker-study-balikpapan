@@ -15,7 +15,7 @@
                                 PROFIL
                             </h4>
                             <img id="preview"
-                                src="{{ asset(auth()->user()->photo == null ? 'default.jpg' : 'storage/' . auth()->user()->photo) }}"
+                                src="{{ asset(auth()->user()->photo == null ? 'default-male.png' : 'storage/' . auth()->user()->photo) }}"
                                 alt="Admin" class="rounded-circle avatar-xl" style="object-fit: cover;overflow: hidden;"
                                 height="208" width="208">
                             <div class="mt-3">

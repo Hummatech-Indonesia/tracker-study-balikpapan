@@ -15,7 +15,7 @@
                                 PROFIL
                             </h4>
                             <img id="preview"
-                                src="{{ asset(auth()->user()->photo == null ? 'default.jpg' : 'storage/' . auth()->user()->photo) }}"
+                                src="{{ asset(auth()->user()->photo == null ? 'default-male.png' : 'storage/' . auth()->user()->photo) }}"
                                 alt="Admin" class="rounded-circle avatar-xl" style="object-fit: cover;overflow: hidden;"
                                 height="120" width="120">
                             <div class="mt-3">
@@ -25,7 +25,7 @@
                                 <button class="btn btn-warning mb-3 btn-upload text-white" id="btn-upload">Ganti</button>
                                 <button class="btn btn-primary mb-3 " type="submit">Upload</button>
                                 @error('photo')
-                                <div class="text-danger"> <i>{{ $message }}</i> 
+                                <div class="text-danger"> <i>{{ $message }}</i>
                                 </div>
                                 @enderror
                             </div>

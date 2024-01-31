@@ -52,7 +52,7 @@
                         <td>
                             <div class="d-flex justify-content-header gap-2">
                                 <div class="">
-                                    <img src="{{ asset($applyJobVacancie->student->user->photo == null ? 'default.jpg' : 'storage/' . $applyJobVacancie->student->user->photo) }}"
+                                    <img src="{{ asset($applyJobVacancie->student->user->photo == null ? 'default-male.png' : 'storage/' . $applyJobVacancie->student->user->photo) }}"
                                         class="user-img" alt="user avatar">
                                 </div>
                                 <p class="mt-2" style="font-weight:500">
