@@ -1,6 +1,8 @@
 @extends('layouts.app')
+@section('title', 'verify-company')
+
 @section('content')
-<div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between">
         <h4 class="mb-3">
             Verifikasi Akun Perusahaan
         </h4>
@@ -14,10 +16,10 @@
         </div>
     </div>
     @if (session('success'))
-    <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
 
     <div class="row">

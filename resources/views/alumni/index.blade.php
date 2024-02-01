@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'dashboard')
+
 @section('style')
     <style>
         .photo-stack {

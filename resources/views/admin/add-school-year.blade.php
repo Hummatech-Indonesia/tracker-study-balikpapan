@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'school-years')
+
 @section('content')
     <h4 class="mb-3">
         Tahun Ajaran
@@ -7,8 +9,8 @@
         <div class="position-relative mb-3 col-sm-12 col-md-9">
             <div class="col-md-6 col-lg-4 col-sm-12">
                 <form action="{{ route('school-years.index') }}" method="get">
-                    <input type="text" name="name" value="{{ request()->name }}" class="form-control search-chat py-2 ps-5"
-                        id="search-name" placeholder="Search">
+                    <input type="text" name="name" value="{{ request()->name }}"
+                        class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
                     <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
                     <button type="submit" style="display: none"></button>
                 </form>
@@ -38,8 +40,8 @@
                             </div>
                             <div class="modal-body">
                                 <label for="" class="form-label">Tahun Ajaran</label>
-                                <input type="text" value="{{ old('name') }}" placeholder="Masukkan Tahun Ajaran" name="name"
-                                    class="form-control">
+                                <input type="text" value="{{ old('name') }}" placeholder="Masukkan Tahun Ajaran"
+                                    name="name" class="form-control">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -83,10 +85,10 @@
         @endforeach
     @endif
     @if (session('success'))
-    <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
 
     <div class="row">

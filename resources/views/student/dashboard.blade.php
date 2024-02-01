@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'dashboard')
 
 @section('style')
     <style>
@@ -164,7 +165,8 @@
                                     </div>
                                 </div>
                                 <div class="mb-4 px-5">
-                                    <a class="btn btn-primary justify-content-center d-flex" href="{{ route('detail.portofolio', ['portofolio' => $portofolio->id]) }}">
+                                    <a class="btn btn-primary justify-content-center d-flex"
+                                        href="{{ route('detail.portofolio', ['portofolio' => $portofolio->id]) }}">
                                         Lihat Project
                                     </a>
                                 </div>
