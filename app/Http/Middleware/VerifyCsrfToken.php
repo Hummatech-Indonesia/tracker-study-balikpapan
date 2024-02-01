@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'change-alumni-select',
-        'change-student-select'
+        'change-student-select',
+        'verification-student-all'
     ];
 }

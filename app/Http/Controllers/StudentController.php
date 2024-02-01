@@ -14,6 +14,7 @@ use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Contracts\Interfaces\MajorInterface;
 use App\Helpers\ResponseHelper;
 use App\Http\Requests\ImportRequest;
+use App\Http\Requests\SelectChangeUpdateRequest;
 use App\Http\Requests\StudentUpdateRequest;
 use App\Http\Resources\ChartAlumniResource;
 use App\Http\Resources\StudentResource;
@@ -58,6 +59,20 @@ class StudentController extends Controller
         $this->student->updateBasic($student->id, ['status' => StatusEnum::ACTIVE->value]);
         Mail::to($student->user->email)->send(new RegistrationMail(['email' => $student->user->email, 'user' => $student->user->name, 'id' => $student->user->id]));
         return redirect()->back()->with('success', 'Berhasil Menyetujui ' . $student->user->name);
+    }
+
+    /**
+     * verificationStudentAll
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function verificationStudentAll(SelectChangeUpdateRequest $request)
+    {
+        $select = $request->validated();
+        $data['status'] = StatusEnum::ACTIVE->value;
+        $this->student->verificationSelect($data, $select['select']);
+        return ResponseHelper::success(null, 'Berhasil Menyetujui Student');
     }
 
     /**

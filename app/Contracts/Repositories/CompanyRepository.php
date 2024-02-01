@@ -90,12 +90,26 @@ class CompanyRepository extends BaseRepository implements CompanyInterface
     {
         return $this->model->query()
             ->when($request->name, function ($query) use ($request) {
-                $query->whereRelation('user','name', 'LIKE', '%' . $request->name . '%');
+                $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
             })
             ->when($request->status, function ($query) use ($request) {
                 $query->where('status', $request->status);
             })
             ->latest()
             ->fastPaginate($pagination);
+    }
+
+    /**
+     * verificationSelect
+     *
+     * @param  mixed $data
+     * @param  mixed $select
+     * @return mixed
+     */
+    public function verificationSelect(array $data, array $select): mixed
+    {
+        return $this->model->query()
+            ->whereIn('id', $select)
+            ->update($data);
     }
 }

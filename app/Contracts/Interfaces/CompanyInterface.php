@@ -16,4 +16,13 @@ interface CompanyInterface extends StoreInterface, UpdateInterface, SearchInterf
      * @return mixed
      */
     public function getThree(): mixed;
+
+    /**
+     * verificationSelect
+     *
+     * @param  mixed $data
+     * @param  mixed $select
+     * @return mixed
+     */
+    public function verificationSelect(array $data, array $select): mixed;
 }
