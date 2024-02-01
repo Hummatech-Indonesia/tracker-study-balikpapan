@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'detail-student-status')
+
 @section('content')
     <h3>
         Status Siswa & Alumni

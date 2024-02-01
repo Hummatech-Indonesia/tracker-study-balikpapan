@@ -85,7 +85,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:admin|staff')->group(function () {
         Route::get('dashboard-admin', [HomeController::class, 'dashboardAdmin'])->name('dashboardCity');
         Route::get('pie-chart', [HomeController::class, 'pieChart'])->name('pie.chart');
-
+        Route::get('vacancy' , [JobVacancyController::class , 'vacancyadmin']);
         Route::get('chart-alumni', [StudentController::class, 'chartAlumni'])->name('chart.alumni');
 
         Route::post('import-student', [StudentController::class, 'import'])->name('import.student');

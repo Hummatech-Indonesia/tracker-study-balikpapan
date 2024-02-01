@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'majors')
+
 @section('content')
     <h4 class="mb-3">
         Tambah Jurusan
@@ -7,8 +9,8 @@
         <div class="position-relative mb-3 col-md-9 col-sm-12">
             <div class="col-md-7 col-lg-4 col-sm-12">
                 <form action="">
-                    <input type="text" name="name" value="{{ request()->name }}" class="form-control search-chat py-2 ps-5"
-                        id="search-name" placeholder="Search">
+                    <input type="text" name="name" value="{{ request()->name }}"
+                        class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
                     <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
                 </form>
             </div>
@@ -17,18 +19,19 @@
             <div class="d-flex justify-content-end mb-3">
                 <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"
                     style="background-color: #5D87FF">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19"
+                        fill="none">
                         <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
                         <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                    </svg> Jurusan</button>  
+                    </svg> Jurusan</button>
             </div>
         </div>
     </div>
     @if (session('success'))
-    <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
     <div class="row">
         @if ($errors->any())
@@ -58,11 +61,11 @@
                                     data-id="{{ $major->id }}" data-bs-toggle="modal"
                                     data-bs-target="#modal-delete">Hapus</button>
                             </div>
-                                <div class="col">
-                                    <button type="button" id="btn-edit-{{ $major->id }}" data-id="{{ $major->id }}"
-                                        data-name="{{ $major->name }}"
-                                        class="btn-edit btn btn-warning text-white w-100">Edit</button>
-                                </div>
+                            <div class="col">
+                                <button type="button" id="btn-edit-{{ $major->id }}" data-id="{{ $major->id }}"
+                                    data-name="{{ $major->name }}"
+                                    class="btn-edit btn btn-warning text-white w-100">Edit</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,8 +93,8 @@
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="major" class="form-label">Tambah Jurusan</label>
-                                <input type="text" value="{{ old('name') }}" placeholder="Masukkan Jurusan" class="form-control" name="name"
-                                    id="">
+                                <input type="text" value="{{ old('name') }}" placeholder="Masukkan Jurusan"
+                                    class="form-control" name="name" id="">
                             </div>
                         </div>
                     </div>

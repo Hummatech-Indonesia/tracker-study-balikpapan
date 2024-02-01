@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'student-status')
+
 @section('content')
     <h3>Pilih Kelas</h3>
     <div class="position-relative mb-3 col-lg-2">
@@ -42,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            @empty
+        @empty
             <div class="d-flex justify-content-center">
                 <div>
                     <img src="{{ asset('showNoData.png') }}" alt="">

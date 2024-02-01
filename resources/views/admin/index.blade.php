@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Dashboard')
 @section('content')
     <div class="row">
         <div class="col-lg-6 col-xxl-6 col-12">
@@ -388,7 +389,7 @@
                 xaxis: {
                     categories: data.map(item => item.name),
                     labels: {
-                        rotate: -45, 
+                        rotate: -45,
                     },
                 },
                 yaxis: {
