@@ -159,7 +159,7 @@
                                 fill="currentColor" />
                         </svg></i>
                     </div>
-                    <div class="menu-title mt-1">Status Siswa & Alumni</div>
+                    <div class="menu-title mt-1">Alumni</div>
                 </a>
             </li>
             <li>

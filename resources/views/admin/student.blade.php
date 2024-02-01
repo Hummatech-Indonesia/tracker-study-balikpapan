@@ -417,7 +417,7 @@
 
                     </tbody>
                 </table>
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-end">
                     <nav id="pagination">
                     </nav>
                 </div>
@@ -453,11 +453,11 @@
                 },
                 success: function(response) {
                     if (response.data.data.length > 0) {
+                        $('#pagination').html(handlePaginate(response.data.paginate))
                         response = response.data.data
                         $.each(response, function(index, data) {
                             $('#data').append(studentRow(data))
                         })
-                        $('#pagination').html(handlePaginate(response.data.paginate))
 
                         student = response
                         $('.btn-edit').click(function() {

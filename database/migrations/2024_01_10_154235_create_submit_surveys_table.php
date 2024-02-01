@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('survey_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignUuid('student_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('regency_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('regency_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->char('graduation_year',4);
             $table->text('activity');
             $table->text('url_address');

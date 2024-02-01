@@ -36,7 +36,9 @@
             <thead>
                 <tr>
                     <td>
-                        <input type="checkbox" name="checkbox" id="select-all" class="select-all form-check-input">
+                        <div class="mt-5">
+                            <input type="checkbox" name="checkbox" id="select-all" class="select-all form-check-input">
+                        </div>
                     </td>
                     <td>
                         No

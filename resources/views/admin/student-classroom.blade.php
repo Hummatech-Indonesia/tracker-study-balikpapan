@@ -6,7 +6,7 @@
         <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
     </div>
     <div class="row">
-        @foreach ($classrooms as $index => $classroom)
+        @forelse ($classrooms as $index => $classroom)
             <div class="col-6 col-lg-3 col-xxl-3">
                 <div class="card border-primary border-bottom border-3 border-0">
                     @if ($index % 2 == 0)
@@ -42,7 +42,14 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+            @empty
+            <div class="d-flex justify-content-center">
+                <div>
+                    <img src="{{ asset('showNoData.png') }}" alt="">
+                    <h5 class="text-center">Tidak Ada Kelas!!</h5>
+                </div>
+            </div>
+        @endforelse
     </div>
     <div class="" style="display:flex; justify-content:center">
         {{ $classrooms->links('pagination::bootstrap-5') }}
