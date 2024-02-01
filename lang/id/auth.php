@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'register_success' => 'Registrasi berhasil! Silahkan cek email anda untuk verifikasi akun, token akan kadaluarsa 40 menit kemudian',
+    'register_success' => 'Registrasi berhasil! Silahkan tunggu verifikasi admin dan cek email anda',
     'send_email_forgot_password' => 'Kami telah mengirimkan kode verifikasi ke Email anda. Silahkan cek email anda',
     'reset_password_success' => 'Reset password berhasil, silahkan login menggunakan password baru anda',
     'reset_password_failed' => 'Reset password gagal, silahkan coba lagi',

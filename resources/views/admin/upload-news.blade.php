@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'news')
+
 @section('content')
     <div class="d-flex justify-content-between mb-4">
         <div class="">
@@ -24,10 +26,10 @@
         @endforeach
     @endif
     @if (session('success'))
-    <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
     <div class="card">
         <div class="card-body">
@@ -62,7 +64,7 @@
                                         </button>
                                         <button class="btn btn-warning btn-edit btn-sm" id="btn-edit-{{ $news->id }}"
                                             data-id="{{ $news->id }}" data-title="{{ $news->title }}"
-                                            data-content="{{ $news->content }}">    
+                                            data-content="{{ $news->content }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 24 24">
                                                 <path fill="white"

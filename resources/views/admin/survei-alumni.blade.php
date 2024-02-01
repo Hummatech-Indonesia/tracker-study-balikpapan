@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'survey')
+
 @section('content')
     <div class="d-flex justify-content-between mt-2">
         <div class="">
@@ -24,10 +26,10 @@
         @endforeach
     @endif
     @if (session('success'))
-    <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
 
     <div class="row mt-4">
@@ -115,8 +117,8 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="major" class="form-label">Tanggal Mulai</label>
-                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control" name="start_at"
-                                 value="{{ old('start_at') }}">
+                                <input type="date" placeholder="Masukkan Nama Guru" class="form-control"
+                                    name="start_at" value="{{ old('start_at') }}">
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="major" class="form-label">Tanggal Selesai</label>

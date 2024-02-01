@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'detail-student-status')
+
 @section('content')
     <h3>
         Status Siswa & Alumni
@@ -26,17 +28,17 @@
         </div>
     </div>
     @if (session('success'))
-    <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
                     <td>
-                            <input type="checkbox" name="checkbox" id="select-all" class="select-all form-check-input">
+                        <input type="checkbox" name="checkbox" id="select-all" class="select-all form-check-input">
                     </td>
                     <td>
                         No
@@ -66,8 +68,8 @@
                     <tr>
                         <td>
                             <div class="d-flex align-item-center mt-2">
-                            <input type="checkbox" name="select" class="form-check-input select"
-                                value="{{ $student->id }}">
+                                <input type="checkbox" name="select" class="form-check-input select"
+                                    value="{{ $student->id }}">
                             </div>
                         </td>
                         <td>
@@ -117,7 +119,7 @@
                             @endif
                         </td>
                     </tr>
-                    @empty
+                @empty
                     <tr>
                         <td colspan="10" class="text-center">
                             <div class="d-flex justify-content-center" style="min-height:16rem">

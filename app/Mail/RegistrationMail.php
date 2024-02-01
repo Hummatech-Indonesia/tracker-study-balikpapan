@@ -16,7 +16,7 @@ class RegistrationMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(Array $data)
+    public function __construct(array $data)
     {
         $this->data = $data;
     }
@@ -30,7 +30,7 @@ class RegistrationMail extends Mailable
             to: $this->data['email'],
             cc: $this->data['email'],
             bcc: $this->data['email'],
-            subject: 'Registration Tracer Study SMKN 2 Penajam',
+            subject: 'Verifikasi Akun Tracer Study SMKN 2 Penajam Paser Utara',
         );
     }
 

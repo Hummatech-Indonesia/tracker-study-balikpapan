@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'users')
+
 @section('content')
     <h4 style="font-weight: 800">
         Tambah Akun Admin Atau Staff
@@ -44,19 +46,19 @@
                             </div>
                             <div class="col-6">
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
-                                <input name="email" placeholder="Masukkan Email"
-                                    value="{{ old('email') }}" class="form-control"></input>
+                                <input name="email" placeholder="Masukkan Email" value="{{ old('email') }}"
+                                    class="form-control"></input>
                             </div>
                             <div class="col-6 mt-2">
-                                    <p class="mb-0"><label for="formFile" class="form-label">Password <span
-                                                style="color: red">*</span></label></p>
-                                    <div class="input-group" id="show_hide_password">
-                                        <input type="password" required name="password"
-                                            class="form-control inputChoosePassword border-end-0"
-                                            placeholder="Masukkan Password">
-                                        <a href="javascript:;" class="input-group-text bg-transparent"><i
-                                                class="bx bx-hide"></i></a>
-                                    </div>
+                                <p class="mb-0"><label for="formFile" class="form-label">Password <span
+                                            style="color: red">*</span></label></p>
+                                <div class="input-group" id="show_hide_password">
+                                    <input type="password" required name="password"
+                                        class="form-control inputChoosePassword border-end-0"
+                                        placeholder="Masukkan Password">
+                                    <a href="javascript:;" class="input-group-text bg-transparent"><i
+                                            class="bx bx-hide"></i></a>
+                                </div>
                             </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Role</label>
@@ -95,17 +97,17 @@
                                 <p class="mb-0"><label for="formFile" class="form-label">Email</label></p>
                                 <input name="email" class="form-control"></input>
                             </div>
-                                <div class="col-6 mt-2">
-                                    <p class="mb-0"><label for="formFile" class="form-label">Password <span
-                                                style="color: red">*</span></label></p>
-                                    <div class="input-group" id="show_hide_password">
-                                        <input type="password" required name="password"
-                                            class="form-control inputChoosePassword border-end-0"
-                                            placeholder="Masukkan Password">
-                                        <a href="javascript:;" class="input-group-text bg-transparent"><i
-                                                class="bx bx-hide"></i></a>
-                                    </div>
+                            <div class="col-6 mt-2">
+                                <p class="mb-0"><label for="formFile" class="form-label">Password <span
+                                            style="color: red">*</span></label></p>
+                                <div class="input-group" id="show_hide_password">
+                                    <input type="password" required name="password"
+                                        class="form-control inputChoosePassword border-end-0"
+                                        placeholder="Masukkan Password">
+                                    <a href="javascript:;" class="input-group-text bg-transparent"><i
+                                            class="bx bx-hide"></i></a>
                                 </div>
+                            </div>
                             <div class="col-6 mt-2">
                                 <label for="formFile" class="form-label">Role</label>
                                 <select name="role" class="form-select">

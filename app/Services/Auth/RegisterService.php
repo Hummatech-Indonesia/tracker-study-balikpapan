@@ -9,8 +9,6 @@ use App\Enums\RoleEnum;
 use App\Enums\StatusEnum;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\RegisterCompanyRequest;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\RegistrationMail;
 use Illuminate\Auth\Events\Registered;
 
 class RegisterService
@@ -37,7 +35,6 @@ class RegisterService
         } else {
             $graduate = 0;
         }
-        Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email, 'user' => $request->name, 'id' => $user->id]));
         $student->store([
             'user_id' => $user->id,
             'is_graduate' => $graduate,
@@ -63,7 +60,6 @@ class RegisterService
         $user = $register->store($data);
 
         event(new Registered($user));
-        Mail::to($request->email)->send(new RegistrationMail(['email' => $request->email, 'user' => $request->name, 'id' => $user->id]));
 
         $user->assignRole(RoleEnum::COMPANY->value);
         $company->store([

@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'dashboard')
+
 @section('content')
     <h5 class="text-dark mb-3" style="font-weight: 500">
         Dashboard
