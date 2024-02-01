@@ -281,4 +281,18 @@ class StudentRepository extends BaseRepository implements StudentInterface
             ->where('status', StatusEnum::ACTIVE->value)
             ->get();
     }
+
+    /**
+     * verificationSelect
+     *
+     * @param  mixed $data
+     * @param  mixed $select
+     * @return mixed
+     */
+    public function verificationSelect(array $data, array $select): mixed
+    {
+        return $this->model->query()
+            ->whereIn('id', $select)
+            ->update($data);
+    }
 }
