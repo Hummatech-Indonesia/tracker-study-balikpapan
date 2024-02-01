@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\ClassroomInterface;
-use App\Contracts\Interfaces\StudentInterface;
 use App\Enums\RoleEnum;
-use App\Helpers\ResponseHelper;
-use App\Http\Requests\SelectChangeUpdateRequest;
-use App\Models\Classroom;
 use App\Models\Student;
-use Illuminate\Contracts\View\View;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
+use App\Helpers\ResponseHelper;
+use App\Traits\PaginationTrait;
+use Illuminate\Contracts\View\View;
+use App\Contracts\Interfaces\StudentInterface;
+use App\Contracts\Interfaces\ClassroomInterface;
+use App\Http\Requests\SelectChangeUpdateRequest;
+use App\Http\Resources\StudentAndAlumniResource;
 
 class StudentStatusController extends Controller
 {
+    use PaginationTrait;
     private ClassroomInterface $classroom;
     private StudentInterface $student;
+
     public function __construct(ClassroomInterface $classroom, StudentInterface $student)
     {
         $this->student = $student;
@@ -39,13 +43,20 @@ class StudentStatusController extends Controller
      * show
      *
      * @param  mixed $classroom
-     * @return View
      */
-    public function show(Classroom $classroom, Request $request): View
+    public function show(Classroom $classroom, Request $request)
     {
         $request->merge(['classroom_id' => $classroom->id]);
         $students = $this->student->studentClassroom($request, 10);
-        return view('admin.student-status', compact('students', 'classroom'));
+        $data['paginate'] = $this->customPaginate($students->currentPage(), $students->lastPage());
+        $data['data'] = StudentAndAlumniResource::collection($students);
+        $students->appends(['name' => $request->name]);
+        return ResponseHelper::success($data);
+    }
+
+    public function studentAlumni(Classroom $classroom): View
+    {
+        return view('admin.student-status', compact('classroom'));
     }
 
 

@@ -4,17 +4,17 @@
         Status Siswa & Alumni
     </h3>
     <div class="row">
-        <div class=" col-12 col-md-9 ">
-            <div class="position-relative mb-3 col-12 col-md-4 col-lg-4">
+        <div class=" col-12 col-md-8 ">
+            <div class="position-relative mb-3 col-12 col-md-5 col-lg-4">
                 <form action="{{ route('student.classroom.status', $classroom->id) }}" method="get">
-                    <input type="text" name="name" value="{{ Request::get('name') }}"
+                    <input type="text" name="name" value="{{ request()->name }}"
                         class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
                     <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
                     <button type="submit" hidden></button>
                 </form>
             </div>
         </div>
-        <div class=" col-12 col-md-3 mb-3">
+        <div class=" col-12 col-md-4 mb-3">
             <div class="d-flex justify-content-end gap-3">
                 <div class="">
                     <button id="btn-select-change-alumni" class="btn text-white btn-primary">Jadikan Alumni</button>
@@ -26,17 +26,17 @@
         </div>
     </div>
     @if (session('success'))
-    <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
                     <td>
-                            <input type="checkbox" name="checkbox" id="select-all" class="select-all form-check-input">
+                        <input type="checkbox" name="checkbox" id="select-all" class="select-all form-check-input">
                     </td>
                     <td>
                         No
@@ -61,77 +61,16 @@
                     </td>
                 </tr>
             </thead>
-            <tbody>
-                @forelse ($students as $index => $student)
-                    <tr>
-                        <td>
-                            <div class="d-flex align-item-center mt-2">
-                            <input type="checkbox" name="select" class="form-check-input select"
-                                value="{{ $student->id }}">
-                            </div>
-                        </td>
-                        <td>
-                            <p class="mb-0 fw-normal mt-2">
-                                {{ $index + 1 }}
-                            </p>
-                        </td>
-                        <td>
-                            <p class="mb-0 fw-normal mt-2">
-                                {{ $student->user->name }}
-                            </p>
-                        </td>
-                        <td>
-                            <p class="mb-0 fw-normal mt-2">
-                                {{ $student->user->email }}
-                            </p>
-                        </td>
-                        <td>
-                            <p class="mb-0 fw-normal mt-2">
-                                {{ $student->national_student_id }}
-                            </p>
-                        </td>
-                        <td>
-                            <p class="mb-0 fw-normal mt-2">
-                                {{ $student->classroom->name }}
-                            </p>
-                        </td>
-                        <td>
+            <tbody id="data">
 
-                            @if ($student->is_graduate == 0)
-                                <p class="mb-0 fs-6 mt-2">
-                                    <span class="badge bg-light-warning text-warning">Siswa</span>
-                                </p>
-                            @else
-                                <p class="mb-0 fs-6 mt-2">
-                                    <span class="badge bg-light-primary text-primary">Alumni</span>
-                                </p>
-                            @endif
-                        </td>
-                        <td>
-                            @if ($student->is_graduate == 0)
-                                <button data-id="{{ $student->id }}" data-bs-toggle="modal"
-                                    class="btn btn-alumni text-white btn-primary">Jadikan Alumni</button>
-                            @else
-                                <button class="btn btn-student text-white btn-warning" data-id="{{ $student->id }}"
-                                    data-bs-toggle="modal">Jadikan Siswa</button>
-                            @endif
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="10" class="text-center">
-                            <div class="d-flex justify-content-center" style="min-height:16rem">
-                                <div class="my-auto">
-                                    <img src="{{ asset('showNoData.png') }}" width="300" height="300" />
-                                    <h4 class="text-center mt-4">Data Siswa Kosong!!</h4>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                @endforelse
             </tbody>
         </table>
+        <div class="d-flex justify-content-end">
+            <nav id="pagination">
+            </nav>
+        </div>
     </div>
+
     <div class="modal fade" id="modal-student" tabindex="-1" aria-labelledby="exampleModalLabel2">
         <div class="modal-dialog modal-sm" role="document">
             <form id="form-student" method="POST">
@@ -191,6 +130,97 @@
 @endsection
 @section('script')
     <script>
+        let debounceTimer;
+        $('#search-name').keyup(function() {
+            clearTimeout(debounceTimer);
+
+            debounceTimer = setTimeout(function() {
+                get(1)
+            }, 500);
+        });
+        get(1)
+
+        function get(page) {
+            $.ajax({
+                url: '/detail-student-status-be/{{ $classroom->id }}?page=' + page,
+                method: 'GET',
+                data: {
+                    name: $('#search-name').val()
+                },
+                dataType: 'JSON',
+                beforeSend: function() {
+                    $('#pagination').html('')
+                    $('#data').html('')
+                },
+                success: function(response) {
+                    if (response.data.data.length > 0) {
+                        $('#pagination').html(handlePaginate(response.data.paginate))
+                        response = response.data.data
+                        $.each(response, function(index, data) {
+                            $('#data').append(studentRow(index, data))
+                        })
+                    } else {
+                        $('#data').html(`
+                        <tr>
+                            <td colspan="10">
+                        <div class="d-flex justify-content-center">
+                                            <div>
+                                                <img src="{{ asset('showNoData.png') }}" alt="">
+                                                <h5 class="text-center">Data Alumni Atau Siswa Masih Kosong!!</h5>
+                                            </div>
+                                        </div>
+                                        </td>
+                        </tr>`)
+                    }
+                }
+            })
+        }
+
+        function studentRow(index, data) {
+            return `
+            <tr>
+                        <td>
+                            <div class="d-flex align-item-center mt-2">
+                                <input type="checkbox" name="select" class="form-check-input select"
+                                    value="${data.id}">
+                            </div>
+                        </td>
+                        <td>
+                            <p class="mb-0 fw-normal mt-2">
+                                ${index + 1}
+                            </p>
+                        </td>
+                        <td>
+                            <p class="mb-0 fw-normal mt-2">
+                                ${data.name }
+                            </p>
+                        </td>
+                        <td>
+                            <p class="mb-0 fw-normal mt-2">
+                                ${data.email }
+                            </p>
+                        </td>
+                        <td>
+                            <p class="mb-0 fw-normal mt-2">
+                                ${ data.national_student_id}
+                            </p>
+                        </td>
+                        <td>
+                            <p class="mb-0 fw-normal mt-2">
+                                ${data.classroom}
+                            </p>
+                        </td>
+                        <td>
+            <p class="mb-0 fs-6 mt-2">
+                <span class="badge ${data.is_graduate == 0 ? 'bg-light-warning text-warning' : 'bg-light-primary text-primary'}">${data.is_graduate == 0 ? 'Siswa' : 'Alumni'}</span>
+            </p>
+        </td>
+        <td>
+            <button data-id="${data.id}" data-bs-toggle="modal" class="btn btn-${data.is_graduate == 0 ? 'alumni' : 'student'} text-white ${data.is_graduate == 0 ? 'btn-primary' : 'btn-warning'}">${data.is_graduate == 0 ? 'Jadikan Alumni' : 'Jadikan Siswa'}</button>
+        </td>
+                    </tr>`
+        }
+
         $('#student-status').addClass('mm-active')
         $(document).ready(function() {
             var selectedValues = [];
@@ -250,18 +280,20 @@
             });
         });
 
-        $('.btn-student').click(function() {
-            id = $(this).data('id')
+        // Event listener untuk tombol siswa
+        $(document).on('click', '.btn-student', function() {
+            var id = $(this).data('id');
             var actionUrl = `/change-student/${id}`;
             $('#form-student').attr('action', actionUrl);
-            $('#modal-student').modal('show')
-        })
+            $('#modal-student').modal('show');
+        });
 
-        $('.btn-alumni').click(function() {
-            id = $(this).data('id')
+        // Event listener untuk tombol alumni
+        $(document).on('click', '.btn-alumni', function() {
+            var id = $(this).data('id');
             var actionUrl = `/change-alumni/${id}`;
             $('#form-alumni').attr('action', actionUrl);
-            $('#modal-alumni').modal('show')
-        })
+            $('#modal-alumni').modal('show');
+        });
     </script>
 @endsection
