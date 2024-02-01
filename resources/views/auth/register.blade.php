@@ -63,11 +63,11 @@
                                                     placeholder="Masukan Password">
                                                 <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                         class='bx bx-hide'></i></a>
-                                                @error('password')
-                                                    <div class="text-danger">{{ $message }}
-                                                    </div>
-                                                @enderror
                                             </div>
+                                            @error('password')
+                                                <div class="text-danger">{{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="col-12 col-md-6 col-lg-6">
                                             <label for="inputChoosePassword" class="form-label">Konfirmasi Password</label>
@@ -114,7 +114,7 @@
                                         <div class="col-12">
                                             <label for="inputSelectCountry" class="form-label">Tanggal Lahir</label>
                                             <input type="date" name="birth_date" class="form-control border-end-0"
-                                                value="{{ old('date') }}" placeholder="Enter No telephone">
+                                                value="{{ old('birth_date') }}" placeholder="Enter No telephone">
                                             @error('birth_date')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
@@ -123,9 +123,11 @@
                                         <div class="col-12">
                                             <label for="inputSelectCountry" class="form-label">Jenis Kelamin</label><br>
                                             <input class="form-check-input me-1" type="radio" name="gender"
-                                                value="male" id="laki-laki">Laki Laki<br>
+                                                value="male" {{ old('gender') == 'male' ? 'checked' : '' }}
+                                                id="laki-laki">Laki Laki<br>
                                             <input class="form-check-input me-1" type="radio" name="gender"
-                                                value="female" id="perempuan">Perempuan
+                                                value="female" {{ old('gender') == 'female' ? 'checked' : '' }}
+                                                id="perempuan">Perempuan
                                             @error('gender')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
@@ -134,10 +136,11 @@
                                         <div class="col-12">
                                             <label for="inputSelectCountry" class="form-label">Pilih Role</label><br>
                                             <input class="form-check-input me-1" type="radio" name="role"
-                                                value="student" id="flexRadioDefault2" onclick="handleRoleChange()">Siswa
+                                                value="student" {{ old('role') == 'student' ? 'checked' : '' }}
+                                                id="flexRadioDefault2" onclick="handleRoleChange()">Siswa
                                             <input class="form-check-input me-1" type="radio" name="role"
-                                                value="alumni" id="flexRadioDefault1"
-                                                onclick="handleRoleChange()">Alumni<br>
+                                                value="alumni" {{ old('role') == 'alumni' ? 'checked' : '' }}
+                                                id="flexRadioDefault1" onclick="handleRoleChange()">Alumni<br>
                                             @error('role')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -148,7 +151,9 @@
                                                 aria-label="Default select example">
                                                 <option selected>Pilih Kelas</option>
                                                 @foreach ($classrooms as $classroom)
-                                                    <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                                                    <option value="{{ $classroom->id }}"
+                                                        {{ $classroom->id == old('classroom_id') ? 'selected' : '' }}>
+                                                        {{ $classroom->name }}</option>
                                                 @endforeach
                                             </select>
                                             @error('classroom_id')
@@ -158,7 +163,7 @@
                                         <div class="col-12">
                                             <div class="form-check">
                                                 <input class="form-check-input" name="checked" value="1"
-                                                    type="checkbox" id="flexSwitchCheckChecked">
+                                                    type="checkbox"id="flexSwitchCheckChecked">
                                                 <a class="form-check-label" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal" style="cursor: pointer; color:black"
                                                     for="flexSwitchCheckChecked">Kebijakan
