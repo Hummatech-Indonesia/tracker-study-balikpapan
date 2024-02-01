@@ -39,17 +39,17 @@
                                         <div class="col-12 col-md-6 col-lg-6">
                                             <label for="inputUsername" class="form-label">Nama</label>
                                             <input type="text" name="name" class="form-control" id="inputUsername"
-                                                value="{{ old('name') }}" placeholder="Jhon">
+                                                value="{{ old('name') }}" placeholder="Masukan Nama Anda">
                                             @error('name')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
                                         <div class="col-12 col-md-6 col-lg-6">
-                                            <label for="inputEmailAddress" class="form-label">Email Address</label>
+                                            <label for="inputEmailAddress" class="form-label">Email</label>
                                             <input type="email" name="email" class="form-control"
                                                 value="{{ old('email') }}" id="inputEmailAddress"
-                                                placeholder="example@user.com">
+                                                placeholder="Masukan Email Anda">
                                             @error('email')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
@@ -60,7 +60,7 @@
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" name="password" class="form-control border-end-0"
                                                     value="{{ old('password') }}" id="inputChoosePassword"
-                                                    placeholder="Enter Password">
+                                                    placeholder="Masukan Password">
                                                 <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                         class='bx bx-hide'></i></a>
                                                 @error('password')
@@ -75,7 +75,7 @@
                                                 <input type="password" name="password_confirmation"
                                                     value="{{ old('password_confirmation') }}"
                                                     class="form-control border-end-0" id="inputChoosePassword"
-                                                    placeholder="Enter Password">
+                                                    placeholder="Masukan Konfirmasi Password">
                                                 <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                         class='bx bx-hide'></i></a>
                                                 @error('password_confirmation')
