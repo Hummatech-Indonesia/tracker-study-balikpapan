@@ -36,9 +36,7 @@
             <thead>
                 <tr>
                     <td>
-                        <div class="mt-5">
                             <input type="checkbox" name="checkbox" id="select-all" class="select-all form-check-input">
-                        </div>
                     </td>
                     <td>
                         No
@@ -67,8 +65,10 @@
                 @forelse ($students as $index => $student)
                     <tr>
                         <td>
+                            <div class="d-flex align-item-center mt-2">
                             <input type="checkbox" name="select" class="form-check-input select"
                                 value="{{ $student->id }}">
+                            </div>
                         </td>
                         <td>
                             <p class="mb-0 fw-normal mt-2">
