@@ -28,7 +28,8 @@
                 <div class="menu-title mt-1">Dashboard</div>
             </a>
         </li>
-        @if (auth()->user()->roles[0]->name == 'admin')
+        @if (auth()->user()->roles[0]->name == 'admin' || auth()->user()->roles[0]->name == 'staff' )
+        @role('admin')
             <li>
                 <a href="{{ route('students.index') }}">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"
@@ -38,13 +39,6 @@
                         </svg>
                     </div>
                     <div class="menu-title mt-1">Siswa</div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('company') }}">
-                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3v18h-6v-3.5h-2V21H5V3zm-4 4h2V5h-2zm-4 0h2V5h-2zM7 7h2V5H7zm8 4h2V9h-2zm-4 0h2V9h-2zm-4 0h2V9H7zm8 4h2v-2h-2zm-4 0h2v-2h-2zm-4 0h2v-2H7zm8 4h2v-2h-2zm-8 0h2v-2H7zM21 1H3v22h18z"/></svg>
-                    </div>
-                    <div class="menu-title mt-1">Perusahaan</div>
                 </a>
             </li>
             <li>
@@ -68,6 +62,8 @@
                     <div class="menu-title mt-1">Kelas</div>
                 </a>
             </li>
+            @endrole
+            @role('admin|staff')
             <li>
                 <a class="has-arrow" href="javascript:;">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
@@ -86,15 +82,23 @@
                     <div class="menu-title mt-1">Verifikasi Akun</div>
                 </a>
                 <ul>
+                    @role("admin")
                     <li> <a href="{{ route('account.siswa') }}"><i class='bx bx-radio-circle'></i>Verifikasi Siswa</a>
                     </li>
+                    @endrole
+                    @role('admin|staff')
                     <li> <a href="{{route('account.alumni')}}"><i class='bx bx-radio-circle'></i>Verifikasi Alumni</a>
                     </li>
+                    @endrole
+                    @role('admin')
                     <li> <a href="{{ route('verify.company') }}"><i class='bx bx-radio-circle'></i>Verifikasi
                             Perusahaan</a>
                     </li>
+                    @endrole
                 </ul>
             </li>
+            @endrole
+            @role('admin')
             <li>
                 <a class="has-arrow" href="javascript:;">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -124,6 +128,14 @@
                         </svg></i>
                     </div>
                     <div class="menu-title mt-1">Unggah Berita</div>
+                </a>
+            </li>
+            @endrole
+            <li>
+                <a href="{{ route('company') }}">
+                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3v18h-6v-3.5h-2V21H5V3zm-4 4h2V5h-2zm-4 0h2V5h-2zM7 7h2V5H7zm8 4h2V9h-2zm-4 0h2V9h-2zm-4 0h2V9H7zm8 4h2v-2h-2zm-4 0h2v-2h-2zm-4 0h2v-2H7zm8 4h2v-2h-2zm-8 0h2v-2H7zM21 1H3v22h18z"/></svg>
+                    </div>
+                    <div class="menu-title mt-1">Perusahaan</div>
                 </a>
             </li>
             <li id="survey-alumni">
@@ -162,6 +174,22 @@
                     <div class="menu-title mt-1">Alumni</div>
                 </a>
             </li>
+            <li id="company-admin">
+                <a href="/vacancy">
+                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                            viewBox="0 0 38 38" fill="currentColor">
+                            <path
+                                d="M31.7656 16.625H21.375C20.4302 16.625 19.524 16.2497 18.8559 15.5816C18.1878 14.9135 17.8125 14.0073 17.8125 13.0625V2.67188C17.8125 2.59314 17.7812 2.51763 17.7255 2.46195C17.6699 2.40628 17.5944 2.375 17.5156 2.375H10.6875C9.42772 2.375 8.21954 2.87545 7.32874 3.76624C6.43794 4.65704 5.9375 5.86522 5.9375 7.125V30.875C5.9375 32.1348 6.43794 33.343 7.32874 34.2338C8.21954 35.1246 9.42772 35.625 10.6875 35.625H27.3125C28.5723 35.625 29.7805 35.1246 30.6713 34.2338C31.5621 33.343 32.0625 32.1348 32.0625 30.875V16.9219C32.0625 16.8431 32.0312 16.7676 31.9755 16.712C31.9199 16.6563 31.8444 16.625 31.7656 16.625ZM24.9375 28.5H13.0625C12.7476 28.5 12.4455 28.3749 12.2228 28.1522C12.0001 27.9295 11.875 27.6274 11.875 27.3125C11.875 26.9976 12.0001 26.6955 12.2228 26.4728C12.4455 26.2501 12.7476 26.125 13.0625 26.125H24.9375C25.2524 26.125 25.5545 26.2501 25.7772 26.4728C25.9999 26.6955 26.125 26.9976 26.125 27.3125C26.125 27.6274 25.9999 27.9295 25.7772 28.1522C25.5545 28.3749 25.2524 28.5 24.9375 28.5ZM24.9375 22.5625H13.0625C12.7476 22.5625 12.4455 22.4374 12.2228 22.2147C12.0001 21.992 11.875 21.6899 11.875 21.375C11.875 21.0601 12.0001 20.758 12.2228 20.5353C12.4455 20.3126 12.7476 20.1875 13.0625 20.1875H24.9375C25.2524 20.1875 25.5545 20.3126 25.7772 20.5353C25.9999 20.758 26.125 21.0601 26.125 21.375C26.125 21.6899 25.9999 21.992 25.7772 22.2147C25.5545 22.4374 25.2524 22.5625 24.9375 22.5625Z"
+                                fill="#currentColor" />
+                            <path
+                                d="M31.114 13.9968L20.4406 3.32344C20.4198 3.30281 20.3934 3.28877 20.3647 3.28309C20.336 3.27742 20.3063 3.28035 20.2792 3.29154C20.2522 3.30272 20.229 3.32165 20.2127 3.34595C20.1964 3.37024 20.1876 3.39882 20.1875 3.42809V13.0624C20.1875 13.3774 20.3126 13.6794 20.5353 13.9021C20.758 14.1248 21.0601 14.2499 21.375 14.2499H31.0093C31.0386 14.2498 31.0672 14.241 31.0915 14.2247C31.1158 14.2084 31.1347 14.1853 31.1459 14.1582C31.1571 14.1312 31.16 14.1014 31.1543 14.0727C31.1487 14.044 31.1346 14.0176 31.114 13.9968V13.9968Z"
+                                fill="#currentColor" />
+                        </svg></i>
+                    </div>
+                    <div class="menu-title mt-1">Lowongan</div>
+                </a>
+            </li>
+            @role('admin')
             <li>
                 <a href="{{ Route('users.index') }}">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -174,6 +202,7 @@
                     <div class="menu-title mt-1">Kelola Akun</div>
                 </a>
             </li>
+            @endrole
         @elseif(auth()->user()->roles[0]->name == 'company')
             <li id="company">
                 <a href="{{ route('job-vacancy.index') }}">

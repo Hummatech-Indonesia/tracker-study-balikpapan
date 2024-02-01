@@ -5,13 +5,13 @@
             @csrf
             <div class="modal-content">
                 <div class="modal-header d-flex align-items-center">
-                    <h4 class="modal-title" id="exampleModalLabel1">
+                    <h5 class="modal-title" id="exampleModalLabel1">
                         Hapus data
-                    </h4>
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h6>Apakah anda yakin ingin menghapus data?</h6>
+                    <p class="text-dark fs-7 mb-0">Apakah anda yakin ingin menghapus data?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger text-white font-medium waves-effect"

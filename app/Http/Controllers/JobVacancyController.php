@@ -30,6 +30,12 @@ class JobVacancyController extends Controller
         return view('company.vacancy', ['jobVacancys' => $jobVacancys]);
     }
 
+    public function vacancyadmin()
+    {
+        $jobVacancys = $this->jobVacancy->get();
+        return view('admin.vacancy', ['jobVacancys' => $jobVacancys]);
+    }
+
     public function jobvacancy ()
     {
         $jobVacancys = $this->jobVacancy->get();
