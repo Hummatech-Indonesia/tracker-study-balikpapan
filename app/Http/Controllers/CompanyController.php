@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Enums\StatusEnum;
+use App\Http\Requests\SelectChangeUpdateRequest;
 use App\Mail\RegistrationMail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Company;
@@ -27,9 +28,22 @@ class CompanyController extends Controller
     public function approve(Company $company)
     {
         $this->company->update($company->id, ['status' => StatusEnum::ACTIVE->value]);
-        Mail::to($company->user->email)->send(new RegistrationMail(['email' => $company->user->email, 'user' => $company->user->name, 'id' =>$company->user->id]));
+        Mail::to($company->user->email)->send(new RegistrationMail(['email' => $company->user->email, 'user' => $company->user->name, 'id' => $company->user->id]));
 
         return redirect()->back()->with('success', 'Berhasil Menyetujui Perusahaan ' . $company->user->name);
+    }
+    /**
+     * approveAll
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function approveAll(SelectChangeUpdateRequest $request)
+    {
+        $select = $request->validated();
+        $data['status'] = StatusEnum::ACTIVE->value;
+        $this->company->verificationSelect($select['select'], $data);
+        return redirect()->back()->with('success', 'Berhasil Menyetujui Student');
     }
 
     /**

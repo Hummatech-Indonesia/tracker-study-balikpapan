@@ -92,6 +92,7 @@ Route::middleware('auth')->group(function () {
         Route::get('company', [CompanyController::class, 'company'])->name('company');
         Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
         Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
+        Route::patch('approve-verify-company-all', [CompanyController::class, 'approveAll'])->name('approve.verify.company.all');
         Route::patch('reject-verify-company/{company}', [CompanyController::class, 'reject'])->name('reject.verify.company');
 
         Route::resources([
