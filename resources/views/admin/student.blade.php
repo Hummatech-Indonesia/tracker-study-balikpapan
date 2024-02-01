@@ -121,7 +121,7 @@
                                 <label for="formFile" class="form-label">Foto Profile <span
                                         style="color: red">*</span></label>
                                 <input required type="file" placeholder="Masukkan Foto Profile Siswa"
-                                    class="form-control" name="photo">
+                                    class="form-control mb-3" name="photo">
                             </div>
                             <div class="col-12">
                                 <label for="formFile" class="form-label">Alamat <span style="color: red">*</span></label>
@@ -355,7 +355,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="formFile" class="form-label">Foto Profile</label>
-                                <input type="file" placeholder="Masukkan Foto Profile Siswa" class="form-control"
+                                <input type="file" placeholder="Masukkan Foto Profile Siswa" class="form-control mb-3"
                                     name="photo">
                             </div>
                             <div class="col-12">
@@ -551,7 +551,7 @@
         }
 
         function studentRow(data) {
-            return `     
+            return `
                             <tr>
                                 <td>
                                     <p class="mb-0 fw-normal mt-2">
