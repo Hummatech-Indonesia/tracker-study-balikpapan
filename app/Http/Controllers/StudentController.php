@@ -71,8 +71,8 @@ class StudentController extends Controller
     {
         $select = $request->validated();
         $data['status'] = StatusEnum::ACTIVE->value;
-        $this->student->verificationSelect($select['select'], $data);
-        return redirect()->back()->with('success', 'Berhasil Menyetujui Student');
+        $this->student->verificationSelect($data, $select['select']);
+        return ResponseHelper::success(null, 'Berhasil Menyetujui Student');
     }
 
     /**

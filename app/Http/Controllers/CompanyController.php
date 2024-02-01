@@ -42,7 +42,7 @@ class CompanyController extends Controller
     {
         $select = $request->validated();
         $data['status'] = StatusEnum::ACTIVE->value;
-        $this->company->verificationSelect($select['select'], $data);
+        $this->company->verificationSelect($data, $select['select']);
         return redirect()->back()->with('success', 'Berhasil Menyetujui Student');
     }
 
