@@ -71,6 +71,15 @@ interface StudentInterface extends CustomPaginationInterface, StoreInterface, Up
      */
     public function updateSelect(array $data, array $select): mixed;
 
+    /**
+     * verificationSelect
+     *
+     * @param  mixed $data
+     * @param  mixed $select
+     * @return mixed
+     */
+    public function verificationSelect(array $data, array $select): mixed;
+
 
     /**
      * updateBasic

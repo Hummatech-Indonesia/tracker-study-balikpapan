@@ -107,17 +107,17 @@ Route::middleware('auth')->group(function () {
 
         Route::patch('change-alumni-select', [StudentStatusController::class, 'selectChangeAlumni'])->name('change.alumni.select');
         Route::patch('change-student-select', [StudentStatusController::class, 'selectChangeStudent'])->name('change.student.select');
-
+        //sampe sini
         Route::get('student-status', [StudentStatusController::class, 'index'])->name('student.classroom');
         Route::get('detail-student-status/{classroom}', [StudentStatusController::class, 'show'])->name('student.classroom.status');
         Route::patch('change-alumni/{student}', [StudentStatusController::class, 'changeAlumni'])->name('change.alumni');
         Route::patch('change-student/{student}', [StudentStatusController::class, 'changeStudent'])->name('change.student');
 
-        Route::get('students', function(){
+        Route::get('students', function () {
             return view('admin.student');
         })->name('students.index');
-        Route::get('get-student',[StudentController::class,'index']);
-        Route::get('get-classroom',[ClassroomController::class,'get']);
+        Route::get('get-student', [StudentController::class, 'index']);
+        Route::get('get-classroom', [ClassroomController::class, 'get']);
         Route::post('students', [StudentController::class, 'store'])->name('students.store');
         Route::put('students/{user}', [StudentController::class, 'update'])->name('students.update');
         Route::delete('students/{user}', [StudentController::class, 'destroy'])->name('students.destroy');
@@ -192,6 +192,7 @@ Route::middleware('auth')->group(function () {
     Route::get('account-alumni', [StudentController::class, 'viewVerificationAlumni'])->name('account.alumni');
 
     Route::patch('verification-student/{student}', [StudentController::class, 'verificationStudent'])->name('verification.student');
+    Route::patch('verification-student-all', [StudentController::class, 'verificationStudentAll'])->name('verification.student.all');
     Route::patch('reject-verification-student/{student}', [StudentController::class, 'rejectVerificationStudent'])->name('reject.verification.student');
     Route::get('alumni-register', function () {
         return view('admin.alumni-register');
@@ -204,6 +205,4 @@ Route::middleware('auth')->group(function () {
     Route::get('detail-job-vacancy', function () {
         return view('admin.job-vacancy.detail');
     })->name('detail.job.vacancy');
-
 });
-
