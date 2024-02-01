@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\CompanyInterface;
 use App\Enums\StatusEnum;
+use App\Mail\RegistrationMail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Company;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -25,6 +27,8 @@ class CompanyController extends Controller
     public function approve(Company $company)
     {
         $this->company->update($company->id, ['status' => StatusEnum::ACTIVE->value]);
+        Mail::to($company->user->email)->send(new RegistrationMail(['email' => $company->user->email, 'user' => $company->user->name, 'id' =>$company->user->id]));
+
         return redirect()->back()->with('success', 'Berhasil Menyetujui Perusahaan ' . $company->user->name);
     }
 

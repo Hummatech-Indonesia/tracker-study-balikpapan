@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Enums\StatusEnum;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentRequest;
+use Illuminate\Support\Facades\Mail;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\Auth\RegisterInterface;
@@ -17,6 +18,7 @@ use App\Http\Requests\StudentUpdateRequest;
 use App\Http\Resources\ChartAlumniResource;
 use App\Http\Resources\StudentResource;
 use App\Imports\StudentImport;
+use App\Mail\RegistrationMail;
 use App\Models\ApplyJobVacancy;
 use App\Services\StudentService;
 use App\Traits\PaginationTrait;
@@ -54,6 +56,7 @@ class StudentController extends Controller
     public function verificationStudent(Student $student)
     {
         $this->student->updateBasic($student->id, ['status' => StatusEnum::ACTIVE->value]);
+        Mail::to($student->user->email)->send(new RegistrationMail(['email' => $student->user->email, 'user' => $student->user->name, 'id' => $student->user->id]));
         return redirect()->back()->with('success', 'Berhasil Menyetujui ' . $student->user->name);
     }
 
