@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<h4 class="mb-3">
+    Data Alumni
+</h4>
 <div class="row mt-3">
     @forelse ($jobVacancys as $jobVacancy)
         <div class="col-12 col-lg-4 col-xxl-3">
