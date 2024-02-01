@@ -64,11 +64,11 @@
                                                     placeholder="Masukan Password">
                                                 <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                         class='bx bx-hide'></i></a>
-                                                @error('password')
-                                                    <div class="text-danger">{{ $message }}
                                                     </div>
-                                                @enderror
-                                            </div>
+                                                    @error('password')
+                                                        <div class="text-danger">{{ $message }}
+                                                        </div>
+                                                    @enderror
                                         </div>
                                         <div class="col-12 col-md-6 col-lg-6">
                                             <label for="inputChoosePassword" class="form-label">Konfirmasi Password</label>

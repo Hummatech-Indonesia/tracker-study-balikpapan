@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <h4 class="mb-3">
-    Data Alumni
+    Data Lowongan
 </h4>
 <div class="row mt-3">
     @forelse ($jobVacancys as $jobVacancy)
