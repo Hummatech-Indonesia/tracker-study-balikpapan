@@ -40,7 +40,7 @@
                                         <div class="col-12 col-md-6 col-lg-6">
                                             <label for="inputUsername" class="form-label">Nama</label>
                                             <input type="text" name="name" class="form-control" id="inputUsername"
-                                                value="{{ old('name') }}" placeholder="Inputkan Nama">
+                                                value="{{ old('name') }}" placeholder="Masukan Nama">
                                             @error('name')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
@@ -50,7 +50,7 @@
                                             <label for="inputEmailAddress" class="form-label">Alamat Email</label>
                                             <input type="email" name="email" class="form-control"
                                                 value="{{ old('email') }}" id="inputEmailAddress"
-                                                placeholder="Inputkan alamat email">
+                                                placeholder="Masukan alamat email">
                                             @error('email')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
@@ -61,7 +61,7 @@
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" name="password" class="form-control border-end-0"
                                                     value="{{ old('password') }}" id="inputChoosePassword"
-                                                    placeholder="Enter Password">
+                                                    placeholder="Masukan Password">
                                                 <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                         class='bx bx-hide'></i></a>
                                                 @error('password')
@@ -76,7 +76,7 @@
                                                 <input type="password" name="password_confirmation"
                                                     value="{{ old('password_confirmation') }}"
                                                     class="form-control border-end-0" id="inputChoosePassword"
-                                                    placeholder="Enter Password">
+                                                    placeholder="Masukan Konfirmasi Password">
                                                 <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                         class='bx bx-hide'></i></a>
                                                 @error('password_confirmation')
@@ -88,7 +88,7 @@
                                         <div class="col-12">
                                             <label for="inputChoosePassword" class="form-label">No Telephone</label>
                                             <input type="number" name="phone_number" class="form-control border-end-0"
-                                                value="{{ old('phone_number') }}" placeholder="Enter No telephone">
+                                                value="{{ old('phone_number') }}" placeholder="Masukan No telephone">
                                             @error('phone_number')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
