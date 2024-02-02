@@ -85,7 +85,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:admin|staff')->group(function () {
         Route::get('dashboard-admin', [HomeController::class, 'dashboardAdmin'])->name('dashboardCity');
         Route::get('pie-chart', [HomeController::class, 'pieChart'])->name('pie.chart');
-        Route::get('vacancy' , [JobVacancyController::class , 'vacancyadmin']);
+        Route::get('vacancy', [JobVacancyController::class, 'vacancyadmin']);
         Route::get('chart-alumni', [StudentController::class, 'chartAlumni'])->name('chart.alumni');
 
         Route::post('import-student', [StudentController::class, 'import'])->name('import.student');
@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function () {
         Route::get('verify-company', [CompanyController::class, 'index'])->name('verify.company');
         Route::patch('approve-verify-company/{company}', [CompanyController::class, 'approve'])->name('approve.verify.company');
         Route::patch('approve-verify-company-all', [CompanyController::class, 'approveAll'])->name('approve.verify.company.all');
+        Route::patch('reject-verify-company-all', [CompanyController::class, 'rejectAll'])->name('reject.verify.company.all');
         Route::patch('reject-verify-company/{company}', [CompanyController::class, 'reject'])->name('reject.verify.company');
 
         Route::resources([

@@ -45,6 +45,19 @@ class CompanyController extends Controller
         $this->company->verificationSelect($data, $select['select']);
         return redirect()->back()->with('success', 'Berhasil Menyetujui Student');
     }
+    /**
+     * rejectAll
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function rejectAll(SelectChangeUpdateRequest $request)
+    {
+        $select = $request->validated();
+        $data['status'] = StatusEnum::REJECT->value;
+        $this->company->verificationSelect($data, $select['select']);
+        return redirect()->back()->with('success', 'Berhasil Menyetujui Student');
+    }
 
     /**
      * reject
