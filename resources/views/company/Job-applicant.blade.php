@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'job-applicant')
+
 @section('content')
     <h5 class="text-dark" style="font-weight: 550">
         Pelamar Kerja
@@ -86,22 +88,26 @@
                         </td>
                         <td>
                             <div class="d-flex justify-content-header gap-2">
-                            @if ($applyJobVacancie->status == 'pending')
-                            <div class="">
-                                <button class="btn btn-sm btn-success btn-accept" id="btn-edit-{{ $applyJobVacancie->id }}" data-id="{{ $applyJobVacancie->id }}">Terima</button>
+                                @if ($applyJobVacancie->status == 'pending')
+                                    <div class="">
+                                        <button class="btn btn-sm btn-success btn-accept"
+                                            id="btn-edit-{{ $applyJobVacancie->id }}"
+                                            data-id="{{ $applyJobVacancie->id }}">Terima</button>
+                                    </div>
+                                    <div class="">
+                                        <button class="btn btn-sm btn-danger btn-reject"
+                                            id="btn-edit-{{ $applyJobVacancie->id }}"
+                                            data-id="{{ $applyJobVacancie->id }}">Tolak</button>
+                                    </div>
+                                    <div class="">
+                                        <button class="btn text-white btn-sm btn-info">Detail</button>
+                                    </div>
+                                @else
+                                    <div class="">
+                                        <button class="btn text-white btn-sm btn-info">Detail</button>
+                                    </div>
+                                @endif
                             </div>
-                            <div class="">
-                                <button class="btn btn-sm btn-danger btn-reject" id="btn-edit-{{ $applyJobVacancie->id }}" data-id="{{ $applyJobVacancie->id }}" >Tolak</button>
-                            </div>
-                            <div class="">
-                                <button class="btn text-white btn-sm btn-info">Detail</button>
-                            </div>
-                            @else
-                            <div class="">
-                                <button class="btn text-white btn-sm btn-info">Detail</button>
-                            </div>
-                            @endif
-                        </div>
 
                         </td>
                     </tr>

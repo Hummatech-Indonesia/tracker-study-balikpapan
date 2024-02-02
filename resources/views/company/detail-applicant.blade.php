@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'detail-applicant')
+
 @section('content')
     <h3>Detail Pelamar Kerja</h3>
     <div class="card mt-4">

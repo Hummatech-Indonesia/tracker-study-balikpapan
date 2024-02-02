@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'edit-portofolio')
+
 @section('style')
     <link href="{{ asset('assets-admin/plugins/Drag-And-Drop/dist/imageuploadify.min.css') }}" rel="stylesheet" />
 @endsection
@@ -12,10 +14,10 @@
         @endforeach
     @endif
     @if (session('success'))
-    <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
     <form action="{{ route('portofolio.update', $portofolio->id) }}" method="post" enctype="multipart/form-data">
         @csrf

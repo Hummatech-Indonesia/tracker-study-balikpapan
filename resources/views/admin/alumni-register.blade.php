@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'alumni-register')
+
 @section('content')
     <h4 class="mb-3">
         Data Alumni
@@ -29,10 +31,10 @@
                     <h5 class="card-title text-dark text-center" style="font-weight: 700">XII Multimedia A</h5>
                     <p class="card-text mt-2 text-center mb-5">Tahun Ajaran 2024-2025.</p>
                     <div class="d-flex align-items-center gap-2 mb-2">
-                        <button  class="btn btn-warning w-100 text-white">Detail</button>
-                        <button  class="btn btn-inverse-danger w-100">Tolak</button>
+                        <button class="btn btn-warning w-100 text-white">Detail</button>
+                        <button class="btn btn-inverse-danger w-100">Tolak</button>
                     </div>
-                    <button  class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
+                    <button class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
                 </div>
             </div>
         </div>
@@ -46,10 +48,10 @@
                     <h5 class="card-title text-dark text-center" style="font-weight: 700">XII Multimedia A</h5>
                     <p class="card-text mt-2 text-center mb-5">Tahun Ajaran 2024-2025.</p>
                     <div class="d-flex align-items-center gap-2 mb-2">
-                        <button  class="btn btn-warning w-100 text-white">Detail</button>
-                        <button  class="btn btn-inverse-danger w-100">Tolak</button>
+                        <button class="btn btn-warning w-100 text-white">Detail</button>
+                        <button class="btn btn-inverse-danger w-100">Tolak</button>
                     </div>
-                    <button  class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
+                    <button class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
                 </div>
             </div>
         </div>
@@ -63,10 +65,10 @@
                     <h5 class="card-title text-dark text-center" style="font-weight: 700">XII Multimedia A</h5>
                     <p class="card-text mt-2 text-center mb-5">Tahun Ajaran 2024-2025.</p>
                     <div class="d-flex align-items-center gap-2 mb-2">
-                        <button  class="btn btn-warning w-100 text-white">Detail</button>
-                        <button  class="btn btn-inverse-danger w-100">Tolak</button>
+                        <button class="btn btn-warning w-100 text-white">Detail</button>
+                        <button class="btn btn-inverse-danger w-100">Tolak</button>
                     </div>
-                    <button  class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
+                    <button class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
                 </div>
             </div>
         </div>
@@ -80,10 +82,10 @@
                     <h5 class="card-title text-dark text-center" style="font-weight: 700">XII Multimedia A</h5>
                     <p class="card-text mt-2 text-center mb-5">Tahun Ajaran 2024-2025.</p>
                     <div class="d-flex align-items-center gap-2 mb-2">
-                        <button  class="btn btn-warning w-100 text-white">Detail</button>
-                        <button  class="btn btn-inverse-danger w-100">Tolak</button>
+                        <button class="btn btn-warning w-100 text-white">Detail</button>
+                        <button class="btn btn-inverse-danger w-100">Tolak</button>
                     </div>
-                    <button  class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
+                    <button class="btn w-100 text-white" style="background-color: #1D9375">Terima</button>
                 </div>
             </div>
         </div>
