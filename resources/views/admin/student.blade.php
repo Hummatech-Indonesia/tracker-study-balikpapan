@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'students')
+
 @section('content')
     <h4 style="font-weight: 800">
         Tambah Siswa
