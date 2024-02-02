@@ -224,7 +224,8 @@
         }
 
         $('#student-status').addClass('mm-active')
-        $(document).ready(function() {
+
+        $(document).on('click', '.select', function() {
             var selectedValues = [];
 
             $(".select").change(function() {
@@ -235,40 +236,93 @@
             });
 
             $("#btn-select-change-alumni").click(function() {
-                $.ajax({
-                    url: '{{ route('change.alumni.select') }}',
-                    method: 'PATCH',
-                    data: {
-                        select: selectedValues,
-                    },
-                    success: function(response) {
-                        console.log(response.message);
-                        location.reload();
-                    },
-                    error: function(error) {
-                        console.error('Error:', error);
-                        // Handle error jika diperlukan
+                Swal.fire({
+                    title: 'Apakah anda yakin?',
+                    text: 'Anda akan mengubah status menjadi alumni. Tindakan ini tidak bisa dibatalkan.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Iya!',
+                    cancelButtonText: 'Tidak, batal!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // User clicked "Yes", send the AJAX request
+                        $.ajax({
+                            url: '{{ route('change.alumni.select') }}',
+                            method: 'PATCH',
+                            data: {
+                                select: selectedValues,
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                    text: response.message,
+                                    confirmButtonText: 'OK',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
+                            },
+                            error: function(error) {
+                                console.error('Error:', error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal',
+                                    text: 'An error occurred',
+                                    confirmButtonText: 'OK',
+                                });
+                            }
+                        });
                     }
                 });
             });
 
             $("#btn-select-change-student").click(function() {
-                $.ajax({
-                    url: '{{ route('change.student.select') }}',
-                    method: 'PATCH',
-                    data: {
-                        select: selectedValues,
-                    },
-                    success: function(response) {
-                        console.log(response.message);
-                        location.reload();
-                    },
-                    error: function(error) {
-                        console.error('Error:', error);
-                        // Handle error jika diperlukan
+                Swal.fire({
+                    title: 'Apakah Kamu Yakin?',
+                    text: 'Anda akan mengubah status menjadi siswa. Tindakan ini tidak bisa dibatalkan.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Iya!',
+                    cancelButtonText: 'Tidak, batal!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // User clicked "Yes", send the AJAX request
+                        $.ajax({
+                            url: '{{ route('change.student.select') }}',
+                            method: 'PATCH',
+                            data: {
+                                select: selectedValues,
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                    text: response.message,
+                                    confirmButtonText: 'OK',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
+                            },
+                            error: function(error) {
+                                console.error('Error:', error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal',
+                                    text: 'An error occurred',
+                                    confirmButtonText: 'OK',
+                                });
+                            }
+                        });
                     }
                 });
             });
+
 
             // Trigger change event of individual checkboxes when "Select All" is clicked
             $("#select-all").change(function() {
