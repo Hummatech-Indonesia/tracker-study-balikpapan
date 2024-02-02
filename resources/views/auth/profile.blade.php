@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'profile')
+
 @section('content')
     <h5 class="text-dark mb-4" style="font-weight: 550">
         Profil Anda
@@ -25,8 +27,8 @@
                                 <button class="btn btn-warning mb-3 btn-upload text-white" id="btn-upload">Ganti</button>
                                 <button class="btn btn-primary mb-3 " type="submit">Upload</button>
                                 @error('photo')
-                                <div class="text-danger"> <i>{{ $message }}</i>
-                                </div>
+                                    <div class="text-danger"> <i>{{ $message }}</i>
+                                    </div>
                                 @enderror
                             </div>
                         </div>
@@ -47,7 +49,7 @@
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" value="{{ auth()->user()->name }}" name="name" placeholder=""
                                     class="form-control  @error('name') is-invalid @enderror" />
-                                    @error('name')
+                                @error('name')
                                     <div class="text-danger"> <i> {{ $message }} </i>
                                     </div>
                                 @enderror
@@ -60,7 +62,7 @@
                             <div class="col-sm-9 text-secondary">
                                 <input type="text" value="{{ auth()->user()->email }}" name="email"
                                     class="form-control  @error('email') is-invalid @enderror" />
-                                    @error('email')
+                                @error('email')
                                     <div class="text-danger"> <i> {{ $message }} </i>
                                     </div>
                                 @enderror
@@ -73,7 +75,7 @@
                             <div class="col-sm-9 text-secondary">
                                 <input type="number" value="{{ auth()->user()->phone_number }}" name="phone_number"
                                     class="form-control  @error('phone_number') is-invalid @enderror" />
-                                    @error('phone_number')
+                                @error('phone_number')
                                     <div class="text-danger"> <i> {{ $message }} </i>
                                     </div>
                                 @enderror
@@ -120,10 +122,10 @@
                         <div class="col-sm-9 text-secondary">
                             <input type="password" placeholder="Masukkan Password Lama" name="current_password"
                                 placeholder="" class="form-control  @error('current_password') is-invalid @enderror" />
-                                @error('current_password')
-                                    <div class="text-danger"> <i> {{ $message }} </i>
-                                    </div>
-                                @enderror
+                            @error('current_password')
+                                <div class="text-danger"> <i> {{ $message }} </i>
+                                </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -133,10 +135,10 @@
                         <div class="col-sm-9 text-secondary">
                             <input type="password" placeholder="Masukkan Password Baru" name="password"
                                 class="form-control  @error('password') is-invalid @enderror" />
-                                @error('password')
-                                    <div class="text-danger"> <i> {{ $message }} </i>
-                                    </div>
-                                @enderror
+                            @error('password')
+                                <div class="text-danger"> <i> {{ $message }} </i>
+                                </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -146,10 +148,10 @@
                         <div class="col-sm-9 text-secondary">
                             <input type="password" placeholder="Konfirmasi Password" name="password_confirmation"
                                 class="form-control  @error('password_confirmation') is-invalid @enderror" />
-                                @error('password_confirmation')
-                                    <div class="text-danger">{{ $message }}
-                                    </div>
-                                @enderror
+                            @error('password_confirmation')
+                                <div class="text-danger">{{ $message }}
+                                </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row">

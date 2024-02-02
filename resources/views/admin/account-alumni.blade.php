@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'account-alumni')
+
 @section('content')
     @php
         use Carbon\Carbon;

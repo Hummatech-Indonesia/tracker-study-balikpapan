@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'lowongan')
+@section('title', 'lowongan-tersedia')
 
 @section('content')
     <h5 class="text-dark" style="font-weight: 500">
