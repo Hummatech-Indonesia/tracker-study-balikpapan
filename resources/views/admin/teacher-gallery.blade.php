@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'teacher-gallery')
+
 @section('style')
     <style>
         .user-img-teacher {
@@ -40,10 +42,10 @@
         @endforeach
     @endif
     @if (session('success'))
-    <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+        <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
 
     <h4>
@@ -121,7 +123,8 @@
                             <div class="col-12 mb-3">
                                 <label for="name" class="form-label">Nama</label>
                                 <input type="text" placeholder="Masukkan Nama Guru" value="{{ old('name') }}"
-                                    class="form-control @error('name') is-invalid @enderror" name="name" id="name">
+                                    class="form-control @error('name') is-invalid @enderror" name="name"
+                                    id="name">
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

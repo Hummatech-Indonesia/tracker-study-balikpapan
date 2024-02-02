@@ -109,7 +109,6 @@ Route::middleware('auth')->group(function () {
 
         Route::patch('change-alumni-select', [StudentStatusController::class, 'selectChangeAlumni'])->name('change.alumni.select');
         Route::patch('change-student-select', [StudentStatusController::class, 'selectChangeStudent'])->name('change.student.select');
-        //sampe sini
         Route::get('student-status', [StudentStatusController::class, 'index'])->name('student.classroom');
         Route::get('detail-student-status-be/{classroom}', [StudentStatusController::class, 'show']);
 
@@ -121,6 +120,7 @@ Route::middleware('auth')->group(function () {
         Route::get('students', function () {
             return view('admin.student');
         })->name('students.index');
+        //sampe sini
         Route::get('get-student', [StudentController::class, 'index']);
         Route::get('get-classroom', [ClassroomController::class, 'get']);
         Route::post('students', [StudentController::class, 'store'])->name('students.store');
@@ -138,8 +138,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('slider-gallery-delete/{slider_gallery_alumni}', [SliderGalleryAlumniController::class, 'destroy'])->name('slider.gallery.delete');
         Route::delete('alumni-gallery-delete/{gallery_alumni}', [GalleryAlumniController::class, 'destroy'])->name('alumni.delete');
         Route::put('alumni-gallery-update/{gallery_alumni}', [GalleryAlumniController::class, 'update'])->name('alumni.update');
-    });
-    Route::middleware('role:student')->group(function () {
     });
     Route::middleware('role:alumni')->prefix('alumni')->name('alumni.')->group(function () {
         Route::get('survei', [SurveyController::class, 'survey'])->name('job.survey');
@@ -182,7 +180,6 @@ Route::middleware('auth')->group(function () {
     Route::resources([
         'job-vacancy' => JobVacancyController::class,
     ]);
-
 
     Route::get('detail-lowongan-company/{job_vacancy}', [JobVacancyController::class, 'detail'])->name('detail.job-vacancy.company');
 

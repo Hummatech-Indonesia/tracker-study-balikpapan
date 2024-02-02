@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'alumni-gallery')
+
 @section('content')
     <h6 style="font-weight: 550" class="mb-0 text-uppercase mb-3">Upload Video</h6>
     @if ($errors->any())
