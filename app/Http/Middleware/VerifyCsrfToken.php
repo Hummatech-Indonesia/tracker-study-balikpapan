@@ -14,6 +14,9 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'change-alumni-select',
         'change-student-select',
-        'verification-student-all'
+        'verification-student-all',
+        'reject-student-all',
+        'approve-verify-company-all',
+        'reject-verify-company-all'
     ];
 }

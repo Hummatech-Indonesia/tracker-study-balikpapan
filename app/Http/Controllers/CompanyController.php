@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\CompanyInterface;
-use App\Enums\StatusEnum;
-use App\Http\Requests\SelectChangeUpdateRequest;
-use App\Mail\RegistrationMail;
-use Illuminate\Support\Facades\Mail;
 use App\Models\Company;
-use Illuminate\Contracts\View\View;
+use App\Enums\StatusEnum;
 use Illuminate\Http\Request;
+use App\Mail\RegistrationMail;
+use App\Helpers\ResponseHelper;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Mail;
+use App\Contracts\Interfaces\CompanyInterface;
+use App\Http\Requests\SelectChangeUpdateRequest;
 
 class CompanyController extends Controller
 {
@@ -43,7 +44,7 @@ class CompanyController extends Controller
         $select = $request->validated();
         $data['status'] = StatusEnum::ACTIVE->value;
         $this->company->verificationSelect($data, $select['select']);
-        return redirect()->back()->with('success', 'Berhasil Menyetujui Student');
+        return ResponseHelper::success(null, 'Berhasil Menyetujui Student');
     }
     /**
      * rejectAll
@@ -56,7 +57,7 @@ class CompanyController extends Controller
         $select = $request->validated();
         $data['status'] = StatusEnum::REJECT->value;
         $this->company->verificationSelect($data, $select['select']);
-        return redirect()->back()->with('success', 'Berhasil Menyetujui Student');
+        return ResponseHelper::success(null, 'Berhasil Menolak Student');
     }
 
     /**

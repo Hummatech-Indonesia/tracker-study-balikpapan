@@ -24,7 +24,7 @@
             <button id="btn-accept-alumni" class="btn text-white btn-primary">Terima Semua</button>
         </div>
         <div class="">
-            <button id="btn-select-change-student" class="btn text-white btn-warning">Tolak Semua</button>
+            <button id="btn-reject-student" class="btn text-white btn-warning">Tolak Semua</button>
         </div>
     </div>
     <div class="row">
@@ -62,12 +62,14 @@
                                         data-name="{{ $student->user->name }}" data-email="{{ $student->user->email }}"
                                         data-school_year ="{{ $student->classroom->schoolYear->name }}"
                                         data-classroom="{{ $student->classroom->name }}"
-                                        @if ($student->gender == 'male') data-jenis_kelamin="Laki-laki"
+                                        @if ($student->gender == 'male') data-gender="Laki-laki"
                                 @else
-                                data-jenis_kelamin="Perempuan" @endif
-                                        data-tanggal_lahir="{{ Carbon::parse($student->birth_date)->locale('id_ID')->isoFormat('DD MMMM Y') }}"
+                                data-gender="Perempuan" @endif
+                                        data-birth_date="{{ Carbon::parse($student->birth_date)->locale('id_ID')->isoFormat('DD MMMM Y') }}"
                                         data-major="{{ $student->classroom->major->name }}"
-                                        data-nisn="{{ $student->national_student_id }}">
+                                        data-phone_number="{{ $student->user->phone_number }}"
+                                        data-address="{{ $student->user->address }}"
+                                        data-national_student_id="{{ $student->national_student_id }}">
                                         Detail
                                     </a>
                                 </div>
@@ -109,71 +111,36 @@
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <div class="name">
-                            Nama
-                        </div>
-                        <div class="name"
-                            style="border-bottom: 2px solid solid #00000033; padding-left:10px; padding-top:0.5rem; padding-bottom:0.5rem"
-                            id="detail-name">
-                        </div>
-                    </div>
-                    <div class="" style="display: flex; justify-content:space-between">
-                        <div class="container-fluid">
-                            <div class="classroom">
-                                Kelas
+                        <div class="row">
+                            <div class="col">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="font-weight: bold;">Nama : <span id="detail-name"
+                                            style="font-weight: normal;"></span>
+                                    </li>
+                                    <li class="list-group-item" style="font-weight: bold;">Email: <span id="detail-email"
+                                            style="font-weight: normal;"></span>
+                                    </li>
+                                    <li class="list-group-item" style="font-weight: bold;">Jenis Kelamin : <span
+                                            id="detail-gender" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">NISN: <span
+                                            id="detail-national_student_id" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">Tanggal Lahir: <span
+                                            id="detail-birth_date" style="font-weight: normal;"></span></li>
+                                </ul>
                             </div>
-                            <div class="classroom"
-                                style="border-bottom: 2px solid solid #00000033; padding-left:10px; padding-top:0.5rem; padding-bottom:0.5rem"
-                                id="detail-classroom">
-                            </div>
-                        </div>
-                        <div class="container-fluid">
-                            <div class="lulusan_tahun _ajaran">
-                                Lulusan Tahun Ajaran
-                            </div>
-                            <div class="name"
-                                style="border-bottom: 2px solid solid #00000033; padding-left:10px; padding-top:0.5rem; padding-bottom:0.5rem"
-                                id="detail-school_year">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="" style="display: flex; justify-content:space-between">
-                        <div class="container-fluid">
-                            <div class="nisn">
-                                NISN
-                            </div>
-                            <div class="nisn"
-                                style="border-bottom: 2px solid solid #00000033; padding-left:10px; padding-top:0.5rem; padding-bottom:0.5rem"
-                                id="detail-nisn">
-                            </div>
-                        </div>
-                        <div class="container-fluid">
-                            <div class="major">
-                                Jurusan
-                            </div>
-                            <div class="name"
-                                style="border-bottom: 2px solid solid #00000033; padding-left:10px; padding-top:0.5rem; padding-bottom:0.5rem"
-                                id="detail-major">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="" style="display: flex; justify-content:space-between">
-                        <div class="container-fluid">
-                            <div class="jenis_kelamin">
-                                Jenis Kelamin
-                            </div>
-                            <div class="jenis_kelamin"
-                                style="border-bottom: 2px solid solid #00000033; padding-left:10px; padding-top:0.5rem; padding-bottom:0.5rem"
-                                id="detail-jenis_kelamin">
-                            </div>
-                        </div>
-                        <div class="container-fluid">
-                            <div class="tanggal_lahir">
-                                Tanggal Lahir
-                            </div>
-                            <div class="tanggal_lahir"
-                                style="border-bottom: 2px solid solid #00000033; padding-left:10px; padding-top:0.5rem; padding-bottom:0.5rem"
-                                id="detail-tanggal_lahir">
+                            <div class="col">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="font-weight: bold;">Tahun Ajaran: <span
+                                            id="detail-school_year" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">Jurusan: <span
+                                            id="detail-major" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">Kelas: <span
+                                            id="detail-classroom" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">No Telepon: <span
+                                            id="detail-phone_number" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">Alamat: <span
+                                            id="detail-address" style="font-weight: normal;"></span></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -188,6 +155,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
     <x-confirm-approve-modal-component />
     <x-confirm-reject-modal-component />
 @endsection
@@ -203,41 +171,66 @@
                 });
             });
 
-            $("#btn-accept-alumni").click(function() {
-                $.ajax({
-                    url: '{{ route('verification.student.all') }}',
-                    method: 'PATCH',
-                    data: {
-                        select: selectedValues,
-                    },
-                    success: function(response) {
-                        console.log(response.message);
-                        location.reload();
-                    },
-                    error: function(error) {
-                        console.error('Error:', error);
-                        // Handle error jika diperlukan
+            $("#btn-reject-student").click(function() {
+                Swal.fire({
+                    title: 'Apakah anda yakin?',
+                    text: 'Anda akan menolak semua siswa. Tindakan ini tidak bisa dibatalkan.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Iya!',
+                    cancelButtonText: 'Tidak, batal!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '{{ route('reject.student.all') }}',
+                            method: 'PATCH',
+                            data: {
+                                select: selectedValues,
+                            },
+                            success: function(response) {
+                                console.log(response.message);
+                                location.reload();
+                            },
+                            error: function(error) {
+                                console.error('Error:', error);
+                                // Handle error jika diperlukan
+                            }
+                        });
                     }
                 });
-            });
+            })
 
-            $("#btn-select-change-student").click(function() {
-                $.ajax({
-                    url: '{{ route('change.student.select') }}',
-                    method: 'PATCH',
-                    data: {
-                        select: selectedValues,
-                    },
-                    success: function(response) {
-                        console.log(response.message);
-                        location.reload();
-                    },
-                    error: function(error) {
-                        console.error('Error:', error);
-                        // Handle error jika diperlukan
+            $("#btn-accept-alumni").click(function() {
+                Swal.fire({
+                    title: 'Apakah anda yakin?',
+                    text: 'Anda akan menerima semua siswa. Tindakan ini tidak bisa dibatalkan.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Iya!',
+                    cancelButtonText: 'Tidak, batal!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '{{ route('verification.student.all') }}',
+                            method: 'PATCH',
+                            data: {
+                                select: selectedValues,
+                            },
+                            success: function(response) {
+                                console.log(response.message);
+                                location.reload();
+                            },
+                            error: function(error) {
+                                console.error('Error:', error);
+                                // Handle error jika diperlukan
+                            }
+                        });
                     }
                 });
-            });
+            })
+
 
             // Trigger change event of individual checkboxes when "Select All" is clicked
             $("#select-all").change(function() {

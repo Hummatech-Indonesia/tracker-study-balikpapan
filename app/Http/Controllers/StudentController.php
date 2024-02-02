@@ -74,6 +74,19 @@ class StudentController extends Controller
         $this->student->verificationSelect($data, $select['select']);
         return ResponseHelper::success(null, 'Berhasil Menyetujui Student');
     }
+    /**
+     * verificationStudentAll
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function rejectStudentAll(SelectChangeUpdateRequest $request)
+    {
+        $select = $request->validated();
+        $data['status'] = StatusEnum::REJECT->value;
+        $this->student->verificationSelect($data, $select['select']);
+        return ResponseHelper::success(null, 'Berhasil Menolak Student');
+    }
 
     /**
      * rejectVerificationStudent

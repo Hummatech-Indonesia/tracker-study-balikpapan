@@ -198,7 +198,7 @@ Route::middleware('auth')->group(function () {
 
     Route::patch('verification-student/{student}', [StudentController::class, 'verificationStudent'])->name('verification.student');
     Route::patch('verification-student-all', [StudentController::class, 'verificationStudentAll'])->name('verification.student.all');
-    Route::patch('reject-student-all', [StudentController::class, 'verificationStudentAll'])->name('reject.student.all');
+    Route::patch('reject-student-all', [StudentController::class, 'rejectStudentAll'])->name('reject.student.all');
     Route::patch('reject-verification-student/{student}', [StudentController::class, 'rejectVerificationStudent'])->name('reject.verification.student');
     Route::get('alumni-register', function () {
         return view('admin.alumni-register');
