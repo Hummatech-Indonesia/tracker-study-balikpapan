@@ -23,7 +23,7 @@
                             </div>
                             <div class="mt-1">
                                 <h5 class="text-white text-center" style="font-weight: 00">
-                                    TRACER STUDY SMKN 2 PENAJAM
+                                    TRACER STUDY SMKN 2 Penajam Paser Utara
                                 </h5>
                             </div>
                             <img src="{{ asset('High School-cuate.png') }}" width="550" alt=""
