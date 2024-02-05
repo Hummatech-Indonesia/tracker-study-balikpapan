@@ -120,7 +120,6 @@ Route::middleware('auth')->group(function () {
         Route::get('students', function () {
             return view('admin.student');
         })->name('students.index');
-        //sampe sini
         Route::get('get-student', [StudentController::class, 'index']);
         Route::get('get-classroom', [ClassroomController::class, 'get']);
         Route::post('students', [StudentController::class, 'store'])->name('students.store');

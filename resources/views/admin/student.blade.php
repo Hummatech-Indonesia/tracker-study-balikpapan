@@ -15,7 +15,7 @@
                         <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
                     </div>
                     <div class="col-lg-3">
-                        <select name="classroom" id="" class="form-select classroom py-2">
+                        <select name="classroom" id="classroom-filter" class="form-select classroom py-2">
                             <option value="">Filter Kelas</option>
                             {{-- @foreach ($classrooms as $classroom)
                                 <option {{ request()->classroom == $classroom->id ? 'selected' : '' }}
@@ -438,6 +438,9 @@
                 get(1)
             }, 500);
         });
+        $('#classroom-filter').change(function(){
+            get(1)
+        })
         get(1)
 
         function get(page) {
@@ -445,7 +448,7 @@
                 url: 'get-student?page=' + page,
                 method: 'GET',
                 data: {
-                    classroom: $('#classroom').val(),
+                    classroom: $('#classroom-filter').val(),
                     name: $('#search-name').val()
                 },
                 dataType: 'JSON',

@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'add-portofolio')
+
 @section('style')
     <link href="{{ asset('assets-admin/plugins/Drag-And-Drop/dist/imageuploadify.min.css') }}" rel="stylesheet" />
 @endsection
@@ -12,9 +14,9 @@
                 </h5>
             </div>
             <div class="">
-                    <button type="submit" class="btn btn-primary btn-send text-white">
-                        Kirim
-                    </button>
+                <button type="submit" class="btn btn-primary btn-send text-white">
+                    Kirim
+                </button>
                 <a href="{{ route('portofolio') }}" class="btn btn-warning text-white">
                     Kembali
                 </a>

@@ -13,7 +13,7 @@
                                 Daftar Untuk Masuk
                             </h2>
                             <h5 class="text-center text-white mb-5 mt-2" style="font-weight: 00">
-                                TRACER STUDY SMKN 2 PENAJAM
+                                TRACER STUDY SMKN 2 Penajam Paser Utara
                             </h5>
                             <img src="{{ asset('company.png') }}" class="mt-4" width="500" alt="" />
                         </div>
@@ -31,7 +31,7 @@
                                 <div class="text-center">
                                     <img src="{{ asset('logo.png') }}" alt="">
                                     <h3 class="text-dark mt-3" style="font-weight: 800">Register</h3>
-                                    <p class="mb-0 text-dark fs-6 mb-2">Daftarkan Anda Sebagai Perusahaan di SMKN 2 PENAJAM
+                                    <p class="mb-0 text-dark fs-6 mb-2">Daftarkan Anda Sebagai Perusahaan di SMKN 2 Penajam Paser Utara
                                     </p>
                                 </div>
                                 <div class="form-body">

@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'detail-applicant-portofolio')
+
 @section('style')
     <style>
         .photo-stack {
@@ -104,7 +106,8 @@
                 </div>
                 <div class="d-flex justify-content-end mb-4 gap-3 px-4">
                     <div class="">
-                        <a href="{{ route('detail.portofolio', ['portofolio' => $portofolio->id]) }}" class="btn btn-primary">
+                        <a href="{{ route('detail.portofolio', ['portofolio' => $portofolio->id]) }}"
+                            class="btn btn-primary">
                             Detail
                         </a>
                     </div>
