@@ -6,7 +6,7 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
-        <li class="menu-label">H O M E</li>
+        <li class="menu-label">Beranda</li>
         <li>
             <a href="{{ route('dashboard') }}">
                 <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -30,7 +30,7 @@
         </li>
         @if (auth()->user()->roles[0]->name == 'admin' || auth()->user()->roles[0]->name == 'staff')
             @role('admin')
-                <li>
+                {{-- <li>
                     <a href="{{ route('students.index') }}">
                         <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"
                                 viewBox="0 0 24 24">
@@ -40,7 +40,8 @@
                         </div>
                         <div class="menu-title mt-1">Siswa</div>
                     </a>
-                </li>
+                </li> --}}
+                <li class="menu-label">Master Data</li>
                 <li>
                     <a href="{{ route('school-years.index') }}">
                         <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -76,7 +77,7 @@
                 </li>
             @endrole
             @role('admin|staff')
-                <li>
+                {{-- <li>
                     <a href="{{ route('account-verification') }}">
                         <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                 viewBox="0 0 24 24">
@@ -86,9 +87,10 @@
                         </div>
                         <div class="menu-title mt-1">Verfikasi Akun</div>
                     </a>
-                </li>
+                </li> --}}
             @endrole
             @role('admin')
+            <li class="menu-label">Management Landing Page</li>
                 <li>
                     <a class="has-arrow" href="javascript:;">
                         <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -121,15 +123,16 @@
                     </a>
                 </li>
             @endrole
+            <li class="menu-label">Siswa Dan Alumni</li>
             <li>
-                <a href="{{ route('company') }}">
+                <a href="{{ route('students.index') }}">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"
                             viewBox="0 0 24 24">
                             <path fill="currentColor"
-                                d="M19 3v18h-6v-3.5h-2V21H5V3zm-4 4h2V5h-2zm-4 0h2V5h-2zM7 7h2V5H7zm8 4h2V9h-2zm-4 0h2V9h-2zm-4 0h2V9H7zm8 4h2v-2h-2zm-4 0h2v-2h-2zm-4 0h2v-2H7zm8 4h2v-2h-2zm-8 0h2v-2H7zM21 1H3v22h18z" />
+                                d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4" />
                         </svg>
                     </div>
-                    <div class="menu-title mt-1">Perusahaan</div>
+                    <div class="menu-title mt-1">Siswa</div>
                 </a>
             </li>
             <li id="survey-alumni">
@@ -168,6 +171,18 @@
                     <div class="menu-title mt-1">Alumni</div>
                 </a>
             </li>
+            <li class="menu-label">Perusahaan</li>
+            <li>
+                <a href="{{ route('company') }}">
+                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"
+                            viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M19 3v18h-6v-3.5h-2V21H5V3zm-4 4h2V5h-2zm-4 0h2V5h-2zM7 7h2V5H7zm8 4h2V9h-2zm-4 0h2V9h-2zm-4 0h2V9H7zm8 4h2v-2h-2zm-4 0h2v-2h-2zm-4 0h2v-2H7zm8 4h2v-2h-2zm-8 0h2v-2H7zM21 1H3v22h18z" />
+                        </svg>
+                    </div>
+                    <div class="menu-title mt-1">Perusahaan</div>
+                </a>
+            </li>
             <li id="company-admin">
                 <a href="/vacancy">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -184,6 +199,7 @@
                 </a>
             </li>
             @role('admin')
+            <li class="menu-label">Kelola Akun</li>
                 <li>
                     <a href="{{ Route('users.index') }}">
                         <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
