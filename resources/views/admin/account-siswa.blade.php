@@ -12,7 +12,7 @@
             </h4>
         </div>
         <div class="position-relative mb-3 col-lg-3">
-            <form action="{{ route('account.siswa') }}" method="get">
+            <form action="{{ route('account-verification') }}" method="get">
                 <input type="text" name="name" value="{{ Request::get('name') }}"
                     class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
                 <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3">
