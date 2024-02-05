@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Student;
-use App\Enums\StatusEnum;
-use Illuminate\Http\Request;
-use App\Http\Requests\StudentRequest;
-use Illuminate\Support\Facades\Mail;
-use App\Contracts\Interfaces\StudentInterface;
-use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\Auth\RegisterInterface;
+use App\Contracts\Interfaces\ClassroomInterface;
+use App\Contracts\Interfaces\CompanyInterface;
 use App\Contracts\Interfaces\MajorInterface;
+use App\Contracts\Interfaces\StudentInterface;
+use App\Enums\StatusEnum;
 use App\Helpers\ResponseHelper;
 use App\Http\Requests\ImportRequest;
 use App\Http\Requests\SelectChangeUpdateRequest;
+use App\Http\Requests\StudentRequest;
 use App\Http\Requests\StudentUpdateRequest;
 use App\Http\Resources\ChartAlumniResource;
 use App\Http\Resources\StudentResource;
 use App\Imports\StudentImport;
 use App\Mail\RegistrationMail;
 use App\Models\ApplyJobVacancy;
+use App\Models\Student;
+use App\Models\User;
 use App\Services\StudentService;
 use App\Traits\PaginationTrait;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class StudentController extends Controller
@@ -33,19 +34,21 @@ class StudentController extends Controller
     private RegisterInterface $register;
     private ClassroomInterface $classroom;
     private MajorInterface $major;
+    private CompanyInterface $company;
 
     /**
      * __construct
      *
      * @return void
      */
-    public function __construct(StudentInterface $student, StudentService $service, RegisterInterface $register, ClassroomInterface $classroom, MajorInterface $major)
+    public function __construct(StudentInterface $student, StudentService $service, RegisterInterface $register, ClassroomInterface $classroom, MajorInterface $major, CompanyInterface $company)
     {
         $this->major = $major;
         $this->student = $student;
         $this->service = $service;
         $this->register = $register;
         $this->classroom = $classroom;
+        $this->company = $company;
     }
 
     /**
@@ -108,10 +111,13 @@ class StudentController extends Controller
      */
     public function viewVerificationStudent(Request $request)
     {
-        $request->merge(['is_graduate' => 0]);
         $students = $this->student->studentNonactive($request, 10);
+        $alumnis = $this->student->alumniNonactive($request, 10);
+        $companies = $this->company->search($request, 10);
         return view('admin.account-siswa', [
-            'students' => $students
+            'students' => $students,
+            'alumnis' => $alumnis,
+            'companies' => $companies,
         ]);
     }
     /**
@@ -125,7 +131,7 @@ class StudentController extends Controller
         $request->merge(['is_graduate' => 1]);
         $students = $this->student->studentNonactive($request, 10);
         return view('admin.account-alumni', [
-            'students' => $students
+            'students' => $students,
         ]);
     }
 

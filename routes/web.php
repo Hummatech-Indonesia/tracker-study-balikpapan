@@ -189,7 +189,7 @@ Route::middleware('auth')->group(function () {
         return view('emails.apply-job-vacancy');
     });
 
-    Route::get('account-siswa', [StudentController::class, 'viewVerificationStudent'])->name('account.siswa');
+    Route::get('account-verification', [StudentController::class, 'viewVerificationStudent'])->name('account.verification');
     Route::get('account-alumni', [StudentController::class, 'viewVerificationAlumni'])->name('account.alumni');
 
     Route::patch('verification-student/{student}', [StudentController::class, 'verificationStudent'])->name('verification.student');
