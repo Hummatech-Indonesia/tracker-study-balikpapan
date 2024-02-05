@@ -399,6 +399,9 @@
                     <thead>
                         <tr>
                             <td>
+                                No
+                            </td>
+                            <td>
                                 Nama Siswa
                             </td>
                             <td>
@@ -406,6 +409,9 @@
                             </td>
                             <td>
                                 NISN
+                            </td>
+                            <td>
+                                No Telephone
                             </td>
                             <td>
                                 Kelas
@@ -551,7 +557,13 @@
                         })
                         $('.btn-alumni').click(function() {
                             id = $(this).data('id')
-                            var actionUrl = `students/${id}`;
+                            var actionUrl = `/change-alumni/${id}`;
+                            $('#form-alumni').attr('action', actionUrl);
+                            $('#modal-alumni').modal('show')
+                        })
+                        $('.btn-siswa').click(function() {
+                            id = $(this).data('id')
+                            var actionUrl = `/change-student/${id}`;
                             $('#form-alumni').attr('action', actionUrl);
                             $('#modal-alumni').modal('show')
                         })
@@ -617,10 +629,15 @@
                 }
             });
         }
-
+        let counter = 1;
         function studentRow(data) {
             return `
                             <tr>
+                                <td>
+                                    <p class="mb-0 fw-normal mt-2">
+                                        ${counter++}
+                                    </p>
+                                </td>
                                 <td>
                                     <p class="mb-0 fw-normal mt-2">
                                         ${data.name}
@@ -638,11 +655,15 @@
                                 </td>
                                 <td>
                                     <p class="mb-0 fw-normal mt-2">
+                                        ${data.phone_number}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="mb-0 fw-normal mt-2">
                                         ${data.classroom}
                                     </p>
                                 </td>
                                 <td>
-                                    <button data-id="${data.id}" data-bs-toggle="modal" class="btn btn-alumni btn-${data.is_graduate == 0 ? 'alumni' : 'student'} text-white ${data.is_graduate == 0 ? 'btn-primary' : 'btn-warning'}">${data.is_graduate == 0 ? 'Jadikan Alumni' : 'Jadikan Siswa'}</button>
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
                                             <a class="btn text-white btn-detail" data-id="${data.id}" style="background-color: #1D9375">
@@ -684,6 +705,11 @@
                                                         d="M13.4579 4.95882C13.4579 4.95882 14.1663 3.54181 16.9996 3.54181C19.8329 3.54181 20.5413 4.95848 20.5413 4.95848"
                                                         stroke="white" stroke-width="3" stroke-linecap="round" />
                                                 </svg> </button>
+                                        </div>
+                                        <div class="">
+                                            <button data-id="${data.id_data}" class="btn-alumni btn btn-primary">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 448 512"><path fill="currentColor" d="M219.3.5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128S96 230.7 96 160v-57.1l-48-9.6v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3S52.8 256 48 256H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64c0-11.4 8.1-21.3 19.3-23.5zM111.9 327.7c10.5-3.4 21.8.4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5c65 20.9 112 81.7 112 153.6c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6"/></svg>
+                                            </button>
                                         </div>
                                     </div>
                                 </td>
