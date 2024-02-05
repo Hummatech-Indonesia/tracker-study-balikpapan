@@ -6,7 +6,7 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
-        <li class="menu-label">H O M E</li>
+        <li class="menu-label">Beranda</li>
         <li>
             <a href="{{ route('dashboard') }}">
                 <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -28,8 +28,102 @@
                 <div class="menu-title mt-1">Dashboard</div>
             </a>
         </li>
-        @if (auth()->user()->roles[0]->name == 'admin' || auth()->user()->roles[0]->name == 'staff' )
-        @role('admin')
+        @if (auth()->user()->roles[0]->name == 'admin' || auth()->user()->roles[0]->name == 'staff')
+            @role('admin')
+                {{-- <li>
+                    <a href="{{ route('students.index') }}">
+                        <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"
+                                viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4" />
+                            </svg>
+                        </div>
+                        <div class="menu-title mt-1">Siswa</div>
+                    </a>
+                </li> --}}
+                <li class="menu-label">Master Data</li>
+                <li>
+                    <a href="{{ route('school-years.index') }}">
+                        <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z" />
+                            </svg>
+                        </div>
+                        <div class="menu-title mt-1">Tahun Ajaran</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('majors.index') }}">
+                        <div class="parent-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M4 21q-.825 0-1.412-.587T2 19V5q0-.825.588-1.412T4 3h14q.825 0 1.413.588T20 5v2h2v2h-2v2h2v2h-2v2h2v2h-2v2q0 .825-.587 1.413T18 21zm0-2h14V5H4zm2-2h5v-4H6zm6-7h4V7h-4zm-6 2h5V7H6zm6 5h4v-6h-4zM4 5v14z" />
+                            </svg>
+                        </div>
+                        <div class="menu-title mt-1">Jurusan</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('classrooms.index') }}">
+                        <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M6.75 19V7h1v11h7v1zm4-12.5q-.71 0-1.201-.491q-.491-.492-.491-1.201q0-.71.491-1.201q.491-.492 1.201-.492q.71 0 1.201.492t.491 1.2q0 .71-.491 1.202T10.75 6.5m5.5 15V17h-7.5V9.73q0-.857.571-1.428t1.429-.571q.858 0 1.429.57q.571.572.571 1.43V15h4.5v6.5z" />
+                            </svg>
+                        </div>
+                        <div class="menu-title mt-1">Kelas</div>
+                    </a>
+                </li>
+            @endrole
+            @role('admin|staff')
+                {{-- <li>
+                    <a href="{{ route('account-verification') }}">
+                        <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M19 17v2H7v-2s0-4 6-4s6 4 6 4m-3-9a3 3 0 1 0-3 3a3 3 0 0 0 3-3m3.2 5.06A5.6 5.6 0 0 1 21 17v2h3v-2s0-3.45-4.8-3.94M18 5a2.91 2.91 0 0 0-.89.14a5 5 0 0 1 0 5.72A2.91 2.91 0 0 0 18 11a3 3 0 0 0 0-6M7.34 8.92l1.16 1.41l-4.75 4.75l-2.75-3l1.16-1.16l1.59 1.58z" />
+                            </svg>
+                        </div>
+                        <div class="menu-title mt-1">Verfikasi Akun</div>
+                    </a>
+                </li> --}}
+            @endrole
+            @role('admin')
+            <li class="menu-label">Management Landing Page</li>
+                <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                viewBox="0 0 36 36" fill="currentColor">
+                                <path
+                                    d="M29.25 4.5H6.75C5.55693 4.5013 4.41309 4.97583 3.56946 5.81946C2.72583 6.66309 2.2513 7.80693 2.25 9V27C2.2513 28.1931 2.72583 29.3369 3.56946 30.1805C4.41309 31.0242 5.55693 31.4987 6.75 31.5H29.25C30.4431 31.4987 31.5869 31.0242 32.4305 30.1805C33.2742 29.3369 33.7487 28.1931 33.75 27V9C33.7487 7.80693 33.2742 6.66309 32.4305 5.81946C31.5869 4.97583 30.4431 4.5013 29.25 4.5ZM23.625 9C24.2925 9 24.945 9.19794 25.5 9.56879C26.0551 9.93964 26.4876 10.4667 26.7431 11.0834C26.9985 11.7001 27.0654 12.3787 26.9352 13.0334C26.8049 13.6881 26.4835 14.2895 26.0115 14.7615C25.5395 15.2335 24.9381 15.5549 24.2834 15.6852C23.6287 15.8154 22.9501 15.7485 22.3334 15.4931C21.7167 15.2376 21.1896 14.8051 20.8188 14.25C20.4479 13.695 20.25 13.0425 20.25 12.375C20.2509 11.4802 20.6068 10.6223 21.2395 9.98954C21.8723 9.35681 22.7302 9.00093 23.625 9ZM6.75 29.25C6.15326 29.25 5.58097 29.0129 5.15901 28.591C4.73705 28.169 4.5 27.5967 4.5 27V22.2448L11.1684 16.3174C11.8118 15.7468 12.6486 15.443 13.5082 15.4678C14.3678 15.4926 15.1856 15.8442 15.795 16.451L20.3618 21.008L12.1198 29.25H6.75ZM31.5 27C31.5 27.5967 31.2629 28.169 30.841 28.591C30.419 29.0129 29.8467 29.25 29.25 29.25H15.3021L23.8395 20.7127C24.4439 20.1986 25.211 19.9154 26.0044 19.9134C26.7979 19.9113 27.5664 20.1905 28.1735 20.7014L31.5 23.4731V27Z"
+                                    fill="currentColor" />
+                            </svg></i>
+                        </div>
+                        <div class="menu-title mt-1">Unggah Foto Galeri</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('teacher-gallery.index') }}"><i class='bx bx-radio-circle'></i>Galeri
+                                Guru</a>
+                        </li>
+                        <li> <a href="{{ route('alumni.gallery') }}"><i class='bx bx-radio-circle'></i>Galeri Alumni</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ route('news.index') }}">
+                        <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                viewBox="0 0 40 40" fill="currentColor">
+                                <path
+                                    d="M31.6667 33.3332H8.33333C6.49238 33.3332 5 31.8408 5 29.9998L5 9.99984C5 8.15889 6.49239 6.6665 8.33333 6.6665L25 6.6665C26.841 6.6665 28.3333 8.15889 28.3333 9.99984V11.6665M31.6667 33.3332C29.8257 33.3332 28.3333 31.8408 28.3333 29.9998L28.3333 11.6665M31.6667 33.3332C33.5076 33.3332 35 31.8408 35 29.9998V14.9998C35 13.1589 33.5076 11.6665 31.6667 11.6665L28.3333 11.6665M21.6667 6.6665L15 6.6665M11.6667 26.6665H21.6667M11.6667 13.3332H21.6667V19.9998H11.6667V13.3332Z"
+                                    stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></i>
+                        </div>
+                        <div class="menu-title mt-1">Unggah Berita</div>
+                    </a>
+                </li>
+            @endrole
+            <li class="menu-label">Siswa Dan Alumni</li>
             <li>
                 <a href="{{ route('students.index') }}">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"
@@ -39,103 +133,6 @@
                         </svg>
                     </div>
                     <div class="menu-title mt-1">Siswa</div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('school-years.index') }}">
-                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
-                    </div>
-                    <div class="menu-title mt-1">Tahun Ajaran</div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('majors.index') }}">
-                    <div class="parent-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M4 21q-.825 0-1.412-.587T2 19V5q0-.825.588-1.412T4 3h14q.825 0 1.413.588T20 5v2h2v2h-2v2h2v2h-2v2h2v2h-2v2q0 .825-.587 1.413T18 21zm0-2h14V5H4zm2-2h5v-4H6zm6-7h4V7h-4zm-6 2h5V7H6zm6 5h4v-6h-4zM4 5v14z"/></svg>
-                    </div>
-                    <div class="menu-title mt-1">Jurusan</div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('classrooms.index') }}">
-                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.75 19V7h1v11h7v1zm4-12.5q-.71 0-1.201-.491q-.491-.492-.491-1.201q0-.71.491-1.201q.491-.492 1.201-.492q.71 0 1.201.492t.491 1.2q0 .71-.491 1.202T10.75 6.5m5.5 15V17h-7.5V9.73q0-.857.571-1.428t1.429-.571q.858 0 1.429.57q.571.572.571 1.43V15h4.5v6.5z"/></svg>
-                    </div>
-                    <div class="menu-title mt-1">Kelas</div>
-                </a>
-            </li>
-            @endrole
-            {{-- @role('admin|staff')
-            <li>
-                <a class="has-arrow" href="javascript:;">
-                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                            viewBox="0 0 36 36" fill="currentColor">
-                            <path
-                                d="M20.2501 18C23.9619 18 27.2412 14.5048 27.5626 10.208C27.7222 8.04937 27.0451 6.03633 25.6557 4.54078C24.2811 3.06352 22.3594 2.25 20.2501 2.25C18.1238 2.25 16.2008 3.05859 14.836 4.52672C13.4558 6.01102 12.7829 8.02828 12.9376 10.2066C13.2533 14.5041 16.5319 18 20.2501 18Z"
-                                fill="currentColor" />
-                            <path
-                                d="M34.8314 30.9206C34.238 27.6286 32.3853 24.8632 29.4743 22.9226C26.8889 21.1992 23.6131 20.25 20.25 20.25C16.887 20.25 13.6111 21.1992 11.0257 22.9219C8.1148 24.8625 6.26207 27.6279 5.66863 30.9199C5.53293 31.6744 5.71715 32.4204 6.17418 32.9667C6.38147 33.2157 6.64176 33.4152 6.93602 33.5507C7.23028 33.6862 7.5511 33.7543 7.87504 33.75H32.625C32.9492 33.7546 33.2702 33.6867 33.5647 33.5513C33.8593 33.416 34.1198 33.2164 34.3273 32.9674C34.7829 32.4211 34.9671 31.6751 34.8314 30.9206Z"
-                                fill="currentColor" />
-                            <path
-                                d="M7.3125 20.25V17.4375H10.125C10.4234 17.4375 10.7095 17.319 10.9205 17.108C11.1315 16.897 11.25 16.6109 11.25 16.3125C11.25 16.0141 11.1315 15.728 10.9205 15.517C10.7095 15.306 10.4234 15.1875 10.125 15.1875H7.3125V12.375C7.3125 12.0766 7.19397 11.7905 6.983 11.5795C6.77202 11.3685 6.48587 11.25 6.1875 11.25C5.88913 11.25 5.60298 11.3685 5.392 11.5795C5.18103 11.7905 5.0625 12.0766 5.0625 12.375V15.1875H2.25C1.95163 15.1875 1.66548 15.306 1.4545 15.517C1.24353 15.728 1.125 16.0141 1.125 16.3125C1.125 16.6109 1.24353 16.897 1.4545 17.108C1.66548 17.319 1.95163 17.4375 2.25 17.4375H5.0625V20.25C5.0625 20.5484 5.18103 20.8345 5.392 21.0455C5.60298 21.2565 5.88913 21.375 6.1875 21.375C6.48587 21.375 6.77202 21.2565 6.983 21.0455C7.19397 20.8345 7.3125 20.5484 7.3125 20.25Z"
-                                fill="currentColor" />
-                        </svg>
-                    </div>
-                    <div class="menu-title mt-1">Verifikasi Akun</div>
-                </a>
-                <ul>
-                    @role("admin")
-                    <li> <a href="{{ route('account.siswa') }}"><i class='bx bx-radio-circle'></i>Verifikasi Siswa</a>
-                    </li>
-                    @endrole
-                    @role('admin|staff')
-                    <li> <a href="{{route('account.alumni')}}"><i class='bx bx-radio-circle'></i>Verifikasi Alumni</a>
-                    </li>
-                    @endrole
-                    @role('admin')
-                    <li> <a href="{{ route('verify.company') }}"><i class='bx bx-radio-circle'></i>Verifikasi
-                            Perusahaan</a>
-                    </li>
-                    @endrole
-                </ul>
-            </li>
-            @endrole --}}
-            @role('admin')
-            <li>
-                <a class="has-arrow" href="javascript:;">
-                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                            viewBox="0 0 36 36" fill="currentColor">
-                            <path
-                                d="M29.25 4.5H6.75C5.55693 4.5013 4.41309 4.97583 3.56946 5.81946C2.72583 6.66309 2.2513 7.80693 2.25 9V27C2.2513 28.1931 2.72583 29.3369 3.56946 30.1805C4.41309 31.0242 5.55693 31.4987 6.75 31.5H29.25C30.4431 31.4987 31.5869 31.0242 32.4305 30.1805C33.2742 29.3369 33.7487 28.1931 33.75 27V9C33.7487 7.80693 33.2742 6.66309 32.4305 5.81946C31.5869 4.97583 30.4431 4.5013 29.25 4.5ZM23.625 9C24.2925 9 24.945 9.19794 25.5 9.56879C26.0551 9.93964 26.4876 10.4667 26.7431 11.0834C26.9985 11.7001 27.0654 12.3787 26.9352 13.0334C26.8049 13.6881 26.4835 14.2895 26.0115 14.7615C25.5395 15.2335 24.9381 15.5549 24.2834 15.6852C23.6287 15.8154 22.9501 15.7485 22.3334 15.4931C21.7167 15.2376 21.1896 14.8051 20.8188 14.25C20.4479 13.695 20.25 13.0425 20.25 12.375C20.2509 11.4802 20.6068 10.6223 21.2395 9.98954C21.8723 9.35681 22.7302 9.00093 23.625 9ZM6.75 29.25C6.15326 29.25 5.58097 29.0129 5.15901 28.591C4.73705 28.169 4.5 27.5967 4.5 27V22.2448L11.1684 16.3174C11.8118 15.7468 12.6486 15.443 13.5082 15.4678C14.3678 15.4926 15.1856 15.8442 15.795 16.451L20.3618 21.008L12.1198 29.25H6.75ZM31.5 27C31.5 27.5967 31.2629 28.169 30.841 28.591C30.419 29.0129 29.8467 29.25 29.25 29.25H15.3021L23.8395 20.7127C24.4439 20.1986 25.211 19.9154 26.0044 19.9134C26.7979 19.9113 27.5664 20.1905 28.1735 20.7014L31.5 23.4731V27Z"
-                                fill="currentColor" />
-                        </svg></i>
-                    </div>
-                    <div class="menu-title mt-1">Unggah Foto Galeri</div>
-                </a>
-                <ul>
-                    <li> <a href="{{ route('teacher-gallery.index') }}"><i class='bx bx-radio-circle'></i>Galeri
-                            Guru</a>
-                    </li>
-                    <li> <a href="{{ route('alumni.gallery') }}"><i class='bx bx-radio-circle'></i>Galeri Alumni</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="{{ route('news.index') }}">
-                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                            viewBox="0 0 40 40" fill="currentColor">
-                            <path
-                                d="M31.6667 33.3332H8.33333C6.49238 33.3332 5 31.8408 5 29.9998L5 9.99984C5 8.15889 6.49239 6.6665 8.33333 6.6665L25 6.6665C26.841 6.6665 28.3333 8.15889 28.3333 9.99984V11.6665M31.6667 33.3332C29.8257 33.3332 28.3333 31.8408 28.3333 29.9998L28.3333 11.6665M31.6667 33.3332C33.5076 33.3332 35 31.8408 35 29.9998V14.9998C35 13.1589 33.5076 11.6665 31.6667 11.6665L28.3333 11.6665M21.6667 6.6665L15 6.6665M11.6667 26.6665H21.6667M11.6667 13.3332H21.6667V19.9998H11.6667V13.3332Z"
-                                stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg></i>
-                    </div>
-                    <div class="menu-title mt-1">Unggah Berita</div>
-                </a>
-            </li>
-            @endrole
-            <li>
-                <a href="{{ route('company') }}">
-                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3v18h-6v-3.5h-2V21H5V3zm-4 4h2V5h-2zm-4 0h2V5h-2zM7 7h2V5H7zm8 4h2V9h-2zm-4 0h2V9h-2zm-4 0h2V9H7zm8 4h2v-2h-2zm-4 0h2v-2h-2zm-4 0h2v-2H7zm8 4h2v-2h-2zm-8 0h2v-2H7zM21 1H3v22h18z"/></svg>
-                    </div>
-                    <div class="menu-title mt-1">Perusahaan</div>
                 </a>
             </li>
             <li id="survey-alumni">
@@ -174,6 +171,18 @@
                     <div class="menu-title mt-1">Alumni</div>
                 </a>
             </li>
+            <li class="menu-label">Perusahaan</li>
+            <li>
+                <a href="{{ route('company') }}">
+                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27"
+                            viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M19 3v18h-6v-3.5h-2V21H5V3zm-4 4h2V5h-2zm-4 0h2V5h-2zM7 7h2V5H7zm8 4h2V9h-2zm-4 0h2V9h-2zm-4 0h2V9H7zm8 4h2v-2h-2zm-4 0h2v-2h-2zm-4 0h2v-2H7zm8 4h2v-2h-2zm-8 0h2v-2H7zM21 1H3v22h18z" />
+                        </svg>
+                    </div>
+                    <div class="menu-title mt-1">Perusahaan</div>
+                </a>
+            </li>
             <li id="company-admin">
                 <a href="/vacancy">
                     <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -190,18 +199,19 @@
                 </a>
             </li>
             @role('admin')
-            <li>
-                <a href="{{ Route('users.index') }}">
-                    <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                            viewBox="0 0 40 40" fill="currentColor">
-                            <path
-                                d="M31.6667 33.3332H8.33333C6.49238 33.3332 5 31.8408 5 29.9998L5 9.99984C5 8.15889 6.49239 6.6665 8.33333 6.6665L25 6.6665C26.841 6.6665 28.3333 8.15889 28.3333 9.99984V11.6665M31.6667 33.3332C29.8257 33.3332 28.3333 31.8408 28.3333 29.9998L28.3333 11.6665M31.6667 33.3332C33.5076 33.3332 35 31.8408 35 29.9998V14.9998C35 13.1589 33.5076 11.6665 31.6667 11.6665L28.3333 11.6665M21.6667 6.6665L15 6.6665M11.6667 26.6665H21.6667M11.6667 13.3332H21.6667V19.9998H11.6667V13.3332Z"
-                                stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg></i>
-                    </div>
-                    <div class="menu-title mt-1">Kelola Akun</div>
-                </a>
-            </li>
+            <li class="menu-label">Kelola Akun</li>
+                <li>
+                    <a href="{{ Route('users.index') }}">
+                        <div class="parent-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                viewBox="0 0 40 40" fill="currentColor">
+                                <path
+                                    d="M31.6667 33.3332H8.33333C6.49238 33.3332 5 31.8408 5 29.9998L5 9.99984C5 8.15889 6.49239 6.6665 8.33333 6.6665L25 6.6665C26.841 6.6665 28.3333 8.15889 28.3333 9.99984V11.6665M31.6667 33.3332C29.8257 33.3332 28.3333 31.8408 28.3333 29.9998L28.3333 11.6665M31.6667 33.3332C33.5076 33.3332 35 31.8408 35 29.9998V14.9998C35 13.1589 33.5076 11.6665 31.6667 11.6665L28.3333 11.6665M21.6667 6.6665L15 6.6665M11.6667 26.6665H21.6667M11.6667 13.3332H21.6667V19.9998H11.6667V13.3332Z"
+                                    stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></i>
+                        </div>
+                        <div class="menu-title mt-1">Kelola Akun</div>
+                    </a>
+                </li>
             @endrole
         @elseif(auth()->user()->roles[0]->name == 'company')
             <li id="company">

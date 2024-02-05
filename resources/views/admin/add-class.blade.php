@@ -52,10 +52,10 @@
                     @endif
                     <div class="card-body">
                         <div class="text-dark mb-2" style="font-weight: 500">
-                            Kelas {{ $classroom->name }}
+                            Jurusan {{ $classroom->major->name }}
                         </div>
 
-                        <h5 class="card-title text-dark" style="font-weight: 700">{{ $classroom->major->name }}</h5>
+                        <h5 class="card-title text-dark" style="font-weight: 700">{{ $classroom->name }}</h5>
                         <p class="card-text mt-2 mb-2">Tahun Ajaran {{ $classroom->schoolYear->name }}.</p>
                         <hr>
                         <div class="row">
