@@ -108,13 +108,13 @@
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header d-flex align-items-center">
-                        <h4 class="modal-title" id="exampleModalLabel2">
+                        <h5 class="modal-title" id="exampleModalLabel2">
                             Konfirmasi
-                        </h4>
+                        </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h5>Apakah anda yakin ingin menolak menjadikan akun ini menjadi alumni?</h5>
+                        <p class="text-dark fs-7 mb-0">Apakah anda yakin ingin menolak menjadikan akun ini menjadi alumni?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger text-white font-medium waves-effect"

@@ -427,10 +427,67 @@
         </div>
     </div>
     <x-delete-modal-component />
+
+    <div class="modal fade" id="modal-student" tabindex="-1" aria-labelledby="exampleModalLabel2">
+        <div class="modal-dialog modal-sm" role="document">
+            <form id="form-student" method="POST">
+                @method('PATCH')
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header d-flex align-items-center">
+                        <h4 class="modal-title" id="exampleModalLabel2">
+                            Konfirmasi
+                        </h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Apakah anda yakin ingin menolak menjadikan akun ini menjadi siswa?</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger text-white font-medium waves-effect"
+                            data-bs-dismiss="modal">
+                            Tutup
+                        </button>
+                        <button style="background-color: #1B3061" type="submit" class="btn text-white btn-create">
+                            Yakin
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-alumni" tabindex="-1" aria-labelledby="exampleModalLabel2">
+        <div class="modal-dialog modal-sm" role="document">
+            <form id="form-alumni" method="POST">
+                @method('PATCH')
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header d-flex align-items-center">
+                        <h5 class="modal-title" id="exampleModalLabel2">
+                            Konfirmasi
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-dark fs-7 mb-0">Apakah anda yakin ingin menolak menjadikan akun ini menjadi alumni?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger text-white font-medium waves-effect"
+                            data-bs-dismiss="modal">
+                            Tutup
+                        </button>
+                        <button style="background-color: #1B3061" type="submit" class="btn text-white btn-create">
+                            Yakin
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
-         let debounceTimer;
+        let debounceTimer;
         $('#search-name').keyup(function() {
             clearTimeout(debounceTimer);
 
@@ -438,7 +495,7 @@
                 get(1)
             }, 500);
         });
-        $('#classroom-filter').change(function(){
+        $('#classroom-filter').change(function() {
             get(1)
         })
         get(1)
@@ -491,6 +548,12 @@
                             var actionUrl = `students/${id}`;
                             $('#form-delete').attr('action', actionUrl);
                             $('#modal-delete').modal('show')
+                        })
+                        $('.btn-alumni').click(function() {
+                            id = $(this).data('id')
+                            var actionUrl = `students/${id}`;
+                            $('#form-alumni').attr('action', actionUrl);
+                            $('#modal-alumni').modal('show')
                         })
                     } else {
                         $('#data').html(`
@@ -579,6 +642,7 @@
                                     </p>
                                 </td>
                                 <td>
+                                    <button data-id="${data.id}" data-bs-toggle="modal" class="btn btn-alumni btn-${data.is_graduate == 0 ? 'alumni' : 'student'} text-white ${data.is_graduate == 0 ? 'btn-primary' : 'btn-warning'}">${data.is_graduate == 0 ? 'Jadikan Alumni' : 'Jadikan Siswa'}</button>
                                     <div class="d-flex justify-content-header gap-2">
                                         <div class="">
                                             <a class="btn text-white btn-detail" data-id="${data.id}" style="background-color: #1D9375">
