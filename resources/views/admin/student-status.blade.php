@@ -22,6 +22,9 @@
                     <div class="col-lg-3">
                         <select name="schoolYear" id="schoolYear-filter" class="form-select schoolYear py-2">
                             <option value="">Filter Tahun Lulus</option>
+                            @foreach ($schoolYears as $schoolYear)
+                            <option value="{{ $schoolYear->id }}">{{ $schoolYear->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -121,6 +124,15 @@
             });
             get(1)
 
+
+            $('#classroom-filter').change(function() {
+                get(1);
+            });
+
+            $('#schoolYear-filter').change(function() {
+                get(1);
+            });
+
             function get(page) {
                 $.ajax({
                     url: '/alumni-be?page=' + page,
@@ -128,6 +140,7 @@
                     data: {
                         name: $('#search-name').val(),
                         classroom: $('#classroom-filter').val(),
+                        schoolYear: $('#schoolYear-filter').val(),
                     },
                     dataType: 'JSON',
                     beforeSend: function() {

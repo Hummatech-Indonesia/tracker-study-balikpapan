@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\RoleEnum;
-use App\Models\Student;
-use App\Models\Classroom;
-use Illuminate\Http\Request;
-use App\Helpers\ResponseHelper;
-use App\Traits\PaginationTrait;
-use Illuminate\Contracts\View\View;
-use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
+use App\Contracts\Interfaces\SchoolYearInterface;
+use App\Contracts\Interfaces\StudentInterface;
+use App\Enums\RoleEnum;
+use App\Helpers\ResponseHelper;
 use App\Http\Requests\SelectChangeUpdateRequest;
 use App\Http\Resources\StudentAndAlumniResource;
-use App\Contracts\Interfaces\SchoolYearInterface;
+use App\Models\Classroom;
+use App\Models\Student;
+use App\Traits\PaginationTrait;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class StudentStatusController extends Controller
 {
@@ -54,9 +54,8 @@ class StudentStatusController extends Controller
 
     public function studentAlumni(): View
     {
-        $classrooms = $this->classroom->get();
         $schoolYears = $this->schoolYear->get();
-        return view('admin.student-status', compact('classrooms', 'schoolYears'));
+        return view('admin.student-status', compact('schoolYears'));
     }
 
     public function alumni(Request $request)
