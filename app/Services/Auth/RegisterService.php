@@ -36,7 +36,7 @@ class RegisterService
             $graduate = 0;
         }
         if (isset($data['school_year_id'])) {
-            $school_year = $data['school_yer_id'];
+            $school_year = $data['school_year_id'];
         } else {
             $school_year = null;
         }

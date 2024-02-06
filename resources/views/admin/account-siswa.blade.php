@@ -84,21 +84,21 @@
                         </a>
                     </li>
                 </ul>
-                <div class="d-flex justify-content-end gap-3 mb-3">
-                    <div class="">
-                        <button id="btn-accept-student" class="btn text-white btn-primary">Terima Semua</button>
-                    </div>
-                    <div class="">
-                        <button id="btn-reject-student" class="btn text-white btn-warning">Tolak Semua</button>
-                    </div>
-                </div>
             </div>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade active show" id="primary-pills-home" role="tabpanel">
+                    <div class="d-flex justify-content-end gap-3 mb-3">
+                        <div class="">
+                            <button id="btn-accept-student" class="btn text-white btn-primary">Terima Semua</button>
+                        </div>
+                        <div class="">
+                            <button id="btn-reject-student" class="btn text-white btn-warning">Tolak Semua</button>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <th> <input type="checkbox" name="" id="select-all"> </th>
+                                <th> <input type="checkbox" name="" class="select-all"> </th>
                                 <th>Nama</th>
                                 <th>Nisn</th>
                                 <th>Tahun Ajaran</th>
@@ -166,10 +166,18 @@
                     {{ $students->links('pagination::bootstrap-5') }}
                 </div>
                 <div class="tab-pane fade" id="primary-pills-profile" role="tabpanel">
+                    <div class="d-flex justify-content-end gap-3 mb-3">
+                        <div class="">
+                            <button id="btn-accept-student" class="btn text-white btn-primary">Terima Semua</button>
+                        </div>
+                        <div class="">
+                            <button id="btn-reject-student" class="btn text-white btn-warning">Tolak Semua</button>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <th> <input type="checkbox" name="" id="select-all"> </th>
+                                <th> <input type="checkbox" name="" class="select-all"> </th>
                                 <th>Nama</th>
                                 <th>Nisn</th>
                                 <th>Tahun Ajaran</th>
@@ -237,10 +245,18 @@
                     {{ $alumnis->links('pagination::bootstrap-5') }}
                 </div>
                 <div class="tab-pane fade" id="primary-pills-contact" role="tabpanel">
+                    <div class="d-flex justify-content-end gap-3 mb-3">
+                        <div class="">
+                            <button id="btn-accept-company" class="btn text-white btn-primary">Terima Semua</button>
+                        </div>
+                        <div class="">
+                            <button id="btn-reject-company" class="btn text-white btn-warning">Tolak Semua</button>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <th> <input type="checkbox" name="" id="select-all"> </th>
+                                <th> <input type="checkbox" name="" class="select-all"> </th>
                                 <th>Nama Perusahaan</th>
                                 <th>email</th>
                                 <th>deskripsi</th>
@@ -492,13 +508,13 @@
             })
 
             // Trigger change event of individual checkboxes when "Select All" is clicked
-            $("#select-all").change(function() {
+            $(".select-all").change(function() {
                 $(".select").prop("checked", $(this).prop("checked")).change();
             });
 
             $(".select").change(function() {
                 if (!$(this).prop("checked")) {
-                    $("#select-all").prop("checked", false);
+                    $(".select-all").prop("checked", false);
                 }
             });
         });
