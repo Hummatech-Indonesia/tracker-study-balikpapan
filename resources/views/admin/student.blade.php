@@ -3,7 +3,7 @@
 
 @section('content')
     <h4 style="font-weight: 800">
-        Tambah Siswa
+        Data Siswa
     </h4>
     <div class="row">
         <div class="col-12 col-md-9">
@@ -475,7 +475,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p class="text-dark fs-7 mb-0">Apakah anda yakin ingin menolak menjadikan akun ini menjadi alumni?</p>
+                        <p class="text-dark fs-7 mb-0">Apakah anda yakin ingin menjadikan akun ini menjadi alumni?
+                        </p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger text-white font-medium waves-effect"
@@ -630,6 +631,7 @@
             });
         }
         let counter = 1;
+
         function studentRow(data) {
             return `
                             <tr>
@@ -707,7 +709,7 @@
                                                 </svg> </button>
                                         </div>
                                         <div class="">
-                                            <button data-id="${data.id_data}" class="btn-alumni btn btn-primary">
+                                            <button data-id="${data.id_data}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Tooltip on top" class="btn-alumni btn btn-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 448 512"><path fill="currentColor" d="M219.3.5c3.1-.6 6.3-.6 9.4 0l200 40C439.9 42.7 448 52.6 448 64s-8.1 21.3-19.3 23.5L352 102.9V160c0 70.7-57.3 128-128 128S96 230.7 96 160v-57.1l-48-9.6v65.1l15.7 78.4c.9 4.7-.3 9.6-3.3 13.3S52.8 256 48 256H16c-4.8 0-9.3-2.1-12.4-5.9s-4.3-8.6-3.3-13.3L16 158.4V86.6C6.5 83.3 0 74.3 0 64c0-11.4 8.1-21.3 19.3-23.5zM111.9 327.7c10.5-3.4 21.8.4 29.4 8.5l71 75.5c6.3 6.7 17 6.7 23.3 0l71-75.5c7.6-8.1 18.9-11.9 29.4-8.5c65 20.9 112 81.7 112 153.6c0 17-13.8 30.7-30.7 30.7H30.7C13.8 512 0 498.2 0 481.3c0-71.9 47-132.7 111.9-153.6"/></svg>
                                             </button>
                                         </div>
@@ -715,6 +717,12 @@
                                 </td>
                             </tr>`
         }
+    </script>
+    <script>
+        $(function() {
+            $('[data-bs-toggle="popover"]').popover();
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        })
     </script>
     <script>
         $(document).ready(function() {
