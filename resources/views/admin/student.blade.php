@@ -6,44 +6,38 @@
         Tambah Siswa
     </h4>
     <div class="row">
-        <div class="col-12 col-md-9">
-            <form action="" method="get">
-                <div class="d-flex justify-content-header gap-3">
-                    <div class="position-relative mb-3 col-lg-5">
-                        <input type="text" name="name" value="{{ request()->name }}"
-                            class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
-                        <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+        <div class="d-flex justify-content-between">
+            <div class="">
+                <form action="" method="get">
+                    <div class="d-flex justify-content-header gap-3">
+                        <div class="position-relative mb-3 col-lg-7">
+                            <input type="text" name="name" value="{{ request()->name }}"
+                                class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
+                            <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
+                        </div>
+                        <div class="col-lg-5">
+                            <select name="classroom" id="classroom-filter" class="form-select classroom py-2">
+                                <option value="">Filter Kelas</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-lg-3">
-                        <select name="classroom" id="classroom-filter" class="form-select classroom py-2">
-                            <option value="">Filter Kelas</option>
-                            {{-- @foreach ($classrooms as $classroom)
-                                <option {{ request()->classroom == $classroom->id ? 'selected' : '' }}
-                                    value="{{ $classroom->id }}">{{ $classroom->name }}</option>
-                            @endforeach --}}
-                        </select>
-                    </div>
-                    <div class="col-lg-4">
-                        <button type="submit" class="btn btn-primary btn-md">
-                            Cari
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="d-flex gap-2 justify-content-end mb-3">
-                <button id="btn-select-change-alumni" class="btn text-white btn-warning">Jadikan Alumni</button>
-                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#modal-import"
-                    style="background-color: #1D9375">Import Siswa</button>
-                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
-                    style="background-color: #5D87FF">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19"
-                        fill="none">
-                        <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
-                        <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-                    </svg> Siswa</button>
+                </form>
             </div>
+            <div class="">
+                <div class="d-flex gap-2 justify-content-end mb-3">
+                    <button id="btn-select-change-alumni" class="btn text-white btn-warning">Jadikan Alumni</button>
+                    <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#modal-import"
+                        style="background-color: #1D9375">Import Siswa</button>
+                    <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleLargeModal"
+                        style="background-color: #5D87FF">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 19"
+                            fill="none">
+                            <path d="M9 2L9 17" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            <path d="M1.5 9.5L16.5 9.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+                        </svg> Siswa</button>
+                </div>
+            </div>
+
         </div>
     </div>
     <!-- Modal -->
@@ -400,7 +394,8 @@
                     <thead>
                         <tr>
                             <td>
-                                <input type="checkbox" name="checkbox" id="select-all" class="select-all form-check-input">
+                                <input type="checkbox" name="checkbox" id="select-all"
+                                    class="select-all form-check-input">
                             </td>
                             <td>
                                 No
@@ -497,18 +492,23 @@
     </div>
 @endsection
 @section('script')
-<script>
-    let debounceTimer;
-    $('#search-name').keyup(function() {
-        clearTimeout(debounceTimer);
+    <script>
+        let debounceTimer;
+        $('#search-name').keyup(function() {
+            clearTimeout(debounceTimer);
 
-        debounceTimer = setTimeout(function() {
-            get(1)
-        }, 500);
-    });
-    get(1)
+            debounceTimer = setTimeout(function() {
+                get(1)
+            }, 500);
+        });
+        get(1)
 
-    function get(page) {
+        $('#classroom-filter').change(function() {
+            get(1);
+        });
+
+
+        function get(page) {
             $.ajax({
                 url: 'get-student?page=' + page,
                 method: 'GET',
@@ -526,7 +526,7 @@
                         $('#pagination').html(handlePaginate(response.data.paginate))
                         response = response.data.data
                         $.each(response, function(index, data) {
-                            $('#data').append(studentRow(data))
+                            $('#data').append(studentRow(index, data))
                         })
                         $('[data-toggle="tooltip"]').tooltip();
                         student = response
@@ -586,9 +586,8 @@
 
             })
         }
-        let counter = 1;
 
-        function studentRow(data) {
+        function studentRow(index, data) {
             return `
                             <tr>
 
@@ -599,7 +598,7 @@
                             </div>
                                 <td>
                                     <p class="mb-0 fw-normal mt-2">
-                                        ${counter++}
+                                        ${index + 1}
                                     </p>
                                 </td>
                                 <td>
@@ -680,181 +679,181 @@
                             </tr>`;
         }
 
-    $('#student-status').addClass('mm-active')
+        $('#student-status').addClass('mm-active')
 
-    $(document).on('click', '.select', function() {
-        var selectedValues = [];
+        $(document).on('click', '.select', function() {
+            var selectedValues = [];
 
-        $(".select").change(function() {
-            selectedValues = [];
-            $(".select:checked").each(function() {
-                selectedValues.push($(this).val());
+            $(".select").change(function() {
+                selectedValues = [];
+                $(".select:checked").each(function() {
+                    selectedValues.push($(this).val());
+                });
             });
-        });
 
-        $("#btn-select-change-alumni").click(function() {
-            Swal.fire({
-                title: 'Apakah anda yakin?',
-                text: 'Anda akan mengubah status menjadi alumni. Tindakan ini tidak bisa dibatalkan.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Iya!',
-                cancelButtonText: 'Tidak, batal!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // User clicked "Yes", send the AJAX request
-                    $.ajax({
-                        url: '{{ route('change.alumni.select') }}',
-                        method: 'PATCH',
-                        data: {
-                            select: selectedValues,
-                        },
-                        success: function(response) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil',
-                                text: response.message,
-                                confirmButtonText: 'OK',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.reload();
-                                }
-                            });
-                        },
-                        error: function(error) {
-                            console.error('Error:', error);
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Gagal',
-                                text: 'An error occurred',
-                                confirmButtonText: 'OK',
-                            });
-                        }
-                    });
+            $("#btn-select-change-alumni").click(function() {
+                Swal.fire({
+                    title: 'Apakah anda yakin?',
+                    text: 'Anda akan mengubah status menjadi alumni. Tindakan ini tidak bisa dibatalkan.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Iya!',
+                    cancelButtonText: 'Tidak, batal!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // User clicked "Yes", send the AJAX request
+                        $.ajax({
+                            url: '{{ route('change.alumni.select') }}',
+                            method: 'PATCH',
+                            data: {
+                                select: selectedValues,
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                    text: response.message,
+                                    confirmButtonText: 'OK',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
+                            },
+                            error: function(error) {
+                                console.error('Error:', error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal',
+                                    text: 'An error occurred',
+                                    confirmButtonText: 'OK',
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            $("#btn-select-change-student").click(function() {
+                Swal.fire({
+                    title: 'Apakah Kamu Yakin?',
+                    text: 'Anda akan mengubah status menjadi siswa. Tindakan ini tidak bisa dibatalkan.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Iya!',
+                    cancelButtonText: 'Tidak, batal!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // User clicked "Yes", send the AJAX request
+                        $.ajax({
+                            url: '{{ route('change.student.select') }}',
+                            method: 'PATCH',
+                            data: {
+                                select: selectedValues,
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                    text: response.message,
+                                    confirmButtonText: 'OK',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
+                            },
+                            error: function(error) {
+                                console.error('Error:', error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal',
+                                    text: 'An error occurred',
+                                    confirmButtonText: 'OK',
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+
+            // Trigger change event of individual checkboxes when "Select All" is clicked
+            $("#select-all").change(function() {
+                $(".select").prop("checked", $(this).prop("checked")).change();
+            });
+
+            $(".select").change(function() {
+                if (!$(this).prop("checked")) {
+                    $("#select-all").prop("checked", false);
                 }
             });
         });
 
-        $("#btn-select-change-student").click(function() {
-            Swal.fire({
-                title: 'Apakah Kamu Yakin?',
-                text: 'Anda akan mengubah status menjadi siswa. Tindakan ini tidak bisa dibatalkan.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Iya!',
-                cancelButtonText: 'Tidak, batal!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // User clicked "Yes", send the AJAX request
-                    $.ajax({
-                        url: '{{ route('change.student.select') }}',
-                        method: 'PATCH',
-                        data: {
-                            select: selectedValues,
-                        },
-                        success: function(response) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil',
-                                text: response.message,
-                                confirmButtonText: 'OK',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    location.reload();
-                                }
-                            });
-                        },
-                        error: function(error) {
-                            console.error('Error:', error);
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Gagal',
-                                text: 'An error occurred',
-                                confirmButtonText: 'OK',
-                            });
-                        }
+        // Event listener untuk tombol siswa
+        $(document).on('click', '.btn-student', function() {
+            var id = $(this).data('id');
+            var actionUrl = `/change-student/${id}`;
+            $('#form-student').attr('action', actionUrl);
+            $('#modal-student').modal('show');
+        });
+
+        // Event listener untuk tombol alumni
+        $(document).on('click', '.btn-alumni', function() {
+            var id = $(this).data('id');
+            var actionUrl = `/change-alumni/${id}`;
+            $('#form-alumni').attr('action', actionUrl);
+            $('#modal-alumni').modal('show');
+        });
+        getClassroom()
+
+        function formatDate(dateString) {
+            const dateParts = dateString.split('-');
+            const day = dateParts[2];
+            const month = getMonthName(dateParts[1]);
+            const year = dateParts[0];
+            const formattedDate = `${day} ${month} ${year}`;
+            return formattedDate;
+        }
+
+        function getMonthName(monthNumber) {
+            const months = {
+                '01': 'Januari',
+                '02': 'Februari',
+                '03': 'Maret',
+                '04': 'April',
+                '05': 'Mei',
+                '06': 'Juni',
+                '07': 'Juli',
+                '08': 'Agustus',
+                '09': 'September',
+                '10': 'Oktober',
+                '11': 'November',
+                '12': 'Desember'
+            };
+            return months[monthNumber];
+        }
+
+
+        function getClassroom() {
+            $.ajax({
+                url: "get-classroom",
+                type: 'GET',
+                success: function(response) {
+                    $('.classroom').html('');
+                    $('.classroom').append('<option value="" selected>Semua Kelas</option>')
+                    $.each(response.data, function(index, item) {
+                        var option = $('<option>');
+                        option.val(item.id);
+                        option.text(item.name);
+                        $('.classroom').append(option);
                     });
                 }
-            });
-        });
-
-
-        // Trigger change event of individual checkboxes when "Select All" is clicked
-        $("#select-all").change(function() {
-            $(".select").prop("checked", $(this).prop("checked")).change();
-        });
-
-        $(".select").change(function() {
-            if (!$(this).prop("checked")) {
-                $("#select-all").prop("checked", false);
-            }
-        });
-    });
-
-    // Event listener untuk tombol siswa
-    $(document).on('click', '.btn-student', function() {
-        var id = $(this).data('id');
-        var actionUrl = `/change-student/${id}`;
-        $('#form-student').attr('action', actionUrl);
-        $('#modal-student').modal('show');
-    });
-
-    // Event listener untuk tombol alumni
-    $(document).on('click', '.btn-alumni', function() {
-        var id = $(this).data('id');
-        var actionUrl = `/change-alumni/${id}`;
-        $('#form-alumni').attr('action', actionUrl);
-        $('#modal-alumni').modal('show');
-    });
-    getClassroom()
-
-function formatDate(dateString) {
-    const dateParts = dateString.split('-');
-    const day = dateParts[2];
-    const month = getMonthName(dateParts[1]);
-    const year = dateParts[0];
-    const formattedDate = `${day} ${month} ${year}`;
-    return formattedDate;
-}
-
-function getMonthName(monthNumber) {
-    const months = {
-        '01': 'Januari',
-        '02': 'Februari',
-        '03': 'Maret',
-        '04': 'April',
-        '05': 'Mei',
-        '06': 'Juni',
-        '07': 'Juli',
-        '08': 'Agustus',
-        '09': 'September',
-        '10': 'Oktober',
-        '11': 'November',
-        '12': 'Desember'
-    };
-    return months[monthNumber];
-}
-
-
-function getClassroom() {
-    $.ajax({
-        url: "get-classroom",
-        type: 'GET',
-        success: function(response) {
-            $('.classroom').html('');
-            $('.classroom').append('<option value="" selected>Semua Kelas</option>')
-            $.each(response.data, function(index, item) {
-                var option = $('<option>');
-                option.val(item.id);
-                option.text(item.name);
-                $('.classroom').append(option);
             });
         }
-    });
-}
-</script>
+    </script>
     {{-- <script>
         let debounceTimer;
         $('#search-name').keyup(function() {
