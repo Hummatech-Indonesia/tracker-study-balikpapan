@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('school_year_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate()->nullable();
             $table->foreignUuid('classroom_id')->constrained()->restrictOnDelete()->restrictOnUpdate();
             $table->char('national_student_id', 10);
             $table->date('birth_date');

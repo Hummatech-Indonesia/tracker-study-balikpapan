@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Contracts\Interfaces\Auth\RegisterInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Contracts\Interfaces\CompanyInterface;
+use App\Contracts\Interfaces\SchoolYearInterface;
 use App\Contracts\Interfaces\StudentInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
@@ -41,14 +42,16 @@ class RegisterController extends Controller
     private StudentInterface $student;
     private CompanyInterface $company;
     private ClassroomInterface $classroom;
+    private SchoolYearInterface $schoolYear;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(RegisterService $service, RegisterInterface $register, StudentInterface $student, CompanyInterface $company, ClassroomInterface $classroom)
+    public function __construct(RegisterService $service, RegisterInterface $register, StudentInterface $student, CompanyInterface $company, ClassroomInterface $classroom, SchoolYearInterface $schoolYear)
     {
         $this->service = $service;
+        $this->schoolYear = $schoolYear;
         $this->register = $register;
         $this->student = $student;
         $this->company = $company;
@@ -65,7 +68,8 @@ class RegisterController extends Controller
     {
         $title = trans('title.register');
         $classrooms = $this->classroom->get();
-        return view('auth.register', compact('title', 'classrooms'));
+        $schoolYears = $this->schoolYear->get();
+        return view('auth.register', compact('title', 'classrooms', 'schoolYears'));
     }
 
 
