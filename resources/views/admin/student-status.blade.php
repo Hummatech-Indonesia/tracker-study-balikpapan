@@ -3,12 +3,12 @@
 
 @section('content')
     <h3>
-        Status Siswa & Alumni
+        Data Alumni
     </h3>
     <div class="row">
         <div class=" col-12 col-md-8 ">
             <div class="position-relative mb-3 col-12 col-md-5 col-lg-4">
-                <form action="{{ route('student.classroom.status', $classroom->id) }}" method="get">
+                <form action="{{ route('alumni') }}" method="get">
                     <input type="text" name="name" value="{{ request()->name }}"
                         class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
                     <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3"></i>
@@ -18,9 +18,6 @@
         </div>
         <div class=" col-12 col-md-4 mb-3">
             <div class="d-flex justify-content-end gap-3">
-                <div class="">
-                    <button id="btn-select-change-alumni" class="btn text-white btn-primary">Jadikan Alumni</button>
-                </div>
                 <div class="">
                     <button id="btn-select-change-student" class="btn text-white btn-warning">Jadikan Siswa</button>
                 </div>
@@ -56,9 +53,6 @@
                         Kelas
                     </td>
                     <td>
-                        Status
-                    </td>
-                    <td>
                         Aksi
                     </td>
                 </tr>
@@ -86,35 +80,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h6>Apakah anda yakin ingin menolak menjadikan akun ini menjadi siswa?</h6>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger text-white font-medium waves-effect"
-                            data-bs-dismiss="modal">
-                            Tutup
-                        </button>
-                        <button style="background-color: #1B3061" type="submit" class="btn text-white btn-create">
-                            Yakin
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="modal fade" id="modal-alumni" tabindex="-1" aria-labelledby="exampleModalLabel2">
-        <div class="modal-dialog modal-sm" role="document">
-            <form id="form-alumni" method="POST">
-                @method('PATCH')
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header d-flex align-items-center">
-                        <h5 class="modal-title" id="exampleModalLabel2">
-                            Konfirmasi
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="text-dark fs-7 mb-0">Apakah anda yakin ingin menolak menjadikan akun ini menjadi alumni?</p>
+                        <p class="text-dark fs-7 mb-0">Apakah anda yakin ingin menjadikan akun ini menjadi siswa?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger text-white font-medium waves-effect"
@@ -144,7 +110,7 @@
 
         function get(page) {
             $.ajax({
-                url: '/detail-student-status-be/{{ $classroom->id }}?page=' + page,
+                url: '/alumni-be?page=' + page,
                 method: 'GET',
                 data: {
                     name: $('#search-name').val()
@@ -161,6 +127,7 @@
                         $.each(response, function(index, data) {
                             $('#data').append(studentRow(index, data))
                         })
+                        $('[data-toggle="tooltip"]').tooltip();
                     } else {
                         $('#data').html(`
                         <tr>
@@ -212,13 +179,8 @@
                                 ${data.classroom}
                             </p>
                         </td>
-                        <td>
-            <p class="mb-0 fs-6 mt-2">
-                <span class="badge ${data.is_graduate == 0 ? 'bg-light-warning text-warning' : 'bg-light-primary text-primary'}">${data.is_graduate == 0 ? 'Siswa' : 'Alumni'}</span>
-            </p>
-        </td>
         <td>
-            <button data-id="${data.id}" data-bs-toggle="modal" class="btn btn-${data.is_graduate == 0 ? 'alumni' : 'student'} text-white ${data.is_graduate == 0 ? 'btn-primary' : 'btn-warning'}">${data.is_graduate == 0 ? 'Jadikan Alumni' : 'Jadikan Siswa'}</button>
+            <button data-id="${data.id}" data-toggle="tooltip" data-placement="top" title="Jadikan Siswa" class="btn btn-${data.is_graduate == 0 ? 'alumni' : 'student'} text-white ${data.is_graduate == 0 ? 'btn-primary' : 'btn-warning'}"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg></button>
         </td>
                     </tr>`
         }
