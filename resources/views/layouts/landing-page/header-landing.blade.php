@@ -2,7 +2,8 @@
         <div class="container position-relative">
             <a class="navbar-brand" href="javascript:void(0)">
                 <img class="navbar-brand-regular" width="8%" src="{{ asset('LOGO SMKN 2.png') }}" alt="brand-logo">
-                <img class="navbar-brand-sticky" width="8%" src="{{ asset('LOGO SMKN 2.png') }}" alt="sticky brand-logo">
+                <img class="navbar-brand-sticky" width="8%" src="{{ asset('LOGO SMKN 2.png') }}"
+                    alt="sticky brand-logo">
             </a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="navbarToggler"
                 aria-label="Toggle navigation">
@@ -39,7 +40,7 @@
                         </li>
                         <li class="nav-item px-3">
                             <a href="{{ route('login') }}" class="btn" style="margin-top:18px;font-weight:600">
-                                Login
+                                Login/Register
                             </a>
                         </li>
                     </ul>
