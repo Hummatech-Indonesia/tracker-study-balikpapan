@@ -23,7 +23,6 @@ class RegisterService
 
     public function handleRegistration(RegisterRequest $request, RegisterInterface $register, StudentInterface $student): void
     {
-
         $data = $request->validated();
         $user = $register->store($data);
 
@@ -35,6 +34,7 @@ class RegisterService
         } else {
             $graduate = 0;
         }
+        
         if (isset($data['school_year_id'])) {
             $school_year = $data['school_year_id'];
         } else {

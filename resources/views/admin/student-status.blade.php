@@ -41,7 +41,7 @@
                         No
                     </td>
                     <td>
-                        Nama Siswa
+                        Nama Alumni
                     </td>
                     <td>
                         Email
@@ -51,6 +51,9 @@
                     </td>
                     <td>
                         Kelas
+                    </td>
+                    <td>
+                        Tahun lulus
                     </td>
                     <td>
                         Aksi
@@ -131,11 +134,11 @@
                     } else {
                         $('#data').html(`
                         <tr>
-                            <td colspan="10">
+                            <td colspan="11">
                         <div class="d-flex justify-content-center">
                                             <div>
                                                 <img src="{{ asset('showNoData.png') }}" alt="">
-                                                <h5 class="text-center">Data Alumni Atau Siswa Masih Kosong!!</h5>
+                                                <h5 class="text-center">Data Alumni Masih Kosong!!</h5>
                                             </div>
                                         </div>
                                         </td>
