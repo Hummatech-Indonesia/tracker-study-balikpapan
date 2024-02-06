@@ -73,6 +73,9 @@ class StudentRepository extends BaseRepository implements StudentInterface
             ->when($request->is_graduate == 1, function($query){
                 $query->where(['is_graduate' => 1, 'status' => StatusEnum::ACTIVE]);
             })
+            ->when($request->schoolYear, function($query) use($request){
+                $query->where('school_year_id', $request->schoolYear);
+            })
             ->when($request->name, function ($query) use ($request) {
                 $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
             })

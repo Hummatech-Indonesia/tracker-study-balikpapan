@@ -13,17 +13,20 @@ use App\Contracts\Interfaces\StudentInterface;
 use App\Contracts\Interfaces\ClassroomInterface;
 use App\Http\Requests\SelectChangeUpdateRequest;
 use App\Http\Resources\StudentAndAlumniResource;
+use App\Contracts\Interfaces\SchoolYearInterface;
 
 class StudentStatusController extends Controller
 {
     use PaginationTrait;
     private ClassroomInterface $classroom;
     private StudentInterface $student;
+    private SchoolYearInterface $schoolYear;
 
-    public function __construct(ClassroomInterface $classroom, StudentInterface $student)
+    public function __construct(ClassroomInterface $classroom, StudentInterface $student, SchoolYearInterface $schoolYear)
     {
         $this->student = $student;
         $this->classroom = $classroom;
+        $this->schoolYear = $schoolYear;
     }
 
     /**
@@ -49,9 +52,11 @@ class StudentStatusController extends Controller
 
     }
 
-    public function studentAlumni(Classroom $classroom): View
+    public function studentAlumni(): View
     {
-        return view('admin.student-status', compact('classroom'));
+        $classrooms = $this->classroom->get();
+        $schoolYears = $this->schoolYear->get();
+        return view('admin.student-status', compact('classrooms', 'schoolYears'));
     }
 
     public function alumni(Request $request)

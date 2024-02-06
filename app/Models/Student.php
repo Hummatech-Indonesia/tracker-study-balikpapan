@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Classroom;
+use App\Models\SchoolYear;
 use App\Base\Interfaces\HasUser;
 use App\Base\Interfaces\HasClassroom;
 use Illuminate\Database\Eloquent\Model;
@@ -42,6 +43,16 @@ class Student extends Model implements HasUser, HasClassroom
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * user
+     *
+     * @return BelongsTo
+     */
+    public function schoolYear(): BelongsTo
+    {
+        return $this->belongsTo(SchoolYear::class);
     }
 
     /**
