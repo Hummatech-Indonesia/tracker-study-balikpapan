@@ -110,9 +110,9 @@ Route::middleware('auth')->group(function () {
         Route::patch('change-alumni-select', [StudentStatusController::class, 'selectChangeAlumni'])->name('change.alumni.select');
         Route::patch('change-student-select', [StudentStatusController::class, 'selectChangeStudent'])->name('change.student.select');
         Route::get('student-status', [StudentStatusController::class, 'index'])->name('student.classroom');
-        Route::get('detail-student-status-be/{classroom}', [StudentStatusController::class, 'show']);
+        Route::get('alumni-be', [StudentStatusController::class, 'alumni']);
 
-        Route::get('detail-student-status/{classroom}', [StudentStatusController::class, 'studentAlumni'])->name('student.classroom.status');
+        Route::get('alumni', [StudentStatusController::class, 'studentAlumni'])->name('alumni');
 
         Route::patch('change-alumni/{student}', [StudentStatusController::class, 'changeAlumni'])->name('change.alumni');
         Route::patch('change-student/{student}', [StudentStatusController::class, 'changeStudent'])->name('change.student');

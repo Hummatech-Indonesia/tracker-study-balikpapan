@@ -46,12 +46,7 @@ class StudentStatusController extends Controller
      */
     public function show(Classroom $classroom, Request $request)
     {
-        $request->merge(['classroom_id' => $classroom->id]);
-        $students = $this->student->studentClassroom($request, 10);
-        $data['paginate'] = $this->customPaginate($students->currentPage(), $students->lastPage());
-        $data['data'] = StudentAndAlumniResource::collection($students);
-        $students->appends(['name' => $request->name]);
-        return ResponseHelper::success($data);
+
     }
 
     public function studentAlumni(Classroom $classroom): View
@@ -59,6 +54,15 @@ class StudentStatusController extends Controller
         return view('admin.student-status', compact('classroom'));
     }
 
+    public function alumni(Request $request)
+    {
+        $request->merge(['is_graduate' => 1]);
+        $students = $this->student->customPaginate($request, 10);
+        $data['paginate'] = $this->customPaginate($students->currentPage(), $students->lastPage());
+        $data['data'] = StudentAndAlumniResource::collection($students);
+        $students->appends(['name' => $request->name]);
+        return ResponseHelper::success($data);
+    }
 
     /**
      * changeAlumni

@@ -137,6 +137,7 @@ class StudentController extends Controller
 
     public function index(Request $request)
     {
+        $request->merge(['is_graduate' => 0]);
         $students = $this->student->customPaginate($request, 10);
         $data['paginate'] = $this->customPaginate($students->currentPage(), $students->lastPage());
         $data['data'] = StudentResource::collection($students);
