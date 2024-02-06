@@ -85,6 +85,12 @@
                     </li>
                 </ul>
             </div>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade active show" id="primary-pills-home" role="tabpanel">
                     <div class="d-flex justify-content-end gap-3 mb-3">

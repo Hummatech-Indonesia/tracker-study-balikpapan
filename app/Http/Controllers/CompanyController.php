@@ -57,7 +57,7 @@ class CompanyController extends Controller
         $select = $request->validated();
         $data['status'] = StatusEnum::REJECT->value;
         $this->company->verificationSelect($data, $select['select']);
-        return ResponseHelper::success(null, 'Berhasil Menolak Student');
+        return redirect()->back()->with('success', 'Berhasil Menolak Student');
     }
 
     /**
