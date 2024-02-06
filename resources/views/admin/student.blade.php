@@ -3,7 +3,7 @@
 
 @section('content')
     <h4 style="font-weight: 800">
-        Tambah Siswa
+        Data Siswa
     </h4>
     <div class="row">
         <div class="d-flex justify-content-between">
