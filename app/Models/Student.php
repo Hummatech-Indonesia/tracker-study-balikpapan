@@ -30,7 +30,8 @@ class Student extends Model implements HasUser, HasClassroom
         'birth_date',
         'gender',
         'is_graduate',
-        'status'
+        'status',
+        'school_year_id'
     ];
 
     /**

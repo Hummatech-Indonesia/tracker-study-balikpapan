@@ -31,13 +31,15 @@
                                 <div class="text-center">
                                     <img src="{{ asset('logo.png') }}" alt="">
                                     <h3 class="text-dark mt-3" style="font-weight: 800">Register</h3>
-                                    <p class="mb-0 text-dark fs-6 mb-2">Daftarkan Anda Sebagai Lulusan SMKN 2 Penajam Paser Utara</p>
+                                    <p class="mb-0 text-dark fs-6 mb-2">Daftarkan Anda Sebagai Lulusan SMKN 2 Penajam Paser
+                                        Utara</p>
                                 </div>
                                 <div class="form-body">
                                     <form action="{{ route('register') }}" method="POST" class="row g-3">
                                         @csrf
                                         <div class="col-12 col-md-6 col-lg-6">
-                                            <label for="inputUsername" class="form-label">Nama</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputUsername" class="form-label">Nama</label> <label for=""
+                                                class="text-danger">*</label>
                                             <input type="text" name="name" class="form-control" id="inputUsername"
                                                 value="{{ old('name') }}" placeholder="Masukan Nama Anda">
                                             @error('name')
@@ -46,7 +48,8 @@
                                             @enderror
                                         </div>
                                         <div class="col-12 col-md-6 col-lg-6">
-                                            <label for="inputEmailAddress" class="form-label">Email</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputEmailAddress" class="form-label">Email</label> <label
+                                                for="" class="text-danger">*</label>
                                             <input type="email" name="email" class="form-control"
                                                 value="{{ old('email') }}" id="inputEmailAddress"
                                                 placeholder="Masukan Email Anda">
@@ -56,7 +59,8 @@
                                             @enderror
                                         </div>
                                         <div class="col-12 col-md-6 col-lg-6">
-                                            <label for="inputChoosePassword" class="form-label">Password</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputChoosePassword" class="form-label">Password</label> <label
+                                                for="" class="text-danger">*</label>
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" name="password" class="form-control border-end-0"
                                                     value="{{ old('password') }}" id="inputChoosePassword"
@@ -70,7 +74,8 @@
                                             @enderror
                                         </div>
                                         <div class="col-12 col-md-6 col-lg-6">
-                                            <label for="inputChoosePassword" class="form-label">Konfirmasi Password</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputChoosePassword" class="form-label">Konfirmasi Password</label>
+                                            <label for="" class="text-danger">*</label>
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" name="password_confirmation"
                                                     value="{{ old('password_confirmation') }}"
@@ -85,7 +90,8 @@
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6 col-lg-6">
-                                            <label for="inputChoosePassword" class="form-label">No Telephone</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputChoosePassword" class="form-label">No Telephone</label> <label
+                                                for="" class="text-danger">*</label>
                                             <input type="number" name="phone_number" class="form-control border-end-0"
                                                 value="{{ old('phone_number') }}" placeholder="Masukkan No. HP Anda">
                                             @error('phone_number')
@@ -96,15 +102,16 @@
                                         <div class="col-12 col-md-6 col-lg-6">
                                             <label for="inputSelectCountry" class="form-label">NISN</label>
                                             <input type="number" name="national_student_id"
-                                                value="{{ old('national_student_id') }}" class="form-control border-end-0"
-                                                placeholder="Masukkan NISN Anda">
+                                                value="{{ old('national_student_id') }}"
+                                                class="form-control border-end-0" placeholder="Masukkan NISN Anda">
                                             @error('national_student_id')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
                                         <div class="col-12">
-                                            <label for="inputSelectCountry" class="form-label">Alamat</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputSelectCountry" class="form-label">Alamat</label> <label
+                                                for="" class="text-danger">*</label>
                                             <textarea name="address" id="address" class="form-control">{{ old('address') }}</textarea>
                                             @error('address')
                                                 <div class="text-danger">{{ $message }}
@@ -112,7 +119,8 @@
                                             @enderror
                                         </div>
                                         <div class="col-12">
-                                            <label for="inputSelectCountry" class="form-label">Tanggal Lahir</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputSelectCountry" class="form-label">Tanggal Lahir</label>
+                                            <label for="" class="text-danger">*</label>
                                             <input type="date" name="birth_date" class="form-control border-end-0"
                                                 value="{{ old('birth_date') }}" placeholder="Enter No telephone">
                                             @error('birth_date')
@@ -121,7 +129,8 @@
                                             @enderror
                                         </div>
                                         <div class="col-12">
-                                            <label for="inputSelectCountry" class="form-label">Jenis Kelamin</label> <label for="" class="text-danger">*</label><br>
+                                            <label for="inputSelectCountry" class="form-label">Jenis Kelamin</label>
+                                            <label for="" class="text-danger">*</label><br>
                                             <input class="form-check-input me-1" type="radio" name="gender"
                                                 value="male" {{ old('gender') == 'male' ? 'checked' : '' }}
                                                 id="laki-laki">Laki Laki<br>
@@ -134,7 +143,8 @@
                                             @enderror
                                         </div>
                                         <div class="col-12">
-                                            <label for="inputSelectCountry" class="form-label">Pilih Role</label> <label for="" class="text-danger">*</label><br>
+                                            <label for="inputSelectCountry" class="form-label">Pilih Role</label> <label
+                                                for="" class="text-danger">*</label><br>
                                             <input class="form-check-input me-1" type="radio" name="role"
                                                 value="student" {{ old('role') == 'student' ? 'checked' : '' }}
                                                 id="flexRadioDefault2" onclick="handleRoleChange()">Siswa
@@ -146,7 +156,8 @@
                                             @enderror
                                         </div>
                                         <div class="col-12" id="classroom" style="display: none;">
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">Kelas</label> <label for="" class="text-danger">*</label>
+                                            <label class="form-check-label" for="flexSwitchCheckChecked">Kelas</label>
+                                            <label for="" class="text-danger">*</label>
                                             <select name="classroom_id" class="form-select"
                                                 aria-label="Default select example">
                                                 <option selected>Pilih Kelas</option>
@@ -157,6 +168,22 @@
                                                 @endforeach
                                             </select>
                                             @error('classroom_id')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12" id="school_year" style="display: none;">
+                                            <label class="form-check-label" for="flexSwitchCheckChecked">Tahun
+                                                Lulus</label> <label for="" class="text-danger">*</label>
+                                            <select name="school_year_id" class="form-select"
+                                                aria-label="Default select example">
+                                                <option selected>Pilih Tahun Lulus</option>
+                                                @foreach ($schoolYears as $schoolYear)
+                                                    <option value="{{ $schoolYear->id }}"
+                                                        {{ $schoolYear->id == old('school_year_id') ? 'selected' : '' }}>
+                                                        {{ $schoolYear->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('school_year_id')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -257,11 +284,14 @@
         function handleRoleChange() {
             const alumniRadio = document.getElementById("flexRadioDefault1");
             const classroomDiv = document.getElementById("classroom");
+            const schoolYearDiv = document.getElementById("school_year");
 
             if (alumniRadio.checked) {
                 classroomDiv.style.display = "none";
+                schoolYearDiv.style.display = "block";
             } else {
                 classroomDiv.style.display = "block";
+                schoolYearDiv.style.display = "none";
             }
         }
     </script>

@@ -35,11 +35,23 @@ class RegisterService
         } else {
             $graduate = 0;
         }
+        if (isset($data['school_year_id'])) {
+            $school_year = $data['school_yer_id'];
+        } else {
+            $school_year = null;
+        }
+        if (isset($data['classroom_id'])) {
+            $classroom = $data['classroom_id'];
+        } else {
+            $classroom = null;
+        }
+
         $student->store([
             'user_id' => $user->id,
             'is_graduate' => $graduate,
+            'school_year_id' => $school_year,
             'status' => StatusEnum::NONACTIVE->value,
-            'classroom_id' => $data['classroom_id'],
+            'classroom_id' => $classroom,
             'national_student_id' => $data['national_student_id'],
             'birth_date' => $data['birth_date'],
             'gender' => $data['gender'],
