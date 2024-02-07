@@ -11,25 +11,7 @@
                 Verifikasi Akun
             </h4>
         </div>
-        <div class="position-relative mb-3 col-lg-3">
-            <form action="{{ route('account.verification') }}" method="get">
-                <input type="text" name="name" value="{{ Request::get('name') }}"
-                    class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
-                <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3">
-                </i>
-                <button type="submit" style="display: none;"></button>
-            </form>
-        </div>
     </div>
-    <div class="row">
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-    </div>
-
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between">
@@ -84,6 +66,15 @@
                         </a>
                     </li>
                 </ul>
+                <div class="position-relative mb-3 col-lg-3">
+                    <form action="{{ route('account.verification') }}" method="get">
+                        <input type="text" name="name" value="{{ Request::get('name') }}"
+                            class="form-control search-chat py-2 ps-5" id="search-name" placeholder="Search">
+                        <i class="bx bx-search position-absolute top-50 translate-middle-y fs-6 text-dark ms-3">
+                        </i>
+                        <button type="submit" style="display: none;"></button>
+                    </form>
+                </div>
             </div>
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible mt-3 fade show" role="alert">
@@ -98,7 +89,7 @@
                             <button id="btn-accept-student" class="btn text-white btn-primary">Terima Semua</button>
                         </div>
                         <div class="">
-                            <button id="btn-reject-student" class="btn text-white btn-warning">Tolak Semua</button>
+                            <button id="btn-reject-student" class="btn text-white btn-danger">Tolak Semua</button>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -177,7 +168,7 @@
                             <button id="btn-accept-student" class="btn text-white btn-primary">Terima Semua</button>
                         </div>
                         <div class="">
-                            <button id="btn-reject-student" class="btn text-white btn-warning">Tolak Semua</button>
+                            <button id="btn-reject-student" class="btn text-white btn-danger">Tolak Semua</button>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -256,7 +247,7 @@
                             <button id="btn-accept-company" class="btn text-white btn-primary">Terima Semua</button>
                         </div>
                         <div class="">
-                            <button id="btn-reject-company" class="btn text-white btn-warning">Tolak Semua</button>
+                            <button id="btn-reject-company" class="btn text-white btn-danger">Tolak Semua</button>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -264,8 +255,8 @@
                             <thead>
                                 <th> <input type="checkbox" name="" class="select-all"> </th>
                                 <th>Nama Perusahaan</th>
-                                <th>email</th>
-                                <th>deskripsi</th>
+                                <th>Email</th>
+                                <th>Deskripsi</th>
                                 <th>No Telephone</th>
                                 <th>Aksi</th>
                             </thead>
@@ -277,11 +268,35 @@
                                         <td>{{ $company->user->name }}</td>
                                         <td>{{ $company->user->email }}</td>
                                         <td
-                                            style="text-overflow: ellipsis;overflow: hidden ;max-width: 300px ;white-space: nowrap">
+                                            style="text-overflow: ellipsis;overflow: hidden ;max-width: 200px ;white-space: nowrap">
                                             {{ $company->description }}</td>
                                         <td>{{ $company->user->phone_number }}</td>
                                         <td>
                                             <div class="d-flex justify-content-header gap-2">
+                                                <a class="d-flex justify-content-header gap-2 btn-detail-company"
+                                                    data-id="{{ $company->user->id }}"
+                                                    id="btn-detail-company-{{ $company->user->id }}"
+                                                    data-photo="{{ $company->user->photo ? 'storage/' . $company->user->photo : 'default.jpg' }}"
+                                                    data-name-company="{{ $company->user->name }}"
+                                                    data-email-company="{{ $company->user->email }}"
+                                                    data-company_field="{{ $company->company_field ? $company->company_field : 'Belum diisi' }}"
+                                                    data-phone_number-company="{{ $company->user->phone_number }}"
+                                                    data-address-company="{{ $company->user->address ? $company->user->address : 'Belum diisi' }}"
+                                                    data-description-company="{{ $company->description }}">
+                                                    <div class="">
+                                                        <button class="btn btn-detail btn-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                                height="20" viewBox="0 0 24 24">
+                                                                <path fill="#fff"
+                                                                    d="M12 6.5A9.77 9.77 0 0 0 3.18 12c1.65 3.37 5.02 5.5 8.82 5.5s7.17-2.13 8.82-5.5A9.77 9.77 0 0 0 12 6.5zm0 10c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5s-2.02 4.5-4.5 4.5z"
+                                                                    opacity=".3"></path>
+                                                                <path fill="#fff"
+                                                                    d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 13A9.77 9.77 0 0 1 3.18 12C4.83 8.63 8.21 6.5 12 6.5s7.17 2.13 8.82 5.5A9.77 9.77 0 0 1 12 17.5zm0-10c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5s4.5-2.02 4.5-4.5s-2.02-4.5-4.5-4.5zm0 7a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </a>
                                                 <div class="">
                                                     <button class="btn btn-approve-company w-100 text-white"
                                                         data-id="{{ $company->id }}" data-bs-toggle="modal"
@@ -354,6 +369,59 @@
                                             id="detail-phone_number" style="font-weight: normal;"></span></li>
                                     <li class="list-group-item" style="font-weight: bold;">Alamat: <span
                                             id="detail-address" style="font-weight: normal;"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger font-medium waves-effect"
+                        data-bs-dismiss="modal">Tutup</button>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="modal-detail-company" tabindex="-1" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header d-flex align-items-center">
+                    <h4 class="modal-title" id="myModalLabel">
+                        Detail Perusahaan
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="" class="rounded-circle mb-2" id="detail-photo" width="150"
+                            alt="photo-siswa" height="150" />
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="font-weight: bold;">Nama : <span
+                                            id="detail-name-company" style="font-weight: normal;"></span>
+                                    </li>
+                                    <li class="list-group-item" style="font-weight: bold;">Bidang Perusahaan : <span
+                                            id="detail-company_field" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">Deskripsi Perusahaan : <span
+                                            id="detail-description-company" style="font-weight: normal;"></span></li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="font-weight: bold;">Email : <span
+                                            id="detail-email-company" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">No Telepon : <span
+                                            id="detail-phone_number-company" style="font-weight: normal;"></span></li>
+                                    <li class="list-group-item" style="font-weight: bold;">Alamat Perusahaan : <span
+                                            id="detail-address-company" style="font-weight: normal;"></span></li>
                                 </ul>
                             </div>
                         </div>
@@ -456,7 +524,7 @@
             $("#btn-reject-company").click(function() {
                 Swal.fire({
                     title: 'Apakah anda yakin?',
-                    text: 'Anda akan menolak semua siswa. Tindakan ini tidak bisa dibatalkan.',
+                    text: 'Anda akan menolak semua perusahaan. Tindakan ini tidak bisa dibatalkan.',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Iya!',
@@ -486,7 +554,7 @@
             $("#btn-accept-company").click(function() {
                 Swal.fire({
                     title: 'Apakah anda yakin?',
-                    text: 'Anda akan menerima semua siswa. Tindakan ini tidak bisa dibatalkan.',
+                    text: 'Anda akan menerima semua perusahaan. Tindakan ini tidak bisa dibatalkan.',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Iya!',
@@ -553,6 +621,13 @@
             var actionUrl = `reject-verify-company/${id}`;
             $('#form-reject').attr('action', actionUrl);
             $('#modal-reject').modal('show')
+        })
+        $('.btn-detail-company').click(function() {
+            const data = getDataAttributes($(this).attr('id'))
+            handleDetail(data)
+            const detailPhoto = document.getElementById("detail-photo");
+            detailPhoto.src = data['photo'];
+            $('#modal-detail-company').modal('show')
         })
     </script>
 @endsection

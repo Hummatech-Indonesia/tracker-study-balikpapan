@@ -20,7 +20,32 @@ class RegisterCompanyRequest extends FormRequest
             'password_confirmation' => 'required',
             'phone_number' => 'required|numeric',
             'description' => 'required',
-            'checked' => 'required'
+            'company_field' => 'required',
+            'website' => 'nullable|url',
+            'checked' => 'required',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Kolom nama harus diisi.',
+            'name.max' => 'Panjang nama tidak boleh melebihi 255 karakter.',
+            'email.required' => 'Kolom email harus diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.max' => 'Panjang email tidak boleh melebihi 255 karakter.',
+            'email.unique' => 'Email sudah digunakan.',
+            'password.required' => 'Kolom password harus diisi.',
+            'password.min' => 'Panjang password minimal 8 karakter.',
+            'password.same' => 'Konfirmasi password tidak sesuai.',
+            'password_confirmation.required' => 'Kolom konfirmasi password harus diisi.',
+            'phone_number.required' => 'Kolom nomor telepon harus diisi.',
+            'phone_number.numeric' => 'Nomor telepon harus berupa angka.',
+            'description.required' => 'Kolom deskripsi harus diisi.',
+            'company_field.required' => 'Kolom bidang perusahaan harus diisi.',
+            'website.url' => 'Format URL website tidak valid.',
+            'checked.required' => 'Kolom tercentang harus diisi.',
+        ];
+    }
+
 }

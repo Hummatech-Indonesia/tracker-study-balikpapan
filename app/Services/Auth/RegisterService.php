@@ -23,7 +23,6 @@ class RegisterService
 
     public function handleRegistration(RegisterRequest $request, RegisterInterface $register, StudentInterface $student): void
     {
-
         $data = $request->validated();
         $user = $register->store($data);
 
@@ -35,6 +34,7 @@ class RegisterService
         } else {
             $graduate = 0;
         }
+
         if (isset($data['school_year_id'])) {
             $school_year = $data['school_year_id'];
         } else {
@@ -76,6 +76,8 @@ class RegisterService
         $user->assignRole(RoleEnum::COMPANY->value);
         $company->store([
             'user_id' => $user->id,
+            'company_field' => $data['company_field'],
+            'website' => $data['website'],
             'description' => $data['description'],
         ]);
     }

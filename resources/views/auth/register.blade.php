@@ -156,11 +156,12 @@
                                             @enderror
                                         </div>
                                         <div class="col-12" id="classroom" style="display: none;">
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">Kelas</label>
+                                            <label class="form-check-label label-classroom mb-2"
+                                                for="flexSwitchCheckChecked"></label>
                                             <label for="" class="text-danger">*</label>
                                             <select name="classroom_id" class="form-select"
                                                 aria-label="Default select example">
-                                                <option selected>Pilih Kelas</option>
+                                                <option value="">Pilih Kelas</option>
                                                 @foreach ($classrooms as $classroom)
                                                     <option value="{{ $classroom->id }}"
                                                         {{ $classroom->id == old('classroom_id') ? 'selected' : '' }}>
@@ -172,11 +173,11 @@
                                             @enderror
                                         </div>
                                         <div class="col-12" id="school_year" style="display: none;">
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">Tahun
+                                            <label class="form-check-label mb-2" for="flexSwitchCheckChecked">Tahun
                                                 Lulus</label> <label for="" class="text-danger">*</label>
                                             <select name="school_year_id" class="form-select"
                                                 aria-label="Default select example">
-                                                <option selected>Pilih Tahun Lulus</option>
+                                                <option value="">Pilih Tahun Lulus</option>
                                                 @foreach ($schoolYears as $schoolYear)
                                                     <option value="{{ $schoolYear->id }}"
                                                         {{ $schoolYear->id == old('school_year_id') ? 'selected' : '' }}>
@@ -287,9 +288,11 @@
             const schoolYearDiv = document.getElementById("school_year");
 
             if (alumniRadio.checked) {
-                classroomDiv.style.display = "none";
+                $('.label-classroom').html('Lulus dari Kelas');
+                classroomDiv.style.display = "block";
                 schoolYearDiv.style.display = "block";
             } else {
+                $('.label-classroom').html('Kelas');
                 classroomDiv.style.display = "block";
                 schoolYearDiv.style.display = "none";
             }

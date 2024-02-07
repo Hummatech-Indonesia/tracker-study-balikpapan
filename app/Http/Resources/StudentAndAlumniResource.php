@@ -20,6 +20,7 @@ class StudentAndAlumniResource extends JsonResource
             'email' => $this->user->email,
             'national_student_id' => $this->national_student_id,
             'classroom' => $this->classroom->name,
+            'schoolYear' => $this->schoolYear->name,
             'is_graduate' => $this->is_graduate,
         ];
     }

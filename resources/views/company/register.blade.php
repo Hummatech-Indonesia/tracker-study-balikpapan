@@ -31,14 +31,16 @@
                                 <div class="text-center">
                                     <img src="{{ asset('logo.png') }}" alt="">
                                     <h3 class="text-dark mt-3" style="font-weight: 800">Register</h3>
-                                    <p class="mb-0 text-dark fs-6 mb-2">Daftarkan Anda Sebagai Perusahaan di SMKN 2 Penajam Paser Utara
+                                    <p class="mb-0 text-dark fs-6 mb-2">Daftarkan Anda Sebagai Perusahaan di SMKN 2 Penajam
+                                        Paser Utara
                                     </p>
                                 </div>
                                 <div class="form-body">
                                     <form action="{{ route('register.company') }}" method="POST" class="row g-3">
                                         @csrf
                                         <div class="col-12 col-md-6 col-lg-6">
-                                            <label for="inputUsername" class="form-label">Nama Perusahaan</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputUsername" class="form-label">Nama Perusahaan</label> <label
+                                                for="" class="text-danger">*</label>
                                             <input type="text" name="name" class="form-control" id="inputUsername"
                                                 value="{{ old('name') }}" placeholder="Masukan Nama">
                                             @error('name')
@@ -47,7 +49,8 @@
                                             @enderror
                                         </div>
                                         <div class="col-12 col-md-6 col-lg-6">
-                                            <label for="inputEmailAddress" class="form-label">Alamat Email</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputEmailAddress" class="form-label">Alamat Email</label> <label
+                                                for="" class="text-danger">*</label>
                                             <input type="email" name="email" class="form-control"
                                                 value="{{ old('email') }}" id="inputEmailAddress"
                                                 placeholder="Masukan alamat email">
@@ -57,21 +60,23 @@
                                             @enderror
                                         </div>
                                         <div class="col-12 col-md-6 col-lg-6">
-                                            <label for="inputChoosePassword" class="form-label">Password</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputChoosePassword" class="form-label">Password</label> <label
+                                                for="" class="text-danger">*</label>
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" name="password" class="form-control border-end-0"
                                                     value="{{ old('password') }}" id="inputChoosePassword"
                                                     placeholder="Masukan Password">
                                                 <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                         class='bx bx-hide'></i></a>
-                                                    </div>
-                                                    @error('password')
-                                                        <div class="text-danger">{{ $message }}
-                                                        </div>
-                                                    @enderror
+                                            </div>
+                                            @error('password')
+                                                <div class="text-danger">{{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="col-12 col-md-6 col-lg-6">
-                                            <label for="inputChoosePassword" class="form-label">Konfirmasi Password</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputChoosePassword" class="form-label">Konfirmasi Password</label>
+                                            <label for="" class="text-danger">*</label>
                                             <div class="input-group" id="show_hide_password">
                                                 <input type="password" name="password_confirmation"
                                                     value="{{ old('password_confirmation') }}"
@@ -86,7 +91,8 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label for="inputChoosePassword" class="form-label">No Telephone</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputChoosePassword" class="form-label">No Telephone</label> <label
+                                                for="" class="text-danger">*</label>
                                             <input type="number" name="phone_number" class="form-control border-end-0"
                                                 value="{{ old('phone_number') }}" placeholder="Masukan No telephone">
                                             @error('phone_number')
@@ -95,7 +101,28 @@
                                             @enderror
                                         </div>
                                         <div class="col-12">
-                                            <label for="inputSelectCountry" class="form-label">Deskripsi</label> <label for="" class="text-danger">*</label>
+                                            <label for="inputChoosePassword" class="form-label">Bidang Perusahaan</label>
+                                            <label for="" class="text-danger">*</label>
+                                            <input class="form-control" name="company_field"
+                                                placeholder="Masukkan Bidang Perusahaan" value="{{ old('company_field') }}" type="text" name=""
+                                                id="">
+                                                @error('company_field')
+                                                <div class="text-danger">{{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="inputChoosePassword" class="form-label">Website</label>
+                                            <input type="text" placeholder="Masukkan Website Perusahaan"
+                                                name="website" value="{{ old('website') }}" class="form-control" id="">
+                                                @error('website')
+                                                <div class="text-danger">{{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="inputSelectCountry" class="form-label">Deskripsi</label> <label
+                                                for="" class="text-danger">*</label>
                                             <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
                                             @error('description')
                                                 <div class="text-danger">{{ $message }}
