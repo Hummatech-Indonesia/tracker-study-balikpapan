@@ -499,13 +499,16 @@
 @section('script')
 <script>
     let debounceTimer;
-    $('#search-name').keyup(function() {
-        clearTimeout(debounceTimer);
+        $('#search-name').keyup(function() {
+            clearTimeout(debounceTimer);
 
-        debounceTimer = setTimeout(function() {
+            debounceTimer = setTimeout(function() {
+                get(1)
+            }, 500);
+        });
+        $('#classroom-filter').change(function() {
             get(1)
-        }, 500);
-    });
+        })
     get(1)
 
     function get(page) {
@@ -591,7 +594,6 @@
         function studentRow(data) {
             return `
                             <tr>
-
                                 <td>
                                     <div class="d-flex align-item-center mt-2">
                                 <input type="checkbox" name="select" class="form-check-input select"

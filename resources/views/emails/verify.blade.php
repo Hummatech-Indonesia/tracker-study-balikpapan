@@ -81,7 +81,7 @@
             <!-- Header Section -->
             <div style="text-align: center; background-color: #eaf6e8; padding: 57px;">
                 <div style="cursor: auto; color: #1B3061; font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 36px; font-weight: 600; line-height: 36px; text-align: center;">
-                    <img src="https://i.postimg.cc/QCtQsQXG/smk.png" alt="" />
+                    <img src="https://i.postimg.cc/26xqDSpn/logo-removebg-preview.png" alt="" />
                 </div>
             </div>
 
