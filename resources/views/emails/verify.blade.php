@@ -108,7 +108,7 @@
                                 <tr>
                                     <td style="border: none; border-radius: 3px; color: white; cursor: auto; padding: 15px 19px;" align="center" valign="middle" bgcolor="#1b613d">
                                         <a href="{{ route('verification.account', $data['id']) }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; line-height: 100%; background: #1b613d; color: white; font-family: Ubuntu, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: normal; text-transform: none; margin: 0px;">
-                                            Verifikasi
+                                            Verifikas
                                         </a>
                                     </td>
                                 </tr>
