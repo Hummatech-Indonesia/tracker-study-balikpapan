@@ -97,6 +97,11 @@ class CompanyRepository extends BaseRepository implements CompanyInterface
                     $query->whereNotNull('email_verified_at');
                 });
             })
+            ->when($request->status == 'not_verified', function ($query) {
+                $query->where('status', StatusEnum::ACTIVE->value)->whereHas('user', function ($query) {
+                    $query->whereNull('email_verified_at');
+                });
+            })
             ->when($request->status == StatusEnum::NONACTIVE->value, function ($query) {
                 $query->where('status', StatusEnum::NONACTIVE->value);
             })

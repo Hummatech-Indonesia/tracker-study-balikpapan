@@ -18,7 +18,10 @@
                         <select name="status" id="" class="form-select py-2">
                             <option value="">Filter Status</option>
                             <option value="active" {{ request()->status == 'active' ? 'selected' : '' }}>Aktif</option>
-                            <option value="nonactive" {{ request()->status == 'nonactive' ? 'selected' : '' }}>Tidak Aktif</option>
+                            <option value="nonactive" {{ request()->status == 'nonactive' ? 'selected' : '' }}>Tidak Aktif
+                            </option>
+                            <option value="not_verified" {{ request()->status == 'not_verified' ? 'selected' : '' }}>Email
+                                Belum Terverifikasi</option>
                         </select>
                     </div>
                     <div class="col-lg-4">
