@@ -92,11 +92,13 @@ class CompanyRepository extends BaseRepository implements CompanyInterface
             ->when($request->name, function ($query) use ($request) {
                 $query->whereRelation('user', 'name', 'LIKE', '%' . $request->name . '%');
             })
-            ->when($request->status == StatusEnum::ACTIVE->value, function ($query) use ($request) {
-                $query->where('status', $request->status)->whereRelation('user', 'email_verified_at', '!=', null);
+            ->when($request->status == StatusEnum::ACTIVE->value, function ($query) {
+                $query->where('status', StatusEnum::ACTIVE->value)->whereHas('user', function ($query) {
+                    $query->whereNotNull('email_verified_at');
+                });
             })
-            ->when($request->status == StatusEnum::NONACTIVE->value, function ($query) use ($request) {
-                $query->where('status', $request->status);
+            ->when($request->status == StatusEnum::NONACTIVE->value, function ($query) {
+                $query->where('status', StatusEnum::NONACTIVE->value);
             })
             ->latest()
             ->fastPaginate($pagination);
