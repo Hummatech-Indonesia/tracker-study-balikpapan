@@ -45,7 +45,8 @@ class VerificationController extends Controller
      */
     public function verify(User $user)
     {
-        dd($this->user->update($user->id, ['email_verified_at' => now()->format('Y-m-d H:i:s')]));
+        dd($user);
+        $this->user->update($user->id, ['email_verified_at' => now()->format('Y-m-d H:i:s')]);
         return redirect()->route('login')->with('success', 'Verifikasi akun berhasil');
     }
 }
