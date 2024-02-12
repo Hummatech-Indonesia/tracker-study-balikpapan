@@ -89,7 +89,7 @@
                             <button id="btn-accept-student" class="btn text-white btn-primary btn-accept-student">Terima Semua</button>
                         </div>
                         <div class="">
-                            <button id="btn-reject-student" class="btn text-white btn-danger">Tolak Semua</button>
+                            <button id="btn-reject-student" class="btn text-white btn-danger btn-reject-student">Tolak Semua</button>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -168,7 +168,7 @@
                             <button id="btn-accept-student" class="btn text-white btn-primary btn-accept-student">Terima Semua</button>
                         </div>
                         <div class="">
-                            <button id="btn-reject-student" class="btn text-white btn-danger">Tolak Semua</button>
+                            <button id="btn-reject-student" class="btn text-white btn-danger btn-reject-student">Tolak Semua</button>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -461,7 +461,7 @@
                 $('.modal-title-detail').html("Detail Alumni");
             });
 
-            $("#btn-reject-student").click(function() {
+            $(".btn-reject-student").click(function() {
                 Swal.fire({
                     title: 'Apakah anda yakin?',
                     text: 'Anda akan menolak semua siswa. Tindakan ini tidak bisa dibatalkan.',
