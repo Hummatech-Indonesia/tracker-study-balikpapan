@@ -67,6 +67,7 @@
         @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700');
 
         @media only screen and (min-width: 480px) {
+
             .mj-column-per-100,
             *[aria-labelledby="mj-column-per-100"] {
                 width: 100% !important;
@@ -76,38 +77,48 @@
 </head>
 
 <body>
-    <div style="background-color: #f9f9f9; margin: 0 auto; max-width: 640px; box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1); border-radius: 4px; overflow: hidden;">
+    <div
+        style="background-color: #f9f9f9; margin: 0 auto; max-width: 640px; box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1); border-radius: 4px; overflow: hidden;">
         <div style="background: transparent">
             <!-- Header Section -->
             <div style="text-align: center; background-color: #eaf6e8; padding: 57px;">
-                <div style="cursor: auto; color: #1B3061; font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 36px; font-weight: 600; line-height: 36px; text-align: center;">
+                <div
+                    style="cursor: auto; color: #1B3061; font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 36px; font-weight: 600; line-height: 36px; text-align: center;">
                     <img src="https://i.postimg.cc/26xqDSpn/logo-removebg-preview.png" alt="" />
                 </div>
             </div>
 
             <!-- Content Section -->
             <div style="text-align: center; background: #ffffff; padding: 40px 70px;">
-                <div style="vertical-align: top; display: inline-block; direction: ltr; font-size: 13px; text-align: left; width: 100%;">
+                <div
+                    style="vertical-align: top; display: inline-block; direction: ltr; font-size: 13px; text-align: left; width: 100%;">
                     <div style="word-break: break-word; font-size: 0px; padding: 0px 0px 20px;" align="left">
-                        <div style="cursor: auto; color: #737f8d; font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 16px; line-height: 24px; text-align: left;">
+                        <div
+                            style="cursor: auto; color: #737f8d; font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 16px; line-height: 24px; text-align: left;">
                             <p></p>
-                            <h2 style="font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-weight: 500; font-size: 20px; color: #4f545c; letter-spacing: 0.27px;">
+                            <h2
+                                style="font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-weight: 500; font-size: 20px; color: #4f545c; letter-spacing: 0.27px;">
                                 Tautan ini aktif selama 4 jam
                             </h2>
                             <h4 style="font-weight: 700; color: #000000;">
                                 Aktivasi Akun Anda
                             </h4>
                             <p>
-                                Terimakasih {{ $data['user'] }} telah mendaftar di <span style="color: #000000;">Tracer Study SMKN 2 PENAJAM,</span>
+                                Terimakasih {{ $data['user'] }} telah mendaftar di <span style="color: #000000;">Tracer
+                                    Study SMKN 2 PENAJAM,</span>
                             </p>
                         </div>
                     </div>
                     <div style="word-break: break-word; font-size: 0px; padding: 10px 25px;" align="center">
-                        <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse: separate" align="center" border="0">
+                        <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse: separate"
+                            align="center" border="0">
                             <tbody>
                                 <tr>
-                                    <td style="border: none; border-radius: 3px; color: white; cursor: auto; padding: 15px 19px;" align="center" valign="middle" bgcolor="#1b613d">
-                                        <a href="{{ route('verification.account', $data['id']) }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; line-height: 100%; background: #1b613d; color: white; font-family: Ubuntu, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: normal; text-transform: none; margin: 0px;">
+                                    <td style="border: none; border-radius: 3px; color: white; cursor: auto; padding: 15px 19px;"
+                                        align="center" valign="middle" bgcolor="#1b613d">
+                                        <a href="{{ route('verification.account', $data['id']) }}" target="_blank"
+                                            rel="noopener noreferrer"
+                                            style="text-decoration: none; line-height: 100%; background: #1b613d; color: white; font-family: Ubuntu, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: normal; text-transform: none; margin: 0px;">
                                             Verifikasi
                                         </a>
                                     </td>
