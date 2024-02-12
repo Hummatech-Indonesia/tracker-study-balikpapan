@@ -100,6 +100,8 @@
                                     <p class="mb-0 fw-normal mt-2">
                                         @if ($company->status == 'active' && $company->user->email_verified_at != null)
                                             <span class="badge text-bg-success">Aktif</span>
+                                        @elseif ($company->status == 'active' && $company->user->email_verified_at == null)
+                                            <span class="badge text-bg-warning text-white">Belum Verfikasi Akun</span>
                                         @else
                                             <span class="badge text-bg-danger">Tidak Aktif</span>
                                         @endif
