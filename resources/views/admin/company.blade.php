@@ -17,8 +17,8 @@
                     <div class="col-lg-3">
                         <select name="status" id="" class="form-select py-2">
                             <option value="">Filter Status</option>
-                            <option value="active">Aktif</option>
-                            <option value="nonactive">Tidak Aktif</option>
+                            <option value="active" {{ request()->status == 'active' ? 'selected' : '' }}>Aktif</option>
+                            <option value="nonactive" {{ request()->status == 'nonactive' ? 'selected' : '' }}>Tidak Aktif</option>
                         </select>
                     </div>
                     <div class="col-lg-4">
@@ -95,10 +95,10 @@
                                 </td>
                                 <td>
                                     <p class="mb-0 fw-normal mt-2">
-                                        @if ($company->status == 'active')
+                                        @if ($company->status == 'active' && $company->user->email_verified_at != null)
                                             <span class="badge text-bg-success">Aktif</span>
                                         @else
-                                            <span class="badge text-bg-danger">TIdak Aktif</span>
+                                            <span class="badge text-bg-danger">Tidak Aktif</span>
                                         @endif
                                     </p>
                                 </td>
