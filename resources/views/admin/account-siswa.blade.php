@@ -86,7 +86,7 @@
                 <div class="tab-pane fade active show" id="primary-pills-home" role="tabpanel">
                     <div class="d-flex justify-content-end gap-3 mb-3">
                         <div class="">
-                            <button id="btn-accept-student" class="btn text-white btn-primary">Terima Semua</button>
+                            <button id="btn-accept-student" class="btn text-white btn-primary btn-accept-student">Terima Semua</button>
                         </div>
                         <div class="">
                             <button id="btn-reject-student" class="btn text-white btn-danger">Tolak Semua</button>
@@ -165,7 +165,7 @@
                 <div class="tab-pane fade" id="primary-pills-profile" role="tabpanel">
                     <div class="d-flex justify-content-end gap-3 mb-3">
                         <div class="">
-                            <button id="btn-accept-student" class="btn text-white btn-primary">Terima Semua</button>
+                            <button id="btn-accept-student" class="btn text-white btn-primary btn-accept-student">Terima Semua</button>
                         </div>
                         <div class="">
                             <button id="btn-reject-student" class="btn text-white btn-danger">Tolak Semua</button>
@@ -491,35 +491,6 @@
                 });
             })
 
-            $("#btn-accept-student").click(function() {
-                Swal.fire({
-                    title: 'Apakah anda yakin?',
-                    text: 'Anda akan menerima semua siswa. Tindakan ini tidak bisa dibatalkan.',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Iya!',
-                    cancelButtonText: 'Tidak, batal!',
-                    reverseButtons: true
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: '{{ route('verification.student.all') }}',
-                            method: 'PATCH',
-                            data: {
-                                select: selectedValues,
-                            },
-                            success: function(response) {
-                                console.log(response.message);
-                                location.reload();
-                            },
-                            error: function(error) {
-                                console.error('Error:', error);
-                                // Handle error jika diperlukan
-                            }
-                        });
-                    }
-                });
-            })
 
             $("#btn-reject-company").click(function() {
                 Swal.fire({
@@ -552,6 +523,35 @@
             })
 
             $("#btn-accept-company").click(function() {
+                Swal.fire({
+                    title: 'Apakah anda yakin?',
+                    text: 'Anda akan menerima semua perusahaan. Tindakan ini tidak bisa dibatalkan.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Iya!',
+                    cancelButtonText: 'Tidak, batal!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '{{ route('approve.verify.company.all') }}',
+                            method: 'PATCH',
+                            data: {
+                                select: selectedValues,
+                            },
+                            success: function(response) {
+                                console.log(response.message);
+                                location.reload();
+                            },
+                            error: function(error) {
+                                console.error('Error:', error);
+                                // Handle error jika diperlukan
+                            }
+                        });
+                    }
+                });
+            })
+            $(".btn-accept-student").click(function() {
                 Swal.fire({
                     title: 'Apakah anda yakin?',
                     text: 'Anda akan menerima semua perusahaan. Tindakan ini tidak bisa dibatalkan.',
