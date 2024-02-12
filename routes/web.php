@@ -44,6 +44,9 @@ use Illuminate\Support\Facades\View;
 //Landing Page
 Route::get('/', [HomeController::class, 'index'])->name('landing-page');
 
+Route::get('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
+
+
 Route::get('lowongan', [LandingPageController::class, 'jobVacancy'])->name('lowongan');
 
 Route::get('detail-lowongan/{jobVacancy}', [LandingPageController::class, 'detailJobVacancy'])->name('detail-lowongan');
@@ -55,7 +58,6 @@ Route::get('galeri-guru', [TeacherGalleryController::class, 'galery'])->name('ga
 Route::get('galeri-alumni', [LandingPageController::class, 'alumni'])->name('galery-alumni');
 Route::post('vidio-galeri-guru', [TeacherVideoGalleryController::class, 'store'])->name('teacher-video-gallery.store');
 
-Route::get('verify-account/{user}', [VerificationController::class, 'verify'])->name('verification.account');
 
 Route::get('forgot-password', [ResetPasswordController::class, 'index']);
 Route::get('reset-password/{user}', [ResetPasswordController::class, 'viewResetPassword'])->name('reset.password');
