@@ -36,7 +36,7 @@
                 <!-- Welcome Intro Start -->
                 <div class="col-12 col-md-7 col-lg-6">
                     <div class="welcome-intro">
-                        <h2 class="text-white fs-6">SELAMAT DATANG DI TRACER STUDY SMKN 2 Penajam Paser Utara</h2>
+                        <h2 class="text-white fs-6">Selamat Datang Di Tracer Study SMKN 2 Penajam Paser Utara</h2>
                         <p class="text-white my-4">Website Tracer Study ini merupakan website untuk pelacakan jejak dan
                             perjalanan karir lulusan/ alumni SMKN 2 Penajam Paser Utara. Fitur yang ada di website ini yaitu
                             profil alumni, aktivitas setelah lulus, serta data perusahaan pengguna lulusan. Pengguna dari

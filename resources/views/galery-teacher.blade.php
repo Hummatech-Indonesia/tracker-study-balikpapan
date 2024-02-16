@@ -45,8 +45,7 @@
                 <!-- Welcome Intro Start -->
                 <div class="col-12 col-md-7 col-lg-6">
                     <div class="welcome-intro">
-                        <h2 class="text-white fs-6">GALERI GURU
-                            SMKN 2 PENAJAM</h2>
+                        <h2 class="text-white fs-6">Galeri Guru SMKN 2 Penajam Paser Utara</h2>
                         <p class="text-white my-4">Selamat datang di Galeri Guru! Temukan momen inspiratif dalam berbagai
                             kegiatan. Jelajahi foto eksklusif yang mencerminkan prestasi dan kontribusi lulusan kami. Dari
                             reuni hingga pencapaian profesional, saksikan jejak perjalanan mereka di sini!</p>
