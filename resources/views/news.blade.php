@@ -33,7 +33,7 @@
                 <div class="col-0 col-md-0 col-lg-1"></div>
                 <div class="col-12 col-md-7 col-lg-6">
                     <div class="welcome-intro">
-                        <h2 class="text-white fs-6">Berita Terbaru SMKN 2 Penajam</h2>
+                        <h2 class="text-white fs-6">Berita Terbaru SMKN 2 Penajam Paser Utara</h2>
                         <p class="text-white my-4">"Selamat datang di Halaman Berita kami! Temukan berita terkini seputar
                             prestasi, inovasi, dan peristiwa terbaru dari komunitas kami. Dapatkan informasi relevan dan
                             artikel menarik untuk tetap terhubung dengan perkembangan terkini. Stay informed, stay
