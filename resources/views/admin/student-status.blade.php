@@ -21,9 +21,8 @@
                     </div>
                     <div class="col-lg-3">
                         <select name="schoolYear" id="schoolYear-filter" class="form-select schoolYear py-2">
-                            <option value="">Filter Tahun Lulus</option>
                             @foreach ($schoolYears as $schoolYear)
-                            <option value="{{ $schoolYear->id }}">{{ $schoolYear->name }}</option>
+                                <option value="{{ $schoolYear->id }}">{{ $schoolYear->name }}</option>
                             @endforeach
                         </select>
                     </div>

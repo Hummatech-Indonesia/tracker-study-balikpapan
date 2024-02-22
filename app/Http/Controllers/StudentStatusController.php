@@ -75,9 +75,10 @@ class StudentStatusController extends Controller
      */
     public function changeAlumni(Student $student)
     {
+        $schoolYear = $this->schoolYear->getNow();
         $data['is_graduate'] = 1;
         $data['role'] = RoleEnum::ALUMNI->value;
-        $data['school_year_id'] = $this->schoolYear->getNow();
+        $data['school_year_id'] = $schoolYear->id;
         $this->student->update($student->id, $data);
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
@@ -103,10 +104,11 @@ class StudentStatusController extends Controller
      */
     public function selectChangeAlumni(SelectChangeUpdateRequest $request)
     {
+        $schoolYear = $this->schoolYear->getNow();
         $data['is_graduate'] = 1;
         $data['role'] = RoleEnum::ALUMNI->value;
         $select = $request->validated();
-        $select['school_year_id'] = $this->schoolYear->getNow();
+        $data['school_year_id'] = $schoolYear->id;
         $this->student->updateSelect($data, $select['select']);
         return ResponseHelper::success(null, trans('alert.update_success'));
     }
