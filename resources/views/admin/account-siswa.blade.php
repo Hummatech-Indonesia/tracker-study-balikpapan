@@ -86,16 +86,18 @@
                 <div class="tab-pane fade active show" id="primary-pills-home" role="tabpanel">
                     <div class="d-flex justify-content-end gap-3 mb-3">
                         <div class="">
-                            <button id="btn-accept-student" class="btn text-white btn-primary btn-accept-student">Terima Semua</button>
+                            <button id="btn-accept-student" class="btn text-white btn-primary btn-accept-student">Terima
+                                Semua</button>
                         </div>
                         <div class="">
-                            <button id="btn-reject-student" class="btn text-white btn-danger btn-reject-student">Tolak Semua</button>
+                            <button id="btn-reject-student" class="btn text-white btn-danger btn-reject-student">Tolak
+                                Semua</button>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <th> <input type="checkbox" name="" class="select-all"> </th>
+                                <th> <input type="checkbox" name="" class="select-all form-check-input"> </th>
                                 <th>Nama</th>
                                 <th>Nisn</th>
                                 <th>Tahun Ajaran</th>
@@ -106,7 +108,7 @@
                                 @forelse ($students as $student)
                                     <tr>
                                         <td><input type="checkbox" name="select" value="{{ $student->id }}"
-                                                class="select"></td>
+                                                class="select form-check-input"></td>
                                         <td>{{ $student->user->name }}</td>
                                         <td>{{ $student->national_student_id }}</td>
                                         <td>{{ $student->classroom->schoolYear->name }}</td>
@@ -165,10 +167,12 @@
                 <div class="tab-pane fade" id="primary-pills-profile" role="tabpanel">
                     <div class="d-flex justify-content-end gap-3 mb-3">
                         <div class="">
-                            <button id="btn-accept-student" class="btn text-white btn-primary btn-accept-student">Terima Semua</button>
+                            <button id="btn-accept-student" class="btn text-white btn-primary btn-accept-student">Terima
+                                Semua</button>
                         </div>
                         <div class="">
-                            <button id="btn-reject-student" class="btn text-white btn-danger btn-reject-student">Tolak Semua</button>
+                            <button id="btn-reject-student" class="btn text-white btn-danger btn-reject-student">Tolak
+                                Semua</button>
                         </div>
                     </div>
                     <div class="table-responsive">

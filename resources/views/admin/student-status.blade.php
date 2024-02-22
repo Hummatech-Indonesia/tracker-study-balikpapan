@@ -47,7 +47,7 @@
                 <thead>
                     <tr>
                         <td>
-                            <input type="checkbox" name="checkbox" id="select-all" class="select-all form-check-input">
+                            <input type="checkbox" name="checkbox" id="select-all" class="form-check-input select-all">
                         </td>
                         <td>
                             No
@@ -218,57 +218,14 @@
 
             $('#student-status').addClass('mm-active')
 
-            $(document).on('click', '.select', function() {
+            $(document).on('click', '#select-all', function() {
+
                 var selectedValues = [];
 
                 $(".select").change(function() {
                     selectedValues = [];
                     $(".select:checked").each(function() {
                         selectedValues.push($(this).val());
-                    });
-                });
-
-                $("#btn-select-change-alumni").click(function() {
-                    Swal.fire({
-                        title: 'Apakah anda yakin?',
-                        text: 'Anda akan mengubah status menjadi alumni. Tindakan ini tidak bisa dibatalkan.',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: 'Iya!',
-                        cancelButtonText: 'Tidak, batal!',
-                        reverseButtons: true
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            // User clicked "Yes", send the AJAX request
-                            $.ajax({
-                                url: '{{ route('change.alumni.select') }}',
-                                method: 'PATCH',
-                                data: {
-                                    select: selectedValues,
-                                },
-                                success: function(response) {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Berhasil',
-                                        text: response.message,
-                                        confirmButtonText: 'OK',
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            location.reload();
-                                        }
-                                    });
-                                },
-                                error: function(error) {
-                                    console.error('Error:', error);
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Gagal',
-                                        text: 'An error occurred',
-                                        confirmButtonText: 'OK',
-                                    });
-                                }
-                            });
-                        }
                     });
                 });
 

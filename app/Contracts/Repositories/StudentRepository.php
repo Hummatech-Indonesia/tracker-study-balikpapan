@@ -67,13 +67,13 @@ class StudentRepository extends BaseRepository implements StudentInterface
     {
         // dd($request);
         return $this->model->query()
-            ->when($request->is_graduate == 0, function($query){
+            ->when($request->is_graduate == 0, function ($query) {
                 $query->where(['is_graduate' => 0, 'status' => StatusEnum::ACTIVE]);
             })
-            ->when($request->is_graduate == 1, function($query){
+            ->when($request->is_graduate == 1, function ($query) {
                 $query->where(['is_graduate' => 1, 'status' => StatusEnum::ACTIVE]);
             })
-            ->when($request->schoolYear, function($query) use($request){
+            ->when($request->schoolYear, function ($query) use ($request) {
                 $query->where('school_year_id', $request->schoolYear);
             })
             ->when($request->name, function ($query) use ($request) {
@@ -175,7 +175,10 @@ class StudentRepository extends BaseRepository implements StudentInterface
     {
         $student = $this->model->query()
             ->whereIn('id', $select)
-            ->update(['is_graduate' => $data['is_graduate']]);
+            ->update([
+                'is_graduate' => $data['is_graduate'],
+                'school_year_id' => $data['school_year_id'],
+            ]);
 
         $students = $this->model->query()
             ->whereIn('id', $select)

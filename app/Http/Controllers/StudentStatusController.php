@@ -92,6 +92,7 @@ class StudentStatusController extends Controller
     {
         $data['is_graduate'] = 0;
         $data['role'] = RoleEnum::STUDENT->value;
+        $data['school_year_id'] = null;
         $this->student->update($student->id, $data);
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
@@ -107,8 +108,8 @@ class StudentStatusController extends Controller
         $schoolYear = $this->schoolYear->getNow();
         $data['is_graduate'] = 1;
         $data['role'] = RoleEnum::ALUMNI->value;
-        $select = $request->validated();
         $data['school_year_id'] = $schoolYear->id;
+        $select = $request->validated();
         $this->student->updateSelect($data, $select['select']);
         return ResponseHelper::success(null, trans('alert.update_success'));
     }
@@ -124,6 +125,7 @@ class StudentStatusController extends Controller
         $data['is_graduate'] = 0;
         $data['role'] = RoleEnum::STUDENT->value;
         $select = $request->validated();
+        $data['school_year_id'] = null;
         $this->student->updateSelect($data, $select['select']);
         return ResponseHelper::success(null, trans('alert.update_success'));
     }
