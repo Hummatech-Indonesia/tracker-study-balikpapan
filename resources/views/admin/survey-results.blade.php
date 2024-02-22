@@ -6,6 +6,13 @@
         use Carbon\Carbon;
     @endphp
     <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-end mb-3">
+                <div class="">
+                   <a href="{{ route('survey.index') }}" class="btn btn-warning text-white">Kembali</a>
+                </div>
+            </div>
+        </div>
         <div class="col-lg-8 col-xxl-7 col-12">
             <div class="card">
                 <div class="card-body">
@@ -25,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-xl-5">
             <div class="card radius-10 border-start border-0 border-4 border-primary">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
