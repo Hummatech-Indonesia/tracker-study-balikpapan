@@ -49,7 +49,6 @@ class StudentStatusController extends Controller
      */
     public function show(Classroom $classroom, Request $request)
     {
-
     }
 
     public function studentAlumni(): View
@@ -78,6 +77,7 @@ class StudentStatusController extends Controller
     {
         $data['is_graduate'] = 1;
         $data['role'] = RoleEnum::ALUMNI->value;
+        $data['school_year_id'] = $this->schoolYear->getNow();
         $this->student->update($student->id, $data);
         return redirect()->back()->with('success', trans('alert.update_success'));
     }
@@ -106,6 +106,7 @@ class StudentStatusController extends Controller
         $data['is_graduate'] = 1;
         $data['role'] = RoleEnum::ALUMNI->value;
         $select = $request->validated();
+        $select['school_year_id'] = $this->schoolYear->getNow();
         $this->student->updateSelect($data, $select['select']);
         return ResponseHelper::success(null, trans('alert.update_success'));
     }

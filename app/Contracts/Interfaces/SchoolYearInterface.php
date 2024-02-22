@@ -11,4 +11,11 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
 interface SchoolYearInterface extends GetInterface, StoreInterface, SearchInterface, DeleteInterface, UpdateInterface, ShowInterface
 {
+    /**
+     * Handle the Get all data event from models.
+     *
+     * @return mixed
+     */
+
+    public function getNow(): mixed;
 }

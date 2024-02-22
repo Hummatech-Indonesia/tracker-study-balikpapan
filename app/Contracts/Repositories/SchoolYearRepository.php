@@ -14,6 +14,17 @@ class SchoolYearRepository extends BaseRepository implements SchoolYearInterface
     }
 
     /**
+     * getNow
+     *
+     * @return mixed
+     */
+    public function getNow(): mixed
+    {
+        return $this->model->query()
+            ->orderBy('desc', 'created_at')
+            ->first();
+    }
+    /**
      * get
      *
      * @return mixed
