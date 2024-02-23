@@ -175,10 +175,7 @@ class StudentRepository extends BaseRepository implements StudentInterface
     {
         $student = $this->model->query()
             ->whereIn('id', $select)
-            ->update([
-                'is_graduate' => $data['is_graduate'],
-                'school_year_id' => $data['school_year_id'],
-            ]);
+            ->update(['is_graduate' => $data['is_graduate'], 'school_year_id' => $data['school_year_id']]);
 
         $students = $this->model->query()
             ->whereIn('id', $select)
