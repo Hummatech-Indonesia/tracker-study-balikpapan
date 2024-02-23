@@ -173,7 +173,6 @@ class StudentRepository extends BaseRepository implements StudentInterface
      */
     public function updateSelect(array $data, array $select): mixed
     {
-        dd($data['school_year_id']);
         $student = $this->model->query()
             ->whereIn('id', $select)
             ->update(['is_graduate' => $data['is_graduate'], 'school_year_id' => $data['school_year_id']]);
