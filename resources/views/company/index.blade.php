@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-dark" style="font-weight: 600">Pelamar Yang Diterima</p>
+                            <p class="mb-0 text-dark" style="font-weight: 600">Pelamar Diterima</p>
                             <h4 class="my-1 text-success mb-4" id="applicantApprove"></h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto">

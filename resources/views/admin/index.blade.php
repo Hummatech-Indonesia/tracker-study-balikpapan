@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-center mt-2 mb-2">
                         <div>
-                            <h6 class="mb-0 text-center">Jumlah Pekrjaan Intergrasi</h6>
+                            <h6 class="mb-0 text-center">Jumlah Pekerjaan Intergrasi</h6>
                         </div>
                     </div>
                 </div>
