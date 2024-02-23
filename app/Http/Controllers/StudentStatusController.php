@@ -108,9 +108,9 @@ class StudentStatusController extends Controller
         $schoolYear = $this->schoolYear->getNow();
         $data['is_graduate'] = 1;
         $data['role'] = RoleEnum::ALUMNI->value;
-        $data['school_year_id'] = $schoolYear->id;
         $select = $request->validated();
-        $data['school_year_id'] = $this->schoolYear->getNow();
+        $schoolYear = $this->schoolYear->getNow();
+        $data['school_year_id'] = $schoolYear->id;
         $this->student->updateSelect($data, $select['select']);
         return ResponseHelper::success(null, trans('alert.update_success'));
     }
