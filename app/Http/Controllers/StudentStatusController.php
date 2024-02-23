@@ -105,12 +105,11 @@ class StudentStatusController extends Controller
      */
     public function selectChangeAlumni(SelectChangeUpdateRequest $request)
     {
-        $schoolYear = $this->schoolYear->getNow();
         $data['is_graduate'] = 1;
         $data['role'] = RoleEnum::ALUMNI->value;
+        $select = $request->validated();
         $schoolYear = $this->schoolYear->getNow();
         $data['school_year_id'] = $schoolYear->id;
-        $select = $request->validated();
         $this->student->updateSelect($data, $select['select']);
         return ResponseHelper::success(null, trans('alert.update_success'));
     }
