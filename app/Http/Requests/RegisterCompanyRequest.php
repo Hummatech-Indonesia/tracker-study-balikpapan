@@ -20,7 +20,8 @@ class RegisterCompanyRequest extends FormRequest
             'password_confirmation' => 'required',
             'phone_number' => 'required|numeric',
             'description' => 'required',
-            'company_field' => 'required',
+            'company_field' => 'nullable',
+            'other_company' => 'nullable',
             'website' => 'nullable|url',
             'checked' => 'required',
         ];
@@ -42,7 +43,6 @@ class RegisterCompanyRequest extends FormRequest
             'phone_number.required' => 'Kolom nomor telepon harus diisi.',
             'phone_number.numeric' => 'Nomor telepon harus berupa angka.',
             'description.required' => 'Kolom deskripsi harus diisi.',
-            'company_field.required' => 'Kolom bidang perusahaan harus diisi.',
             'website.url' => 'Format URL website tidak valid.',
             'checked.required' => 'Kolom tercentang harus diisi.',
         ];

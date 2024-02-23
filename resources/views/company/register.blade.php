@@ -103,19 +103,44 @@
                                         <div class="col-12">
                                             <label for="inputChoosePassword" class="form-label">Bidang Perusahaan</label>
                                             <label for="" class="text-danger">*</label>
-                                            <input class="form-control" name="company_field"
-                                                placeholder="Masukkan Bidang Perusahaan" value="{{ old('company_field') }}" type="text" name=""
-                                                id="">
-                                                @error('company_field')
-                                                <div class="text-danger">{{ $message }}
-                                                </div>
+                                            <select name="company_field" id="company_field"
+                                                class="form-select js-example-basic-single">
+                                                <option value="Pertanian">Pertanian</option>
+                                                <option value="Peternakan">Peternakan</option>
+                                                <option value="Perikanan">Perikanan</option>
+                                                <option value="Perdagangan">Perdagangan</option>
+                                                <option value="Pertambangan">Pertambangan</option>
+                                                <option value="Pariwisata">Pariwisata</option>
+                                                <option value="Teknologi Informasi Komunikasi">Teknologi Informasi dan
+                                                    Komunikasi</option>
+                                                <option value="Transportasi">Transportasi</option>
+                                                <option value="Penerbitan">Penerbitan</option>
+                                                <option value="Makanan Minuman">Makanan dan Minuman</option>
+                                                <option value="Jasa Keuangan">Jasa Keuangan</option>
+                                                <option value="Jasa Hukum">Jasa Hukum</option>
+                                                <option value="Kesehatan Manusia">Kesehatan Manusia</option>
+                                                <option value="Kesehatan Hewan">Kesehatan Hewan</option>
+                                                <option value="Ketenagakerjaan">Ketenagakerjaan</option>
+                                                <option value="Hiburan dan Kesenian">Hiburan dan Kesenian</option>
+                                                <option value="" id="lain-lain-option">Lain-Lain</option>
+
+                                            </select>
+                                            @error('company_field')
+                                                <div class="text-danger">{{ $message }}</div>
                                             @enderror
+                                        </div>
+                                        <div class="col-12" id="lain-lain-field" style="display:none;">
+                                            <label for="lain-lain-input" class="form-label">Bidang Perusahaan
+                                                Lainnya</label>
+                                            <label for="" class="text-danger">*</label>
+                                            <input type="text" name="other_company" id="lain-lain-input"
+                                                class="form-control" placeholder="Masukkan bidang perusahaan Anda">
                                         </div>
                                         <div class="col-12">
                                             <label for="inputChoosePassword" class="form-label">Website</label>
-                                            <input type="text" placeholder="Masukkan Website Perusahaan"
-                                                name="website" value="{{ old('website') }}" class="form-control" id="">
-                                                @error('website')
+                                            <input type="text" placeholder="https://domain-anda.com" name="website"
+                                                value="{{ old('website') }}" class="form-control" id="">
+                                            @error('website')
                                                 <div class="text-danger">{{ $message }}
                                                 </div>
                                             @enderror
@@ -221,7 +246,35 @@
         </div>
     </div>
 @endsection
+@section('style')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
 @section('script')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#company_field').select2({
+                // ... Select2 options ...
+            });
+
+            $("#company_field").prop("required", true);
+
+            $('#company_field').on('change', function() {
+                var selectedOptionId = $(this).find(':selected').attr('id');
+                var selectedValue = $(this).find(':selected').val();
+
+                if (selectedOptionId === 'lain-lain-option') {
+                    $('#lain-lain-field').show();
+                } else {
+                    $('#lain-lain-field').hide();
+
+                    $("#company_field").val(selectedValue);
+                }
+            });
+        });
+    </script>
     @if (session('success'))
         <script>
             Swal.fire({

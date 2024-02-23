@@ -70,6 +70,9 @@ class RegisterService
     {
         $data = $request->validated();
         $user = $register->store($data);
+        if ($request->other_company != null) {
+            $data['company_field'] = $data['other_company'];
+        }
 
         event(new Registered($user));
 
