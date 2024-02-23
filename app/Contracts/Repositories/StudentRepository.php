@@ -173,8 +173,7 @@ class StudentRepository extends BaseRepository implements StudentInterface
      */
     public function updateSelect(array $data, array $select): mixed
     {
-        dd($data);
-        $student = $this->model->query()
+        $this->model->query()
             ->whereIn('id', $select)
             ->update(['is_graduate' => $data['is_graduate'], 'school_year_id' => $data['school_year_id']]);
 
@@ -186,7 +185,7 @@ class StudentRepository extends BaseRepository implements StudentInterface
             $student->user->syncRoles($data['role']);
         }
 
-        return $student;
+        return $students;
     }
 
     /**
