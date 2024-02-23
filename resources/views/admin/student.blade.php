@@ -712,6 +712,72 @@
             });
         });
 
+        $(document).on('click', '.select', function() {
+            var selectedValues = [];
+
+            $(".select").change(function() {
+                selectedValues = [];
+                $(".select:checked").each(function() {
+                    selectedValues.push($(this).val());
+                });
+            });
+
+            $("#btn-select-change-alumni").click(function() {
+                Swal.fire({
+                    title: 'Apakah anda yakin?',
+                    text: 'Anda akan mengubah status menjadi alumni. Tindakan ini tidak bisa dibatalkan.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Iya!',
+                    cancelButtonText: 'Tidak, batal!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // User clicked "Yes", send the AJAX request
+                        $.ajax({
+                            url: '{{ route('change.alumni.select') }}',
+                            method: 'PATCH',
+                            data: {
+                                select: selectedValues,
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                    text: response.message,
+                                    confirmButtonText: 'OK',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
+                            },
+                            error: function(error) {
+                                console.error('Error:', error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal',
+                                    text: 'An error occurred',
+                                    confirmButtonText: 'OK',
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Trigger change event of individual checkboxes when "Select All" is clicked
+            $("#select-all").change(function() {
+                $(".select").prop("checked", $(this).prop("checked")).change();
+            });
+
+            $(".select").change(function() {
+                if (!$(this).prop("checked")) {
+                    $("#select-all").prop("checked", false);
+                }
+            });
+        });
+
         // Event listener untuk tombol alumni
         $(document).on('click', '.btn-alumni', function() {
             var id = $(this).data('id');
