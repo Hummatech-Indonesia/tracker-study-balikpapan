@@ -559,7 +559,7 @@
                                 <td>
                                     <div class="d-flex align-item-center mt-2">
                                 <input type="checkbox" name="select" class="form-check-input select"
-                                    value="${data.id}">
+                                    value="${data.id_data}">
                             </div>
                                 <td>
                                     <p class="mb-0 fw-normal mt-2">
