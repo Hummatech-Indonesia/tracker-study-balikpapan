@@ -110,7 +110,6 @@ class StudentStatusController extends Controller
         $data['role'] = RoleEnum::ALUMNI->value;
         $schoolYear = $this->schoolYear->getNow();
         $data['school_year_id'] = $schoolYear->id;
-        dd($data);
         $select = $request->validated();
         $this->student->updateSelect($data, $select['select']);
         return ResponseHelper::success(null, trans('alert.update_success'));
