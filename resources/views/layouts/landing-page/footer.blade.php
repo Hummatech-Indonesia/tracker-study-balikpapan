@@ -82,14 +82,15 @@
                     <!-- Footer Items -->
                     <div class="footer-items">
                         <!-- Footer Title -->
-                        <h3 class="footer-title mb-2">Galery</h3>
+                        <h3 class="footer-title mb-2">Galeri</h3>
                         <div class="d-flex my-3">
                             <svg style="margin-top:3%" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                 fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 18 18">
                                 <circle cx="8" cy="8" r="8" />
                             </svg>
-                            <p style="font-size: 14px;margin-left:1rem;">Galery Guru
-                            </p>
+                            <a href="{{ route('gallery-teacher') }}" style="font-size: 14px;margin-left:1rem;">Galeri
+                                Guru
+                            </a>
 
                         </div>
                         <div class="d-flex my-3">
@@ -97,8 +98,9 @@
                                 fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 18 18">
                                 <circle cx="8" cy="8" r="8" />
                             </svg>
-                            <p style="font-size: 14px;margin-left:1rem;">Galery Alumni
-                            </p>
+                            <a href="{{ route('galery-alumni') }}" style="font-size: 14px;margin-left:1rem;">Galeri
+                                Alumni
+                            </a>
 
                         </div>
                     </div>

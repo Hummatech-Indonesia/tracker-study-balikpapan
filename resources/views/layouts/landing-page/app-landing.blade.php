@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from theme-land.com/sapp/demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Dec 2023 10:09:51 GMT -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -20,6 +21,10 @@
     <style>
         .border-custom {
             border: 7px solid #5D87FF !important;
+        }
+
+        a:hover {
+            color: #5D87FF;
         }
     </style>
 </head>
@@ -53,10 +58,11 @@
 
     <script src="{{ asset('assets/js/plugins/plugins.min.js') }}"></script>
     <!-- Active js -->
-        <script src="{{ asset('assets/js/active.js') }}"></script>
+    <script src="{{ asset('assets/js/active.js') }}"></script>
     @yield('scripts')
 </body>
 
 
 <!-- Mirrored from theme-land.com/sapp/demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 04 Dec 2023 10:10:04 GMT -->
+
 </html>
