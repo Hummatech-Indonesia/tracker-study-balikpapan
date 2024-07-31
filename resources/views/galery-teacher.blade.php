@@ -110,7 +110,7 @@
                 <div class="col-12 col-md-10 col-lg-8">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                        <h2 class="text-capitalize">Galery Guru SMKN 2 Penajam</h2>
+                        <h2 class="text-capitalize">Galery Guru Hummatech</h2>
                     </div>
                 </div>
             </div>

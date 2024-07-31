@@ -40,7 +40,7 @@
                     <div class="breadcrumb-content text-center">
                         <h2 class="text-white text-capitalize">DAFTAR LOWONGAN KERJA</h2>
                         <ol class="breadcrumb d-flex justify-content-center">
-                            <li class="breadcrumb-item text-white">TRACER STUDY SMKN 2 PENAJAM </li>
+                            <li class="breadcrumb-item text-white">TRACER STUDY HUMMATECH </li>
                         </ol>
                     </div>
                 </div>

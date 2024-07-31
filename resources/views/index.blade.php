@@ -123,12 +123,12 @@
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="mb-5">
-                        <h3 class="text-center my-4">SMKN 2 PENAJAM</h3>
-                        <p style="font-size: 16px; color:black; ">SMK Negeri 2 Penajam Paser Utara sebagai lembaga
+                        <h3 class="text-center my-4">Hummatech</h3>
+                        <p style="font-size: 16px; color:black; ">Hummatech sebagai lembaga
                             pendidikan terus berupaya meningkatkan mutu dengan mengupayakan dan memanfaatkan setiap sarana
                             dan prasana termasuk melalui layanan Online ini. Besar harapan, sarana ini dapat memberi manfaat
                             bagi semua pihak yang ada dilingkup pendidikan dan bagi pemerhati pendidikan secara khusus bagi
-                            SMK Negeri 2 Penajam Paser Utara.</p>
+                            Hummatech.</p>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                 <div class="col-12 col-md-10 col-lg-9">
                     <!-- Section Heading -->
                     <div class="text-center mb-5">
-                        <h2>Perusahaan Yang Bekerja Sama Dengan SMKN 2 Penajam</h2>
+                        <h2>Perusahaan Yang Bekerja Sama Dengan Hummatech</h2>
                     </div>
                 </div>
             </div>
