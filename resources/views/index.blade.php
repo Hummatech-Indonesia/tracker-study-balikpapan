@@ -16,11 +16,11 @@
                 <!-- Welcome Intro Start -->
                 <div class="col-12 col-md-12 col-lg-6">
                     <div class="welcome-intro">
-                        <h2 class="text-white fs-6">Selamat Datang Di Tracer Study SMKN 2 Penajam Paser Utara</h2>
+                        <h2 class="text-white fs-6">Selamat Datang Di Tracer Study Hummatech</h2>
                         <p class="text-white my-4">Website Tracer Study ini merupakan website untuk pelacakan jejak dan
-                            perjalanan karir lulusan/ alumni SMKN 2 Penajam Paser Utara. Fitur yang ada di website ini yaitu
+                            perjalanan karir lulusan/ alumni Hummatech. Fitur yang ada di website ini yaitu
                             profil alumni, aktivitas setelah lulus, serta data perusahaan pengguna lulusan. Pengguna dari
-                            website ini hanya dikhususkan oleh alumni SMKN 2 Penajam Paser Utara. </p>
+                            website ini hanya dikhususkan oleh alumni Hummatech. </p>
                     </div>
                     <div class="">
                         <a href="/pilih-role" class="btn text-white py-2 py-1"

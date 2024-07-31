@@ -13,7 +13,7 @@
                                 Daftar Untuk Masuk
                             </h2>
                             <h5 class="text-center text-white mb-5 mt-2" style="font-weight: 00">
-                                TRACER STUDY SMKN 2 Penajam Paser Utara
+                                TRACER STUDY Hummatech
                             </h5>
                             <img src="{{ asset('company.png') }}" class="mt-4" width="500" alt="" />
                         </div>

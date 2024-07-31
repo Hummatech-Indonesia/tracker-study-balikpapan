@@ -30,7 +30,7 @@ class RegistrationMail extends Mailable
             to: $this->data['email'],
             cc: $this->data['email'],
             bcc: $this->data['email'],
-            subject: 'Verifikasi Akun Tracer Study SMKN 2 Penajam Paser Utara',
+            subject: 'Verifikasi Akun Tracer Study Hummatech',
         );
     }
 

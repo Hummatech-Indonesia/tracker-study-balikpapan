@@ -117,9 +117,9 @@
                     <div
                         class="copyright-area d-flex flex-wrap justify-content-center justify-content-sm-between text-center py-4">
                         <!-- Copyright Left -->
-                        <div class="copyright-left">2023 SMKN 2 Penajam Paser Utara All Rights Reserved</div>
+                        <div class="copyright-left">2023 Hummatech All Rights Reserved</div>
                         <!-- Copyright Right -->
-                        <div class="copyright-right">&copy; Copyright By SMKN 2 Penajam Paser Utara</a></div>
+                        <div class="copyright-right">&copy; Copyright By Hummatech</a></div>
                     </div>
                 </div>
             </div>
